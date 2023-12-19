@@ -2,6 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
+*.pyc
 
 # C extensions
 *.so
@@ -152,9 +153,6 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
-#PyCache
-__pycache__
-*.pyc
 
 # PyCharm
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
