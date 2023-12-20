@@ -9,6 +9,9 @@ __pycache__/
 # db sqlite
 *.sqlite3
 
+# gitignore
+*.gitignore
+
 # Distribution / packaging
 .Python
 build/
