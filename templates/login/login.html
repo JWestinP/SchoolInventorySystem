@@ -1,23 +1,100 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>LOGIN</title>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            background-image: url("Log in.PNG");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 60px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            width: 300px;
+            margin: 50px auto; /* Center horizontally with some top margin */
+        }
+
+        .alert {
+            position: relative;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 5px;
+        }
+
+        .alert-success {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+
+        .alert-danger {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+
+        .close {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .email, .password {
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+
+        button {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Media query for smaller screens */
+        @media (max-width: 600px) {
+            .form-container {
+                padding: 20px;
+            }
+        }
+    </style>
+    <title>LOGIN</title>
+</head>
+<body>
+
+
+
+<div class="form-container">
         {% for message in messages %}
-        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-            <strong>Message:</strong>{{ message }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        {% endfor %}
-    </head>
-    <body>
-        <form action = "/login" method = "POST">
-            {% csrf_token %}
-                <input class = "email" type = "email" name = "email" id = "email" placeholder = "Input your email..." required>
-                <input class = "password" type="password" name="password" id="password" placeholder="Input your password..." required>
-    
-                <button><a href="{% url 'login' %}">Login</a></button>
-            </form>
-    </body>
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show">
+        <strong>Message:</strong> {{ message }}
+        <span class="close" data-dismiss="alert" aria-label="Close">&times;</span>
+    </div>
+    {% endfor %}
+    <form action="/login" method="POST">
+        {% csrf_token %}
+        <input class="email" type="email" name="email" id="email" placeholder="Input your email..." required>
+        <input class="password" type="password" name="password" id="password" placeholder="Input your password..." required>
+        <button><a href="{% url 'login' %}">Login</a></button>
+    </form>
+</div>
+
+</body>
 </html>
