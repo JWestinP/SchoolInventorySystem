@@ -9,6 +9,7 @@ class Furniture(models.Model):
     item_total_quantity = models.IntegerField()
     item_current_quantity = models.IntegerField()
     item_borrowed_quantity = models.IntegerField()
+    item_photo = models.ImageField()
     
 class Room(models.Model):
     item_id = models.IntegerField(primary_key = True)
@@ -18,6 +19,7 @@ class Room(models.Model):
     item_total_quantity = models.IntegerField()
     item_current_quantity = models.IntegerField()
     item_borrowed_quantity = models.IntegerField()
+    item_photo = models.ImageField()
 
 class Cleaning_Material(models.Model):
     item_id = models.IntegerField(primary_key = True)
@@ -27,7 +29,8 @@ class Cleaning_Material(models.Model):
     item_total_quantity = models.IntegerField()
     item_current_quantity = models.IntegerField()
     item_borrowed_quantity = models.IntegerField()
-
+    item_photo = models.ImageField()
+        
 class Technology(models.Model):
     item_id = models.IntegerField(primary_key = True)
     item_name = models.CharField(max_length = 128)
@@ -35,7 +38,8 @@ class Technology(models.Model):
     item_description = models.CharField(max_length = 256)
     item_total_quantity = models.IntegerField()
     item_current_quantity = models.IntegerField()
-    item_borrowed_quantity = models.IntegerField()    
+    item_borrowed_quantity = models.IntegerField()
+    item_photo = models.ImageField()    
 
 class Dean_Approval_Needed_Item(models.Model):
     item_id = models.IntegerField(primary_key = True)
@@ -45,3 +49,4 @@ class Dean_Approval_Needed_Item(models.Model):
     item_total_quantity = models.IntegerField()
     item_current_quantity = models.IntegerField()
     item_borrowed_quantity = models.IntegerField()    
+    item_photo = models.ImageField()

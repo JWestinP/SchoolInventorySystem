@@ -9,7 +9,8 @@ class Furniture_Admin(admin.ModelAdmin):
                     'item_description',
                     'item_total_quantity',
                     'item_current_quantity',
-                    'item_borrowed_quantity']
+                    'item_borrowed_quantity',
+                    'item_photo']
 
 class Rooms_Admin(admin.ModelAdmin):
     list_display = ['item_id',
@@ -18,7 +19,8 @@ class Rooms_Admin(admin.ModelAdmin):
                     'item_description',
                     'item_total_quantity',
                     'item_current_quantity',
-                    'item_borrowed_quantity']
+                    'item_borrowed_quantity',
+                    'item_photo']
 
 class Cleaning_Materials_Admin(admin.ModelAdmin):
     list_display = ['item_id',
@@ -27,7 +29,8 @@ class Cleaning_Materials_Admin(admin.ModelAdmin):
                     'item_description',
                     'item_total_quantity',
                     'item_current_quantity',
-                    'item_borrowed_quantity']
+                    'item_borrowed_quantity',
+                    'item_photo']
 
 class Technology_Admin(admin.ModelAdmin):
     list_display = ['item_id',
@@ -36,7 +39,8 @@ class Technology_Admin(admin.ModelAdmin):
                     'item_description',
                     'item_total_quantity',
                     'item_current_quantity',
-                    'item_borrowed_quantity']
+                    'item_borrowed_quantity',
+                    'item_photo']
 
 class Dean_Approval_Needed_Admin(admin.ModelAdmin):
     list_display = ['item_id',
@@ -45,7 +49,8 @@ class Dean_Approval_Needed_Admin(admin.ModelAdmin):
                     'item_description',
                     'item_total_quantity',
                     'item_current_quantity',
-                    'item_borrowed_quantity']
+                    'item_borrowed_quantity',
+                    'item_photo']
 
 admin.site.register(Furniture, Furniture_Admin)
 admin.site.register(Room, Rooms_Admin)
