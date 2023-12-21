@@ -23,6 +23,6 @@ urlpatterns = [
     path('', include('members.urls')),
     path('', include('notification.urls')),
     path('', include('recents.urls')),
-    path('', include('unreturned.urls')),
+    path('test/', include('unreturned.urls')),
     path('', include('userprofile.urls')),
 ]
