@@ -8,3 +8,4 @@ class Unreturned_Item(models.Model):
     item_date_borrowed = models.DateField()
     item_days_not_returned = models.IntegerField()
     item_photo = models.ImageField(blank = True)
+    item_borrower = models.CharField(max_length = 128, blank = True)
