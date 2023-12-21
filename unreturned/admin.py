@@ -7,6 +7,8 @@ class Unreturned_Items_Admin(admin.ModelAdmin):
                     'item_name', 
                     'item_quantity', 
                     'item_date_borrowed',
-                    'item_days_not_returned']
+                    'item_days_not_returned',
+                    'item_photo',
+                    'item_borrower']
     
 admin.site.register(Unreturned_Item, Unreturned_Items_Admin)
