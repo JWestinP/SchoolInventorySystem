@@ -8,4 +8,4 @@ class Borrowed_Item(models.Model):
     item_returned = models.BooleanField()
     item_date_borrowed = models.DateField()
     item_date_returned = models.DateField(blank = True)
-    
+    item_photo = models.ImageField(blank = True)
