@@ -7,9 +7,11 @@
         body, html {
             height: 100%;
             margin: 0;
-            background-image: url("Log in.PNG");
-            background-position: center;
-            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end; /* Move the content to the right */
+            background: url("Log in.PNG") no-repeat center center fixed;
             background-size: cover;
         }
 
@@ -19,34 +21,29 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
             width: 300px;
-            margin: 50px auto; /* Center horizontally with some top margin */
+            margin-right: 230px;
         }
 
         .alert {
-            position: relative;
+            display: none;
             padding: 15px;
             margin-bottom: 20px;
-            border: 1px solid transparent;
             border-radius: 5px;
         }
 
         .alert-success {
             color: #155724;
             background-color: #d4edda;
-            border-color: #c3e6cb;
+            border: 1px solid #c3e6cb;
         }
 
         .alert-danger {
             color: #721c24;
             background-color: #f8d7da;
-            border-color: #f5c6cb;
+            border: 1px solid #f5c6cb;
         }
 
         .close {
-            position: absolute;
-            top: 5px;
-            right: 10px;
-            font-size: 20px;
             cursor: pointer;
         }
 
@@ -61,40 +58,58 @@
             width: 100%;
             box-sizing: border-box;
             padding: 10px;
-            background-color: #4CAF50;
+            background-color: #2f73f1;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
         }
 
-        /* Media query for smaller screens */
-        @media (max-width: 600px) {
+        @media (max-width: 1200px) {
             .form-container {
-                padding: 20px;
+                margin-right: 100px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .form-container {
+                margin-right: 50px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body, html {
+                justify-content: center; /* Center the content on smaller screens */
+            }
+            
+            .form-container {
+                margin-right: 0;
+                width: 80%; /* Adjust the width for smaller screens */
+                max-width: none; /* Remove the max-width restriction */
             }
         }
     </style>
+    <script>
+        function closeAlert(alert) {
+            alert.style.display = 'none';
+        }
+    </script>
     <title>LOGIN</title>
 </head>
 <body>
-
-
-
-<div class="form-container">
+    <div class="form-container">
         {% for message in messages %}
-    <div class="alert alert-{{ message.tags }} alert-dismissible fade show">
-        <strong>Message:</strong> {{ message }}
-        <span class="close" data-dismiss="alert" aria-label="Close">&times;</span>
+        <div class="alert alert-{{ message.tags }}" style="display: block;">
+            <strong>Message:</strong> {{ message }}
+            <span class="close" onclick="closeAlert(this.parentElement)">&times;</span>
+        </div>
+        {% endfor %}
+        <form action="/login" method="POST">
+            {% csrf_token %}
+            <input class="email" type="email" name="email" id="email" placeholder="Input your email..." required>
+            <input class="password" type="password" name="password" id="password" placeholder="Input your password..." required>
+            <button><a href="{% url 'login' %}">Login</a></button>
+        </form>
     </div>
-    {% endfor %}
-    <form action="/login" method="POST">
-        {% csrf_token %}
-        <input class="email" type="email" name="email" id="email" placeholder="Input your email..." required>
-        <input class="password" type="password" name="password" id="password" placeholder="Input your password..." required>
-        <button><a href="{% url 'login' %}">Login</a></button>
-    </form>
-</div>
-
 </body>
 </html>
