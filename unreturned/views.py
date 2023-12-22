@@ -8,5 +8,8 @@ def show_unreturned_items(request):
     # return HttpResponse("This is where unreturned items should show.")
 
     unreturned_items = Unreturned_Item.objects.all()
-    return render(request, 'templates/unreturned/unreturned.html',
+    return render(request, 'unreturned/unreturned.html',
                 {'unreturned_items': unreturned_items})
+
+def admin_unreturned(request):
+    return render(request, ('unreturned/admin_unreturned.html'))
