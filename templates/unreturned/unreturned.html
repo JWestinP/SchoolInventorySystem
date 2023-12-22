@@ -8,5 +8,10 @@
     <h1>UNRETURNED</h1>
     <body>
 
+        {% block content %}
+            <h1>Unreturned Items</h1>
+            {{ unreturned_items }}
+        {% endblock %}
+
     </body>
 </html>
