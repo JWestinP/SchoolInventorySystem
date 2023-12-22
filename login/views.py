@@ -23,3 +23,8 @@ def user_login(request):
             return redirect('login')
     
     return render(request, 'login/login.html')
+
+def user_logout(request):
+    logout(request)
+    messages.success(request, "You've successfully logged out.")
+    return redirect('login')

@@ -2,12 +2,17 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="{% static 'home/unreturnedstyle.css' %}">
+        <link rel="stylesheet" href="{% static 'unreturned/unreturnedstyle.css' %}">
         <title>UNRETURNED</title>
     </head>
     <h1>UNRETURNED</h1>
     <body>
-
+        <button><a href="{% url 'home' %}">Home</a></button>
+        <button><a href="{% url 'recents' %}">Recents</a></button>
+        <button><a href="{% url 'show_unreturned_items' %}">Unreturned</a></button>
+        <button><a href="{% url 'notification' %}">Notification</a></button>
+        <button><a href="{% url 'userprofile' %}">Account</a></button>
+        <button><a href="{% url 'logout' %}">Logout</a></button>
         {% block content %}
             <h1>Unreturned Items</h1>
             {{ unreturned_items }}
