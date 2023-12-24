@@ -26,6 +26,18 @@
 
         <div id="cleaning" class="category_div">
             <h1>Display contents of cleaning model here.</h1>
+            {% for item in cleaning_inventory %}
+                <div>
+                    {{ item.item_id }}
+                    {{ item.item_name }}
+                    {{ item.item_category }}
+                    {{ item.item_description }}
+                    {{ item.item_current_quantity }}/{{item.item_total_quantity}}
+                    {{ item.item_borrowed_quantity}}
+                    {{ item.item_photo }}
+
+                </div>
+            {% endfor %}
             <button id="back_category" onclick="backCategories()">Back</button>
         </div>
 

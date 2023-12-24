@@ -46,12 +46,23 @@ def home(request):
             if query and query.lower() == "dean approval needed item":
                 dean_approval_items = Dean_Approval_Needed_Item.objects.all()
 
+    cleaning_inventory = Cleaning_Material.objects.all()
+    gadget_inventory = Technology.objects.all()
+    furniture_inventory = Furniture.objects.all()
+    room_inventory = Room.objects.all()
+    dean_inventory = Dean_Approval_Needed_Item.objects.all()
+    
     return render(request, 'home/home.html', {
         'furniture_items': furniture_items,
         'room_items': room_items,
         'cleaning_material_items': cleaning_material_items,
         'technology_items': technology_items,
         'dean_approval_items': dean_approval_items,
-        'query': query
+        'query': query,
+        'cleaning_inventory' : cleaning_inventory,
+        'gadget_inventory' : gadget_inventory,
+        'furniture_inventory' : furniture_inventory,
+        'room_inventory' : room_inventory,
+        'dean_inventory' : dean_inventory,
     })
 
