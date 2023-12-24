@@ -7,6 +7,12 @@
     </head>
     <h1>USER PROFILE</h1>
     <body>
+        <form method="get" action="{% url 'userprofile' %}">
+            <input type="text" name="q" placeholder="Search by name,id,category" value="{{ query }}">
+            <input type="submit" value="Search">
+        </form>
+        
+        {% include 'home/result_list.html' %}
         <button><a href="{% url 'home' %}">Home</a></button>
         <button><a href="{% url 'recents' %}">Recents</a></button>
         <button><a href="{% url 'show_unreturned_items' %}">Unreturned</a></button>

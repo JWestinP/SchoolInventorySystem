@@ -13,8 +13,8 @@ def guest_home(request):
     return render(request, ('home/guest_home.html'))
 
 # myapp/views.py
-def home(request):
-    query = request.GET.get('q', '')  # Get the search query from the URL parameter 'q'
+def search_items(request, template_name):
+    query = request.GET.get('q', '')
 
     # Initialize queryset variables
     furniture_items = room_items = cleaning_material_items = technology_items = dean_approval_items = None
@@ -46,7 +46,7 @@ def home(request):
             if query and query.lower() == "dean approval needed item":
                 dean_approval_items = Dean_Approval_Needed_Item.objects.all()
 
-    return render(request, 'home/home.html', {
+    return render(request, template_name, {
         'furniture_items': furniture_items,
         'room_items': room_items,
         'cleaning_material_items': cleaning_material_items,
@@ -54,4 +54,19 @@ def home(request):
         'dean_approval_items': dean_approval_items,
         'query': query
     })
+
+def home(request):
+    return search_items(request, 'home/home.html')
+
+def recents(request):
+    return search_items(request, 'recents/recents.html')
+
+def unreturned(request):
+    return search_items(request, 'unreturned/unreturned.html')
+
+def notification(request):
+    return search_items(request, 'notification/notification.html')
+
+def userprofile(request):
+    return search_items(request, 'userprofile/userprofile.html')
 
