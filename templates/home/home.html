@@ -3,6 +3,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="{% static 'home/homestyle.css' %}">
+
         <title>FACULTY HOME</title>
     </head>
     <h1>FACULTY HOME</h1>
@@ -13,5 +14,42 @@
         <button><a href="{% url 'notification' %}">Notification</a></button>
         <button><a href="{% url 'userprofile' %}">Account</a></button>
         <button><a href="{% url 'logout' %}">Logout</a></button>
+
+        <div id="cleaning" class="category_div">
+            <h1>Display contents of cleaning model here.</h1>
+            <button id="back_category" onclick="backCategories()">Back</button>
+        </div>
+
+        <button id="cleaning_button" class="category_button" onclick="hideShowCleaning()">Cleaning Materials</button>
+
+        <div id="gadget" class="category_div">
+            <h1>Display contents of gadget model here.</h1>
+            <button id="back_category" onclick="backCategories()">Back</button>
+        </div>
+
+        <button id="gadget_button" class="category_button" onclick="hideShowGadget()">Gadgets</button>
+
+        <div id="furniture" class="category_div">
+            <h1>Display contents of furniture model here.</h1>
+            <button id="back_category" onclick="backCategories()">Back</button>
+        </div>
+
+        <button id="furniture_button" class="category_button" onclick="hideShowFurniture()">Furnitures</button>
+
+        <div id="room" class="category_div">
+            <h1>Display contents of room model here.</h1>
+            <button id="back_category" onclick="backCategories()">Back</button>
+        </div>
+
+        <button id="room_button" class="category_button" onclick="hideShowRoom()">Room</button>
+
+        <div id="dean" class="category_div">
+            <h1>Display contents of Items that needs the dean's approval model here.</h1>
+            <button id="back_category" onclick="backCategories()">Back</button>
+        </div>
+
+        <button id="dean_button" class="category_button" onclick="hideShowDean()">Items that need the dean's approval</button>
+
+        <script src="{% static 'home/homescript.js' %}"></script>
     </body>
 </html>

@@ -99,3 +99,27 @@ input, select {
 /*
 Start coding here
 */
+
+#cleaning {
+    display: none;
+}
+
+#gadget {
+    display: none;
+}
+
+#furniture {
+    display: none;
+}
+
+#room {
+    display: none;
+}
+
+#dean {
+    display: none;
+}
+
+h1 {
+    color: red;
+}
