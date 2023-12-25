@@ -70,3 +70,25 @@ def notification(request):
 def userprofile(request):
     return search_items(request, 'userprofile/userprofile.html')
 
+def members(request):
+    return search_items(request, 'members/members.html')
+
+def admin_recents(request):
+    return search_items(request, 'recents/admin_recents.html')
+
+def admin_unreturned(request):
+    return search_items(request, 'unreturned/admin_returned.html')
+
+def admin_userprofile(request):
+    return search_items(request, 'userprofile/admin_userprofile.html')
+
+def admin_home(request):
+    return search_items(request, 'home/admin_home.html')
+
+def guest_home(request):
+    return search_items(request, 'home/guest_home.html')
+
+
+
+
+

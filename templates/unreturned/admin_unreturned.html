@@ -7,6 +7,12 @@
     </head>
     <h1>ADMIN UNRETURNED</h1>
     <body>
+        <form method="get" action="{% url 'admin_unreturned' %}">
+            <input type="text" name="q" placeholder="Search by name,id,category" value="{{ query }}">
+            <input type="submit" value="Search">
+        </form>
+        
+        {% include 'home/result_list.html' %}
         <button><a href="{% url 'admin_home' %}">Home</a></button>
         <button><a href="{% url 'admin_recents' %}">Recents</a></button>
         <button><a href="{% url 'admin_unreturned' %}">Unreturned</a></button>
