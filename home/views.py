@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.db.models import Q
 from .models import Furniture, Room, Cleaning_Material, Technology, Dean_Approval_Needed_Item
+from django.http import JsonResponse
 
 # Create your views here.
 def home(request):
@@ -66,3 +67,6 @@ def home(request):
         'dean_inventory' : dean_inventory,
     })
 
+def get_cleaning_inventory(request):
+    cleaning_inventory = Cleaning_Material.objects.all().values()
+    return JsonResponse(list(cleaning_inventory), safe=False)

@@ -26,18 +26,26 @@
 
         <div id="cleaning" class="category_div">
             <h1>Display contents of cleaning model here.</h1>
+            
             {% for item in cleaning_inventory %}
                 <div>
-                    {{ item.item_id }}
-                    {{ item.item_name }}
-                    {{ item.item_category }}
-                    {{ item.item_description }}
-                    {{ item.item_current_quantity }}/{{item.item_total_quantity}}
-                    {{ item.item_borrowed_quantity}}
-                    {{ item.item_photo }}
-
+                    {% if item.item_photo %}
+                        <img src="{{ item.item_photo.url }}" alt="" class="inventory_item">
+                    {% endif %}
+                    <button class="item_button" data-item-target="{{ item.item_id }}">{{ item.item_name }}</button>
                 </div>
             {% endfor %}
+            <div class="item_information" id="itemInformation">
+                <div class="item_header" id="item_header">
+
+                    <button data-close-button class="close_button">&times;</button>                          
+                </div>
+
+                <div class="item_body" id="item_body">
+
+                </div>
+            </div>
+            <div id="overlay"></div>
             <button id="back_category" onclick="backCategories()">Back</button>
         </div>
 
@@ -71,6 +79,6 @@
 
         <button id="dean_button" class="category_button" onclick="hideShowDean()">Items that need the dean's approval</button>
 
-        <script src="{% static 'home/homescript.js' %}"></script>
+        <script defer src="{% static 'home/homescript.js' %}"></script>
     </body>
 </html>
