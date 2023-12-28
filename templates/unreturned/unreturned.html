@@ -3,6 +3,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="{% static 'unreturned/unreturnedstyle.css' %}">
+        <link rel="stylesheet" href="{% static 'unreturned/unreturned_item_box.css' %}">
         <title>UNRETURNED</title>
     </head>
     <h1>UNRETURNED</h1>
@@ -13,6 +14,19 @@
         <button><a href="{% url 'notification' %}">Notification</a></button>
         <button><a href="{% url 'userprofile' %}">Account</a></button>
         <button><a href="{% url 'logout' %}">Logout</a></button>
+
+
+
+        <div id="wrapper">
+            <div id="left">left</div>
+            <div id="right">
+                <p id="item_name">Name nung Item</p>
+                <p id="item_details">Time Borrowed: <br>
+                    Time Returned: <br>
+                    Borrower:</p>
+                <p id="item_quantity">Item Quantity: </p>
+            </div>
+        </div>
 
         {% block content %}
             <h1>Unreturned Items</h1>
