@@ -30,5 +30,10 @@
 #item_quantity {
     font-size: 18px;
     font-weight: 500;
+    margin: 0px 0px 15px 0px;
     text-align: right;
+}
+
+.need_padding {
+    padding: 5px 0px;
 }
