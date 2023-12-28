@@ -5,10 +5,7 @@ var room = document.getElementById('room')
 var dean = document.getElementById('dean')
 const buttons = document.getElementsByClassName('category_button')
 const selectItem = document.querySelectorAll('.item_button')
-const overlay = document.getElementById('overlay')
-const itemInformation = document.getElementById('itemInformation');
 
-console.log('itemInformation:', itemInformation);
 function hideShowCleaning()
 {
     cleaning.style.display = 'block'
@@ -71,18 +68,33 @@ function fetchData(itemId, itemType) {
     let apiUrl;
     if (itemType === 'cleaning') {
         apiUrl = '/api/cleaning_inventory/';
+        headerId = 'cleaning_header'
+        bodyId = 'cleaning_body'
+        informationId = document.getElementById('cleaning_information')
     } 
     else if (itemType === 'room') {
         apiUrl = '/api/room_inventory/';
+        headerId = 'room_header'
+        bodyId = 'room_body'
+        informationId = document.getElementById('room_information')
     } 
     else if (itemType === 'furniture') {
         apiUrl = '/api/furniture_inventory/';
+        headerId = 'furniture_header'
+        bodyId = 'furniture_body'
+        informationId = document.getElementById('furniture_information')
     } 
     else if (itemType === 'gadget') {
         apiUrl = '/api/technology_inventory/';
+        headerId = 'gadget_header'
+        bodyId = 'gadget_body'
+        informationId = document.getElementById('gadget_information')
     } 
     else if (itemType === 'dean') {
         apiUrl = '/api/dean_inventory/';
+        headerId = 'dean_header'
+        bodyId = 'dean_body'
+        informationId = document.getElementById('dean_information')
     } 
     else {
         console.error('Invalid item type:', itemType);
@@ -94,7 +106,7 @@ function fetchData(itemId, itemType) {
         .then(data => {
             const selectedItem = data.find(item => item.item_id === parseInt(itemId));
             const imageUrl = `/media/${selectedItem.item_photo}`
-            document.getElementById('item_header').innerHTML = `
+            document.getElementById(headerId).innerHTML = `
                 <img src="${imageUrl}" alt="${selectedItem.item_name}" style="width: 100px; height: 100px;">
                 <p>Item ID: ${selectedItem.item_id}</p>
                 <p>Name: ${selectedItem.item_name}</p>
@@ -104,11 +116,11 @@ function fetchData(itemId, itemType) {
             document.body.addEventListener('click', function (event) {
                 if (event.target.matches('.close_button')) {
                     console.log('Close Button Clicked');
-                    closeItem();
+                    closeItem(informationId);
                 }
             });
 
-            document.getElementById('item_body').innerHTML = `
+            document.getElementById(bodyId).innerHTML = `
                 <p>Description: ${selectedItem.item_description}</p>
                 <p>Total Quantity: ${selectedItem.item_total_quantity}</p>
                 <p>Borrowed Quantity: ${selectedItem.item_borrowed_quantity}</p>
@@ -166,29 +178,22 @@ function fetchData(itemId, itemType) {
             })
             .catch(error => console.error('Error fetching form HTML:', error));
 
-            openItem();
+            openItem(informationId);
         })
         .catch(error => console.error('Error fetching data:', error));
 }
 
-function openItem() {
+function openItem(informationId) {
     console.log('Opening Item');
-    if (itemInformation) {
-        itemInformation.classList.add('active');
-        overlay.classList.add('active');
+    if (informationId) {
+        informationId.classList.add('active');
     }
 }
 
-function closeItem() {
+function closeItem(informationId) {
     console.log('Closing Item');
-    itemInformation.classList.remove('active');
-    overlay.classList.remove('active');
+    informationId.classList.remove('active');
 }
-
-overlay.addEventListener('click', () => {
-    console.log('Overlay Clicked')
-    closeItem()
-});
 
 selectItem.forEach(button => {
     button.addEventListener('click', () => {

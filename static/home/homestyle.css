@@ -169,7 +169,7 @@ h1 {
     padding: 10px 15px;
 }
 
-#overlay {
+#cleaning_overlay {
     position: fixed;
     opacity: 0;
     transition: 200ms ease-in-out;
@@ -182,7 +182,7 @@ h1 {
     z-index: 5;
 }
 
-#overlay.active {
+#cleaning_overlay.active {
     opacity: 1;
     pointer-events: all;
 }
