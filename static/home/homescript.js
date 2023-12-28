@@ -5,9 +5,9 @@ var room = document.getElementById('room')
 var dean = document.getElementById('dean')
 const buttons = document.getElementsByClassName('category_button')
 const selectItem = document.querySelectorAll('.item_button')
-const closeItem = document.querySelectorAll('[data-close-button]')
 const overlay = document.getElementById('overlay')
 const itemInformation = document.getElementById('itemInformation');
+
 console.log('itemInformation:', itemInformation);
 function hideShowCleaning()
 {
@@ -67,8 +67,29 @@ function backCategories()
     }    
 }
 
-function fetchData(itemId) {
-    fetch(`/api/cleaning_inventory/`)
+function fetchData(itemId, itemType) {
+    let apiUrl;
+    if (itemType === 'cleaning') {
+        apiUrl = '/api/cleaning_inventory/';
+    } 
+    else if (itemType === 'room') {
+        apiUrl = '/api/room_inventory/';
+    } 
+    else if (itemType === 'furniture') {
+        apiUrl = '/api/furniture_inventory/';
+    } 
+    else if (itemType === 'gadget') {
+        apiUrl = '/api/technology_inventory/';
+    } 
+    else if (itemType === 'dean') {
+        apiUrl = '/api/dean_inventory/';
+    } 
+    else {
+        console.error('Invalid item type:', itemType);
+        return;
+    }
+
+    fetch(apiUrl)
         .then(response => response.json())
         .then(data => {
             const selectedItem = data.find(item => item.item_id === parseInt(itemId));
@@ -83,7 +104,7 @@ function fetchData(itemId) {
             document.body.addEventListener('click', function (event) {
                 if (event.target.matches('.close_button')) {
                     console.log('Close Button Clicked');
-                    closeModal();
+                    closeItem();
                 }
             });
 
@@ -93,28 +114,62 @@ function fetchData(itemId) {
                 <p>Borrowed Quantity: ${selectedItem.item_borrowed_quantity}</p>
                 <p>Available Quantity: ${selectedItem.item_current_quantity}</p>
             `;
+
+            const csrfToken = document.cookie.split(';').find(cookie => cookie.trim().startsWith('csrftoken=')).split('=')[1];
+
+            fetch('/get_borrow_form/')
+            .then(response => response.json())
+            .then(data => {
+                
+                const formContainer = document.getElementById('item_form');
+                formContainer.innerHTML = data.form_html;
+
+                const borrowForm = document.getElementById('borrowFormId');
+                console.log('borrowForm:', borrowForm);
+                if (borrowForm) {
+                    borrowForm.querySelector('[name = "item_id"]').value = selectedItem.item_id
+                    borrowForm.querySelector('[name = "item_name"]').value = selectedItem.item_name
+                    
+                    borrowForm.addEventListener('submit', function (event) {
+                        event.preventDefault();
+                    
+                        const formData = new FormData(borrowForm);
+
+                        formData.append('csrfmiddlewaretoken', csrfToken);
+                        formData.append('copy_image', 'true');
+                        formData.append('source_item_id', selectedItem.item_id);
+                        
+                        const fileInput = borrowForm.querySelector('[name = "item_photo"]');
+                        if (fileInput && fileInput.files && fileInput.files.length > 0) {
+                            formData.append('item_photo', fileInput.files[0]);
+                        }
+
+                        console.log(formData.get('item_photo'));
+                        console.log('FormData:', formData);
+                        fetch('/save_borrow_form/Cleaning_Material/', {
+                            method: 'POST',
+                            body: formData
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log(data);
+                            if (data.message) {
+                                // Success: Do something, e.g., redirect or show success message
+                            } else if (data.error) {
+                                // Error: Show error message to the user
+                                console.error(data.error);
+                            }
+                        })
+                        .catch(error => console.error('Error submitting form:', error));
+                    });                   
+                }
+            })
+            .catch(error => console.error('Error fetching form HTML:', error));
+
             openItem();
         })
         .catch(error => console.error('Error fetching data:', error));
 }
-
-// Update your existing click event listener
-selectItem.forEach(button => {
-    button.addEventListener('click', () => {
-        const itemId = button.getAttribute('data-item-target');
-        console.log('Button Clicked for Item ID:', itemId);
-
-        // Call the function to fetch data and update the modal
-        fetchData(itemId);
-    });
-});
-
-closeItem.forEach(button => {
-    button.addEventListener('click', () => {
-        console.log('Close Button Clicked')
-        closeModal()
-    });
-});
 
 function openItem() {
     console.log('Opening Item');
@@ -124,14 +179,25 @@ function openItem() {
     }
 }
 
-function closeModal() {
+function closeItem() {
     console.log('Closing Item');
     itemInformation.classList.remove('active');
     overlay.classList.remove('active');
 }
 
-// Close the modal if the user clicks outside of it
 overlay.addEventListener('click', () => {
     console.log('Overlay Clicked')
-    closeModal()
+    closeItem()
 });
+
+selectItem.forEach(button => {
+    button.addEventListener('click', () => {
+        const itemId = button.getAttribute('data-item-target');
+        const itemType = button.getAttribute('data-item-type');
+        console.log('Button Clicked for Item ID:', itemId);
+        console.log('Item Type:', itemType);
+        
+        fetchData(itemId, itemType);
+    });
+});
+

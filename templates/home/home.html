@@ -13,10 +13,7 @@
         <input type="text" name="q" placeholder="Search by name,id,category" value="{{ query }}">
         <input type="submit" value="Search">
     </form>
-    
     {% include 'home/result_list.html' %}
-      
-        
         <button><a href="{% url 'home' %}">Home</a></button>
         <button><a href="{% url 'recents' %}">Recents</a></button>
         <button><a href="{% url 'show_unreturned_items' %}">Unreturned</a></button>
@@ -24,15 +21,20 @@
         <button><a href="{% url 'userprofile' %}">Account</a></button>
         <button><a href="{% url 'logout' %}">Logout</a></button>
 
+        <button id="cleaning_button" class="category_button" onclick="hideShowCleaning()">Cleaning Materials</button>
+        <button id="gadget_button" class="category_button" onclick="hideShowGadget()">Gadgets</button>
+        <button id="furniture_button" class="category_button" onclick="hideShowFurniture()">Furnitures</button>
+        <button id="room_button" class="category_button" onclick="hideShowRoom()">Room</button>
+        <button id="dean_button" class="category_button" onclick="hideShowDean()">Items that need the dean's approval</button>
+
         <div id="cleaning" class="category_div">
             <h1>Display contents of cleaning model here.</h1>
-            
             {% for item in cleaning_inventory %}
                 <div>
                     {% if item.item_photo %}
                         <img src="{{ item.item_photo.url }}" alt="" class="inventory_item">
                     {% endif %}
-                    <button class="item_button" data-item-target="{{ item.item_id }}">{{ item.item_name }}</button>
+                    <button class="item_button" data-item-target="{{ item.item_id }}" data-item-type="cleaning">{{ item.item_name }}</button>
                 </div>
             {% endfor %}
             <div class="item_information" id="itemInformation">
@@ -44,40 +46,121 @@
                 <div class="item_body" id="item_body">
 
                 </div>
+                <div class="item_form" id="item_form">
+
+                </div>
             </div>
             <div id="overlay"></div>
             <button id="back_category" onclick="backCategories()">Back</button>
         </div>
 
-        <button id="cleaning_button" class="category_button" onclick="hideShowCleaning()">Cleaning Materials</button>
-
         <div id="gadget" class="category_div">
             <h1>Display contents of gadget model here.</h1>
+            {% for item in gadget_inventory %}
+                <div>
+                    {% if item.item_photo %}
+                        <img src="{{ item.item_photo.url }}" alt="" class="inventory_item">
+                    {% endif %}
+                    <button class="item_button" data-item-target="{{ item.item_id }}" data-item-type="gadget">{{ item.item_name }}</button>
+                </div>
+            {% endfor %}
+            <div class="item_information" id="itemInformation">
+                <div class="item_header" id="item_header">
+
+                    <button data-close-button class="close_button">&times;</button>                          
+                </div>
+
+                <div class="item_body" id="item_body">
+
+                </div>
+                <div class="item_form" id="item_form">
+
+                </div>
+            </div>
+            <div id="overlay"></div>
             <button id="back_category" onclick="backCategories()">Back</button>
         </div>
-
-        <button id="gadget_button" class="category_button" onclick="hideShowGadget()">Gadgets</button>
 
         <div id="furniture" class="category_div">
             <h1>Display contents of furniture model here.</h1>
+            {% for item in furniture_inventory %}
+                <div>
+                    {% if item.item_photo %}
+                        <img src="{{ item.item_photo.url }}" alt="" class="inventory_item">
+                    {% endif %}
+                    <button class="item_button" data-item-target="{{ item.item_id }}" data-item-type="furniture">{{ item.item_name }}</button>
+                </div>
+            {% endfor %}
+            <div class="item_information" id="itemInformation">
+                <div class="item_header" id="item_header">
+
+                    <button data-close-button class="close_button">&times;</button>                          
+                </div>
+
+                <div class="item_body" id="item_body">
+
+                </div>
+                <div class="item_form" id="item_form">
+
+                </div>
+            </div>
+            <div id="overlay"></div>
             <button id="back_category" onclick="backCategories()">Back</button>
         </div>
-
-        <button id="furniture_button" class="category_button" onclick="hideShowFurniture()">Furnitures</button>
 
         <div id="room" class="category_div">
             <h1>Display contents of room model here.</h1>
+            {% for item in room_inventory %}
+                <div>
+                    {% if item.item_photo %}
+                        <img src="{{ item.item_photo.url }}" alt="" class="inventory_item">
+                    {% endif %}
+                    <button class="item_button" data-item-target="{{ item.item_id }}" data-item-type="room">{{ item.item_name }}</button>
+                </div>
+            {% endfor %}
+            <div class="item_information" id="itemInformation">
+                <div class="item_header" id="item_header">
+
+                    <button data-close-button class="close_button">&times;</button>                          
+                </div>
+
+                <div class="item_body" id="item_body">
+
+                </div>
+                <div class="item_form" id="item_form">
+
+                </div>
+            </div>
+            <div id="overlay"></div>
             <button id="back_category" onclick="backCategories()">Back</button>
         </div>
-
-        <button id="room_button" class="category_button" onclick="hideShowRoom()">Room</button>
 
         <div id="dean" class="category_div">
             <h1>Display contents of Items that needs the dean's approval model here.</h1>
+            {% for item in dean_inventory %}
+                <div>
+                    {% if item.item_photo %}
+                        <img src="{{ item.item_photo.url }}" alt="" class="inventory_item">
+                    {% endif %}
+                    <button class="item_button" data-item-target="{{ item.item_id }}" data-item-type="dean">{{ item.item_name }}</button>
+                </div>
+            {% endfor %}
+            <div class="item_information" id="itemInformation">
+                <div class="item_header" id="item_header">
+
+                    <button data-close-button class="close_button">&times;</button>                          
+                </div>
+
+                <div class="item_body" id="item_body">
+
+                </div>
+                <div class="item_form" id="item_form">
+
+                </div>
+            </div>
+            <div id="overlay"></div>
             <button id="back_category" onclick="backCategories()">Back</button>
         </div>
-
-        <button id="dean_button" class="category_button" onclick="hideShowDean()">Items that need the dean's approval</button>
 
         <script defer src="{% static 'home/homescript.js' %}"></script>
     </body>

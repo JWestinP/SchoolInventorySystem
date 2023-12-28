@@ -1,0 +1,11 @@
+<form action="/save_borrow_form/" id="borrowFormId" method="post">
+    {% csrf_token %}
+    {{ borrow_form.item_quantity }}
+    {{ borrow_form.item_date_borrowed }}
+    {{ borrow_form.item_date_returned }}
+    {{ borrow_form.item_id }}
+    {{ borrow_form.item_name }}
+    {{ borrow_form.item_photo }}
+
+    <input type="submit" value="Submit">
+</form>
