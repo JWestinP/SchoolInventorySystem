@@ -123,3 +123,66 @@ Start coding here
 h1 {
     color: red;
 }
+
+.inventory_item {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+.item_information {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    border: 1px solid black;
+    border-radius: 10px;
+    z-index: 10;
+    background-color: white;
+    width: 500px;
+    max-width: 80%;
+}
+
+.item_information.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.item_header {
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid black;
+}
+
+.item_header .close_button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 1.25rem;
+    font-style: bold;
+}
+
+.item_body {
+    padding: 10px 15px;
+}
+
+#cleaning_overlay {
+    position: fixed;
+    opacity: 0;
+    transition: 200ms ease-in-out;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
+    pointer-events: none;
+    z-index: 5;
+}
+
+#cleaning_overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
