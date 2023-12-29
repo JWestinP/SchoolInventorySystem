@@ -1,59 +1,23 @@
 from django.contrib import admin
-from .models import Furniture, Room, Cleaning_Material, Technology, Dean_Approval_Needed_Item
+from .models import *
 
 # Register your models here.
-class Furniture_Admin(admin.ModelAdmin):
+class Category_Admin(admin.ModelAdmin):
+    list_display = ['item_category']
+    
+class Item_Admin(admin.ModelAdmin):
     list_display = ['item_id',
                     'item_name',
                     'item_category',
                     'item_description',
-                    'item_total_quantity',
-                    'item_current_quantity',
-                    'item_borrowed_quantity',
                     'item_photo']
 
-class Rooms_Admin(admin.ModelAdmin):
-    list_display = ['item_id',
-                    'item_name',
-                    'item_category',
-                    'item_description',
+class Stock_Admin(admin.ModelAdmin):
+    list_display = ['item_information',
                     'item_total_quantity',
                     'item_current_quantity',
-                    'item_borrowed_quantity',
-                    'item_photo']
-
-class Cleaning_Materials_Admin(admin.ModelAdmin):
-    list_display = ['item_id',
-                    'item_name',
-                    'item_category',
-                    'item_description',
-                    'item_total_quantity',
-                    'item_current_quantity',
-                    'item_borrowed_quantity',
-                    'item_photo']
-
-class Technology_Admin(admin.ModelAdmin):
-    list_display = ['item_id',
-                    'item_name',
-                    'item_category',
-                    'item_description',
-                    'item_total_quantity',
-                    'item_current_quantity',
-                    'item_borrowed_quantity',
-                    'item_photo']
-
-class Dean_Approval_Needed_Admin(admin.ModelAdmin):
-    list_display = ['item_id',
-                    'item_name',
-                    'item_category',
-                    'item_description',
-                    'item_total_quantity',
-                    'item_current_quantity',
-                    'item_borrowed_quantity',
-                    'item_photo']
-
-admin.site.register(Furniture, Furniture_Admin)
-admin.site.register(Room, Rooms_Admin)
-admin.site.register(Cleaning_Material, Cleaning_Materials_Admin)
-admin.site.register(Technology, Technology_Admin)
-admin.site.register(Dean_Approval_Needed_Item, Dean_Approval_Needed_Admin)
+                    'item_borrowed_quantity']
+    
+admin.site.register(Category, Category_Admin)
+admin.site.register(Item, Item_Admin)
+admin.site.register(Stock, Stock_Admin)

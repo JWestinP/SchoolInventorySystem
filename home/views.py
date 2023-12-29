@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Q
-from .models import Furniture, Room, Cleaning_Material, Technology, Dean_Approval_Needed_Item
+from .models import *
 from .forms import BorrowForm
 from django.http import JsonResponse
 from django.template.loader import render_to_string
@@ -27,37 +27,37 @@ def home(request):
     furniture_items = room_items = cleaning_material_items = technology_items = dean_approval_items = None
 
     # If a search query is provided
-    if query:
-        try:
-            query_int = int(query)
-            furniture_items = Furniture.objects.filter(Q(item_name__icontains=query) | Q(item_id=query_int))
-            room_items = Room.objects.filter(Q(item_name__icontains=query) | Q(item_id=query_int))
-            cleaning_material_items = Cleaning_Material.objects.filter(Q(item_name__icontains=query) | Q(item_id=query_int))
-            technology_items = Technology.objects.filter(Q(item_name__icontains=query) | Q(item_id=query_int))
-            dean_approval_items = Dean_Approval_Needed_Item.objects.filter(Q(item_name__icontains=query) | Q(item_id=query_int))
-        except ValueError:
-            furniture_items = Furniture.objects.filter(item_name__icontains=query)
-            room_items = Room.objects.filter(item_name__icontains=query)
-            cleaning_material_items = Cleaning_Material.objects.filter(item_name__icontains=query)
-            technology_items = Technology.objects.filter(item_name__icontains=query)
-            dean_approval_items = Dean_Approval_Needed_Item.objects.filter(item_name__icontains=query)
+    # if query:
+    #     try:
+    #         query_int = int(query)
+    #         furniture_items = Furniture.objects.filter(Q(item_name__icontains=query) | Q(item_id=query_int))
+    #         room_items = Room.objects.filter(Q(item_name__icontains=query) | Q(item_id=query_int))
+    #         cleaning_material_items = Cleaning_Material.objects.filter(Q(item_name__icontains=query) | Q(item_id=query_int))
+    #         technology_items = Technology.objects.filter(Q(item_name__icontains=query) | Q(item_id=query_int))
+    #         dean_approval_items = Dean_Approval_Needed_Item.objects.filter(Q(item_name__icontains=query) | Q(item_id=query_int))
+    #     except ValueError:
+    #         furniture_items = Furniture.objects.filter(item_name__icontains=query)
+    #         room_items = Room.objects.filter(item_name__icontains=query)
+    #         cleaning_material_items = Cleaning_Material.objects.filter(item_name__icontains=query)
+    #         technology_items = Technology.objects.filter(item_name__icontains=query)
+    #         dean_approval_items = Dean_Approval_Needed_Item.objects.filter(item_name__icontains=query)
             
-            if query and query.lower() == "furniture":
-                furniture_items = Furniture.objects.all()
-            if query and query.lower() == "room":
-                room_items = Room.objects.all()
-            if query and query.lower() == "cleaning material":
-                cleaning_material_items = Cleaning_Material.objects.all()
-            if query and query.lower() == "technology":
-                technology_items = Technology.objects.all()
-            if query and query.lower() == "dean approval needed item":
-                dean_approval_items = Dean_Approval_Needed_Item.objects.all()
+    #         if query and query.lower() == "furniture":
+    #             furniture_items = Furniture.objects.all()
+    #         if query and query.lower() == "room":
+    #             room_items = Room.objects.all()
+    #         if query and query.lower() == "cleaning material":
+    #             cleaning_material_items = Cleaning_Material.objects.all()
+    #         if query and query.lower() == "technology":
+    #             technology_items = Technology.objects.all()
+    #         if query and query.lower() == "dean approval needed item":
+    #             dean_approval_items = Dean_Approval_Needed_Item.objects.all()
 
-    cleaning_inventory = Cleaning_Material.objects.all()
-    gadget_inventory = Technology.objects.all()
-    furniture_inventory = Furniture.objects.all()
-    room_inventory = Room.objects.all()
-    dean_inventory = Dean_Approval_Needed_Item.objects.all()
+    # cleaning_inventory = Cleaning_Material.objects.all()
+    # gadget_inventory = Technology.objects.all()
+    # furniture_inventory = Furniture.objects.all()
+    # room_inventory = Room.objects.all()
+    # dean_inventory = Dean_Approval_Needed_Item.objects.all()
     
     borrow_form = BorrowForm()
     if request.method == 'POST':
@@ -78,11 +78,11 @@ def home(request):
         'dean_approval_items' : dean_approval_items,
         'query' : query,
         'borrow_form' : borrow_form,
-        'cleaning_inventory' : cleaning_inventory,
-        'gadget_inventory' : gadget_inventory,
-        'furniture_inventory' : furniture_inventory,
-        'room_inventory' : room_inventory,
-        'dean_inventory' : dean_inventory,
+        # 'cleaning_inventory' : cleaning_inventory,
+        # 'gadget_inventory' : gadget_inventory,
+        # 'furniture_inventory' : furniture_inventory,
+        # 'room_inventory' : room_inventory,
+        # 'dean_inventory' : dean_inventory,
     })
 
 def get_borrow_form(request):
@@ -128,22 +128,16 @@ def save_borrow_form(request, model_class_name):
 
     return JsonResponse({'error': 'Invalid form submission'}, status=400)
 
-def get_cleaning_inventory(request):
-    cleaning_inventory = Cleaning_Material.objects.all().values()
-    return JsonResponse(list(cleaning_inventory), safe=False)
+def get_item_inventory(request, category):
+    if category == 'cleaning':
+        item_inventory = Item.objects.filter(item_category = 'Cleaning item')
+    elif category == 'furniture':
+        item_inventory = Item.objects.filter(item_category = 'Furniture')
+    
+    return JsonResponse(list(item_inventory), safe=False)
+        
 
-def get_furniture_inventory(request):
-    furniture_inventory = Furniture.objects.all().values()
-    return JsonResponse(list(furniture_inventory), safe=False)
 
-def get_room_inventory(request):
-    room_inventory = Room.objects.all().values()
-    return JsonResponse(list(room_inventory), safe=False)
 
-def get_technology_inventory(request):
-    technology_inventory = Technology.objects.all().values()
-    return JsonResponse(list(technology_inventory), safe=False)
 
-def get_dean_inventory(request):
-    dean_inventory = Dean_Approval_Needed_Item.objects.all().values()
-    return JsonResponse(list(dean_inventory), safe=False)
+

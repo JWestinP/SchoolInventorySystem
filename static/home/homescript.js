@@ -65,33 +65,32 @@ function backCategories()
 }
 
 function fetchData(itemId, itemType) {
-    let apiUrl;
     if (itemType === 'cleaning') {
-        apiUrl = '/api/cleaning_inventory/';
+        category = 'cleaning';
         headerId = 'cleaning_header'
         bodyId = 'cleaning_body'
         informationId = document.getElementById('cleaning_information')
     } 
     else if (itemType === 'room') {
-        apiUrl = '/api/room_inventory/';
+        category = 'room';
         headerId = 'room_header'
         bodyId = 'room_body'
         informationId = document.getElementById('room_information')
     } 
     else if (itemType === 'furniture') {
-        apiUrl = '/api/furniture_inventory/';
+        category = 'furniture';
         headerId = 'furniture_header'
         bodyId = 'furniture_body'
         informationId = document.getElementById('furniture_information')
     } 
     else if (itemType === 'gadget') {
-        apiUrl = '/api/technology_inventory/';
+        category = 'gadget';
         headerId = 'gadget_header'
         bodyId = 'gadget_body'
         informationId = document.getElementById('gadget_information')
     } 
     else if (itemType === 'dean') {
-        apiUrl = '/api/dean_inventory/';
+        category = 'dean';
         headerId = 'dean_header'
         bodyId = 'dean_body'
         informationId = document.getElementById('dean_information')
@@ -101,7 +100,7 @@ function fetchData(itemId, itemType) {
         return;
     }
 
-    fetch(apiUrl)
+    fetch('/api/item_inventory/')
         .then(response => response.json())
         .then(data => {
             const selectedItem = data.find(item => item.item_id === parseInt(itemId));
