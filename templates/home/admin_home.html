@@ -1,17 +1,87 @@
-{% load static %}
 <!DOCTYPE html>
-<html>
-    <head>
-        <link rel="stylesheet" href="{% static 'home/homestyle.css' %}">
-        <title>ADMIN HOME</title>
-    </head>
-    <h1>ADMIN HOME</h1>
-    <body>
-        <button><a href="{% url 'admin_home' %}">Home</a></button>
-        <button><a href="{% url 'admin_recents' %}">Recents</a></button>
-        <button><a href="{% url 'admin_unreturned' %}">Unreturned</a></button>
-        <button><a href="{% url 'members' %}">Members</a></button>
-        <button><a href="{% url 'admin_userprofile' %}">Account</a></button>
-        <button><a href="{% url 'logout' %}">Logout</a></button>
-    </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="style.css">  
+</head>
+<body>
+  <header>
+    <div class="logo left">
+      <img src="images/lspu.png" alt="Left Logo">
+    </div>
+    <div class="search-bar">
+      
+      <input type="text" class="search-input" placeholder="Search...">
+      <i class="fas fa-search"></i>
+    </div>
+    <div class="logo right">
+      <img src="images/css.png" alt="Right Logo">
+    </div>
+  </header>
+
+  <div class="head"></div>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a href="#" class="navbar-brand" onclick="showForm('mainForm')">Home</a>
+      <a href="#" class="navbar-brand" onclick="showForm('recentForm')">Recent</a>
+      <a href="#" class="navbar-brand" onclick="showForm('unreturnedForm')">Unreturned</a>
+      <a href="#" class="navbar-brand" onclick="showForm('membersForm')">Members</a>
+      <a href="#" class="navbar-brand" onclick="showForm('accountForm')">Account</a>
+    </div>
+  </nav>
+
+  <div id="mainForm" class="form">
+    <!-- Your main form content goes here -->
+    <div class="item">
+      <h1>Categories <i class="fas fa-plus-circle orange-icon" onclick="openModal('category')"></i></h1>
+      <div class="container" onclick="openModal('item')">
+        <div class="form-item">
+          <div class="items">
+            <i class="fas fa-plus-circle orange-icon1"></i>
+            <img src="images/clean.png" alt="clean">
+            <p>Cleaning Materials</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal()">&times;</span>
+      <h2 id="modalTitle"></h2>
+      <label for="name">Name:</label>
+      <input type="text" id="nameInput">
+      <label for="image">Image URL:</label>
+      <input type="text" id="imageInput">
+      <button onclick="addItem()">Add</button>
+    </div>
+  </div>
+  
+      <div id="recentForm" class="form" style="display: none;">
+        <h1>Recent Form</h1>
+        <!-- Your recent form content goes here -->
+      </div>
+    
+      <div id="unreturnedForm" class="form" style="display: none;">
+        <h1>Unreturned Form</h1>
+        <!-- Your unreturned form content goes here -->
+      </div>
+    
+      <div id="membersForm" class="form" style="display: none;">
+        <h1>Members Form</h1>
+        <!-- Your members form content goes here -->
+      </div>
+    
+      <div id="accountForm" class="form" style="display: none;">
+        <h1>Account Form</h1>
+        <!-- Your account form content goes here -->
+      </div>
+    
+      <script src="script.js"></script>
+  
+</body>
 </html>
