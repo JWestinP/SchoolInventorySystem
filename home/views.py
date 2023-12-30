@@ -150,7 +150,7 @@ def get_item_inventory(request):
                    'item_total' : item.item_total_quantity,
                    'item_current' : item.item_current_quantity,
                    'item_borrowed' : item.item_borrowed_quantity} for item in item_inventory]
-
+    print(items_data)
     return JsonResponse({'items': items_data}, safe=False)
         
 

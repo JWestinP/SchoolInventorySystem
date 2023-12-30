@@ -8,7 +8,7 @@ class Category(models.Model):
         return self.item_category
     
 class Item(models.Model):
-    item_id = models.BigAutoField(primary_key = True, blank=True)
+    item_id = models.BigAutoField(primary_key = True)
     item_name = models.CharField(max_length = 128)
     item_category = models.ForeignKey(Category, on_delete=models.CASCADE)
     item_description = models.CharField(max_length = 256)

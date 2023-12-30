@@ -1,37 +1,27 @@
-var cleaning = document.getElementById('cleaning')
-var gadget = document.getElementById('gadget')
-var furniture = document.getElementById('furniture')
-var room = document.getElementById('room')
-var dean = document.getElementById('dean')
 var itemDisplay
 const category = document.getElementsByClassName('category_button')
 const selectItem = document.querySelectorAll('.item_button')
 const informationId = document.getElementById('item_information')
-function backCategories()
-{
-    cleaning.style.display = 'none'
-    gadget.style.display = 'none'
-    furniture.style.display = 'none'
-    room.style.display = 'none'
-    dean.style.display = 'none'
-    for(var i = 0; i < buttons.length; i++)
-    {
-        buttons[i].style.display = 'inline'
-    }    
-}
-
+const backCategory = document.getElementById('back_category')
+const itemContainer = document.getElementById('item_list')
 function fetchData(itemId) {
     fetch('/api/item_inventory/')
         .then(response => {
             if (!response.ok) {
                 throw new Error(`Error ${response.status}: ${response.statusText}`);
             }
+            console.log(itemId)
             return response.json();
         })
         .then(data => {
             console.log('Response data:', data)
             const items = data.items;
+            items.forEach(item => {
+                console.log(`Item ID: ${item.item_id}`);
+            });
             const selectedItem = items.find(item => item.item_id === parseInt(itemId));
+            console.log('Selected item ID:', selectedItem.item_id);
+
             
             if (selectedItem) {
                 const imageUrl = `${selectedItem.item_photo}`
@@ -135,30 +125,6 @@ function closeItem(informationId) {
     informationId.classList.remove('active');
 }
 
-selectItem.forEach(button => {
-    button.addEventListener('click', () => {
-        const itemId = button.getAttribute('data-item-target');
-        console.log('Button Clicked for Item ID:', itemId);
-        console.log('Item Type:', itemType);
-        
-        fetchData(itemId);
-    });
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    itemDisplay = document.getElementById('item_information');
-
-    var categoryButtons = document.querySelectorAll('.category_button');
-    categoryButtons.forEach(function(button) {
-        button.addEventListener('click', function() {
-            var category = this.getAttribute('data-category');
-            if (category !== null && category !== 'null') {
-                showItem(category);
-            }
-        });
-    });
-});
-
 function showItem(category) {
     console.log('Sending request for category:', category)
 
@@ -177,7 +143,6 @@ function showItem(category) {
                 var data = JSON.parse(xhr.responseText)
                 console.log('Received data:', data)
     
-                const itemContainer = document.getElementById('item_list')
                 itemContainer.innerHTML += `<p>${data.items.length} items in category: ${data.items[0].item_category.item_category}</p>`;
                 
                 itemContainer.addEventListener('click', function (event) {
@@ -198,7 +163,8 @@ function showItem(category) {
                         const itemHTML = `
                             <div>
                                 <img src="${imageUrl}" alt="${selectedItem.item_name}" style="width: 100px; height: 100px;">
-                                <button data-item-target="${selectedItem.item_id}" data-item-category="${selectedItem.item_category}" class="item_button">${selectedItem.item_name}</button> 
+                                <button data-item-target="${selectedItem.item_id}" class="item_button">${selectedItem.item_name}</button>
+                                <button id="back_category" onclick="showAllCategoryButtons()">Back</button>
                             </div>
                         `
                         itemContainer.innerHTML += itemHTML
@@ -223,3 +189,40 @@ function hideAllCategoryButtons() {
         button.style.display = 'none';
     });
 }
+
+function showAllCategoryButtons() {
+    
+    var categoryButtons = document.querySelectorAll('.category_button');
+    categoryButtons.forEach(function(button) {
+        button.style.display = 'inline';
+
+    });
+    var itemContainer = document.getElementById('item_list');
+    itemContainer.innerHTML = '';
+
+}
+
+selectItem.forEach(button => {
+    button.addEventListener('click', () => {
+        const itemId = button.getAttribute('data-item-target');
+        console.log('Button Clicked for Item ID:', itemId);
+        console.log('Item Type:', itemType);
+        
+        fetchData(itemId);
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    itemDisplay = document.getElementById('item_information');
+    
+    var categoryButtons = document.querySelectorAll('.category_button');
+    categoryButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            var category = this.getAttribute('data-category');
+            hideAllCategoryButtons()
+            if (category !== null && category !== 'null') {
+                showItem(category);
+            }
+        });
+    });
+});
