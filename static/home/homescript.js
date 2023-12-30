@@ -1,24 +1,7 @@
-var cleaning = document.getElementById('cleaning')
-var gadget = document.getElementById('gadget')
-var furniture = document.getElementById('furniture')
-var room = document.getElementById('room')
-var dean = document.getElementById('dean')
 var itemDisplay
 const category = document.getElementsByClassName('category_button')
 const selectItem = document.querySelectorAll('.item_button')
 const informationId = document.getElementById('item_information')
-function backCategories()
-{
-    cleaning.style.display = 'none'
-    gadget.style.display = 'none'
-    furniture.style.display = 'none'
-    room.style.display = 'none'
-    dean.style.display = 'none'
-    for(var i = 0; i < buttons.length; i++)
-    {
-        buttons[i].style.display = 'inline'
-    }    
-}
 
 function fetchData(itemId) {
     fetch('/api/item_inventory/')
@@ -154,6 +137,7 @@ document.addEventListener('DOMContentLoaded', function() {
             var category = this.getAttribute('data-category');
             if (category !== null && category !== 'null') {
                 showItem(category);
+                hideAllCategoryButtons()
             }
         });
     });
@@ -173,6 +157,7 @@ function showItem(category) {
             console.error('Error ' + xhr.status + ': ' + xhr.statusText)
         } 
         else {
+            
             try {
                 var data = JSON.parse(xhr.responseText)
                 console.log('Received data:', data)
