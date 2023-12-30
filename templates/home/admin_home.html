@@ -9,7 +9,7 @@
 <body>
   <header>
     <div class="logo left">
-      <img src="images/lspu.png" alt="Left Logo">
+      <img src="LSPU.png" alt="Left Logo">
     </div>
     <div class="search-bar">
       
@@ -17,7 +17,7 @@
       <i class="fas fa-search"></i>
     </div>
     <div class="logo right">
-      <img src="images/css.png" alt="Right Logo">
+      <img src="CSS.png" alt="Right Logo">
     </div>
   </header>
 
@@ -34,30 +34,51 @@
   </nav>
 
   <div id="mainForm" class="form">
-    <!-- Your main form content goes here -->
-    <div class="item">
+    <!-- Home -->
+    <div class="item" >
       <h1>Categories <i class="fas fa-plus-circle orange-icon" onclick="openModal('category')"></i></h1>
-      <div class="container" onclick="openModal('item')">
+      <div class="container" onclick="showForm('itemlist')">
         <div class="form-item">
           <div class="items">
-            <i class="fas fa-plus-circle orange-icon1"></i>
-            <img src="images/clean.png" alt="clean">
+            <img src="clean.png" alt="clean">
+            <div class="line">
             <p>Cleaning Materials</p>
           </div>
+        </div>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- Items -->
+  <div id="itemlist" class="form" style="display: none;">
+    <h1>Items</h1> 
+      <div class="container" onclick="showForm('itemlist')">
+        <div class="form-items">
+          <div class="items">
+            <img src="clean.png" alt="clean">
+            <div class="lines">
+            <p>Cleaning Materials</p>
+          </div>
+        </div>
+        </div>
+      </div>  
+      <button class="remove">Remove Items</button>
+      <button class="add">Add Items</button>
+  </div>
+  
+
+<!-- form pagclick ng orange add icon -->
   <div id="modal" class="modal">
     <div class="modal-content">
       <span class="close-modal" onclick="closeModal()">&times;</span>
-      <h2 id="modalTitle"></h2>
-      <label for="name">Name:</label>
-      <input type="text" id="nameInput">
-      <label for="image">Image URL:</label>
-      <input type="text" id="imageInput">
+      <label for="name"> Category Name:</label>
+      <input type="text" id="nameInput"><br>
+      <form action="/action_page.php">
+        <input type="file" id="myFile" name="filename">
+      </form>
       <button onclick="addItem()">Add</button>
+      <button onclick="cancel()">Cancel</button>
     </div>
   </div>
   
