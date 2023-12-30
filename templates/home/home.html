@@ -21,14 +21,17 @@
         <button><a href="{% url 'userprofile' %}">Account</a></button>
         <button><a href="{% url 'logout' %}">Logout</a></button>
 
-        <button id="cleaning_button" class="category_button" onclick="hideShowCleaning()">Cleaning Materials</button>
-        <button id="gadget_button" class="category_button" onclick="hideShowGadget()">Gadgets</button>
-        <button id="furniture_button" class="category_button" onclick="hideShowFurniture()">Furnitures</button>
-        <button id="room_button" class="category_button" onclick="hideShowRoom()">Room</button>
-        <button id="dean_button" class="category_button" onclick="hideShowDean()">Items that need the dean's approval</button>
+        <div class="categories">
+            {% for category in categories %}
+            <button onclick="showItem('{{ category }}')" class="category_button">{{ category }}</button>
+            {% endfor %}
+        </div>
 
-        <div id="cleaning" class="category_div">
-            <h1>Display contents of cleaning model here.</h1>
+        <div id="category_item" class="category_div">
+            <div id="item_list">
+
+            </div>
+            <h1>{{ current_category }}</h1>
             {% for item in cleaning_inventory %}
                 <div>
                     {% if item.item_photo %}
@@ -37,13 +40,13 @@
                     <button class="item_button" data-item-target="{{ item.item_id }}" data-item-type="cleaning">{{ item.item_name }}</button>
                 </div>
             {% endfor %}
-            <div class="item_information" id="cleaning_information">
-                <div class="item_header" id="cleaning_header">
+            <div class="item_information" id="item_information">
+                <div class="item_header" id="item_header">
 
                     <button data-close-button class="close_button">&times;</button>                          
                 </div>
 
-                <div class="item_body" id="cleaning_body">
+                <div class="item_body" id="item_body">
 
                 </div>
                 <div class="item_form" id="item_form">
@@ -52,6 +55,14 @@
             </div>
             <button id="back_category" onclick="backCategories()">Back</button>
         </div>
+
+        <!-- <button id="cleaning_button" class="category_button" onclick="hideShowCleaning()">Cleaning Materials</button>
+        <button id="gadget_button" class="category_button" onclick="hideShowGadget()">Gadgets</button>
+        <button id="furniture_button" class="category_button" onclick="hideShowFurniture()">Furnitures</button>
+        <button id="room_button" class="category_button" onclick="hideShowRoom()">Room</button>
+        <button id="dean_button" class="category_button" onclick="hideShowDean()">Items that need the dean's approval</button> -->
+
+        
 
         <div id="gadget" class="category_div">
             <h1>Display contents of gadget model here.</h1>

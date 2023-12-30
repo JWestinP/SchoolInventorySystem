@@ -14,9 +14,6 @@ class BorrowForm(ModelForm):
         widgets = {
         'item_date_borrowed' : forms.DateInput(attrs={'type': 'date'}),
         'item_date_returned' : forms.DateInput(attrs={'type': 'date'}),
-        'item_id' : forms.HiddenInput(),
-        'item_name' : forms.HiddenInput(),
-        'item_photo' : forms.HiddenInput(),
-        'item_borrower' : forms.HiddenInput(),
+        'item_stock': forms.HiddenInput(),
     }
-        #exclude = ['item_id', 'item_name', 'item_returned', 'item_photo', 'item_borrower']
+    
