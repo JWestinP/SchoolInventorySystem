@@ -15,3 +15,4 @@ class Borrowed_Item(models.Model):
     def __str__(self):
         return f"Borrow ID:{self.borrow_form_id} - {self.item_stock.item_information.item_name} ({self.item_quantity})"
     
+    
