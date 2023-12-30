@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.db.models import Q
 from .models import *
 from .forms import BorrowForm
+from recents.models import *
 from django.http import JsonResponse
 from django.template.loader import render_to_string
 from django.apps import apps
@@ -124,11 +125,24 @@ def get_items(request):
 def save_borrow_form(request):
     current_user = request.user
     borrow_form = BorrowForm(request.POST)
+    stock_id = request.POST.get('stock_id')
 
+    
     if borrow_form.is_valid():
         model_instance = borrow_form.save(commit=False)
         model_instance.item_borrower = current_user
         model_instance.save()
+        
+        stock_id = int(stock_id)
+
+        stock_instance = get_object_or_404(Stock, pk=stock_id)
+        borrowed_count = model_instance.item_quantity
+        stock_instance.item_current_quantity -= borrowed_count
+        stock_instance.item_borrowed_quantity += borrowed_count
+        
+        
+        stock_instance.save()
+        print('updated current count')
 
         # Return a success response
         return JsonResponse({'message': 'Form submitted successfully'})
@@ -136,6 +150,11 @@ def save_borrow_form(request):
     else:
         print('Form is NOT valid!')
         print('Errors:', borrow_form.errors.as_data())
+
+        # Print the choices for the item_stock field
+        item_stock_choices = BorrowForm.base_fields['item_stock'].queryset.values_list('pk', flat=True)
+        print('Choices for item_stock:', item_stock_choices)
+
         return JsonResponse({'error': 'Invalid form submission'}, status=400)
 
 def get_item_inventory(request):
@@ -149,7 +168,8 @@ def get_item_inventory(request):
                    'item_photo' : item.item_information.item_photo.url,
                    'item_total' : item.item_total_quantity,
                    'item_current' : item.item_current_quantity,
-                   'item_borrowed' : item.item_borrowed_quantity} for item in item_inventory]
+                   'item_borrowed' : item.item_borrowed_quantity,
+                   'stock_id' : item.pk} for item in item_inventory]
     print(items_data)
     return JsonResponse({'items': items_data}, safe=False)
         

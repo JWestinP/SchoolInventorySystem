@@ -59,13 +59,14 @@ function fetchData(itemId) {
                     console.log('borrowForm:', borrowForm);
                     if (borrowForm) {
                         const itemStockInput = borrowForm.querySelector('[name="item_stock"]');
-
                         if (selectedItem && selectedItem.item_id) {
                             console.log('Selected Item:', selectedItem);
-                            console.log('Item Information:', selectedItem.item_information);
+                            console.log('Item Information:', selectedItem.item_id);
 
                             if (selectedItem.item_id) {
-                                itemStockInput.value = selectedItem.item_id;
+                                itemStockInput.value = selectedItem.stock_id;
+                                console.log('item_stockInput value:', itemStockInput.value);
+
                             } 
                             else {
                                 console.error('Missing item_information.item_id:', selectedItem.item_id);
@@ -82,6 +83,8 @@ function fetchData(itemId) {
     
                             formData.append('csrfmiddlewaretoken', csrfToken);
                             formData.append('source_item_id', selectedItem.item_id);
+                            formData.append('stock_id', selectedItem.stock_id);
+                            console.log(formData)
                             console.log('FormData:', formData);
                             fetch('/save_borrow_form/', {
                                 method: 'POST',
