@@ -65,5 +65,61 @@ let modalType;
         } else { false;
         }
         
-      }
-      
+}
+ function toggleForm(formId) {
+      var form = document.getElementById(formId);
+      form.style.display = form.style.display === 'none' ? 'flex' : 'none';
+    }
+
+document.getElementById('addItemForm').addEventListener('submit', function (event) {
+    event.preventDefault(); // Prevent the form from submitting and reloading the page
+
+    // Add your logic to check if the item is already added (for demonstration purposes, I'm using a variable 'itemAlreadyAdded')
+    var itemAlreadyAdded = true; // Replace this with your actual logic
+
+    if (itemAlreadyAdded) {
+        showNotification();
+    } else {
+        // Continue with the form submission or item addition logic
+        console.log('Add the item here...');
+    }
+});
+document.getElementById('addItemForm').addEventListener('submit', function (event) {
+    event.preventDefault(); // Prevent the form from submitting and reloading the page
+
+    // Add your logic to check if the item is already added (for demonstration purposes, I'm using a variable 'itemAlreadyAdded')
+    var itemAlreadyAdded = true; // Replace this with your actual logic
+
+    if (itemAlreadyAdded) {
+        showNotificationModal();
+    } else {
+        // Continue with the form submission or item addition logic
+        console.log('Add the item here...');
+    }
+});
+
+function showNotificationModal() {
+    var modal = document.getElementById('notificationModal');
+    modal.style.display = 'flex';
+}
+
+function hideNotificationModal() {
+    var modal = document.getElementById('notificationModal');
+    modal.style.display = 'none';
+}
+// Add this JavaScript to handle file input and update the preview image
+document.getElementById('insertPhoto').addEventListener('change', function (event) {
+  var previewImage = document.getElementById('previewImage');
+  var fileInput = event.target;
+  
+  if (fileInput.files && fileInput.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+          previewImage.src = e.target.result;
+          previewImage.style.display = 'block'; // Show the image
+      };
+
+      reader.readAsDataURL(fileInput.files[0]);
+  }
+});
