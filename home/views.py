@@ -47,7 +47,7 @@ def home(request):
     #         cleaning_material_items = Cleaning_Material.objects.filter(item_name__icontains=query)
     #         technology_items = Technology.objects.filter(item_name__icontains=query)
     #         dean_approval_items = Dean_Approval_Needed_Item.objects.filter(item_name__icontains=query)
-            
+
     #         if query and query.lower() == "furniture":
     #             furniture_items = Furniture.objects.all()
     #         if query and query.lower() == "room":
@@ -64,7 +64,7 @@ def home(request):
     # furniture_inventory = Furniture.objects.all()
     # room_inventory = Room.objects.all()
     # dean_inventory = Dean_Approval_Needed_Item.objects.all()
-    
+
 
     categories = Category.objects.all()
     borrow_form = BorrowForm()
@@ -74,11 +74,11 @@ def home(request):
             model_instance = borrow_form.save(commit=False)
             model_instance.item_borrower = current_user
             model_instance.save()
-        
+
         else:
             borrow_form = BorrowForm()
-    
-    
+
+
     return render(request, 'home/home.html', {
         'furniture_items' : furniture_items,
         'room_items' : room_items,
@@ -98,7 +98,7 @@ def home(request):
 def get_borrow_form(request):
     borrow_form = BorrowForm()
     form_html = render_to_string('home/borrow_form.html', {'borrow_form': borrow_form}, request=request)
-    return JsonResponse({'form_html': form_html}) 
+    return JsonResponse({'form_html': form_html})
 
 def get_items(request):
     category = request.GET.get('category')
@@ -107,11 +107,11 @@ def get_items(request):
         if category is not None and category != 'null':
             # Your existing logic here
             items = Item.objects.filter(item_category__item_category=category)
-            
+
             # Use the serializer to serialize the queryset
             serializer = ItemSerializer(items, many=True)
             serialized_data = serializer.data
-            
+
             return JsonResponse({'items': serialized_data})
         else:
             raise ValueError('Invalid category parameter in the request.')
@@ -142,19 +142,13 @@ def get_item_inventory(request):
     item_inventory = Stock.objects.all()
 
     # Convert each Item to a dictionary
-    items_data = [{'item_id' : item.item_information.item_id, 
-                   'item_name' : item.item_information.item_name, 
-                   'item_category' : item.item_information.item_category.item_category, 
-                   'item_description' : item.item_information.item_description, 
+    items_data = [{'item_id' : item.item_information.item_id,
+                   'item_name' : item.item_information.item_name,
+                   'item_category' : item.item_information.item_category.item_category,
+                   'item_description' : item.item_information.item_description,
                    'item_photo' : item.item_information.item_photo.url,
                    'item_total' : item.item_total_quantity,
                    'item_current' : item.item_current_quantity,
                    'item_borrowed' : item.item_borrowed_quantity} for item in item_inventory]
     print(items_data)
     return JsonResponse({'items': items_data}, safe=False)
-        
-
-
-
-
-
