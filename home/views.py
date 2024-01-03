@@ -143,18 +143,12 @@ def get_item_inventory(request):
 
     # Convert each Item to a dictionary
     items_data = [{'item_id' : item.item_information.item_id,
-                    'item_name' : item.item_information.item_name,
-                    'item_category' : item.item_information.item_category.item_category,
-                    'item_description' : item.item_information.item_description,
-                    'item_photo' : item.item_information.item_photo.url,
-                    'item_total' : item.item_total_quantity,
-                    'item_current' : item.item_current_quantity,
-                    'item_borrowed' : item.item_borrowed_quantity} for item in item_inventory]
-
+                   'item_name' : item.item_information.item_name,
+                   'item_category' : item.item_information.item_category.item_category,
+                   'item_description' : item.item_information.item_description,
+                   'item_photo' : item.item_information.item_photo.url,
+                   'item_total' : item.item_total_quantity,
+                   'item_current' : item.item_current_quantity,
+                   'item_borrowed' : item.item_borrowed_quantity} for item in item_inventory]
+    print(items_data)
     return JsonResponse({'items': items_data}, safe=False)
-
-
-
-
-
-
