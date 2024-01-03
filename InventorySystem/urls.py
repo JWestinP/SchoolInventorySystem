@@ -24,8 +24,8 @@ urlpatterns = [
     path('', include('login.urls')),
     path('', include('members.urls')),
     path('', include('notification.urls')),
-    path('test_recents/', include('recents.urls')),
-    path('test_unreturned/', include('unreturned.urls')),
+    path('', include('recents.urls')),
+    path('test/', include('unreturned.urls')),
     path('', include('userprofile.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
