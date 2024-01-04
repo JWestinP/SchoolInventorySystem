@@ -94,9 +94,9 @@ function fetchData(itemId) {
                             .then(data => {
                                 console.log(data);
                                 if (data.message) {
-                                    // Success: Do something, e.g., redirect or show success message
+                                   
                                 } else if (data.error) {
-                                    // Error: Show error message to the user
+                                    
                                     console.error(data.error);
                                 }
                             })
@@ -109,7 +109,7 @@ function fetchData(itemId) {
             }
             else {
                 console.error('Item not found for the given item ID.');
-                // Handle the case where the item is not found
+                
             }
 
         })
@@ -149,14 +149,14 @@ function showItem(category) {
                 itemContainer.innerHTML += `<p>${data.items.length} items in category: ${data.items[0].item_category.item_category}</p>`;
                 
                 itemContainer.addEventListener('click', function (event) {
-                    // Check if the clicked element is a button with the 'item_button' class
+                    
                     if (event.target.matches('.item_button')) {
                         const itemId = event.target.getAttribute('data-item-target');
                     
                 
                         console.log('Item button clicked. Item ID:', itemId);
                 
-                        // Call the function with category and item ID
+                        
                         fetchData(itemId);
                     }
                 });
@@ -176,7 +176,7 @@ function showItem(category) {
                 } 
                 else {
                     console.error('Data does not contain an array:', data)
-                    // Handle the case where the server did not return the expected data format
+                    
                 }
             } 
             catch (error) {

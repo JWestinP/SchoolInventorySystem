@@ -21,5 +21,4 @@ class BorrowForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        # Set choices for the item_stock field
         self.fields['item_stock'].queryset = Stock.objects.all()
