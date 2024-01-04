@@ -1,8 +1,8 @@
-{% load static %}
+
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="{% static 'home/style.css' %}">
+        <link rel="stylesheet" href="{'home/style.css' %}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
         <link rel="stylesheet" href="style.css">
         <title>ADMIN HOME</title>
@@ -56,16 +56,23 @@
         <!-- Items -->
         <div id="itemlist" class="form" style="display: none;">
           <h1>Items</h1> 
-          <div class="container" onclick="showForm('itemlist')">
-            <div class="form-items">
-              <div class="items">
-                <img src="clean.png" alt="clean">
-                <div class="lines">
-                  <p>Cleaning Materials</p>
+          <form id="removeItemsForm" onsubmit="return confirmRemoveItems()">
+            <div class="container" onclick="showForm('itemlist')">
+              <div class="form-item">
+                <div class="select-container">
+                  <input class="select" type="checkbox" id="selectAllCheckbox">
+                </div>   
+                <div class="items">
+                  <img src="clean.png" alt="clean">
+                  <div class="lines">
+                    <p>Cleaning Materials</p>
+                  </div>
                 </div>
               </div>
+              <button type="submit" style="display: none;">Delete</button>
             </div>
-          </div>
+          </form>
+
           <div class="button-container">
             <button class="remove">Remove Items</button>
             <button class="add" onclick="toggleForm('addItemForm')">Add Items</button>
@@ -74,30 +81,30 @@
       
         <!-- Add Item Form (Modal) -->
         <form id="addItemForm" class="add-form" style="display: none;">
-           <div class="photo-container">
-              <label for="insertPhoto">Insert Photo:</label>
-              <input type="file" id="insertPhoto" name="insertPhoto" accept="image/*">
-              <img id="photoPreview" alt="Preview" style="max-width: 100%; max-height: 150px; margin-top: 10px; display: none;">
-          </div>
-      
-          <label for="itemName">Item Name: <input type="text" id="itemName" name="itemName" required></label>
-          <label for="itemName">Description: <input type="text" id="description" name="description" required></label><br><br>
-          <label for="itemName">Serial Number: <input type="text" id="serial" name="serial" required></label>
-          <label for="itemName">Issue: <input type="text" id="issue" name="issue" required></label>
-          <label for="itemName">Available Item: <input type="text" id="available-item" name="available-item" required></label>
-          <button type="submit">Add</button>
-          <button type="submit">Cancel</button>
-        </form>
-      
-      <div id="notificationModal" class="modal" style="display: none;">
-          <div class="modal-content">
-              <p>Item already added! <i class="fas fa-check-circle fa-3x"></i></p>
-              <button id="okayButton" onclick="hideNotificationModal()">Okay</button>
-          </div>
-      </div>
+          <div class="photo-container">
+             <label for="insertPhoto">Insert Photo:</label>
+             <input type="file" id="insertPhoto" name="insertPhoto" accept="image/*">
+             <img id="photoPreview" alt="Preview" style="max-width: 100%; max-height: 150px; margin-top: 10px; display: none;">
+         </div>
+         <label for="itemName">Item Name: <input type="text" id="itemName" name="itemName" required></label>
+         <label for="itemName">Description: <input type="text" id="description" name="description"></label><br><br>
+         <label for="itemName">Serial Number: <input type="text" id="serial" name="serial" required></label>
+         <label for="itemName">Issue: <input type="text" id="issue" name="issue"></label>
+         <label for="itemName">Available Item: <input type="text" id="available-item" name="available-item" required></label>
+         <button type="submit" id="addButton">Add</button>
+         <button type="button" id="cancelButton">Cancel</button>
+       </form>
+     
+     <div id="itemAddedModal" style="display: none;">
+         <p>Item added successfully!</p>
+         <button type="button" id="okayButton">Okay</button>
+     </div>
+     
     <!-- form pagclick ng orange add icon -->
 <div id="modal" class="modal">
   <div class="modal-content">
+    <div class="left"></div>
+    <div class="right"> 
     <img id="previewImage" alt="Uploaded Image" class="modal-image">
     <span class="close-modal" onclick="closeModal()">&times;</span>
     <label for="name"> Category Name:</label>
@@ -106,8 +113,10 @@
     <form action="/action_page.php"> 
       <input type="file" id="myFile" name="filename">
     </form> 
-    <button onclick="addItem()">Add</button>
-    <button onclick="cancel()">Cancel</button>
+    <div class="btn" > 
+    <button class="addItem" onclick="addItem()">Add</button> 
+    <button class="cancelItem" onclick="cancel()">Back</button>
+  </div>
   </div>
 </div>
 

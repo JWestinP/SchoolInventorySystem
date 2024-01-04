@@ -66,6 +66,10 @@ nav {
   justify-content: space-between;
   
 }
+.item-container{
+  display: flex;
+  justify-content: space-between;
+}
 
 .navbar-brand {
   color: black;
@@ -121,6 +125,16 @@ nav {
   border-radius: 10px; /* Add border-radius for rounded corners */
   padding: auto;
 }
+.item-form-item {
+  background-color: #f8f9fa;
+  padding: 10px 0;
+  border-bottom: 1px solid black;
+  margin: 35px 35px 35px 35px; /* Adjusted margin for better responsiveness */
+  border-radius: 15px;
+  border: 3px solid gray; /* Add border style */
+  border-radius: 10px; /* Add border-radius for rounded corners */
+  padding: auto;
+}
 .form-items{
   background-color: #f8f9fa;
   padding: 10px 0;
@@ -133,6 +147,12 @@ nav {
 }
 .form-item:hover {
   border-color: orange; /* Change the background color on hover */
+}
+.item-form-item:hover {
+  border-color: orange; /* Change the background color on hover */
+}
+.orange-icon {
+  cursor: pointer;
 }
 h1 {
   margin-left: 1rem; /* Adjust the margin for better readability */
@@ -147,10 +167,12 @@ h1 {
   color: orange;
   
 }
-.items {
+.items, .item-items {
   display: flex;
   flex-direction: column;/* Stack items vertically */
   align-items: center;
+  position: relative;
+  justify-content: space-between;
 }
 
 .items i {
@@ -159,19 +181,13 @@ h1 {
   color: orange; /* Adjust the color as needed */
 }
 
-.items{
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
 .line {
       border-top: 2px solid gray; /* Line color */
       flex-grow: 1;
       margin: 15px 0; /* Adjust margin as needed */
       size: 10px;
 } 
-.lines{
+.lines, .item-lines{
   border-top: 2px solid gray; /* Line color */
   flex-grow: 1;
   margin: 15px 0; /* Adjust margin as needed */
@@ -205,15 +221,84 @@ h1 {
   align-items: center;
 }
 
-.modal-content {
+.modal-content { /* form or yung box na white sa add*/
   background-color: #fff;
-  padding: 20px;
+  width: 50%;
+  height: 300px;
+  margin: 0 auto;
   border-radius: 10px;
-    color: black;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
     text-align: center;
-    display: flex;
     align-items: center;
-    flex-direction: column; /* Stack items vertically */
+}
+.modal-image .left { /*pic ng item na iaadd */
+  float: left;
+  width: 50%; /* Adjust the width of the image as needed */
+  height: 300px; /* Adjust the height of the image as needed */
+ 
+}
+.modal-image .right{
+  float: left;
+  width: 50%; /* Adjust the width of the image as needed */
+  height: 100px; /* Adjust the height of the image as needed */
+
+}
+
+input{
+  margin-bottom: 20px;
+}
+input[type="text"],
+input[type="file"] {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  height: 40px;
+  float: right;
+  margin-top: 10px;
+  margin-right: 20px;
+}
+
+.btn{
+  margin-bottom: 1000px;
+  margin-top: 100px;
+  
+
+}
+.addItem{
+  background-color: #fff;
+  border-radius: 5px;
+  border: 2px solid orange;
+  font-size: 15px;
+}
+.addItem:hover{
+  background-color: rgba(255, 166, 0, 0.689);
+  color: white;
+
+}
+.cancelItem{
+  background-color: #fff;
+  border-radius: 5px;
+  border: 2px solid orange;
+  font-size: 15px;
+}
+.cancelItem:hover{
+  background-color: rgba(255, 166, 0, 0.689);
+  color: white;
+}
+
+label[for="name"]{
+   margin-top: 20px;
+   margin-right: 70px;
+    font-weight: bold;
+    color: #0b0b0b;
+
+}
+label[for="myFile"]{
+  
+   margin-top: 80px;
+   margin-right:90px;
+  font-weight: bold;
+  color: #0b0b0b;
 }
 
 .close-modal {
@@ -390,28 +475,6 @@ button.remove:hover {
 .right-text{
   padding: 0;
   text-align: right;
-}
-
-.modal-image {
-  max-width: 50%; /* Adjust the maximum width of the image as needed */
-    max-height: 300px; /* Adjust the maximum height of the image as needed */
-    margin-right: 20px; /* Adjust the margin between the image and other content */
-    margin-bottom: 10px; /* Add margin between the image and other content */
-}
-label {
-  margin-top: 10px; /* Add margin above each label */
-}
-input[type="text"],
-input[type="file"] {
-  width: 100%; /* Make the input fields take 100% width */
-  padding: 8px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-button {
-  margin-top: 10px; /* Add margin above the buttons */
 }
 
 #okayButton {

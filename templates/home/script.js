@@ -107,19 +107,67 @@ function hideNotificationModal() {
     var modal = document.getElementById('notificationModal');
     modal.style.display = 'none';
 }
-// Add this JavaScript to handle file input and update the preview image
-document.getElementById('insertPhoto').addEventListener('change', function (event) {
-  var previewImage = document.getElementById('previewImage');
-  var fileInput = event.target;
-  
-  if (fileInput.files && fileInput.files[0]) {
-      var reader = new FileReader();
 
-      reader.onload = function (e) {
-          previewImage.src = e.target.result;
-          previewImage.style.display = 'block'; // Show the image
-      };
 
-      reader.readAsDataURL(fileInput.files[0]);
+document.addEventListener('DOMContentLoaded', function () {
+        var addItemForm = document.getElementById('addItemForm');
+        var itemAddedModal = document.getElementById('itemAddedModal');
+        var okayButton = document.getElementById('okayButton');
+        var itemList = document.getElementById('itemlist');
+        var cancelButton = document.getElementById('cancelButton');
+
+        // Handle form submission
+        document.getElementById('addButton').addEventListener('click', function () {
+            // Perform actions to add the item and display the added item
+            // For demonstration purposes, let's just show the confirmation modal
+            itemAddedModal.style.display = 'block';
+
+            // Close the add item form
+            addItemForm.style.display = 'none';
+        });
+
+        // Handle click on the "Cancel" button
+        document.getElementById('cancelButton').addEventListener('click', function () {
+            // Perform actions to go back to the item list
+            // For demonstration purposes, let's just close the modal
+            addItemForm.reset();
+            itemAddedModal.style.display = 'none';
+        });
+
+         cancelButton.addEventListener('click', function () {
+            // Perform actions to close the form
+            addItemForm.reset();
+            addItemForm.style.display = 'none';
+          });
+
+        // Handle click on the "Okay" button in the confirmation modal
+        okayButton.addEventListener('click', function () {
+            // Perform actions, such as navigating to the item list or other actions
+            itemAddedModal.style.display = 'none';
+            addItemForm.style.display = 'none';  // Hide the add item form
+            itemList.scrollIntoView({ behavior: 'smooth' });
+        });
+    })
+function selectAllItems() {
+        // Replace this with the actual logic for selecting all items
+        var checkboxes = document.querySelectorAll('.form-items input[type="checkbox"]');
+        checkboxes.forEach(function (checkbox) {
+            checkbox.checked = document.getElementById('selectAllCheckbox').checked;
+        });
+    }
+     function confirmRemoveItems() {
+    var checkbox = document.getElementById('selectAllCheckbox');
+    
+    if (checkbox.checked) {
+      var confirmDelete = confirm('Do you want to delete the selected items?');
+
+      if (confirmDelete) {
+        // Add your logic to remove items here
+        alert('Items deleted!');
+      } else {
+        // Uncheck the checkbox if the user cancels the deletion
+        checkbox.checked = false;
+      }
+    }
   }
-});
+  
