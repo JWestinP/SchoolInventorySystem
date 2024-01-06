@@ -96,43 +96,27 @@
 
         <div id="container" class="rounded_corners">
 
-            <!-- isinama ko na yung style nya sa html
-            ayaw gumana pag external file ang gamit eh -->
-
             <!-- test block code -->
             <!-- template for the items -->
-            <!-- {% for item in unreturned_items %} -->
+            {% for item in unreturned_items %}
             <div id="wrapper">
 
                 <div id="top">
                     <div id="left">
-                        <!-- {% if item.item_photo %}
+                        {% if item.item_photo %}
                             <img src="{{ item.item_photo.url }}" alt="" class="inventory_item" width="100%" height="100%" object-fit="contain">
-                        {% endif %} -->
-
-                        <!-- test image -->
-                        <img src="" alt="" width="100%" height="100%" object-fit="contain">
-                        <!-- test image -->
+                        {% endif %}
 
                     </div>
                     <div id="right">
-                        <!-- <p id="item_name">{{item.item_name}}</p>
+                        <p id="item_name">{{item.item_name}}</p>
                         <p id="item_details">
                             Time Borrowed: {{item.item_date_borrowed}}<br />
                             Time Returned: {{item.item_days_not_returned}}<br />
                             Borrower: {{item.item_borrower}}
                         </p>
-                        <p id="item_quantity">Item Quantity: {{item.item_quantity}}</p> -->
+                        <p id="item_quantity">Item Quantity: {{item.item_quantity}}</p>
 
-                        <!-- test text -->
-                        <p id="item_name"></p>
-                        <p id="item_details">
-                            Time Borrowed: <br />
-                            Time Returned: <br />
-                            Borrower:
-                        </p>
-                        <p id="item_quantity">Item Quantity: </p>
-                        <!-- test text -->
                     </div>
                 </div>
                 <div id="bottom">
@@ -142,7 +126,7 @@
                 </div>
 
             </div>
-            <!-- {% endfor %} -->
+            {% endfor %}
             <!-- template for the items -->
         </div>
 

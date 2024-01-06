@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Unreturned_Item
+from recents.models import *
+from home.models import *
 
 # Create your views here.
 # test
