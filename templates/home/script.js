@@ -25,24 +25,6 @@ let modalType;
     modalType = type;
     document.getElementById('modal').style.display = 'flex';
   }
-
-  function closeModal() {
-    document.getElementById('modal').style.display = 'none';
-  }
-
-  function addItem() {
-    const name = document.getElementById('nameInput').value;
-    const image = document.getElementById('myFile').value;
-
-    if (name && image) {
-      alert(`Added ${modalType}: ${name}`);
-      closeModal();
-      // Perform additional actions, such as updating the UI or sending data to a server
-    } else {
-      alert('Please enter both name and image URL.');
-    }
-  }
-
   function showForm(formId) {
     // Hide all forms
     var forms = document.querySelectorAll('.form');
@@ -56,16 +38,6 @@ let modalType;
       selectedForm.style.display = 'block';
     }
   }
-  function cancel ()
-{
-        let text = "Press a button OK to cancel.";
-
-        if (confirm(text) == true) {
-          closeModal();
-        } else { false;
-        }
-        
-}
  function toggleForm(formId) {
       var form = document.getElementById(formId);
       form.style.display = form.style.display === 'none' ? 'flex' : 'none';
@@ -170,4 +142,43 @@ function selectAllItems() {
       }
     }
   }
-  
+  function previewImage() {
+        var fileInput = document.getElementById('myFile');
+        var previewImage = document.getElementById('previewImage');
+
+        if (fileInput.files && fileInput.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                previewImage.src = e.target.result;
+            };
+
+            reader.readAsDataURL(fileInput.files[0]);
+        }
+    }
+
+    function closeModal() {
+         document.getElementById('modal').style.display = 'none';
+    }
+
+    function cancel() {
+        let text = "Press a button OK to cancel.";
+
+        if (confirm(text) == true) {
+          closeModal();
+        } else { false;
+        }
+    }
+
+    function addItem() {
+          const name = document.getElementById('nameInput').value;
+          const image = document.getElementById('myFile').value;
+
+          if (name && image) {
+            alert(`Added ${modalType}: ${name}`);
+            closeModal();
+            // Perform additional actions, such as updating the UI or sending data to a server
+          } else {
+            alert('Please enter both name and image URL.');
+          }
+        }

@@ -1,8 +1,7 @@
-{% load static %}
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
+<html lang="en">
+<head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         body, html {
@@ -17,7 +16,7 @@
         }
 
         .form-container {
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(234, 231, 231, 0.8);
             padding: 60px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -48,23 +47,58 @@
             cursor: pointer;
         }
 
-        .email, .password {
-            width: 100%;
-            box-sizing: border-box;
-            margin-bottom: 10px;
-            padding: 10px;
-        }
-
         button {
             width: 100%;
             box-sizing: border-box;
             padding: 10px;
-            background-color: #2f73f1;
+            margin-bottom: 5px;
+            background-color: rgba(96, 158, 228, 0.8);
             color: white;
-            border: none;
-            border-radius: 5px;
+            font-weight: bold;
+            font-size: 15px;
+            border: 3px solid rgba(96, 158, 228, 0.8);
+            border-radius: 21px;
             cursor: pointer;
         }
+        .btn-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .btn-admin, .btn-faculty {
+        padding: 50px;
+        height: 140px;
+        width: 200px;
+        margin: 10px; /* Adjust as needed */
+        background-color: #f8f9fa;
+        color: black;
+        font-weight: bold;
+        border-radius: 10px;
+        border: 3px solid rgba(122, 26, 34, 0.8);
+        cursor: pointer;
+    }
+    
+    .btn-admin:hover,.btn-faculty:hover {
+        background-color: #e9ecef;
+    }
+    button:hover{
+        background-color: rgba(25, 122, 232, 0.8);
+    }
+    #guestbtn:hover{
+        background-color: gray;
+    }
+    #guestbtn{
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px;
+            background-color:white;
+            color: rgba(171, 177, 177);
+            font-weight: bold;
+            border: 3px solid rgba(171, 177, 177);
+            border-radius: 21px;
+            cursor: pointer;
+    }
 
         @media (max-width: 1200px) {
             .form-container {
@@ -96,24 +130,29 @@
         }
     </script>
     <title>LOGIN</title>
-        <link rel="stylesheet" href="{% static 'login/loginstyle.css' %}">
-        <title>LOGIN</title>
+</head>
+<body>
+    
+    <div class="form-container">
         {% for message in messages %}
-        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-            <strong>Message:</strong>{{ message }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+        <div class="alert alert-{{ message.tags }}" style="display: block;">
+            <strong>Message:</strong> {{ message }}
+            <span class="close" onclick="closeAlert(this.parentElement)">&times;</span>
         </div>
         {% endfor %}
-    </head>
-    <body>
-        <form action = "/login" method = "POST">
-            {% csrf_token %}
-                <input class = "email" type = "email" name = "email" id = "email" placeholder = "Input your email..." required>
-                <input class = "password" type="password" name="password" id="password" placeholder="Input your password..." required>
     
-                <button><a href="{% url 'login' %}">Login</a></button>
-            </form>
-    </body>
+        <form action="/login" method="POST">
+            {% csrf_token %}
+            
+            <div class="btn-container">
+                <button class="btn-admin" onclick="btnAdmin()">Admin</button>
+    
+                <button class="btn-faculty" onclick="btnFaculty()">Faculty</button>
+            </div>
+
+            <button href="{% url 'login' %}">LOG IN</button>
+            <button type="button" id="guestbtn">LOG IN AS GUEST</button>
+        </form>
+    </div>
+</body>
 </html>

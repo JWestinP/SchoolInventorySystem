@@ -1,145 +1,147 @@
-
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="{'home/style.css' %}">
+        <link rel="stylesheet" href="{% static 'home/homestyle.css' %}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
         <link rel="stylesheet" href="style.css">
         <title>ADMIN HOME</title>
     </head>
     <body>
-        <header>
-            <div class="logo left">
-              <img src="LSPU.png" alt="Left Logo">
-            </div>
-            <div class="search-bar">
-              
-              <input type="text" class="search-input" placeholder="Search...">
-              <i class="fas fa-search"></i>
-            </div>
-            <div class="logo right">
-              <img src="CSS.png" alt="Right Logo">
-            </div>
-          </header>
-        
-          <div class="head"></div>
-        
-          <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
-                <a href="{% url 'admin_home' %}" class="navbar-brand">Home</a>
-                <a href="{% url 'admin_recents' %}" class="navbar-brand">Recent</a>
-                <a href="{% url 'admin_unreturned' %}" class="navbar-brand">Unreturned</a>
-                <a href="{% url 'members' %}" class="navbar-brand">Members</a>
-                <a href="{% url 'admin_userprofile' %}" class="navbar-brand">Account</a>
-                <a href="{% url 'logout' %}" class="navbar-brand">Logout</a>
-            </div>
-          </nav>
+        <body>
+    <header>
+        <div class="logo left">
+            <img src="LSPU.png" alt="Left Logo">
+        </div>
+        <div class="search-bar">
+            <input type="text" class="search-input" placeholder="Search...">
+            <i class="fas fa-search"></i>
+        </div>
+        <div class="logo right">
+            <img src="CSS.png" alt="Right Logo">
+        </div> 
+    </header>
+    <div class="head"></div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a href="{% url 'admin_home' %}" class="navbar-brand">Home</a>
+            <a href="{% url 'admin_recents' %}" class="navbar-brand">Recent</a>
+            <a href="{% url 'admin_unreturned' %}" class="navbar-brand">Unreturned</a>
+            <a href="{% url 'members' %}" class="navbar-brand">Members</a>
+            <a href="{% url 'admin_userprofile' %}" class="navbar-brand">Account</a>
+            <a href="{% url 'logout' %}" class="navbar-brand">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Home -->
+    <div id="mainForm" class="form">
         <!-- Home -->
-        <div id="mainForm" class="form">
-          <!-- Home -->
-          <div class="item" >
+        <div class="item">
             <h1>Categories <i class="fas fa-plus-circle orange-icon" onclick="openModal('category')"></i></h1>
             <div class="container" onclick="showForm('itemlist')">
-              <div class="form-item">
-                <div class="items">
-                  <img src="clean.png" alt="clean">
-                  <div class="line">
-                  <p>Cleaning Materials</p>
+                <div class="form-item">
+                    <div class="items">
+                        <img src="clean.png" alt="clean">
+                        <div class="line">
+                            <p>Cleaning Materials</p>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              </div>
             </div>
-          </div>
         </div>
-      
-      
-        <!-- Items -->
-        <div id="itemlist" class="form" style="display: none;">
-          <h1>Items</h1> 
-          <form id="removeItemsForm" onsubmit="return confirmRemoveItems()">
-            <div class="container" onclick="showForm('itemlist')">
-              <div class="form-item">
-                <div class="select-container">
-                  <input class="select" type="checkbox" id="selectAllCheckbox">
-                </div>   
-                <div class="items">
-                  <img src="clean.png" alt="clean">
-                  <div class="lines">
-                    <p>Cleaning Materials</p>
-                  </div>
-                </div>
-              </div>
-              <button type="submit" style="display: none;">Delete</button>
-            </div>
-          </form>
+    </div>
 
-          <div class="button-container">
+    <!-- Items -->
+    <div id="itemlist" class="form" style="display: none;">
+        <h1>Items</h1>
+        <form id="removeItemsForm" onsubmit="return confirmRemoveItems()">
+            <div class="container" onclick="showForm('itemlist')">
+                <div class="form-item">
+                    <div class="select-container">
+                        <input class="select" type="checkbox" id="selectAllCheckbox">
+                    </div>
+                    <div class="items">
+                        <img src="clean.png" alt="clean">
+                        <div class="lines">
+                            <p>Cleaning Materials</p>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" style="display: none;">Delete</button>
+            </div>
+        </form>
+
+        <div class="button-container">
             <button class="remove">Remove Items</button>
             <button class="add" onclick="toggleForm('addItemForm')">Add Items</button>
-          </div>
         </div>
-      
-        <!-- Add Item Form (Modal) -->
-        <form id="addItemForm" class="add-form" style="display: none;">
-          <div class="photo-container">
-             <label for="insertPhoto">Insert Photo:</label>
-             <input type="file" id="insertPhoto" name="insertPhoto" accept="image/*">
-             <img id="photoPreview" alt="Preview" style="max-width: 100%; max-height: 150px; margin-top: 10px; display: none;">
-         </div>
-         <label for="itemName">Item Name: <input type="text" id="itemName" name="itemName" required></label>
-         <label for="itemName">Description: <input type="text" id="description" name="description"></label><br><br>
-         <label for="itemName">Serial Number: <input type="text" id="serial" name="serial" required></label>
-         <label for="itemName">Issue: <input type="text" id="issue" name="issue"></label>
-         <label for="itemName">Available Item: <input type="text" id="available-item" name="available-item" required></label>
-         <button type="submit" id="addButton">Add</button>
-         <button type="button" id="cancelButton">Cancel</button>
-       </form>
-     
-     <div id="itemAddedModal" style="display: none;">
-         <p>Item added successfully!</p>
-         <button type="button" id="okayButton">Okay</button>
-     </div>
-     
-    <!-- form pagclick ng orange add icon -->
-<div id="modal" class="modal">
-  <div class="modal-content">
-    <div class="left"></div>
-    <div class="right"> 
-    <img id="previewImage" alt="Uploaded Image" class="modal-image">
-    <span class="close-modal" onclick="closeModal()">&times;</span>
-    <label for="name"> Category Name:</label>
-    <input type="text" id="nameInput" placeholder="Enter category name">
-    <label for="myFile">Choose File:</label>
-    <form action="/action_page.php"> 
-      <input type="file" id="myFile" name="filename">
-    </form> 
-    <div class="btn" > 
-    <button class="addItem" onclick="addItem()">Add</button> 
-    <button class="cancelItem" onclick="cancel()">Back</button>
-  </div>
-  </div>
-</div>
+    </div>
 
-            <div id="recentForm" class="form" style="display: none;">
-              <h1>Recent Form</h1>
-              <!-- Your recent form content goes here -->
+    <!-- Add Item Form (Modal)-->
+    <form id="addItemForm" class="add-form" style="display: none;">
+        <div class="photo-container">
+            <label for="insertPhoto">Insert Photo:<input type="file" id="insertPhoto" name="insertPhoto" accept="image/*" onchange="previewPhoto()"></label>
+            <img id="photoPreview" alt="Preview" class="preview-modal-image">
+        </div>
+        <label class="itemName">Item Name: <input type="text" id="itemName" name="itemName" required></label>
+        <label class="itemName">Description: <input type="text" id="description" name="description"></label><br><br>
+        <label class="itemName">Serial Number: <input type="text" id="serial" name="serial" required></label>
+        <label class="itemName">Issue: <input type="text" id="issue" name="issue"></label>
+        <label class="itemName">Available Item: <input type="text" id="available-item" name="available-item"
+                required></label>
+        <button type="submit" id="addButton">Add</button>
+        <button type="button" id="cancelButton">Cancel</button>
+    </form>
+
+    <div id="itemAddedModal" style="display: none;">
+        <p>Item added successfully!</p>
+        <button type="button" id="okayButton">Okay</button>
+    </div> 
+
+    
+ 
+    <!-- form pagclick ng orange add icon -->
+    <div id="modal" class="modal">
+          <div class="modal-content">
+                <div class="left-preview">
+                    <img id="previewImage" alt="Uploaded Image">
+                </div> 
+            <div class="modal-right">
+                <span class="close-modal" onclick="closeModal()">&times;</span>
+                <label for="name"> Category Name:</label>
+                <input type="text" id="nameInput" placeholder="Enter category name">
+                <label for="myFile">Choose Photo:</label>
+                <form action="/action_page.php">
+                    <input type="file" id="myFile" name="filename" onchange="previewImage()">
+                </form>
+                <div class="btn">
+                  <button class="cancelItem" onclick="cancel()">Back</button>
+                  <button class="addItem" onclick="addItem()">Add</button>
+                </div>
             </div>
-          
-            <div id="unreturnedForm" class="form" style="display: none;">
-              <h1>Unreturned Form</h1>
-              <!-- Your unreturned form content goes here -->
-            </div>
-          
-            <div id="membersForm" class="form" style="display: none;">
-              <h1>Members Form</h1>
-              <!-- Your members form content goes here -->
-            </div>
-          
-            <div id="accountForm" class="form" style="display: none;">
-              <h1>Account Form</h1>
-              <!-- Your account form content goes here -->
-            </div>
-          
-            <script src="script.js"></script>
+        </div>
+    </div>
+
+    <div id="recentForm" class="form" style="display: none;">
+        <h1>Recent Form</h1>
+        <!-- Your recent form content goes here -->
+    </div>
+
+    <div id="unreturnedForm" class="form" style="display: none;">
+        <h1>Unreturned Form</h1>
+        <!-- Your unreturned form content goes here -->
+    </div>
+
+    <div id="membersForm" class="form" style="display: none;">
+        <h1>Members Form</h1>
+        <!-- Your members form content goes here -->
+    </div>
+
+    <div id="accountForm" class="form" style="display: none;">
+        <h1>Account Form</h1>
+        <!-- Your account form content goes here -->
+    </div>
+
+    <script src="script.js"></script>
+</body>
     </body>
 </html>

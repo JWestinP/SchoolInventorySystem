@@ -1,8 +1,7 @@
-{% load static %}
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
+<html lang="en">
+<head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         body, html {
@@ -96,24 +95,21 @@
         }
     </script>
     <title>LOGIN</title>
-        <link rel="stylesheet" href="{% static 'login/loginstyle.css' %}">
-        <title>LOGIN</title>
+</head>
+<body>
+    <div class="form-container">
         {% for message in messages %}
-        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-            <strong>Message:</strong>{{ message }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+        <div class="alert alert-{{ message.tags }}" style="display: block;">
+            <strong>Message:</strong> {{ message }}
+            <span class="close" onclick="closeAlert(this.parentElement)">&times;</span>
         </div>
         {% endfor %}
-    </head>
-    <body>
-        <form action = "/login" method = "POST">
+        <form action="/login" method="POST">
             {% csrf_token %}
-                <input class = "email" type = "email" name = "email" id = "email" placeholder = "Input your email..." required>
-                <input class = "password" type="password" name="password" id="password" placeholder="Input your password..." required>
-    
-                <button><a href="{% url 'login' %}">Login</a></button>
-            </form>
-    </body>
+            <input class="email" type="email" name="email" id="email" placeholder="Input your email..." required>
+            <input class="password" type="password" name="password" id="password" placeholder="Input your password..." required>
+            <button href="{% url 'login' %}">Login</button>
+        </form>
+    </div>
+</body>
 </html>
