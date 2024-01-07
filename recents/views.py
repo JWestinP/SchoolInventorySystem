@@ -10,7 +10,8 @@ def recents(request):
     borrowed_item = Borrowed_Item.objects.all()
 
     return render(request, ('recents/recents.html'),
-                {'borrowed_item': borrowed_item})
+                {'borrowed_item': borrowed_item,
+                'item': item})
 
 def admin_recents(request):
     return render(request, ('recents/admin_recents.html'))

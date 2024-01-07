@@ -26,13 +26,13 @@
             <div id="wrapper">
                 <div id="top">
                     <div id="left">
-                        {% if items.item.item_photo %}
-                            <img src="" alt="" class="inventory_item" width="100%" height="100%" object-fit="contain">
+                        {% if items.item_stock.item_information.item_photo %}
+                            <img src="{{ items.item_stock.item_information.item_photo.url }}" alt="" class="inventory_item"  height="100%" object-fit="contain">
                         {% endif %}
 
                     </div>
                     <div id="right">
-                        <p id="item_name">Name nung item {{items.item_stock.item_name}}</p>
+                        <p id="item_name">{{items.item_stock.item_information.item_name}}</p>
                         <p id="item_details">
                             Time Borrowed: {{items.item_date_borrowed}}<br />
                             Time Returned: {{items.item_date_returned}}<br />

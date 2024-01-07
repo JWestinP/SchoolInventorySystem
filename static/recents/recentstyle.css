@@ -139,7 +139,11 @@ button a {
 }
 
 #top #left {
-    outline: solid 1px gray; width: 20%;
+    outline: solid 1px gray; width: 20%; display: flex;
+}
+
+#top #left img{
+    margin: auto;
 }
 
 #top #right {
