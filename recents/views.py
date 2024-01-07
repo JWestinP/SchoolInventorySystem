@@ -6,7 +6,10 @@ from home.models import *
 
 # Create your views here.
 def recents(request):
-    return render(request, ('recents/recents.html'))
+    borrowed_item = Borrowed_Item.objects.all()
+
+    return render(request, ('recents/recents.html'),
+                  {'borrowed_item': borrowed_item})
 
 def admin_recents(request):
     return render(request, ('recents/admin_recents.html'))
@@ -21,4 +24,4 @@ def show_recents_items(request):
     recents_items = [category, item, stock, borrowed_item, unretunrned_item]
 
     return render(request, 'recents/recents.html',
-                {'recents_items': recents_items})
+                {'borrowed_item': borrowed_item})
