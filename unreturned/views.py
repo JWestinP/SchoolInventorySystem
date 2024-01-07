@@ -5,10 +5,7 @@ from recents.models import *
 from home.models import *
 
 # Create your views here.
-# test
-def show_unreturned_items(request):
-    # return HttpResponse("This is where unreturned items should show.")
-
+def unreturned(request):
     unreturned_items = Unreturned_Item.objects.all()
 
     return render(request, 'unreturned/unreturned.html',

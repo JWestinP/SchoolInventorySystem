@@ -12,7 +12,7 @@
         <div id="nav_btn" class="rounded_corners">
             <button><a href="{% url 'home' %}">Home</a></button>
             <button><a href="{% url 'recents' %}" class="active_tab">Recents</a></button>
-            <button><a href="{% url 'show_unreturned_items' %}">Unreturned</a></button>
+            <button><a href="{% url 'unreturned' %}">Unreturned</a></button>
             <button><a href="{% url 'notification' %}">Notification</a></button>
             <button><a href="{% url 'userprofile' %}">Account</a></button>
             <button><a href="{% url 'logout' %}">Logout</a></button>
@@ -32,7 +32,7 @@
 
                     </div>
                     <div id="right">
-                        <p id="item_name">Name nung item {{items.item.item_name}}</p>
+                        <p id="item_name">Name nung item {{items.item_stock.item_name}}</p>
                         <p id="item_details">
                             Time Borrowed: {{items.item_date_borrowed}}<br />
                             Time Returned: {{items.item_date_returned}}<br />
