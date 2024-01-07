@@ -103,13 +103,13 @@
 
                 <div id="top">
                     <div id="left">
-                        {% if item.item_photo %}
+                        {% if item.recents.item_photo %}
                             <img src="{{ item.item_photo.url }}" alt="" class="inventory_item" width="100%" height="100%" object-fit="contain">
                         {% endif %}
 
                     </div>
                     <div id="right">
-                        <p id="item_name">{{item.item_name}}</p>
+                        <p id="item_name">{{item.item.item_name}}</p>
                         <p id="item_details">
                             Time Borrowed: {{item.item_date_borrowed}}<br />
                             Time Returned: {{item.item_days_not_returned}}<br />
@@ -128,6 +128,30 @@
             </div>
             {% endfor %}
             <!-- template for the items -->
+
+            <!-- static block -->
+            <!-- <div id="wrapper">
+                <div id="top">
+                    <div id="left">
+                            <img src="" alt="" class="inventory_item" width="100%" height="100%" object-fit="contain">
+                    </div>
+                    <div id="right">
+                        <p id="item_name">Name nung item</p>
+                        <p id="item_details">
+                            Time Borrowed: <br />
+                            Time Returned: <br />
+                            Borrower:
+                        </p>
+                        <p id="item_quantity">Item Quantity: </p>
+                    </div>
+                </div>
+                <div id="bottom">
+                    <div id="btn_con">
+                        <button id="return_btn" class="rounded_corners">Return</button>
+                    </div>
+                </div>
+            </div> -->
+            <!-- static block -->
         </div>
 
     </body>

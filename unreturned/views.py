@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Unreturned_Item
+from .models import *
 from recents.models import *
 from home.models import *
 
@@ -10,6 +10,7 @@ def show_unreturned_items(request):
     # return HttpResponse("This is where unreturned items should show.")
 
     unreturned_items = Unreturned_Item.objects.all()
+
     return render(request, 'unreturned/unreturned.html',
                 {'unreturned_items': unreturned_items})
 
