@@ -27,19 +27,19 @@
 
                 <div id="top">
                     <div id="left">
-                        {% if item.recents.item_photo %}
-                            <img src="{{ item.item_photo.url }}" alt="" class="inventory_item" width="100%" height="100%" object-fit="contain">
+                        {% if item.item_borrowed.item_stock.item_information.item_photo %}
+                            <img src="{{ item.item_borrowed.item_stock.item_information.item_photo.url }}" alt="" class="inventory_item" width="100%" height="100%" object-fit="contain">
                         {% endif %}
 
                     </div>
                     <div id="right">
-                        <p id="item_name">Name nung item</p>
+                        <p id="item_name">{{ item.item_borrowed.item_stock.item_information.item_photo }}</p>
                         <p id="item_details">
-                            Time Borrowed: <br />
-                            Time Returned: <br />
-                            Borrower: {{item.item_borrower}}
+                            Time Borrowed: {{ item.item_borrowed.item_date_borrowed }}<br />
+                            Time Returned: {{ item.item_borrowed.item_date_returned }}<br />
+                            Borrower: {{ item.item_borrowed.item_borrower }}
                         </p>
-                        <p id="item_quantity">Item Quantity: </p>
+                        <p id="item_quantity">Item Quantity: item.item_borrowed.item_quantity</p>
 
                     </div>
                 </div>
