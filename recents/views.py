@@ -6,6 +6,7 @@ from home.models import *
 
 # Create your views here.
 def recents(request):
+    item = Item.objects.all()
     borrowed_item = Borrowed_Item.objects.all()
 
     return render(request, ('recents/recents.html'),
