@@ -1,113 +1,25 @@
-{% load static %}
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body, html {
-            height: 100%;
-            margin: 0;
-            font-family: Arial, sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end; /* Move the content to the right */
-            background: url("Log in.PNG") no-repeat center center fixed;
-            background-size: cover;
-        }
-
-        .form-container {
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 60px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-            width: 300px;
-            margin-right: 230px;
-        }
-
-        .alert {
-            display: none;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-        }
-
-        .alert-success {
-            color: #155724;
-            background-color: #d4edda;
-            border: 1px solid #c3e6cb;
-        }
-
-        .alert-danger {
-            color: #721c24;
-            background-color: #f8d7da;
-            border: 1px solid #f5c6cb;
-        }
-
-        .close {
-            cursor: pointer;
-        }
-
-        .email, .password {
-            width: 100%;
-            box-sizing: border-box;
-            margin-bottom: 10px;
-            padding: 10px;
-        }
-
-        button {
-            width: 100%;
-            box-sizing: border-box;
-            padding: 10px;
-            background-color: #2f73f1;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        @media (max-width: 1200px) {
-            .form-container {
-                margin-right: 100px;
-            }
-        }
-
-        @media (max-width: 992px) {
-            .form-container {
-                margin-right: 50px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            body, html {
-                justify-content: center; /* Center the content on smaller screens */
-            }
-            
-            .form-container {
-                margin-right: 0;
-                width: 80%; /* Adjust the width for smaller screens */
-                max-width: none; /* Remove the max-width restriction */
-            }
-        }
-    </style>
-    <script>
-        function closeAlert(alert) {
-            alert.style.display = 'none';
-        }
-    </script>
-    <title>LOGIN</title>
+        {% load static %}
         <link rel="stylesheet" href="{% static 'login/loginstyle.css' %}">
         <title>LOGIN</title>
+       
         {% for message in messages %}
         <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-            <strong>Message:</strong>{{ message }}
+            <strong></strong>{{ message }}
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
         {% endfor %}
-    </head>
+   
     <body>
+        <div class="form-container">
+            <div class="alert alert-{{ message.tags }}" style="display: block;">
+                <strong></strong> {{ message }}
+                <span class="close" onclick="closeAlert(this.parentElement)">&times;</span>
+            </div>
         <form action = "/login" method = "POST">
             {% csrf_token %}
                 <input class = "email" type = "email" name = "email" id = "email" placeholder = "Input your email..." required>
@@ -115,5 +27,6 @@
     
                 <button><a href="{% url 'login' %}">Login</a></button>
             </form>
+        </head>
     </body>
 </html>
