@@ -18,14 +18,24 @@
         <div class="form-container">
             <div class="alert alert-{{ message.tags }}" style="display: block;">
                 <strong></strong> {{ message }}
+                <div class="imgcss">
+                    <img src="static/home/CSS.png">
+                    <h5>COLLEGE OF COMPUTER STUDIES</h5>
+                </div>
                 <span class="close" onclick="closeAlert(this.parentElement)">&times;</span>
             </div>
+            
         <form action = "/login" method = "POST">
+            
+            
             {% csrf_token %}
+            <label>Email</label>
                 <input class = "email" type = "email" name = "email" id = "email" placeholder = "Input your email..." required>
+             <label>Password</label>
                 <input class = "password" type="password" name="password" id="password" placeholder="Input your password..." required>
     
-                <button><a href="{% url 'login' %}">Login</a></button>
+                <button><a href="{% url 'login' %}">LOGIN</a></button>
+                <button type="button" id="guestbtn">LOG IN AS GUEST</button>
             </form>
         </head>
     </body>

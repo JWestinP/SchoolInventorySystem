@@ -123,8 +123,9 @@ body, html {
 .alert {
     display: none;
     padding: 15px;
-    margin-bottom: 20px;
+    margin-bottom: 29px;
     border-radius: 5px;
+    margin-top: -55px;
 }
 
 .alert-success {
@@ -144,22 +145,66 @@ body, html {
 }
 
 .email, .password {
+    border: 3px solid rgba(122, 26, 34);
+    border-radius: 7px;
     width: 100%;
     box-sizing: border-box;
-    margin-bottom: 10px;
+    margin-bottom: 18px;
     padding: 10px;
 }
 
 button {
     width: 100%;
-    box-sizing: border-box;
-    padding: 10px;
-    background-color: #2f73f1;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+            box-sizing: border-box;
+            padding: 10px;
+            margin-bottom: 5px;
+            background-color: rgba(96, 158, 228, 0.8);
+            color: white;
+            font-weight: bold;
+            font-size: 15px;
+            border: 3px solid rgba(96, 158, 228, 0.8);
+            border-radius: 21px;
+            cursor: pointer;
 }
+#guestbtn{
+    width: 100%;
+            box-sizing: border-box;
+            padding: 10px;
+            background-color:white;
+            color: rgba(171, 177, 177);
+            font-weight: bold;
+            border: 3px solid rgba(171, 177, 177);
+            border-radius: 21px;
+            cursor: pointer;
+}
+button:hover{
+    background-color: rgba(25, 122, 232, 0.8);
+}
+#guestbtn:hover{
+    background-color: gray;
+}
+    .imgcss h5{
+        margin-top: -75px;
+        margin-left: 90px;
+        font-size: 15px;
+        color: rgba(122, 26, 34);
+        font-family: 'Arial';
+        font-weight: 800;
+        text-align: left;
+    }
+    .imgcss img{
+        width: 78px; /* Set a fixed width for the image */
+        height: auto; /* Maintain aspect ratio */
+        border: 2px solid white;  /* Add a border for better visibility */
+        margin-bottom: 15px;
+    }
+    label{
+        color: rgba(122, 26, 34);
+        font-weight: bold;
+        font-size: 14px;
+        
+    }
+
 
 @media (max-width: 1200px) {
     .form-container {
