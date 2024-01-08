@@ -189,3 +189,12 @@ def get_item_inventory(request):
                    'stock_id' : item.pk} for item in item_inventory]
     print(items_data)
     return JsonResponse({'items': items_data}, safe=False)
+
+def delete_item(request):
+    item_pk = request.GET.get('item_id', None)
+
+    if item_pk is not None:
+        Item.objects.filter(item_id=item_pk).delete()
+        return JsonResponse({'message': 'Item deleted successfully'})
+    else:
+        return JsonResponse({'message': 'Item ID not provided'}, status=400)

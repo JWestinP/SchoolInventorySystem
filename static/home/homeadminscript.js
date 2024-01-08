@@ -149,9 +149,34 @@ function showItem(category) {
                 console.log('Received data:', data)
     
                 document.getElementById('edit_back_buttons').innerHTML = `
-                <button onclick="manageItems()">Edit</button>
+                <button onclick="addItem()">Add</button>
+                <button class="remove_item">Remove</button>
                 <button id="back_category" onclick="showAllCategoryButtons()">Back</button>
                 `;
+                
+                document.getElementById('edit_back_buttons').addEventListener('click', function(event){
+                    if (event.target.matches('.remove_item')){
+                        itemContainer.innerHTML = ''
+                        if (Array.isArray(data.items)) {
+                            data.items.forEach(selectedItem => {
+                                const imageUrl = `${selectedItem.item_photo}`
+                                const itemHTML = `
+                                    <div>
+                                        <img src="${imageUrl}" alt="${selectedItem.item_name}" style="width: 100px; height: 100px;">
+                                        <button data-delete-target="${selectedItem.item_id}" onclick="deleteItem(${selectedItem.item_id})">-</button>
+                                        <p>${selectedItem.item_name} </p>
+                                    </div>
+                                `
+                                itemContainer.innerHTML += itemHTML
+        
+                            })
+                        } 
+                        else {
+                            console.error('Data does not contain an array:', data)
+                            
+                        }
+                    }
+                })
 
                 itemContainer.innerHTML += `<p>${data.items.length} items in category: ${data.items[0].item_category.item_category}</p>`;
                 itemContainer.addEventListener('click', function (event) {
@@ -162,7 +187,7 @@ function showItem(category) {
                 
                         console.log('Item button clicked. Item ID:', itemId);
                 
-                        
+        
                         fetchData(itemId);
                     }
                 });
@@ -207,6 +232,28 @@ function showAllCategoryButtons() {
     });
     var itemContainer = document.getElementById('item_list');
     itemContainer.innerHTML = '';
+
+}
+
+function deleteItem(item_id) {
+    const csrfToken = document.cookie.split(';').find(cookie => cookie.trim().startsWith('csrftoken=')).split('=')[1];
+    fetch(`/delete_item/?item_id=${item_id}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrfToken
+        },
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.message);
+        
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+
+function addItem() {
 
 }
 
