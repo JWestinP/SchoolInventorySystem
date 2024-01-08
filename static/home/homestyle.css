@@ -343,7 +343,10 @@ body {
     cursor: pointer;
   }
   h1 {
-    margin-left: 1rem; /* Adjust the margin for better readability */
+    margin-left: 2rem; /* Adjust the margin for better readability */
+    font-size: 30px;
+    color: black;
+    margin-top: 10px;
   }
   .orange-icon {
     color: orange; /* Set the color of the icon to orange */
@@ -367,6 +370,7 @@ body {
     margin-bottom: 10px; /* Add margin to separate the icon and image */
     margin-right: 10px;
     color: orange; /* Adjust the color as needed */
+    
   }
   .line {
         border-top: 2px solid gray; /* Line color */
