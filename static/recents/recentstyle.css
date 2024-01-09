@@ -334,10 +334,12 @@ body {
   }
   
   .fa-search {
-    margin-left: -3%;
+    margin-left: -5%;
     color: firebrick;
     font-size: 18px;
     cursor: pointer;
+    margin-top: 7px;
+
   }
   
   /* navigations */
