@@ -252,9 +252,42 @@ function deleteItem(item_id) {
     .catch(error => console.error('Error:', error));
 }
 
-
 function addItem() {
+    fetch('/get_item_form/')
+        .then(response => response.json())
+        .then(data => {
+            const formContainer = document.getElementById('add_item_form');
+            formContainer.innerHTML = data.item_form_html;
+            const itemForm = document.getElementById('itemFormId');
+            const csrfToken = document.cookie.split(';').find(cookie => cookie.trim().startsWith('csrftoken=')).split('=')[1];
+                if (itemForm) {
+                    
+                    itemForm.addEventListener('submit', function (event) {
+                        event.preventDefault();
+                    
+                        const formData = new FormData(itemForm);
 
+                        formData.append('csrfmiddlewaretoken', csrfToken);
+                        console.log(formData)
+                        console.log('FormData:', formData);
+                        fetch('/save_item_form/', {
+                            method: 'POST',
+                            body: formData
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log(data);
+                            if (data.message) {
+                            
+                            } else if (data.error) {
+                                
+                                console.error(data.error);
+                            }
+                        })
+                        .catch(error => console.error('Error submitting form:', error));
+                    });                   
+                }
+        })
 }
 
 selectItem.forEach(button => {

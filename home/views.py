@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Q
 from .models import *
-from .forms import BorrowForm
+from .forms import *
 from recents.models import *
 from django.http import JsonResponse
 from django.template.loader import render_to_string
@@ -41,7 +41,6 @@ def admin_home(request):
 def guest_home(request):
     return render(request, ('home/guest_home.html'))
 
-# myapp/views.py
 @login_required
 def home(request):
     current_user = request.user
@@ -116,7 +115,17 @@ def home(request):
 def get_borrow_form(request):
     borrow_form = BorrowForm()
     form_html = render_to_string('home/borrow_form.html', {'borrow_form': borrow_form}, request=request)
-    return JsonResponse({'form_html': form_html})
+    return JsonResponse({'form_html' : form_html})
+
+def get_item_form(request):
+    item_form = ItemForm()
+    item_form_html = render_to_string('home/item_form.html', {'item_form': item_form}, request=request)
+    return JsonResponse({'item_form_html' : item_form_html})
+
+def get_stock_form(request):
+    stock_form = StockForm()
+    stock_form_html = render_to_string('home/stock_form.html', {'stock_form': stock_form}, request=request)
+    return JsonResponse({'stock_form_html' : stock_form_html})
 
 def get_items(request):
     category = request.GET.get('category')
@@ -173,6 +182,26 @@ def save_borrow_form(request):
         print('Choices for item_stock:', item_stock_choices)
 
         return JsonResponse({'error': 'Invalid form submission'}, status=400)
+
+def save_item_form(request):
+    item_form = ItemForm(request.POST, request.FILES)
+    
+    if item_form.is_valid():
+        model_instance = item_form.save(commit=False)
+        model_instance.save()
+        
+        return JsonResponse({'message': 'Form submitted successfully'})
+
+    else:
+        print('Form is NOT valid!')
+        print('Errors:', item_form.errors.as_data())
+        return JsonResponse({'error': 'Invalid form submission'}, status=400)
+def save_stock_form(request):
+    stock_form = StockForm(request.POST)
+    
+    if stock_form.is_valid():
+        model_instance = stock_form.save(commit=False)
+        model_instance.save()
 
 def get_item_inventory(request):
     item_inventory = Stock.objects.all()
