@@ -389,3 +389,49 @@ function showForm(formId) {
               alert('Please enter both name and image URL.');
             }
           }
+          function openItemForm() {
+            document.getElementById('addItemForm').style.display = 'flex';
+        }
+        
+        function closeItemForm() {
+            document.getElementById('addItemForm').style.display = 'none';
+        }
+        
+        function previewImage() {
+            var input = document.getElementById("item-myFile");
+            var preview = document.getElementById("item-preview");
+            var previewSection = document.getElementById("previewSection");
+        
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+        
+                reader.onload = function (e) {
+                    preview.src = e.target.result;
+                    previewSection.style.display = "block";
+                };
+        
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        
+        function cancelItem() {
+            closeItemForm();
+            // Your cancel item logic heredocument.getElementById('addItemForm').style.display = 'none';
+        }
+        
+        function addItem() {
+            closeItemForm();
+            var itemName = document.getElementById('item-itemName').value;
+                var previewImage = document.getElementById('previewSection').style.display;
+                
+                // Perform validation or further processing as needed
+        
+                // Example: Log the values
+                console.log('Item Name:', itemName);
+                console.log('Preview Image:', previewImage);
+        
+                // Add your logic to save or process the item here
+        
+                // Hide the form after adding
+                document.getElementById('addItemForm').style.display = 'none';
+        }

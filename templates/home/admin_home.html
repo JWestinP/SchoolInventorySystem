@@ -70,29 +70,25 @@
 
                     <div class="button-container">
                         <button class="remove">Remove Items</button>
-                        <button class="add" onclick="toggleForm('addItemForm')">Add Items</button>
+                        <button class="add" onclick="openItemForm('addItemForm')">Add Items</button>
                     </div>
                 </div>
 
-               <!-- Add Item Form (Modal)-->
-    <div class="item-container">
-        <div id="addItemForm" class="item-form" style="display: none;">
-            <span class="item-close-modal" onclick="closeItemForm()">&times;</span>
-            <form action="/action_page.php">
-                <input type="file" id="item-myFile" name="filename" onchange="previewImage()" class="item-input">
-            </form>
-            <label for="item-itemName">Item Name:<input type="text" id="item-itemName" class="item-input"></label>
-            <label for="item-itemName">Description:<input type="text" id="item-itemName" class="item-input"></label>
-            
-            <div id="previewSection" style="display: none;">
-                <label for="item-preview">Preview:</label>
-                <img id="item-preview" alt="Preview Image" class="item-preview-image">
+              <!-- Add Item Form (Modal)-->
+        <div id="addItemForm" class="modal">
+            <div class="item-forms">
+                <form action="/action_page.php">
+                    <label for="item-itemNames">Choose Image:<input type="file" id="item-myFile" name="filename" onchange="previewImage()" class="item-input"></label>
+                    <label for="item-itemNames">Item Name:<input type="text" id="item-itemName" class="item-input"></label>
+                    <label for="item-itemNames">Description:<input type="text" id="item-itemName" class="item-input"></label>
+                    <label for="item-preview">Preview:</label>
+                    <img id="item-preview" alt="Preview Image" class="item-preview-image">
+                    <div class="item-btn">
+                        <button class="item-cancelItem" onclick="cancelItem()">Cancel</button>
+                        <button class="add-item-btn" onclick="addItem()">Add Item</button>
+                    </div>
+                </form>
             </div>
-            <div class="item-btn">
-                <button class="item-cancelItem" onclick="cancelItem()">Cancel</button>
-                <button class="add-item-btn" onclick="addItem()">Add Item</button>
-            </div>
-        </div>
     </div>
 
                 
