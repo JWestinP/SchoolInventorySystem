@@ -725,10 +725,10 @@ body {
   #okayButton:hover {
       background-color: #45a049;
   }
-   .select-container {
+   .select-container input {
       display: flex;
-      align-items: center;
-    }
+      margin-left:100px;
+   }
   
     #selectAllCheckbox {
       margin-right: 10px; /* Add space between checkbox and label */
