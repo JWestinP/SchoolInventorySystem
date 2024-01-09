@@ -74,24 +74,26 @@
                     </div>
                 </div>
 
-                <!-- Add Item Form (Modal)-->
-                <form id="addItemForm" class="add-form" style="display: none;">
-                    <div class="photo-container">
-                        <label for="insertPhoto">Insert Photo:<input type="file" id="insertPhoto" name="insertPhoto" accept="image/*" onchange="previewPhoto()"></label>
-                        <img id="photoPreview" alt="Preview" class="preview-modal-image">
-                    </div>
-                    <label class="itemName">Item Name: <input type="text" id="itemName" name="itemName" required></label>
-                    <label class="itemName">Description: <input type="text" id="description" name="description"></label><br><br>
-                    <label class="itemName">Available Item: <input type="text" id="available-item" name="available-item"
-                            required></label>
-                    <button type="submit" id="addButton">Add</button>
-                    <button type="button" id="cancelButton">Cancel</button>
-                </form>
-
-                <div id="itemAddedModal" style="display: none;">
-                    <p>Item added successfully!</p>
-                    <button type="button" id="okayButton">Okay</button>
-                </div> 
+               <!-- Add Item Form (Modal)-->
+    <div class="item-container">
+        <div id="addItemForm" class="item-form" style="display: none;">
+            <span class="item-close-modal" onclick="closeItemForm()">&times;</span>
+            <form action="/action_page.php">
+                <input type="file" id="item-myFile" name="filename" onchange="previewImage()" class="item-input">
+            </form>
+            <label for="item-itemName">Item Name:<input type="text" id="item-itemName" class="item-input"></label>
+            <label for="item-itemName">Description:<input type="text" id="item-itemName" class="item-input"></label>
+            
+            <div id="previewSection" style="display: none;">
+                <label for="item-preview">Preview:</label>
+                <img id="item-preview" alt="Preview Image" class="item-preview-image">
+            </div>
+            <div class="item-btn">
+                <button class="item-cancelItem" onclick="cancelItem()">Cancel</button>
+                <button class="add-item-btn" onclick="addItem()">Add Item</button>
+            </div>
+        </div>
+    </div>
 
                 
             
