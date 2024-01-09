@@ -96,6 +96,12 @@ input, select {
     vertical-align:middle;
 }
 
+.notification-indicator {
+    color: red;  /* Customize the color as needed */
+    font-size: 16px;  /* Customize the font size as needed */
+    margin-left: 5px;  /* Adjust the margin as needed */
+}
+
 /*
 Start coding here
 */
