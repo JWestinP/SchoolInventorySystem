@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.db.models import Q
 from .models import *
-from .forms import BorrowForm
+from .forms import *
 from recents.models import *
 from unreturned.models import *
 from django.http import JsonResponse
@@ -19,13 +19,29 @@ class ItemSerializer(serializers.ModelSerializer):
 
 @login_required
 def admin_home(request):
-    return render(request, ('home/admin_home.html'))
+    current_user = request.user
+    
+    categories = Category.objects.all()
+    borrow_form = BorrowForm()
+    if request.method == 'POST':
+        borrow_form = BorrowForm(request.POST)
+        if borrow_form.is_valid():
+            model_instance = borrow_form.save(commit=False)
+            model_instance.item_borrower = current_user
+            model_instance.save()
+
+        else:
+            borrow_form = BorrowForm()
+            
+    return render(request, ('home/admin_home.html'), {
+        'borrow_form' : borrow_form,
+        'categories' : categories,
+    })
 
 @login_required
 def guest_home(request):
     return render(request, ('home/guest_home.html'))
 
-# myapp/views.py
 @login_required
 def home(request):
     current_user = request.user
@@ -100,7 +116,17 @@ def home(request):
 def get_borrow_form(request):
     borrow_form = BorrowForm()
     form_html = render_to_string('home/borrow_form.html', {'borrow_form': borrow_form}, request=request)
-    return JsonResponse({'form_html': form_html})
+    return JsonResponse({'form_html' : form_html})
+
+def get_item_form(request):
+    item_form = ItemForm()
+    item_form_html = render_to_string('home/item_form.html', {'item_form': item_form}, request=request)
+    return JsonResponse({'item_form_html' : item_form_html})
+
+def get_stock_form(request):
+    stock_form = StockForm()
+    stock_form_html = render_to_string('home/stock_form.html', {'stock_form': stock_form}, request=request)
+    return JsonResponse({'stock_form_html' : stock_form_html})
 
 def get_items(request):
     category = request.GET.get('category')
@@ -160,6 +186,26 @@ def save_borrow_form(request):
 
         return JsonResponse({'error': 'Invalid form submission'}, status=400)
 
+def save_item_form(request):
+    item_form = ItemForm(request.POST, request.FILES)
+    
+    if item_form.is_valid():
+        model_instance = item_form.save(commit=False)
+        model_instance.save()
+        
+        return JsonResponse({'message': 'Form submitted successfully'})
+
+    else:
+        print('Form is NOT valid!')
+        print('Errors:', item_form.errors.as_data())
+        return JsonResponse({'error': 'Invalid form submission'}, status=400)
+def save_stock_form(request):
+    stock_form = StockForm(request.POST)
+    
+    if stock_form.is_valid():
+        model_instance = stock_form.save(commit=False)
+        model_instance.save()
+
 def get_item_inventory(request):
     item_inventory = Stock.objects.all()
 
@@ -175,3 +221,12 @@ def get_item_inventory(request):
                    'stock_id' : item.pk} for item in item_inventory]
     print(items_data)
     return JsonResponse({'items': items_data}, safe=False)
+
+def delete_item(request):
+    item_pk = request.GET.get('item_id', None)
+
+    if item_pk is not None:
+        Item.objects.filter(item_id=item_pk).delete()
+        return JsonResponse({'message': 'Item deleted successfully'})
+    else:
+        return JsonResponse({'message': 'Item ID not provided'}, status=400)

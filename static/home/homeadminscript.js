@@ -4,6 +4,7 @@ const selectItem = document.querySelectorAll('.item_button')
 const informationId = document.getElementById('item_information')
 const backCategory = document.getElementById('back_category')
 const itemContainer = document.getElementById('item_list')
+const backEditButton = document.getElementById('edit_back_buttons')
 
 function fetchData(itemId) {
     fetch('/api/item_inventory/')
@@ -147,8 +148,37 @@ function showItem(category) {
                 var data = JSON.parse(xhr.responseText)
                 console.log('Received data:', data)
     
-                itemContainer.innerHTML += `<p>${data.items.length} items in category: ${data.items[0].item_category.item_category}</p>`;
+                document.getElementById('edit_back_buttons').innerHTML = `
+                <button onclick="addItem()">Add</button>
+                <button class="remove_item">Remove</button>
+                <button id="back_category" onclick="showAllCategoryButtons()">Back</button>
+                `;
                 
+                document.getElementById('edit_back_buttons').addEventListener('click', function(event){
+                    if (event.target.matches('.remove_item')){
+                        itemContainer.innerHTML = ''
+                        if (Array.isArray(data.items)) {
+                            data.items.forEach(selectedItem => {
+                                const imageUrl = `${selectedItem.item_photo}`
+                                const itemHTML = `
+                                    <div>
+                                        <img src="${imageUrl}" alt="${selectedItem.item_name}" style="width: 100px; height: 100px;">
+                                        <button data-delete-target="${selectedItem.item_id}" onclick="deleteItem(${selectedItem.item_id})">-</button>
+                                        <p>${selectedItem.item_name} </p>
+                                    </div>
+                                `
+                                itemContainer.innerHTML += itemHTML
+        
+                            })
+                        } 
+                        else {
+                            console.error('Data does not contain an array:', data)
+                            
+                        }
+                    }
+                })
+
+                itemContainer.innerHTML += `<p>${data.items.length} items in category: ${data.items[0].item_category.item_category}</p>`;
                 itemContainer.addEventListener('click', function (event) {
                     
                     if (event.target.matches('.item_button')) {
@@ -157,7 +187,7 @@ function showItem(category) {
                 
                         console.log('Item button clicked. Item ID:', itemId);
                 
-                        
+        
                         fetchData(itemId);
                     }
                 });
@@ -168,7 +198,6 @@ function showItem(category) {
                             <div>
                                 <img src="${imageUrl}" alt="${selectedItem.item_name}" style="width: 100px; height: 100px;">
                                 <button data-item-target="${selectedItem.item_id}" class="item_button">${selectedItem.item_name}</button>
-                                <button id="back_category" onclick="showAllCategoryButtons()">Back</button>
                             </div>
                         `
                         itemContainer.innerHTML += itemHTML
@@ -204,6 +233,61 @@ function showAllCategoryButtons() {
     var itemContainer = document.getElementById('item_list');
     itemContainer.innerHTML = '';
 
+}
+
+function deleteItem(item_id) {
+    const csrfToken = document.cookie.split(';').find(cookie => cookie.trim().startsWith('csrftoken=')).split('=')[1];
+    fetch(`/delete_item/?item_id=${item_id}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrfToken
+        },
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.message);
+        
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+function addItem() {
+    fetch('/get_item_form/')
+        .then(response => response.json())
+        .then(data => {
+            const formContainer = document.getElementById('add_item_form');
+            formContainer.innerHTML = data.item_form_html;
+            const itemForm = document.getElementById('itemFormId');
+            const csrfToken = document.cookie.split(';').find(cookie => cookie.trim().startsWith('csrftoken=')).split('=')[1];
+                if (itemForm) {
+                    
+                    itemForm.addEventListener('submit', function (event) {
+                        event.preventDefault();
+                    
+                        const formData = new FormData(itemForm);
+
+                        formData.append('csrfmiddlewaretoken', csrfToken);
+                        console.log(formData)
+                        console.log('FormData:', formData);
+                        fetch('/save_item_form/', {
+                            method: 'POST',
+                            body: formData
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log(data);
+                            if (data.message) {
+                            
+                            } else if (data.error) {
+                                
+                                console.error(data.error);
+                            }
+                        })
+                        .catch(error => console.error('Error submitting form:', error));
+                    });                   
+                }
+        })
 }
 
 selectItem.forEach(button => {
