@@ -3,6 +3,7 @@ from django.db.models import Q
 from .models import *
 from .forms import *
 from recents.models import *
+from unreturned.models import *
 from django.http import JsonResponse
 from django.template.loader import render_to_string
 from django.apps import apps
@@ -165,9 +166,11 @@ def save_borrow_form(request):
         borrowed_count = model_instance.item_quantity
         stock_instance.item_current_quantity -= borrowed_count
         stock_instance.item_borrowed_quantity += borrowed_count
-        
-        
+    
         stock_instance.save()
+        
+        unreturned_instance = Unreturned_Item.objects.create(item_borrowed = model_instance, item_days_not_returned = 0)
+        unreturned_instance.save()
         print('updated current count')
 
         # Return a success response
