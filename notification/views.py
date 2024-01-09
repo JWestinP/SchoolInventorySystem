@@ -10,16 +10,16 @@ def notification(request):
     unreturned_items = get_unreturned_items_info(request)
     unreturned_item_exist = check(request)
     print("unreturned_item_exist", unreturned_item_exist)
-
+    
     context = {'unreturned_item_exist' : unreturned_item_exist, 'unreturned_items' : unreturned_items}
     print ("Context" , context)
-
+    
     return render(request, 'notification/notification.html', context)
 
 def check (request):
     user = request.user
     today = datetime.now().date()
-
+    
     queryset = Unreturned_Item.objects.filter(item_borrowed__item_borrower = user,)
     unreturned_item_exist = queryset.exists()
     return unreturned_item_exist
@@ -27,7 +27,7 @@ def check (request):
 def get_unreturned_items_info(request):
     user = request.user
     queryset = Unreturned_Item.objects.filter(item_borrowed__item_borrower=user)
-
+    
     unreturned_items_info = [
         {
             'item_name': item.item_borrowed.item_stock,
@@ -36,5 +36,5 @@ def get_unreturned_items_info(request):
         }
         for item in queryset
     ]
-
+    
     return unreturned_items_info

@@ -20,7 +20,7 @@ class ItemSerializer(serializers.ModelSerializer):
 @login_required
 def admin_home(request):
     current_user = request.user
-
+    
     categories = Category.objects.all()
     borrow_form = BorrowForm()
     if request.method == 'POST':
@@ -32,7 +32,7 @@ def admin_home(request):
 
         else:
             borrow_form = BorrowForm()
-
+            
     return render(request, ('home/admin_home.html'), {
         'borrow_form' : borrow_form,
         'categories' : categories,
@@ -42,7 +42,6 @@ def admin_home(request):
 def guest_home(request):
     return render(request, ('home/guest_home.html'))
 
-# myapp/views.py
 @login_required
 def home(request):
     current_user = request.user
@@ -155,21 +154,21 @@ def save_borrow_form(request):
     borrow_form = BorrowForm(request.POST)
     stock_id = request.POST.get('stock_id')
 
-
+    
     if borrow_form.is_valid():
         model_instance = borrow_form.save(commit=False)
         model_instance.item_borrower = current_user
         model_instance.save()
-
+        
         stock_id = int(stock_id)
 
         stock_instance = get_object_or_404(Stock, pk=stock_id)
         borrowed_count = model_instance.item_quantity
         stock_instance.item_current_quantity -= borrowed_count
         stock_instance.item_borrowed_quantity += borrowed_count
-
+    
         stock_instance.save()
-
+        
         unreturned_instance = Unreturned_Item.objects.create(item_borrowed = model_instance, item_days_not_returned = 0)
         unreturned_instance.save()
         print('updated current count')
@@ -189,11 +188,11 @@ def save_borrow_form(request):
 
 def save_item_form(request):
     item_form = ItemForm(request.POST, request.FILES)
-
+    
     if item_form.is_valid():
         model_instance = item_form.save(commit=False)
         model_instance.save()
-
+        
         return JsonResponse({'message': 'Form submitted successfully'})
 
     else:
@@ -202,7 +201,7 @@ def save_item_form(request):
         return JsonResponse({'error': 'Invalid form submission'}, status=400)
 def save_stock_form(request):
     stock_form = StockForm(request.POST)
-
+    
     if stock_form.is_valid():
         model_instance = stock_form.save(commit=False)
         model_instance.save()
