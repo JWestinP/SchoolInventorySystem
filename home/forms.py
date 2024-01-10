@@ -33,7 +33,3 @@ class StockForm(forms.ModelForm):
         model = Stock
         fields = '__all__'
         
-        widgets = {
-            'item_current_quantity' : forms.HiddenInput(),
-            'item_borrowed' : forms.HiddenInput(),
-        }

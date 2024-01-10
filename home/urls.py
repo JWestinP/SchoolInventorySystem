@@ -12,6 +12,6 @@ urlpatterns = [
     path('get_stock_form/', views.get_stock_form, name='get_stock_form'),
     path('save_borrow_form/', views.save_borrow_form, name='save_borrow_form'),
     path('save_item_form/', views.save_item_form, name='save_item_form'),
-    path('save_stock_form/', views.save_borrow_form, name='save_stock_form'),
+    path('save_stock_form/', views.save_stock_form, name='save_stock_form'),
     path('delete_item/', views.delete_item, name='delete_item'),
 ]

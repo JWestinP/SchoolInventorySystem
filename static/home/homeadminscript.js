@@ -261,7 +261,6 @@ function addItem() {
             const itemForm = document.getElementById('itemFormId');
             const csrfToken = document.cookie.split(';').find(cookie => cookie.trim().startsWith('csrftoken=')).split('=')[1];
                 if (itemForm) {
-                    
                     itemForm.addEventListener('submit', function (event) {
                         event.preventDefault();
                     
@@ -278,13 +277,46 @@ function addItem() {
                         .then(data => {
                             console.log(data);
                             if (data.message) {
-                            
+                                formContainer.innerHTML = ''
+                                fetch('/get_stock_form/')
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        console.log(data)
+                                        const formContainer = document.getElementById('add_stock_form');
+                                        formContainer.innerHTML = data.stock_form_html;
+                                        const stockForm = document.getElementById('stockFormId');
+
+                                        if(stockForm){
+                                            
+                                            stockForm.addEventListener('submit', function (event) {
+                                                event.preventDefault();
+                                                const formStockData = new FormData(stockForm);
+                                                formStockData.append('csrfmiddlewaretoken', csrfToken);
+                                                fetch('/save_stock_form/', {
+                                                    method: 'POST',
+                                                    body: formStockData
+                                                })
+                                                .then(response => response.json())
+                                                .then(data => {
+                                                    console.log(data);
+                                                    if (data.message) {
+                                                    
+                                                    } else if (data.error) {
+                                                        
+                                                        console.error(data.error);
+                                                    }
+                                                })
+                                                .catch(error => console.error('Error submitting form:', error));
+                                            })
+                                        }
+                                    })
                             } else if (data.error) {
                                 
                                 console.error(data.error);
                             }
                         })
                         .catch(error => console.error('Error submitting form:', error));
+
                     });                   
                 }
         })
