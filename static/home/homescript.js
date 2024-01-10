@@ -215,8 +215,8 @@ selectItem.forEach(button => {
         fetchData(itemId);
     });
 });
-<<<<<<< HEAD
-// script.js
+
+// code ni nicole start dito
 function showForm(formId) {
     const forms = document.querySelectorAll('.form');
     
@@ -446,7 +446,7 @@ function showForm(formId) {
                 // Hide the form after adding
                 document.getElementById('addItemForm').style.display = 'none';
         }
-=======
+//code ni nicole end dito
 
 document.addEventListener('DOMContentLoaded', function() {
     itemDisplay = document.getElementById('item_information');
@@ -462,4 +462,4 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
->>>>>>> d7b03d9d04f9ee1305b36e075f3d2ad57a3bc46c
+
