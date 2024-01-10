@@ -28,15 +28,17 @@
             
         </div>
         
-        <div class="button-grid">
-            {% include 'home/result_list.html' %}
-            <button class="buttons-tabs"><a href="{% url 'home' %}">Home</a></button>
-            <button class="buttons-tabs"><a href="{% url 'recents' %}">Recents</a></button>
-            <button class="buttons-tabs"><a href="{% url 'show_unreturned_items' %}">Unreturned</a></button>
-            <button class="buttons-tabs"><a href="{% url 'notification' %}">Notification</a></button>
-            <button class="buttons-tabs"><a href="{% url 'userprofile' %}">Account</a></button>
-            <button class="buttons-tabs"><a href="{% url 'logout' %}">Logout</a></button>
-        </div>   
+        <div class="buttons-box">
+            <div class="button-grid">
+                {% include 'home/result_list.html' %}
+                <button class="buttons-tabs"><a href="{% url 'home' %}">Home</a></button>
+                <button class="buttons-tabs"><a href="{% url 'recents' %}">Recents</a></button>
+                <button class="buttons-tabs"><a href="{% url 'show_unreturned_items' %}">Unreturned</a></button>
+                <button class="buttons-tabs"><a href="{% url 'notification' %}">Notification</a></button>
+                <button class="buttons-tabs"><a href="{% url 'userprofile' %}">Account</a></button>
+                <button class="buttons-tabs"><a href="{% url 'logout' %}">Logout</a></button>
+            </div>  
+        </div> 
 
         <div class="category-container">
             <p class="category-container-title">
@@ -48,9 +50,6 @@
                 {% for category in categories %}
                 <!-- CATEGORY-PREVIEW -->
                 <button onclick="showItem('{{ category }}')" class="category_button">
-                    <div class="category-row">
-                        <img class="category-pic" src="{% static 'home/categories_icon/cleaninggg.png' %}">
-                    </div>
                 {{ category }}
                 </button>
                 {% endfor %}

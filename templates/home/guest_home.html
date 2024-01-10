@@ -2,16 +2,16 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="{% static 'home/guesthomestyle.css' %}">
+        <link rel="stylesheet" href="{% static 'home/homestyle.css' %}">
         <title>GUEST HOME</title>
     </head>
 
     <body>
-      
+        <h1>GUEST HOME</h1>
         <div class="header">
             
             <div class="left-section">
-                <img class="lspu-logo" src="media/logo/lspu-logo.png">
+                <img class="lspu-logo" src="{% static 'home/logo/lspu-logo.png' %}">
             </div>
 
             <div class="middle-section">
@@ -22,94 +22,35 @@
             </div>
 
             <div class="right-section">
-                <img class="ccs-logo" src="media/logo/ccs-logo.jpg">
+                <img class="ccs-logo" src="{% static 'home/logo/ccs-logo.jpg' %}">
             </div>
             
         </div>
         
         
 
-        <div class="button-grid">
+        <div class="guest-button-grid">
             {% include 'home/result_list.html' %}
-            <button class="home-button"><a href="{% url 'home' %}">Home</a></button>
-            <button class="logout-button"><a href="{% url 'logout' %}">Log out</a></button>
+            <button class="guest-buttons-tabs"><a href="{% url 'home' %}">Home</a></button>
+            <button class="guest-buttons-tabs"><a href="{% url 'logout' %}">Log out</a></button>
          </div>    
 
-            <div class="category-container">
-                <p class="category-container-title">
-                    Categories 
-                </p>    
-                <div class="category-grid">
-                    
-                    <div class="category-preview">
-                     <a href="{% url 'logout' %}">   
-                        <div class="category-row">
-                            <img class="category-pic" src="media/categories_icon/cleaninggg.png">
-                        </div>
-                                
-                        <div class="category-info">  
-                            <p class="category-title">
-                                CLEANING MATERIALS
-                            </p>
-                        </div>
-                      </a>     
-                    </div>
+         <div class="category-container">
+            <p class="category-container-title">
+                Categories 
+            </p>   
+            <!-- category-grid -->
+            <div class="categories">
 
-                    <div class="category-preview">
-                        <div class="category-row">
-                            <img class="category-pic" src="media/categories_icon/GADGETS.png">
-                        </div>
-                                
-                        <div class="category-info">  
-                            <p class="category-title">
-                                GADGETS
-                            </p>
-                        </div>
-                            
-                    </div>
-
-                    <div class="category-preview">
-                        <div class="category-row">
-                            <img class="category-pic" src="media/categories_icon/documents.png">
-                        </div>
-                                
-                        <div class="category-info">  
-                            <p class="category-title">
-                                DOCUMENTS
-                            </p>
-                        </div>
-                            
-                    </div>
-
-                    
-                    <div class="category-preview">
-                        <div class="category-row">
-                            <img class="category-pic" src="media/categories_icon/roooom.png">
-                        </div>
-                                
-                        <div class="category-info">  
-                            <p class="category-title">
-                                ROOM
-                            </p>
-                        </div>
-                            
-                    </div>
-
-                    
-                    <div class="category-preview">
-                        <div class="category-row">
-                            <img class="category-pic" src="media/categories_icon/furni.png">
-                        </div>
-                                
-                        <div class="category-info">  
-                            <p class="category-title">
-                                FURNITURES
-                            </p>
-                        </div>
-                            
-                    </div>
-                </div>
+                {% for category in categories %}
+                <!-- CATEGORY-PREVIEW -->
+                <button onclick="showItem('{{ category }}')" class="category_button">
+                {{ category }}
+                </button>
+                {% endfor %}
             </div>
+        </div>
+
                     
        
             <script defer src="{% static 'home/homescript.js' %}"></script>
