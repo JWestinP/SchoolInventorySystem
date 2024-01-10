@@ -223,9 +223,9 @@ button:hover{
 
 
     @media only screen and (max-width: 768px) {
-        body,
-        html {
-            justify-content: center;
+        body, html {
+            justify-content: center; /* Center the content on smaller screens */
+            background-size: auto; /* Adjust background size for smaller screens */
         }
     
         .form-container {
