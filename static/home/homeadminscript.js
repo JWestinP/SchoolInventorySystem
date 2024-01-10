@@ -325,7 +325,41 @@ function deleteItem(item_id) {
 }
 
 function addCategory() {
+    fetch('/get_category_form/')
+        .then(response => response.json())
+        .then(data => {
+            const formContainer = document.getElementById('add_category_form');
+            formContainer.innerHTML = data.category_form_html;
+            const categoryForm = document.getElementById('categoryFormId');
+            const csrfToken = document.cookie.split(';').find(cookie => cookie.trim().startsWith('csrftoken=')).split('=')[1];
+                if (categoryForm) {
+                    categoryForm.addEventListener('submit', function (event) {
+                        event.preventDefault();
+                    
+                        const formData = new FormData(categoryForm);
 
+                        formData.append('csrfmiddlewaretoken', csrfToken);
+                        console.log(formData)
+                        console.log('FormData:', formData);
+                        fetch('/save_category_form/', {
+                            method: 'POST',
+                            body: formData
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log(data);
+                            if (data.message) {
+                                
+                            } else if (data.error) {
+                                
+                                console.error(data.error);
+                            }
+                        })
+                        .catch(error => console.error('Error submitting form:', error));
+
+                    });                   
+                }
+        })
 }
 
 function deleteCategory(category_id) {

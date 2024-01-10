@@ -1,0 +1,5 @@
+<form action="/save_category_form/" id="categoryFormId" method="post">
+    {% csrf_token %}
+    {{ category_form.item_category }}
+    <input type="submit" value="Submit">
+</form>

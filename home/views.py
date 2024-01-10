@@ -135,7 +135,10 @@ def get_stock_form(request):
     return JsonResponse({'stock_form_html' : stock_form_html})
 
 def get_category_form(request):
-    pass
+    category_form = CategoryForm()
+    category_form_html = render_to_string('home/category_form.html', {'category_form': category_form}, request=request)
+    return JsonResponse({'category_form_html' : category_form_html})
+
 def get_items(request):
     category = request.GET.get('category')
     print(category)
@@ -237,7 +240,18 @@ def save_stock_form(request):
         return JsonResponse({'error': 'Invalid form submission'}, status=400)
 
 def save_category_form(request):
-    pass
+    category_form = CategoryForm(request.POST)
+    
+    if category_form.is_valid():
+        model_instance = category_form.save(commit=False)
+        model_instance.save()
+        return JsonResponse({'message': 'Form submitted successfully'})
+
+    else:
+        print('Form is NOT valid!')
+        print('Errors:', category_form.errors.as_data())
+        return JsonResponse({'error': 'Invalid form submission'}, status=400)
+
 
 def get_item_inventory(request):
     item_inventory = Stock.objects.all()
