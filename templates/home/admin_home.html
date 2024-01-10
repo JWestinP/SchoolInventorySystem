@@ -14,10 +14,14 @@
         <button><a href="{% url 'admin_userprofile' %}">Account</a></button>
         <button><a href="{% url 'logout' %}">Logout</a></button>
 
-        <div class="categories">
+        <div class="categories" id="category_container">
             {% for category in categories %}
             <button onclick="showItem('{{ category }}')" class="category_button">{{ category }}</button>
             {% endfor %}
+        </div>
+
+        <div id="edit_category_buttons">
+            <button onclick="editCategory()">Edit</button>
         </div>
         
         

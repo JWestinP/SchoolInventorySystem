@@ -16,7 +16,13 @@ class ItemSerializer(serializers.ModelSerializer):
         model = Item
         fields = '__all__'  # Include all fields
         depth = 1  # Include one level of related objects
-
+        
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = '__all__'  # Include all fields
+        depth = 1  # Include one level of related objects
+    
 @login_required
 def admin_home(request):
     current_user = request.user
@@ -128,6 +134,8 @@ def get_stock_form(request):
     stock_form_html = render_to_string('home/stock_form.html', {'stock_form': stock_form}, request=request)
     return JsonResponse({'stock_form_html' : stock_form_html})
 
+def get_category_form(request):
+    pass
 def get_items(request):
     category = request.GET.get('category')
     print(category)
@@ -148,6 +156,14 @@ def get_items(request):
         print(f'Error in your_ajax_view: {e}')
         return JsonResponse({'error': 'Internal server error'}, status=500)
 
+def get_category(request):
+    categories = Category.objects.all()
+    serializer = CategorySerializer(categories, many=True)
+    serializer_data = serializer.data
+    
+    return JsonResponse({'categories' : serializer_data})
+
+    
 @login_required
 def save_borrow_form(request):
     current_user = request.user
@@ -200,6 +216,7 @@ def save_item_form(request):
         print('Form is NOT valid!')
         print('Errors:', item_form.errors.as_data())
         return JsonResponse({'error': 'Invalid form submission'}, status=400)
+    
 def save_stock_form(request):
     stock_form = StockForm(request.POST)
     specific_item = request.session.get('item')
@@ -218,6 +235,9 @@ def save_stock_form(request):
         print('Form is NOT valid!')
         print('Errors:', stock_form.errors.as_data())
         return JsonResponse({'error': 'Invalid form submission'}, status=400)
+
+def save_category_form(request):
+    pass
 
 def get_item_inventory(request):
     item_inventory = Stock.objects.all()
@@ -243,3 +263,12 @@ def delete_item(request):
         return JsonResponse({'message': 'Item deleted successfully'})
     else:
         return JsonResponse({'message': 'Item ID not provided'}, status=400)
+    
+def delete_category(request):
+    category_pk = request.GET.get('category_id', None)
+
+    if category_pk is not None:
+        Category.objects.filter(id=category_pk).delete()
+        return JsonResponse({'message': 'Category deleted successfully'})
+    else:
+        return JsonResponse({'message': 'Category ID not provided'}, status=400)    

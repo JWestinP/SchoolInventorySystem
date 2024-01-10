@@ -231,25 +231,10 @@ function showAllCategoryButtons() {
 
     });
     var itemContainer = document.getElementById('item_list');
+    var buttonContainer = document.getElementById('edit_back_buttons')
     itemContainer.innerHTML = '';
+    buttonContainer.innerHTML = ''
 
-}
-
-function deleteItem(item_id) {
-    const csrfToken = document.cookie.split(';').find(cookie => cookie.trim().startsWith('csrftoken=')).split('=')[1];
-    fetch(`/delete_item/?item_id=${item_id}`, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': csrfToken
-        },
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data.message);
-        
-    })
-    .catch(error => console.error('Error:', error));
 }
 
 function addItem() {
@@ -321,6 +306,88 @@ function addItem() {
                 }
         })
 }
+
+function deleteItem(item_id) {
+    const csrfToken = document.cookie.split(';').find(cookie => cookie.trim().startsWith('csrftoken=')).split('=')[1];
+    fetch(`/delete_item/?item_id=${item_id}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrfToken
+        },
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.message);
+        
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+function addCategory() {
+
+}
+
+function deleteCategory(category_id) {
+    const csrfToken = document.cookie.split(';').find(cookie => cookie.trim().startsWith('csrftoken=')).split('=')[1];
+    fetch(`/delete_category/?category_id=${category_id}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrfToken
+        },
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.message);
+        
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+function editCategory() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/get_category/', true);
+    xhr.onload = function () {
+        if (xhr.status != 200) {
+            console.error('Request failed with status ' + xhr.status);
+            
+        } else {
+            var responseData = JSON.parse(xhr.responseText);
+            var categories = responseData.categories;
+            var categoryContainer = document.getElementById('category_container');
+            
+            document.getElementById('edit_category_buttons').innerHTML = `
+                <button onclick="addCategory()">Add</button>
+                <button class="remove_category">Remove</button>
+            `
+
+            document.getElementById('edit_category_buttons').addEventListener('click', function(event){
+                if (event.target.matches('.remove_category')){
+                    categoryContainer.innerHTML = ''
+                    if (Array.isArray(categories)) {
+                        categories.forEach(category => {
+                            const categoryName = category.category_name;
+                            console.log(categoryName);
+                            document.getElementById
+                            const categoryHTML = `
+                                <div>
+                                    <button onclick="deleteCategory(${category.id})" class="category_button">remove</button>
+                                    <p>${category.item_category}</p>
+                                </div>
+                            `;
+                
+                            categoryContainer.innerHTML += categoryHTML;
+                        });
+                    }
+                }
+            })
+            
+        }
+    };
+    xhr.send();
+}
+
 
 selectItem.forEach(button => {
     button.addEventListener('click', () => {
