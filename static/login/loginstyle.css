@@ -113,10 +113,10 @@ body, html {
 
 .form-container {
     background-color: rgba(234, 231, 231, 0.8);
-    padding: 60px;
+    padding: 55px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    width: 300px;
+    width: 400px;
     margin-right: 230px;
 }
 
@@ -161,7 +161,7 @@ button {
             height: 42px;
             margin-bottom: 10px;
             margin-top: 10px;
-            margin-left: 32px;
+            margin-left: 82px;
             background-color: rgba(96, 158, 228, 0.8);
             color: white;
             font-weight: bold;
@@ -189,20 +189,30 @@ button:hover{
 #guestbtn:hover{
     background-color: gray;
 }
-    .imgcss h5{
-        margin-top: -75px;
-        margin-left: 90px;
-        font-size: 15px;
+    .imgcss h2{
+        margin-top: -85px;
+        margin-left: 80px;
+        font-size:25px;
         color: rgba(122, 26, 34);
         font-family: 'Arial';
-        font-weight: 800;
+        font-weight:800;
+        text-align: left;
+    }
+    .imgcss p{
+        margin-left: 80px;
+        font-size:25px;
+        color: rgba(122, 26, 34);
+        font-family: 'Arial';
+        font-weight:800;
         text-align: left;
     }
     .imgcss img{
-        width: 78px; /* Set a fixed width for the image */
+        width: 110px; /* Set a fixed width for the image */
         height: auto; /* Maintain aspect ratio */
-        border: 2px solid white;  /* Add a border for better visibility */
         margin-bottom: 15px;
+        margin-left: -35px;
+        margin-top: 15px;
+    
     }
     label{
         color: rgba(122, 26, 34);
@@ -212,26 +222,27 @@ button:hover{
     }
 
 
-@media (max-width: 1200px) {
-    .form-container {
-        margin-right: 100px;
-    }
-}
-
-@media (max-width: 992px) {
-    .form-container {
-        margin-right: 50px;
-    }
-}
-
-@media (max-width: 768px) {
-    body, html {
-        justify-content: center; /* Center the content on smaller screens */
-    }
+    @media only screen and (max-width: 768px) {
+        body,
+        html {
+            justify-content: center;
+        }
     
-    .form-container {
-        margin-right: 0;
-        width: 80%; /* Adjust the width for smaller screens */
-        max-width: none; /* Remove the max-width restriction */
+        .form-container {
+            margin-right: 0;
+            width: 90%; /* Adjust the width for smaller screens */
+        }
+    
+        .imgcss img {
+            width: 80px; /* Adjust image size for smaller screens */
+        }
+    
+        .imgcss h2 {
+            margin-top: -55px;
+            font-size: 20px;
+        }
+    
+        .imgcss p {
+            font-size: 20px;
+        }
     }
-}

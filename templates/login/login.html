@@ -20,9 +20,12 @@
                 <strong></strong> {{ message }}
                 <div class="imgcss">
                     <img src="static/home/CSS.png">
-                    <h5>COLLEGE OF COMPUTER STUDIES</h5>
+                    <h2>COLLEGE OF <br></h2>
+                    <p>COMPUTER STUDIES</p>
+
+                   
                 </div>
-                <span class="close" onclick="closeAlert(this.parentElement)">&times;</span>
+                <!--<span class="close" onclick="closeAlert(this.parentElement)">&times;</span>-->
             </div>
             
         <form action = "/login" method = "POST">
@@ -37,6 +40,7 @@
                 <button><a href="{% url 'login' %}">LOG IN</a></button>
                 <button type="button" id="guestbtn">LOG IN AS GUEST</button>
             </form>
+            </div>
         </head>
     </body>
 </html>
