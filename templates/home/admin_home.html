@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
         <title>ADMIN HOME</title>
     <body>
+<<<<<<< HEAD
         <header>
             <div class="logo left">
                 <img src="static/home/LSPU.png" alt="Left Logo">
@@ -141,4 +142,64 @@
                 <script src="static/home/homescript.js"></script>
             </head>
      </body>
+=======
+        <button><a href="{% url 'admin_home' %}">Home</a></button>
+        <button><a href="{% url 'admin_recents' %}">Recents</a></button>
+        <button><a href="{% url 'admin_unreturned' %}">Unreturned</a></button>
+        <button><a href="{% url 'members' %}">Members</a></button>
+        <button><a href="{% url 'admin_userprofile' %}">Account</a></button>
+        <button><a href="{% url 'logout' %}">Logout</a></button>
+
+        <div class="categories">
+            {% for category in categories %}
+            <button onclick="showItem('{{ category }}')" class="category_button">{{ category }}</button>
+            {% endfor %}
+        </div>
+        
+        
+        <div id="category_item" class="category_div">
+            <div id="item_list">
+
+            </div>
+            <div id="edit_back_buttons">
+                
+            </div>
+            <div id="add_item">
+                <div id="add_item_form">
+
+                </div>
+                <div id="add_stock_form">
+
+                </div>
+                <div id="success_popup">
+
+                </div>
+            </div>
+            <h1>{{ current_category }}</h1>
+            {% for item in cleaning_inventory %}
+                <div>
+                    
+                </div>
+            {% endfor %}
+            <div class="item_information" id="item_information">
+                <div class="item_header" id="item_header">
+
+                    <button data-close-button class="close_button">&times;</button>                          
+                </div>
+
+                <div class="item_body" id="item_body">
+
+                </div>
+                <div class="item_form" id="item_form">
+
+                </div>
+                
+            </div>
+            
+            
+        </div>
+
+        <script defer src="{% static 'home/homeadminscript.js' %}"></script>
+    </body>
+>>>>>>> d7b03d9d04f9ee1305b36e075f3d2ad57a3bc46c
 </html>

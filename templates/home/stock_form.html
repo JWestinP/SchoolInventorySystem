@@ -1,0 +1,5 @@
+<form action="/save_stock_form/" id="stockFormId" method="post">
+    {% csrf_token %}
+    {{ stock_form.item_total_quantity }}
+    <input type="submit" value="Submit">
+</form>

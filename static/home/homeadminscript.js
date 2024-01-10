@@ -4,6 +4,7 @@ const selectItem = document.querySelectorAll('.item_button')
 const informationId = document.getElementById('item_information')
 const backCategory = document.getElementById('back_category')
 const itemContainer = document.getElementById('item_list')
+const backEditButton = document.getElementById('edit_back_buttons')
 
 function fetchData(itemId) {
     fetch('/api/item_inventory/')
@@ -147,8 +148,37 @@ function showItem(category) {
                 var data = JSON.parse(xhr.responseText)
                 console.log('Received data:', data)
     
-                itemContainer.innerHTML += `<p>${data.items.length} items in category: ${data.items[0].item_category.item_category}</p>`;
+                document.getElementById('edit_back_buttons').innerHTML = `
+                <button onclick="addItem()">Add</button>
+                <button class="remove_item">Remove</button>
+                <button id="back_category" onclick="showAllCategoryButtons()">Back</button>
+                `;
                 
+                document.getElementById('edit_back_buttons').addEventListener('click', function(event){
+                    if (event.target.matches('.remove_item')){
+                        itemContainer.innerHTML = ''
+                        if (Array.isArray(data.items)) {
+                            data.items.forEach(selectedItem => {
+                                const imageUrl = `${selectedItem.item_photo}`
+                                const itemHTML = `
+                                    <div>
+                                        <img src="${imageUrl}" alt="${selectedItem.item_name}" style="width: 100px; height: 100px;">
+                                        <button data-delete-target="${selectedItem.item_id}" onclick="deleteItem(${selectedItem.item_id})">-</button>
+                                        <p>${selectedItem.item_name} </p>
+                                    </div>
+                                `
+                                itemContainer.innerHTML += itemHTML
+        
+                            })
+                        } 
+                        else {
+                            console.error('Data does not contain an array:', data)
+                            
+                        }
+                    }
+                })
+
+                itemContainer.innerHTML += `<p>${data.items.length} items in category: ${data.items[0].item_category.item_category}</p>`;
                 itemContainer.addEventListener('click', function (event) {
                     
                     if (event.target.matches('.item_button')) {
@@ -157,7 +187,7 @@ function showItem(category) {
                 
                         console.log('Item button clicked. Item ID:', itemId);
                 
-                        
+        
                         fetchData(itemId);
                     }
                 });
@@ -168,7 +198,6 @@ function showItem(category) {
                             <div>
                                 <img src="${imageUrl}" alt="${selectedItem.item_name}" style="width: 100px; height: 100px;">
                                 <button data-item-target="${selectedItem.item_id}" class="item_button">${selectedItem.item_name}</button>
-                                <button id="back_category" onclick="showAllCategoryButtons()">Back</button>
                             </div>
                         `
                         itemContainer.innerHTML += itemHTML
@@ -206,6 +235,93 @@ function showAllCategoryButtons() {
 
 }
 
+function deleteItem(item_id) {
+    const csrfToken = document.cookie.split(';').find(cookie => cookie.trim().startsWith('csrftoken=')).split('=')[1];
+    fetch(`/delete_item/?item_id=${item_id}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrfToken
+        },
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.message);
+        
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+function addItem() {
+    fetch('/get_item_form/')
+        .then(response => response.json())
+        .then(data => {
+            const formContainer = document.getElementById('add_item_form');
+            formContainer.innerHTML = data.item_form_html;
+            const itemForm = document.getElementById('itemFormId');
+            const csrfToken = document.cookie.split(';').find(cookie => cookie.trim().startsWith('csrftoken=')).split('=')[1];
+                if (itemForm) {
+                    itemForm.addEventListener('submit', function (event) {
+                        event.preventDefault();
+                    
+                        const formData = new FormData(itemForm);
+
+                        formData.append('csrfmiddlewaretoken', csrfToken);
+                        console.log(formData)
+                        console.log('FormData:', formData);
+                        fetch('/save_item_form/', {
+                            method: 'POST',
+                            body: formData
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log(data);
+                            if (data.message) {
+                                formContainer.innerHTML = ''
+                                fetch('/get_stock_form/')
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        console.log(data)
+                                        const formContainer = document.getElementById('add_stock_form');
+                                        formContainer.innerHTML = data.stock_form_html;
+                                        const stockForm = document.getElementById('stockFormId');
+
+                                        if(stockForm){
+                                            
+                                            stockForm.addEventListener('submit', function (event) {
+                                                event.preventDefault();
+                                                const formStockData = new FormData(stockForm);
+                                                formStockData.append('csrfmiddlewaretoken', csrfToken);
+                                                fetch('/save_stock_form/', {
+                                                    method: 'POST',
+                                                    body: formStockData
+                                                })
+                                                .then(response => response.json())
+                                                .then(data => {
+                                                    console.log(data);
+                                                    if (data.message) {
+                                                    
+                                                    } else if (data.error) {
+                                                        
+                                                        console.error(data.error);
+                                                    }
+                                                })
+                                                .catch(error => console.error('Error submitting form:', error));
+                                            })
+                                        }
+                                    })
+                            } else if (data.error) {
+                                
+                                console.error(data.error);
+                            }
+                        })
+                        .catch(error => console.error('Error submitting form:', error));
+
+                    });                   
+                }
+        })
+}
+
 selectItem.forEach(button => {
     button.addEventListener('click', () => {
         const itemId = button.getAttribute('data-item-target');
@@ -215,238 +331,6 @@ selectItem.forEach(button => {
         fetchData(itemId);
     });
 });
-<<<<<<< HEAD
-// script.js
-function showForm(formId) {
-    const forms = document.querySelectorAll('.form');
-    
-    forms.forEach(form => {
-      form.style.display = 'none';
-    });
-  
-    const selectedForm = document.getElementById(formId);
-    if (selectedForm) {
-      selectedForm.style.display = 'block';
-    }
-  }
-  function openCategoryModal() {
-    document.getElementById('categoryModal').style.display = 'flex';
-  }
-  
-  function closeCategoryModal() {
-    document.getElementById('categoryModal').style.display = 'none';
-  }
-  
-  let modalType;
-  
-    function openModal(type) {
-      modalType = type;
-      document.getElementById('modal').style.display = 'flex';
-    }
-    function showForm(formId) {
-      // Hide all forms
-      var forms = document.querySelectorAll('.form');
-      forms.forEach(function(form) {
-        form.style.display = 'none';
-      });
-  
-      // Show the selected form
-      var selectedForm = document.getElementById(formId);
-      if (selectedForm) {
-        selectedForm.style.display = 'block';
-      }
-    }
-   function toggleForm(formId) {
-        var form = document.getElementById(formId);
-        form.style.display = form.style.display === 'none' ? 'flex' : 'none';
-      }
-  
-  document.getElementById('addItemForm').addEventListener('submit', function (event) {
-      event.preventDefault(); // Prevent the form from submitting and reloading the page
-  
-      // Add your logic to check if the item is already added (for demonstration purposes, I'm using a variable 'itemAlreadyAdded')
-      var itemAlreadyAdded = true; // Replace this with your actual logic
-  
-      if (itemAlreadyAdded) {
-          showNotification();
-      } else {
-          // Continue with the form submission or item addition logic
-          console.log('Add the item here...');
-      }
-  });
-  document.getElementById('addItemForm').addEventListener('submit', function (event) {
-      event.preventDefault(); // Prevent the form from submitting and reloading the page
-  
-      // Add your logic to check if the item is already added (for demonstration purposes, I'm using a variable 'itemAlreadyAdded')
-      var itemAlreadyAdded = true; // Replace this with your actual logic
-  
-      if (itemAlreadyAdded) {
-          showNotificationModal();
-      } else {
-          // Continue with the form submission or item addition logic
-          console.log('Add the item here...');
-      }
-  });
-  
-  function showNotificationModal() {
-      var modal = document.getElementById('notificationModal');
-      modal.style.display = 'flex';
-  }
-  
-  function hideNotificationModal() {
-      var modal = document.getElementById('notificationModal');
-      modal.style.display = 'none';
-  }
-  
-  
-  document.addEventListener('DOMContentLoaded', function () {
-          var addItemForm = document.getElementById('addItemForm');
-          var itemAddedModal = document.getElementById('itemAddedModal');
-          var okayButton = document.getElementById('okayButton');
-          var itemList = document.getElementById('itemlist');
-          var cancelButton = document.getElementById('cancelButton');
-  
-          // Handle form submission
-          document.getElementById('addButton').addEventListener('click', function () {
-              // Perform actions to add the item and display the added item
-              // For demonstration purposes, let's just show the confirmation modal
-              itemAddedModal.style.display = 'block';
-  
-              // Close the add item form
-              addItemForm.style.display = 'none';
-          });
-  
-          // Handle click on the "Cancel" button
-          document.getElementById('cancelButton').addEventListener('click', function () {
-              // Perform actions to go back to the item list
-              // For demonstration purposes, let's just close the modal
-              addItemForm.reset();
-              itemAddedModal.style.display = 'none';
-          });
-  
-           cancelButton.addEventListener('click', function () {
-              // Perform actions to close the form
-              addItemForm.reset();
-              addItemForm.style.display = 'none';
-            });
-  
-          // Handle click on the "Okay" button in the confirmation modal
-          okayButton.addEventListener('click', function () {
-              // Perform actions, such as navigating to the item list or other actions
-              itemAddedModal.style.display = 'none';
-              addItemForm.style.display = 'none';  // Hide the add item form
-              itemList.scrollIntoView({ behavior: 'smooth' });
-          });
-      })
-  function selectAllItems() {
-          // Replace this with the actual logic for selecting all items
-          var checkboxes = document.querySelectorAll('.form-items input[type="checkbox"]');
-          checkboxes.forEach(function (checkbox) {
-              checkbox.checked = document.getElementById('selectAllCheckbox').checked;
-          });
-      }
-       function confirmRemoveItems() {
-      var checkbox = document.getElementById('selectAllCheckbox');
-      
-      if (checkbox.checked) {
-        var confirmDelete = confirm('Do you want to delete the selected items?');
-  
-        if (confirmDelete) {
-          // Add your logic to remove items here
-          alert('Items deleted!');
-        } else {
-          // Uncheck the checkbox if the user cancels the deletion
-          checkbox.checked = false;
-        }
-      }
-    }
-    function previewImage() {
-          var fileInput = document.getElementById('myFile');
-          var previewImage = document.getElementById('previewImage');
-  
-          if (fileInput.files && fileInput.files[0]) {
-              var reader = new FileReader();
-  
-              reader.onload = function (e) {
-                  previewImage.src = e.target.result;
-              };
-  
-              reader.readAsDataURL(fileInput.files[0]);
-          }
-      }
-  
-      function closeModal() {
-           document.getElementById('modal').style.display = 'none';
-      }
-  
-      function cancel() {
-          let text = "Press a button OK to cancel.";
-  
-          if (confirm(text) == true) {
-            closeModal();
-          } else { false;
-          }
-      }
-  
-      function addItem() {
-            const name = document.getElementById('nameInput').value;
-            const image = document.getElementById('myFile').value;
-  
-            if (name && image) {
-              alert(`Added ${modalType}: ${name}`);
-              closeModal();
-              // Perform additional actions, such as updating the UI or sending data to a server
-            } else {
-              alert('Please enter both name and image URL.');
-            }
-          }
-          function openItemForm() {
-            document.getElementById('addItemForm').style.display = 'flex';
-        }
-        
-        function closeItemForm() {
-            document.getElementById('addItemForm').style.display = 'none';
-        }
-        
-        function previewImage() {
-            var input = document.getElementById("item-myFile");
-            var preview = document.getElementById("item-preview");
-            var previewSection = document.getElementById("previewSection");
-        
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-        
-                reader.onload = function (e) {
-                    preview.src = e.target.result;
-                    previewSection.style.display = "block";
-                };
-        
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-        
-        function cancelItem() {
-            closeItemForm();
-            // Your cancel item logic heredocument.getElementById('addItemForm').style.display = 'none';
-        }
-        
-        function addItem() {
-            closeItemForm();
-            var itemName = document.getElementById('item-itemName').value;
-                var previewImage = document.getElementById('previewSection').style.display;
-                
-                // Perform validation or further processing as needed
-        
-                // Example: Log the values
-                console.log('Item Name:', itemName);
-                console.log('Preview Image:', previewImage);
-        
-                // Add your logic to save or process the item here
-        
-                // Hide the form after adding
-                document.getElementById('addItemForm').style.display = 'none';
-        }
-=======
 
 document.addEventListener('DOMContentLoaded', function() {
     itemDisplay = document.getElementById('item_information');
@@ -462,4 +346,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
->>>>>>> d7b03d9d04f9ee1305b36e075f3d2ad57a3bc46c

@@ -1,0 +1,9 @@
+<form action="/save_item_form/" id="itemFormId" method="post">
+    {% csrf_token %}
+    {{ item_form.item_name }}
+    {{ item_form.item_description }}
+    {{ item_form.item_photo }}
+    {{ item_form.item_category }}
+
+    <input type="submit" value="Next">
+</form>
