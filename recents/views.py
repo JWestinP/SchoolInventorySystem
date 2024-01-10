@@ -14,4 +14,9 @@ def recents(request):
                 'item': item})
 
 def admin_recents(request):
-    return render(request, ('recents/admin_recents.html'))
+    item = Item.objects.all()
+    borrowed_item = Borrowed_Item.objects.all()
+
+    return render(request, ('recents/admin_recents.html'),
+                {'borrowed_item': borrowed_item,
+                'item': item})

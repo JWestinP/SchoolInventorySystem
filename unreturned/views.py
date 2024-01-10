@@ -13,4 +13,7 @@ def unreturned(request):
                 {'unreturned_items': unreturned_items})
 
 def admin_unreturned(request):
-    return render(request, ('unreturned/admin_unreturned.html'))
+    unreturned_items = Unreturned_Item.objects.all()
+
+    return render(request, 'unreturned/admin_unreturned.html',
+                {'unreturned_items': unreturned_items})
