@@ -852,11 +852,21 @@ body {
     max-width: 400px;
     width: 100%;
   }
-  
+  .input-label {
+    text-align: left;
+  }
+  .input-label label {
+    display: block;
+    margin-bottom: 10px;
+  }
   .item-input {
     margin: 8px 0;
     width: 100%;
     box-sizing: border-box;
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-left: 190px;
   }
   label{
     margin-left: 30px;

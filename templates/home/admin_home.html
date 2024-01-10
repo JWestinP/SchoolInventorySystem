@@ -79,8 +79,11 @@
             <div class="item-forms">
                 <form action="/action_page.php">
                     <label for="item-itemNames">Choose Image:<input type="file" id="item-myFile" name="filename" onchange="previewImage()" class="item-input"></label>
-                    <label for="item-itemNames">Item Name:<input type="text" id="item-itemName" class="item-input"></label>
-                    <label for="item-itemNames">Description:<input type="text" id="item-itemName" class="item-input"></label>
+                    <div class="input-label">
+                        <label>Item Name:<input type="text" id="item-itemName" class="item-input"></label>
+                        <label>Description:<input type="text" id="item-itemName" class="item-input"></label>      
+                    </div>
+                    <label>Available Items:<input type="text" id="item-itemName" class="item-input"></label>
                     <label for="item-preview">Preview:</label>
                     <img id="item-preview" alt="Preview Image" class="item-preview-image">
                     <div class="item-btn">
