@@ -193,6 +193,7 @@ def save_item_form(request):
         model_instance = item_form.save(commit=False)
         model_instance.save()
         
+        request.session['item'] = model_instance.item_id
         return JsonResponse({'message': 'Form submitted successfully'})
 
     else:
@@ -201,10 +202,22 @@ def save_item_form(request):
         return JsonResponse({'error': 'Invalid form submission'}, status=400)
 def save_stock_form(request):
     stock_form = StockForm(request.POST)
-    
+    specific_item = request.session.get('item')
     if stock_form.is_valid():
+        item_instance = get_object_or_404(Item, item_id = specific_item)
         model_instance = stock_form.save(commit=False)
+        model_instance.item_current_quantity = model_instance.item_total_quantity
+        model_instance.item_borrowed_quantity = 0
+        model_instance.item_information = item_instance
         model_instance.save()
+        
+        del request.session['item']
+        return JsonResponse({'message': 'Form submitted successfully'})
+
+    else:
+        print('Form is NOT valid!')
+        print('Errors:', stock_form.errors.as_data())
+        return JsonResponse({'error': 'Invalid form submission'}, status=400)
 
 def get_item_inventory(request):
     item_inventory = Stock.objects.all()
