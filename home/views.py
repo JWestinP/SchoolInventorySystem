@@ -166,7 +166,6 @@ def get_category(request):
     
     return JsonResponse({'categories' : serializer_data})
 
-    
 @login_required
 def save_borrow_form(request):
     current_user = request.user
@@ -251,7 +250,6 @@ def save_category_form(request):
         print('Form is NOT valid!')
         print('Errors:', category_form.errors.as_data())
         return JsonResponse({'error': 'Invalid form submission'}, status=400)
-
 
 def get_item_inventory(request):
     item_inventory = Stock.objects.all()

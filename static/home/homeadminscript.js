@@ -5,6 +5,8 @@ const informationId = document.getElementById('item_information')
 const backCategory = document.getElementById('back_category')
 const itemContainer = document.getElementById('item_list')
 const backEditButton = document.getElementById('edit_back_buttons')
+const formId = document.getElementById('add_item')
+const categoryId = document.getElementById('add_category_form')
 
 function fetchData(itemId) {
     fetch('/api/item_inventory/')
@@ -125,9 +127,33 @@ function openItem(informationId) {
     }
 }
 
+function openForm(formId) {
+    console.log('Opening item form');
+    if (formId) {
+        formId.classList.add('active');
+    }
+}
+
+function openCategoryForm(categoryId) {
+    console.log('Opening category form');
+    if (categoryId) {
+        categoryId.classList.add('active');
+    }
+}
+
 function closeItem(informationId) {
     console.log('Closing Item');
     informationId.classList.remove('active');
+}
+
+function closeForm() {
+    console.log('Closing item form');
+    formId.classList.remove('active');
+}
+
+function closeCategoryForm() {
+    console.log('Closing category form');
+    categoryId.classList.remove('active');
 }
 
 function showItem(category) {
@@ -302,7 +328,8 @@ function addItem() {
                         })
                         .catch(error => console.error('Error submitting form:', error));
 
-                    });                   
+                    });   
+                    openForm(formId)                
                 }
         })
 }
@@ -357,7 +384,8 @@ function addCategory() {
                         })
                         .catch(error => console.error('Error submitting form:', error));
 
-                    });                   
+                    });
+                    openCategoryForm(categoryId)                   
                 }
         })
 }
