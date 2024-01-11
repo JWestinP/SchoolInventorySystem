@@ -1,0 +1,7 @@
+<form action="/save_category_form/" id="categoryFormId" method="post">
+    {% csrf_token %}
+    <p>Category name:</p>
+    {{ category_form.item_category }}
+    <input type="submit" value="Submit">
+    <button onclick="closeCategoryForm()">Cancel</button>
+</form>
