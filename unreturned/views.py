@@ -18,7 +18,14 @@ def admin_unreturned(request):
     return render(request, 'unreturned/admin_unreturned.html',
                 {'unreturned_items': unreturned_items})
 
-def return_item(request, item_id):
+def return_item(request, item_id, item_stock_id):
     unreturned_items = Unreturned_Item.objects.get(pk=item_id)
-    unreturned_items.delete()
+    return_quantity = unreturned_items.item_borrowed.item_quantity
+    current_quantity = unreturned_items.item_borrowed.item_stock.item_current_quantity
+    current_quantity = current_quantity + return_quantity
+
+    # borrowed_items = Borrowed_Item.objects.get(item_stock_id)
+    # borrowed_items  = borrowed_items + return_quantity
+
+    # unreturned_items.delete()
     return redirect('unreturned')
