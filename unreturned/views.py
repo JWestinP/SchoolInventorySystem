@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import *
 from recents.models import *
@@ -17,3 +17,8 @@ def admin_unreturned(request):
 
     return render(request, 'unreturned/admin_unreturned.html',
                 {'unreturned_items': unreturned_items})
+
+def return_item(request, item_id):
+    unreturned_items = Unreturned_Item.objects.get(pk=item_id)
+    unreturned_items.delete()
+    return redirect('unreturned')
