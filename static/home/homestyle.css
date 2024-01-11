@@ -989,6 +989,66 @@ body {
     background-color: #d1e0ea;
   }
 
+  /*add category button sa edit*/
+/* Basic styles for the form container */
+#add_category_form {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+/* Styles for form inputs */
+#categoryFormId input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  margin: 0 auto 10px; /* Updated margin to center the input */
+  box-sizing: border-box;
+  display: block; /* Ensures that the input is treated as a block element */
+
+}
+
+/* Styles for buttons */
+#categoryFormId button {
+  background-color: #3498db;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#categoryFormId button:hover {
+  background-color: #2980b9;
+}
+
+/* Styles for success message */
+#successMessage {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#successMessage p {
+  font-size: 18px;
+  color: green;
+}
+
+#successMessage button {
+  background-color: #3498db;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#successMessage button:hover {
+  background-color: #2980b9;
+}
+
+
 
 
 
