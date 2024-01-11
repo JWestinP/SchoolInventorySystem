@@ -10,8 +10,31 @@
         <button><a href="{% url 'home' %}">Home</a></button>
         <button><a href="{% url 'recents' %}">Recents</a></button>
         <button><a href="{% url 'show_unreturned_items' %}">Unreturned</a></button>
-        <button><a href="{% url 'notification' %}">Notification</a></button>
+        <button><a href="{% url 'notification' %}">Notification</a>
+            {% if unreturned_item_exist %}
+            <span class="notification-indicator">!</span>
+            {% endif %}
+        </button>
         <button><a href="{% url 'userprofile' %}">Account</a></button>
         <button><a href="{% url 'logout' %}">Logout</a></button>
+
+        {% if unreturned_item_exist %}
+        <p>You have unreturned items. Please check the Unreturned Items tab for more details.</p>
+
+        <ul>
+            {% for item_info in unreturned_items %}
+            <li>
+                Item ID: {{ item_info.item_name }} - 
+                {{ item_info.item_days_not_returned }} days overdue
+                (Borrowed on {{ item_info.item_date_borrowed|date:"F d, Y" }})
+            </li>
+            {% endfor %}
+        </ul>
+
+        <p>Please return the items after each use. Thanks!</p>
+        {% else %}
+        <p>No unreturned items at the moment.</p>
+        {% endif %}
     </body>
+    
 </html>

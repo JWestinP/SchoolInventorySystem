@@ -4,6 +4,7 @@ const selectItem = document.querySelectorAll('.item_button')
 const informationId = document.getElementById('item_information')
 const backCategory = document.getElementById('back_category')
 const itemContainer = document.getElementById('item_list')
+
 function fetchData(itemId) {
     fetch('/api/item_inventory/')
         .then(response => {
@@ -59,13 +60,14 @@ function fetchData(itemId) {
                     console.log('borrowForm:', borrowForm);
                     if (borrowForm) {
                         const itemStockInput = borrowForm.querySelector('[name="item_stock"]');
-
                         if (selectedItem && selectedItem.item_id) {
                             console.log('Selected Item:', selectedItem);
-                            console.log('Item Information:', selectedItem.item_information);
+                            console.log('Item Information:', selectedItem.item_id);
 
                             if (selectedItem.item_id) {
-                                itemStockInput.value = selectedItem.item_id;
+                                itemStockInput.value = selectedItem.stock_id;
+                                console.log('item_stockInput value:', itemStockInput.value);
+
                             } 
                             else {
                                 console.error('Missing item_information.item_id:', selectedItem.item_id);
@@ -82,6 +84,8 @@ function fetchData(itemId) {
     
                             formData.append('csrfmiddlewaretoken', csrfToken);
                             formData.append('source_item_id', selectedItem.item_id);
+                            formData.append('stock_id', selectedItem.stock_id);
+                            console.log(formData)
                             console.log('FormData:', formData);
                             fetch('/save_borrow_form/', {
                                 method: 'POST',
@@ -91,9 +95,9 @@ function fetchData(itemId) {
                             .then(data => {
                                 console.log(data);
                                 if (data.message) {
-                                    // Success: Do something, e.g., redirect or show success message
+                                   
                                 } else if (data.error) {
-                                    // Error: Show error message to the user
+                                    
                                     console.error(data.error);
                                 }
                             })
@@ -106,7 +110,7 @@ function fetchData(itemId) {
             }
             else {
                 console.error('Item not found for the given item ID.');
-                // Handle the case where the item is not found
+                
             }
 
         })
@@ -146,14 +150,14 @@ function showItem(category) {
                 itemContainer.innerHTML += `<p>${data.items.length} items in category: ${data.items[0].item_category.item_category}</p>`;
                 
                 itemContainer.addEventListener('click', function (event) {
-                    // Check if the clicked element is a button with the 'item_button' class
+                    
                     if (event.target.matches('.item_button')) {
                         const itemId = event.target.getAttribute('data-item-target');
                     
                 
                         console.log('Item button clicked. Item ID:', itemId);
                 
-                        // Call the function with category and item ID
+                        
                         fetchData(itemId);
                     }
                 });
@@ -173,7 +177,7 @@ function showItem(category) {
                 } 
                 else {
                     console.error('Data does not contain an array:', data)
-                    // Handle the case where the server did not return the expected data format
+                    
                 }
             } 
             catch (error) {
