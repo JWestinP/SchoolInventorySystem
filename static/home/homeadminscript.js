@@ -169,6 +169,7 @@ function closeConfirmation() {
     console.log('Closing confirmation popup');
     confirmationPopUp.classList.remove('active');
 }
+
 function showItem(category) {
     console.log('Sending request for category:', category)
 
@@ -309,9 +310,7 @@ function addItem() {
                                         const formContainer = document.getElementById('add_stock_form');
                                         formContainer.innerHTML = data.stock_form_html;
                                         const stockForm = document.getElementById('stockFormId');
-
                                         if(stockForm){
-                                            
                                             stockForm.addEventListener('submit', function (event) {
                                                 event.preventDefault();
                                                 const formStockData = new FormData(stockForm);
@@ -324,11 +323,16 @@ function addItem() {
                                                 .then(data => {
                                                     console.log(data);
                                                     if (data.message) {
-                                                    
+                                                        formContainer.innerHTML = ''
+                                                        formContainer.innerHTML = `
+                                                        <p>The item has been successfully added with its stock!</p>
+                                                        <button onclick="refreshPage()">Ok</button>
+                                                        `
                                                     } else if (data.error) {
                                                         
                                                         console.error(data.error);
                                                     }
+                                                    
                                                 })
                                                 .catch(error => console.error('Error submitting form:', error));
                                             })
@@ -408,7 +412,10 @@ function addCategory() {
                         .then(data => {
                             console.log(data);
                             if (data.message) {
-                                
+                                formContainer.innerHTML = `
+                                <p>The item has been successfully added with its stock!</p>
+                                <button onclick="refreshPage()">Ok</button>
+                                `
                             } else if (data.error) {
                                 
                                 console.error(data.error);
