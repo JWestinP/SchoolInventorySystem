@@ -32,4 +32,8 @@ class StockForm(forms.ModelForm):
     class Meta:
         model = Stock
         fields = '__all__'
-        
+
+class CategoryForm(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = '__all__'
