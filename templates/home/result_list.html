@@ -1,93 +1,16 @@
-<!-- your_app/templates/inventory/result_list.html -->
-<!DOCTYPE html>
-<html>
-<body>
-    {% if query|lower == "furniture" %}
-        <h2>Furniture Items</h2>
-        <ul>
-            {% for item in furniture_items %}
-                <li>{{ item.item_name }} </li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+<div id="resultImageContainer"></div>
+{% if results %}
+<ul>
+{% for result in results %}
+    <li>
+        <div>
+            <img src="{% if result.item_photo %}/media/{{ result.item_photo }}{% else %}/static/path/to/placeholder-image.jpg{% endif %}" alt="{{ result.item_name }}" style="width: 100px; height: 100px;">
+            <button onclick="showBorrowForm('{{ result.item_id }}', '{{ result.item_name }}')">{{ result.item_name }}</button>
+            <a href="{% url 'home' %}"><button>Back</button></a>
+        </div>
+    </li>
+{% endfor %}
+</ul>
+{% else %}
 
-    {% if query|lower == "room" %}
-        <h2>Room Items</h2>
-        <ul>
-            {% for item in room_items %}
-                <li>{{ item.item_name }} </li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-
-    {% if query|lower == "cleaning material" %}
-        <h2>Cleaning Material Items</h2>
-        <ul>
-            {% for item in cleaning_material_items %}
-                <li>{{ item.item_name }} </li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-
-    {% if query|lower == "technology" %}
-        <h2>Technology Items</h2>
-        <ul>
-            {% for item in technology_items %}
-                <li>{{ item.item_name }} </li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-
-    {% if query|lower == "dean approval needed item" %}
-        <h2>Dean Approval Needed Items</h2>
-        <ul>
-            {% for item in dean_approval_items %}
-                <li>{{ item.item_name }} </li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-
-    <!-- Generic search results for items common to multiple models -->
-    
-    {% for item in furniture_items %}
-        {% if query|lower == item.item_name|lower or query|default:""|add:0 == item.item_id %}
-            <ul>
-                <li>{{ item.item_name }} </li>
-            </ul>
-        {% endif %}
-    {% endfor %}
-
-    {% for item in cleaning_material_items %}
-        {% if query|lower == item.item_name|lower or query|default:""|add:0 == item.item_id %}
-            <ul>
-                <li>{{ item.item_name }} </li>
-            </ul>
-        {% endif %}
-    {% endfor %}
-
-    {% for item in technology_items %}
-        {% if query|lower == item.item_name|lower or query|default:""|add:0 == item.item_id %}
-            <ul>
-                <li>{{ item.item_name }} </li>
-            </ul>
-        {% endif %}
-    {% endfor %}
-
-    {% for item in dean_approval_items %}
-        {% if query|lower == item.item_name|lower or query|default:""|add:0 == item.item_id %}
-            <ul>
-                <li>{{ item.item_name }} </li>
-            </ul>
-        {% endif %}
-    {% endfor %}
-
-    {% for item in room_items %}
-        {% if query|lower == item.item_name|lower or query|default:""|add:0 == item.item_id %}
-            <ul>
-                <li>{{ item.item_name }} </li>
-            </ul>
-        {% endif %}
-    {% endfor %}
-</body>
-</html>
-
+{% endif %}

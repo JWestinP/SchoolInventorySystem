@@ -9,4 +9,5 @@ urlpatterns = [
     path('api/item_inventory/', views.get_item_inventory, name='get_item_inventory'),
     path('get_borrow_form/', views.get_borrow_form, name='get_borrow_form'),
     path('save_borrow_form/', views.save_borrow_form, name='save_borrow_form'),
+    path('search_items/', views.search_items, name='search_items'),
 ]

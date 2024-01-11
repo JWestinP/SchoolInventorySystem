@@ -9,11 +9,11 @@
     <h1>FACULTY HOME</h1>
     <body>
 
-     <form method="get" action="{% url 'home' %}">
-        <input type="text" name="q" placeholder="Search by name,id,category" value="{{ query }}">
-        <input type="submit" value="Search">
-    </form>
-    {% include 'home/result_list.html' %}
+        <form method="GET" action="{% url 'search_items' %}">
+            <input type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
+            <button type="submit">Search</button>
+          </form>
+        
         <button><a href="{% url 'home' %}">Home</a></button>
         <button><a href="{% url 'recents' %}">Recents</a></button>
         <button><a href="{% url 'show_unreturned_items' %}">Unreturned</a></button>
@@ -54,6 +54,10 @@
             
         </div>
 
+        {% include 'home/result_list.html' %}
+       
+
         <script defer src="{% static 'home/homescript.js' %}"></script>
+       
     </body>
 </html>

@@ -229,3 +229,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+function showBorrowForm(itemId) {
+    fetchData(itemId);  // Assuming fetchData function handles displaying the item details
+}
+
+function goBack() {
+    showAllCategoryButtons();
+}
+
+

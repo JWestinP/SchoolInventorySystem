@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q
 from .models import *
 from .forms import BorrowForm
@@ -8,6 +8,7 @@ from django.template.loader import render_to_string
 from django.apps import apps
 from django.contrib.auth.decorators import login_required
 from rest_framework import serializers
+from .models import Item, Category
 
 # Create your views here.
 class ItemSerializer(serializers.ModelSerializer):
@@ -24,7 +25,6 @@ def admin_home(request):
 def guest_home(request):
     return render(request, ('home/guest_home.html'))
 
-# myapp/views.py
 @login_required
 def home(request):
     current_user = request.user
@@ -172,3 +172,19 @@ def get_item_inventory(request):
                    'stock_id' : item.pk} for item in item_inventory]
     print(items_data)
     return JsonResponse({'items': items_data}, safe=False)
+
+def search_items(request):
+    query = request.GET.get('q')
+
+    if query:
+        # Perform a case-insensitive search on the item name, category, and item id
+        results = Item.objects.filter(
+            models.Q(item_name__icontains=query) |
+            models.Q(item_category__item_category__icontains=query) |
+            models.Q(item_id__icontains=query)
+        )
+    else:
+        return redirect('home')
+
+    return render(request, 'home/home.html', {'results': results, 'query': query})
+
