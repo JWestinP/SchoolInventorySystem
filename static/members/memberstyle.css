@@ -98,4 +98,111 @@ input, select {
 
 /*
 Start coding here
-*/
+*/body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .head {
+    display: flex;
+    background-color: orange;
+    padding: 10px;
+  }
+  
+  header {
+    display: flex;
+    background-color: firebrick;
+    padding: 15px;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo.left img {
+    width: 135px;
+    margin-right: auto;
+  }
+  
+  .logo.right img {
+    width: 80px;
+    margin-left: auto;
+  }
+  
+  .search-bar {
+    flex-grow: 1;
+    margin-left: 2%;
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-input {
+    width: 95%; /* Adjusted to take 100% width on smaller screens */
+    padding: 8px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+  }
+  
+  .fa-search {
+    margin-left: -5%;
+    color: firebrick;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 7px;
+
+  }
+  
+  /* navigations */
+  nav {
+    background-color: #f8f9fa;
+    padding: 15px 0;
+    border-bottom: 1px solid #dee2e6;
+    box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.1);
+    margin: 30px 70px 0; /* Adjusted margin for better responsiveness */
+    border-radius: 15px;
+  }
+  
+  .container, .recent-container{
+    display: flex;
+    justify-content: space-between;
+    
+  }
+  .item-container{
+    display: flex;
+    justify-content: space-between;
+    
+  }
+  .navbar-brand {
+    color: black;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-right: 30px;
+    margin-left: 30px;
+    text-decoration: none; /* Remove underline */
+    position: relative; /* Position for the pseudo-element */
+    transition: color 0.3s ease, font-weight 0.3s ease; /* Add a smooth color and font weight transition */
+  }
+  
+  /* Create an underline pseudo-element */
+  .navbar-brand::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: firebrick; /* Initial underline color */
+    visibility: hidden;
+    transform: scaleX(0); /* Initially invisible */
+    transition: all 0.3s ease; /* Add a smooth transition for visibility and scale */
+  }
+  
+  /* Add hover effect */
+  .navbar-brand:hover {
+    color:firebrick; /* Change text color on hover */
+    font-weight: lighter; /* Change font weight on hover, adjust as needed */
+  }
+  
+  .navbar-brand:hover::before {
+    visibility: visible;
+    transform: scaleX(1); /* Make the underline visible and scale it */
+  }
