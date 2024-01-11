@@ -20,12 +20,19 @@ def admin_unreturned(request):
 
 def return_item(request, item_id, item_stock_id):
     unreturned_items = Unreturned_Item.objects.get(pk=item_id)
-    return_quantity = unreturned_items.item_borrowed.item_quantity
-    current_quantity = unreturned_items.item_borrowed.item_stock.item_current_quantity
-    current_quantity = current_quantity + return_quantity
+    unreturned_items.item_borrowed.item_stock.item_current_quantity = unreturned_items.item_borrowed.item_stock.item_current_quantity + unreturned_items.item_borrowed.item_quantity
 
-    # borrowed_items = Borrowed_Item.objects.get(item_stock_id)
-    # borrowed_items  = borrowed_items + return_quantity
+    item = Stock.objects.get(pk = item_stock_id)
+    item.item_current_quantity = unreturned_items.item_borrowed.item_stock.item_current_quantity
+    item.save()
 
-    # unreturned_items.delete()
+    unreturned_items.delete()
+
+    # for checking
+    print(unreturned_items.item_borrowed.item_stock.item_current_quantity)
+    print(item)
+    print(item.item_current_quantity)
+    # for checking
+
+
     return redirect('unreturned')
