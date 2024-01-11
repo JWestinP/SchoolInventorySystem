@@ -34,17 +34,29 @@
                 <div id="mainForm" class="form">
                     <!-- Home -->
                     <div class="item">
-                        <h1>Categories <i class="fas fa-plus-circle orange-icon" onclick="openModal('category')"></i></h1>
-                        <div class="container" onclick="showForm('itemlist')">
-                            <div class="form-item">
-                                <div class="items">
-                                    <img src="static/home/clean.png" alt="clean">
-                                    <div class="line">
-                                        <p>Cleaning Materials</p>
-                                    </div>
+                        <div class="categories">
+                            {% for category in categories %}
+                            <button onclick="showItem('{{ category }}')" class="category_button">{{ category }}</button>
+                            {% endfor %}
+                        </div>
+                        <div id="category_item" class="category_div">
+                            <div id="item_list">
+                
+                            </div>
+                            <div id="edit_back_buttons">
+                                
+                            </div>
+                            <div id="add_item">
+                                <div id="add_item_form">
+                
+                                </div>
+                                <div id="add_stock_form">
+                
+                                </div>
+                                <div id="success_popup">
+                
                                 </div>
                             </div>
-                        </div>
                     </div>
                 </div>
 
@@ -144,31 +156,7 @@
      <!-- start ng code ni westin -->
 
 
-        <div class="categories">
-            {% for category in categories %}
-            <button onclick="showItem('{{ category }}')" class="category_button">{{ category }}</button>
-            {% endfor %}
-        </div>
         
-        
-        <div id="category_item" class="category_div">
-            <div id="item_list">
-
-            </div>
-            <div id="edit_back_buttons">
-                
-            </div>
-            <div id="add_item">
-                <div id="add_item_form">
-
-                </div>
-                <div id="add_stock_form">
-
-                </div>
-                <div id="success_popup">
-
-                </div>
-            </div>
             <h1>{{ current_category }}</h1>
 
             <div class="item_information" id="item_information">
