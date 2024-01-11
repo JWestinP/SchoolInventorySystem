@@ -7,6 +7,8 @@ const itemContainer = document.getElementById('item_list')
 const backEditButton = document.getElementById('edit_back_buttons')
 const formId = document.getElementById('add_item')
 const categoryId = document.getElementById('add_category_form')
+const confirmationPopUp = document.getElementById('delete_confirmation')
+const addSuccessPopUp = document.getElementById('success_popup')
 
 function fetchData(itemId) {
     fetch('/api/item_inventory/')
@@ -141,6 +143,13 @@ function openCategoryForm(categoryId) {
     }
 }
 
+function openConfirmation(confirmationPopUp) {
+    console.log('Opening confirmation');
+    if (confirmationPopUp) {
+        confirmationPopUp.classList.add('active');
+    }
+}
+
 function closeItem(informationId) {
     console.log('Closing Item');
     informationId.classList.remove('active');
@@ -156,6 +165,10 @@ function closeCategoryForm() {
     categoryId.classList.remove('active');
 }
 
+function closeConfirmation() {
+    console.log('Closing confirmation popup');
+    confirmationPopUp.classList.remove('active');
+}
 function showItem(category) {
     console.log('Sending request for category:', category)
 
@@ -335,20 +348,39 @@ function addItem() {
 }
 
 function deleteItem(item_id) {
-    const csrfToken = document.cookie.split(';').find(cookie => cookie.trim().startsWith('csrftoken=')).split('=')[1];
-    fetch(`/delete_item/?item_id=${item_id}`, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': csrfToken
-        },
+    confirmationPopUp.innerHTML = `
+    <p>Are you sure you want to delete this item?</p>
+    <button class="delete_confirm">Yes</button>
+    <button class="delete_denied">No</button>
+    `
+    openConfirmation(confirmationPopUp)
+
+    confirmationPopUp.addEventListener('click', function(event){
+        if (event.target.matches('.delete_confirm')) {
+            const csrfToken = document.cookie.split(';').find(cookie => cookie.trim().startsWith('csrftoken=')).split('=')[1];
+            fetch(`/delete_item/?item_id=${item_id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrfToken
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.message);
+                
+            })
+            .catch(error => console.error('Error:', error));
+            confirmationPopUp.innerHTML = `
+            <p>The item has been deleted successfully</p>
+            <button onclick="refreshPage()">Back</button>
+            `
+        }
+        else if (event.target.matches('.delete_denied')) {
+            closeConfirmation()
+        }
     })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data.message);
-        
-    })
-    .catch(error => console.error('Error:', error));
+    
 }
 
 function addCategory() {
@@ -391,20 +423,41 @@ function addCategory() {
 }
 
 function deleteCategory(category_id) {
-    const csrfToken = document.cookie.split(';').find(cookie => cookie.trim().startsWith('csrftoken=')).split('=')[1];
-    fetch(`/delete_category/?category_id=${category_id}`, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': csrfToken
-        },
+    confirmationPopUp.innerHTML = `
+    <p>Are you sure you want to delete this category?</p>
+    <button class="delete_confirm">Yes</button>
+    <button class="delete_denied">No</button>
+    `
+    openConfirmation(confirmationPopUp)
+    
+    confirmationPopUp.addEventListener('click', function(event){
+        if (event.target.matches('.delete_confirm')) {
+            const csrfToken = document.cookie.split(';').find(cookie => cookie.trim().startsWith('csrftoken=')).split('=')[1];
+            fetch(`/delete_category/?category_id=${category_id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrfToken
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.message);
+                
+            })
+            .catch(error => console.error('Error:', error));
+
+            confirmationPopUp.innerHTML = `
+            <p>The category has been deleted successfully</p>
+            <button onclick="refreshPage()">Back</button>
+            `
+        }
+
+        else if (event.target.matches('.delete_denied')) {
+            closeConfirmation()
+        }
     })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data.message);
-        
-    })
-    .catch(error => console.error('Error:', error));
+    
 }
 
 function editCategory() {
@@ -438,8 +491,9 @@ function editCategory() {
                                     <p>${category.item_category}</p>
                                 </div>
                             `;
-                
+
                             categoryContainer.innerHTML += categoryHTML;
+                            
                         });
                     }
                 }
@@ -450,6 +504,9 @@ function editCategory() {
     xhr.send();
 }
 
+function refreshPage() {
+    location.reload()
+}
 
 selectItem.forEach(button => {
     button.addEventListener('click', () => {
