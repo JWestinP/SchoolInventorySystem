@@ -28,7 +28,7 @@ function fetchData(itemId) {
             const selectedItem = items.find(item => item.item_id === parseInt(itemId));
             console.log('Selected item ID:', selectedItem.item_id);
 
-            
+            // items info
             if (selectedItem) {
                 const imageUrl = `${selectedItem.item_photo}`
                 document.getElementById('item_header').innerHTML = `
@@ -37,6 +37,7 @@ function fetchData(itemId) {
                     <p>Name: ${selectedItem.item_name}</p>
                     <p>Category: ${selectedItem.item_category}</p>
                     <button data-close-button class="close_button">&times;</button> 
+               
                 `;
                 document.body.addEventListener('click', function (event) {
                     if (event.target.matches('.close_button')) {

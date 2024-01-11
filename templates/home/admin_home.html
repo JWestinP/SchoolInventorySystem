@@ -33,16 +33,18 @@
                 <!-- Home -->
                 <div id="mainForm" class="form">
                     <!-- Home -->
+                
                     <div class="item">
+                        <div id="edit_category_buttons">
+                            <button onclick="editCategory()">Edit</button>
+                        </div>
                         <div class="categories">
                             {% for category in categories %}
                             <button onclick="showItem('{{ category }}')" class="category_button">{{ category }}</button>
                             {% endfor %}
                         </div>
                         <!-- BAGO -->
-                        <div id="edit_category_buttons">
-                            <button onclick="editCategory()">Edit</button>
-                        </div>
+                       
                 
                         <div id="add_category_form" class="add_category_form">
                 
@@ -60,7 +62,7 @@
                                 
                             </div>
                             <div id="add_item">
-                                <div id="add_item_form">
+                                <div id="add_item_form"> 
                 
                                 </div>
                                 <div id="add_stock_form">
