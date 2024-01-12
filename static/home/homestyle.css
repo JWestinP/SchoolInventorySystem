@@ -148,7 +148,7 @@ h1 {
     transform: translate(-50%, -50%) scale(1);
 }
 
-.add_item {
+/* .add_item {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -200,7 +200,7 @@ h1 {
 
 .delete_confirmation.active {
     transform: translate(-50%, -50%) scale(1);
-}
+} */
 
 .item_header {
     padding: 10px 15px;

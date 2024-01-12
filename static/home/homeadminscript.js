@@ -483,6 +483,7 @@ function editCategory() {
             document.getElementById('edit_category_buttons').innerHTML = `
                 <button onclick="addCategory()">Add</button>
                 <button class="remove_category">Remove</button>
+                <button onclick="refreshPage()">Back</button>
             `
 
             document.getElementById('edit_category_buttons').addEventListener('click', function(event){
