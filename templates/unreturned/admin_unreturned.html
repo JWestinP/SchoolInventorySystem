@@ -44,6 +44,7 @@
                 <div id="bottom">
                     <div id="btn_con">
                         <!-- <button id="return_btn" class="rounded_corners">Return</button> -->
+                        <a href="{% url 'admin_return_item' item.id item.item_borrowed.item_stock.id %}">Return</a>
                     </div>
                 </div>
 
