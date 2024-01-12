@@ -28,14 +28,15 @@
         </div>
         
         
-
+        
         <div class="guest-button-grid">
             {% include 'home/result_list.html' %}
             <button class="guest-buttons-tabs"><a href="{% url 'home' %}">Home</a></button>
             <button class="guest-buttons-tabs"><a href="{% url 'logout' %}">Log out</a></button>
-         </div>    
+        </div>    
 
-         <div class="category-container">
+
+        <div class="category-container">
             <p class="category-container-title">
                 Categories 
             </p>   
@@ -51,8 +52,35 @@
             </div>
         </div>
 
+        <div id="category_item" class="category_div">
+            <div id="item_list">
+
+            </div>
+            <h1>{{ current_category }}</h1>
+            {% for item in cleaning_inventory %}
+                <div>
+                    
+                </div>
+            {% endfor %}
+            <div class="item_information" id="item_information">
+                <div class="item_header" id="item_header">
+
+                    <button data-close-button class="close_button">&times;</button>                          
+                </div>
+
+                <div class="item_body" id="item_body">
+
+                </div>
+                <div class="item_form" id="item_form">
+
+                </div>
+                
+            </div>
+            
+        </div>
+
                     
        
-            <script defer src="{% static 'home/homescript.js' %}"></script>
+        <script defer src="{% static 'home/homescript.js' %}"></script>
     </body>
 </html>
