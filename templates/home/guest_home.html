@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="{% static 'home/homestyle.css' %}">
+        <link rel="stylesheet" href="{% static 'home/homegueststyle.css' %}">
         <title>GUEST HOME</title>
     </head>
 
@@ -31,7 +31,7 @@
         
         <div class="guest-button-grid">
             {% include 'home/result_list.html' %}
-            <button class="guest-buttons-tabs"><a href="{% url 'home' %}">Home</a></button>
+            <button class="guest-buttons-tabs"><a href="{% url 'guest_home' %}">Home</a></button>
             <button class="guest-buttons-tabs"><a href="{% url 'logout' %}">Log out</a></button>
         </div>    
 
@@ -50,35 +50,36 @@
                 </button>
                 {% endfor %}
             </div>
-        </div>
+            
 
-        <div id="category_item" class="category_div">
-            <div id="item_list">
+            <div id="category_item" class="category_div">
+                <div id="item_list" class="items_div">
 
-            </div>
-            <h1>{{ current_category }}</h1>
-            {% for item in cleaning_inventory %}
-                <div>
+
+                </div>
+                <h1>{{ current_category }}</h1>
+                {% for item in cleaning_inventory %}
+                    <div class="item">
+                        
+                    </div>
+                {% endfor %}
+                <div class="item_information" id="item_information">
+                    <div class="item_header" id="item_header">
+
+                        <button data-close-button class="close_button">&times;</button>                          
+                    </div>
+
+                    <div class="item_body" id="item_body">
+
+                    </div>
+                    <div class="item_form" id="item_form">
+
+                    </div>
                     
-                </div>
-            {% endfor %}
-            <div class="item_information" id="item_information">
-                <div class="item_header" id="item_header">
-
-                    <button data-close-button class="close_button">&times;</button>                          
-                </div>
-
-                <div class="item_body" id="item_body">
-
-                </div>
-                <div class="item_form" id="item_form">
-
                 </div>
                 
             </div>
-            
         </div>
-
                     
        
         <script defer src="{% static 'home/homeguestscript.js' %}"></script>
