@@ -495,10 +495,11 @@ function editCategory() {
                             console.log(categoryName);
                             document.getElementById
                             const categoryHTML = `
-                                <div>
-                                    <button onclick="deleteCategory(${category.id})" class="category_button">remove</button>
-                                    <p>${category.item_category}</p>
-                                </div>
+                            <div>
+                            <button onclick="deleteCategory(${category.id})" class="category_button">remove</button>
+                            <p>${category.item_category}</p>
+                        </div>
+                        
                             `;
 
                             categoryContainer.innerHTML += categoryHTML;
