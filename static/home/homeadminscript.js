@@ -47,10 +47,21 @@ function fetchData(itemId) {
                 });
     
                 document.getElementById('item_body').innerHTML = `
-                    <p>Description: ${selectedItem.item_description}</p>
-                    <p>Total Quantity: ${selectedItem.item_total}</p>
-                    <p>Borrowed Quantity: ${selectedItem.item_borrowed}</p>
-                    <p>Available Quantity: ${selectedItem.item_current}</p>
+                <table>
+                
+               <tr>
+                    <td>Description</td>
+                    <td>Quantity</td>
+                    <td>Borrowed</td>
+                    <td>Available</td>
+                </tr>
+                <tr>
+                    <td>${selectedItem.item_description}</td>
+                    <td>${selectedItem.item_total}</td>
+                    <td>${selectedItem.item_borrowed}</td>
+                    <td>${selectedItem.item_current}</td>
+                </tr>
+            </table>
                 `;
     
                 const csrfToken = document.cookie.split(';').find(cookie => cookie.trim().startsWith('csrftoken=')).split('=')[1];
@@ -326,8 +337,12 @@ function addItem() {
                                                     if (data.message) {
                                                         formContainer.innerHTML = ''
                                                         formContainer.innerHTML = `
-                                                        <p>The item has been successfully added with its stock!</p>
-                                                        <button onclick="refreshPage()">Ok</button>
+                                                        <div class="confirmation-popup-container">
+                                                            <div class="confirmation-popup">
+                                                                <p>The item has been successfully added with its stock!</p>
+                                                                <button onclick="refreshPage()">Ok</button>
+                                                            </div>
+                                                        </div>
                                                         `
                                                     } else if (data.error) {
                                                         
@@ -354,9 +369,14 @@ function addItem() {
 
 function deleteItem(item_id) {
     confirmationPopUp.innerHTML = `
-    <p>Are you sure you want to delete this item?</p>
-    <button class="delete_confirm">Yes</button>
-    <button class="delete_denied">No</button>
+    <div class="confirmation-popup-container">
+        <div class="confirmation-popup">
+            <p>Are you sure you want to delete this item?</p>
+            <button class="delete_confirm">Yes</button>
+            <button class="delete_denied">No</button>
+        </div>
+    </div>
+    
     `
     openConfirmation(confirmationPopUp)
 
@@ -377,8 +397,12 @@ function deleteItem(item_id) {
             })
             .catch(error => console.error('Error:', error));
             confirmationPopUp.innerHTML = `
-            <p>The item has been deleted successfully</p>
-            <button onclick="refreshPage()">Back</button>
+            <div class="confirmation-popup-container">
+                <div class="confirmation-popup">
+                    <p>The item has been deleted successfully</p>
+                    <button onclick="refreshPage()">Back</button>
+                <div>
+            </div>
             `
         }
         else if (event.target.matches('.delete_denied')) {
@@ -414,8 +438,12 @@ function addCategory() {
                             console.log(data);
                             if (data.message) {
                                 formContainer.innerHTML = `
-                                <p>The item has been successfully added with its stock!</p>
-                                <button onclick="refreshPage()">Ok</button>
+                                <div class="confirmation-popup-container">
+                                    <div class="success-popup">
+                                        <p>The item has been successfully added with its stock!</p>
+                                        <button onclick="refreshPage()">Ok</button>
+                                    </div>
+                                </div>   
                                 `
                             } else if (data.error) {
                                 
@@ -432,9 +460,13 @@ function addCategory() {
 
 function deleteCategory(category_id) {
     confirmationPopUp.innerHTML = `
-    <p>Are you sure you want to delete this category?</p>
-    <button class="delete_confirm">Yes</button>
-    <button class="delete_denied">No</button>
+    <div class="confirmation-popup-container">
+        <div class="confirmation-popup">
+                <p>Are you sure you want to delete this category?</p>
+                <button class="delete_confirm">Yes</button>
+                <button class="delete_denied">No</button>
+        </div>
+    </div>
     `
     openConfirmation(confirmationPopUp)
     
@@ -456,8 +488,12 @@ function deleteCategory(category_id) {
             .catch(error => console.error('Error:', error));
 
             confirmationPopUp.innerHTML = `
-            <p>The category has been deleted successfully</p>
-            <button onclick="refreshPage()">Back</button>
+            <div class="confirmation-popup-container">
+                <div class="confirmation-popup">
+                    <p>The category has been deleted successfully</p>
+                    <button onclick="refreshPage()">Back</button>
+                </div>
+            </div>
             `
         }
 
@@ -481,8 +517,8 @@ function editCategory() {
             var categoryContainer = document.getElementById('category_container');
             
             document.getElementById('edit_category_buttons').innerHTML = `
-                <button onclick="addCategory()">Add</button>
-                <button class="remove_category">Remove</button>
+                <button onclick="addCategory()"><i class="fa fa-plus"></i> Add</button>
+                <button class="remove_category"><i class="fa fa-trash"></i>Remove</button>
                 <button onclick="refreshPage()">Back</button>
             `
 
@@ -496,8 +532,8 @@ function editCategory() {
                             document.getElementById
                             const categoryHTML = `
                             <div>
-                            <button onclick="deleteCategory(${category.id})" class="category_button">remove</button>
-                            <p>${category.item_category}</p>
+                            <button class="category_button">${category.item_category}</button><br>
+                            <button><p onclick="deleteCategory(${category.id})"><i class="fa fa-trash" ></i>Remove</p></button>
                         </div>
                         
                             `;

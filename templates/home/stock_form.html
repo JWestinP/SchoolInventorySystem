@@ -1,7 +1,18 @@
-<form action="/save_stock_form/" id="stockFormId" method="post">
+<!--<form action="/save_stock_form/" id="stockFormId" method="post">
     {% csrf_token %}
     <p>Total item stock:</p>
     {{ stock_form.item_total_quantity }}
     <input type="submit" value="Submit">
     <button onclick="closeForm()">Cancel</button>
-</form>
+</form>-->
+<div class="confirmation-popup-container">
+    <div class="form-next" id="stockFormPopup">
+        <form action="/save_stock_form/" id="stockFormId" method="post">
+            {% csrf_token %}
+            <p>Total item stock:</p>
+            {{ stock_form.item_total_quantity }}
+            <input type="submit" value="Submit">
+            <button type="button" onclick="closeForm('stockFormPopup')">Cancel</button>
+        </form>
+    </div>
+</div>
