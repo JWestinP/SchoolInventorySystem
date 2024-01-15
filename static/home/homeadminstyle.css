@@ -148,7 +148,7 @@ h1 {
     transform: translate(-50%, -50%) scale(1);
 }
 
-/* .add_item {
+ .add_item {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -1142,8 +1142,7 @@ button p:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #3498db;
-  color: #fff;
+  color: black;
   padding: 10px;
 }
 
@@ -1174,9 +1173,10 @@ button p:hover {
 }
 
 #item_body td {
-  border: 1px solid #ddd;
+  border: 2px solid #E67C37;
   padding: 8px;
   text-align: left;
+
 }
 
 #item_body tr:nth-child(even) {
@@ -1191,6 +1191,8 @@ button p:hover {
 #item_form {
   padding: auto;
   margin-top: 20px;
+  border: 2px solid white;
+
 }
 #borrowFormId {
   display: flex;
@@ -1339,7 +1341,7 @@ button:hover {
             transform: translate(-50%, -50%);
             background-color: #fefefe;
             padding: 20px;
-            border: 1px solid #ccc;
+            border: 2px solid black;
             z-index: 999;
             max-width: 400px;
             width: 80%;
