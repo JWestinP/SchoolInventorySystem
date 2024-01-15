@@ -262,7 +262,6 @@ Start coding here
     font-family: Arial, Helvetica, sans-serif;
     font-size: 35px;
     margin-top: 10px;
-    margin-bottom: 5px;
     margin-left: 18px;
     width: 0;
 }
@@ -271,11 +270,13 @@ Start coding here
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 20px;
     align-items: center;
     flex-wrap: wrap;
     align-content: space-evenly;
     gap: 1em;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .category_button {
@@ -335,19 +336,16 @@ Start coding here
 
 /* List of items */
 .items_div {
-    background-color: aqua;
     display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-top: 0;
 }
 
 .items-grid{
-    background-color: lightpink;
     flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
+    justify-content: space-between;
     flex-wrap: wrap;
-    align-content: space-evenly;
     gap: 1em;
     padding: 10px;
 }
@@ -357,7 +355,7 @@ Start coding here
     flex-direction: column;
     justify-content: space-between;
     align-content: center;
-    border: 0.5px solid rgb(171,177,177);
+    border: 2px solid rgb(171,177,177);
     border-radius: 6px;
     height: 180px;
     width: 130px;
@@ -366,10 +364,11 @@ Start coding here
     padding-right: 10px; 
     padding-bottom: 20px;
     background-color: rgb(255, 255, 255);
+    flex-shrink: 0;
 }
 
 .items:hover {
-    border: solid  rgb(230,124,55) 1.75px;
+    border: solid  rgb(230,124,55) 2px;
 }
 
 .item-pic {

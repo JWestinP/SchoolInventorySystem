@@ -150,8 +150,6 @@ function showItem(category) {
             try {
                 var data = JSON.parse(xhr.responseText)
                 console.log('Received data:', data)
-    
-                itemContainer.innerHTML += `<p>${data.items.length} items in category: ${data.items[0].item_category.item_category}</p>`;
                 
                 itemContainer.addEventListener('click', function (event) {
                     
