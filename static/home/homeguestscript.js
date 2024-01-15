@@ -175,11 +175,8 @@ function showItem(category) {
                                     <img src="${imageUrl}" alt="${selectedItem.item_name}" class="item-pic">
                                 </div>  
 
-                                <p class="item-name">${selectedItem.item_name}</p>
-
                                 <div class= "items-button">
-                                    <button data-item-target="${selectedItem.item_id}" class="item_button">Borrow</button>
-                                    <button id="back_category" onclick="showAllCategoryButtons()" class="back-button">Back</button>
+                                    <button data-item-target="${selectedItem.item_id}" class="item_button">${selectedItem.item_name}</button>
                                 </div>
 
                             </div>

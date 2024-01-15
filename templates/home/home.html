@@ -8,28 +8,11 @@
     </head>
     <h1>FACULTY HOME</h1>
     <body>
+        <form method="get" action="{% url 'home' %}">
+            <input class="search-bar" type="text" placeholder="Search by name,id,category" value="{{ query }}">
+            <input class="search-button" type="submit" value="Search">
+        </form>
 
-        <div class="header">
-            
-            <div class="left-section">
-                <img class="lspu-logo" src="{% static 'home/logo/lspu-logo.png' %}">
-            </div>
-
-            <div class="middle-section">
-                <form method="get" action="{% url 'home' %}">
-                    <input class="search-bar" type="text" placeholder="Search by name,id,category" value="{{ query }}">
-                    <input class="search-button" type="submit" value="Search">
-                </form>
-            </div>
-
-            <div class="right-section">
-                <img class="ccs-logo" src="{% static 'home/logo/ccs-logo.jpg' %}">
-            </div>
-            
-        </div>
-        
-        <div class="buttons-box">
-            <div class="button-grid">
                 {% include 'home/result_list.html' %}
                 <button class="buttons-tabs"><a href="{% url 'home' %}">Home</a></button>
                 <button class="buttons-tabs"><a href="{% url 'recents' %}">Recents</a></button>
@@ -37,24 +20,13 @@
                 <button class="buttons-tabs"><a href="{% url 'notification' %}">Notification</a></button>
                 <button class="buttons-tabs"><a href="{% url 'userprofile' %}">Account</a></button>
                 <button class="buttons-tabs"><a href="{% url 'logout' %}">Logout</a></button>
-            </div>  
-        </div> 
 
-        <div class="category-container">
-            <p class="category-container-title">
-                Categories 
-            </p>   
-            <!-- category-grid -->
-            <div class="categories">
 
                 {% for category in categories %}
                 <!-- CATEGORY-PREVIEW -->
-                <button onclick="showItem('{{ category }}')" class="category_button">
-                {{ category }}
-                </button>
+                <button onclick="showItem('{{ category }}')">{{ category }}</button>
                 {% endfor %}
-            </div>
-        </div>
+
 
         <div id="category_item" class="category_div">
             <div id="item_list">
