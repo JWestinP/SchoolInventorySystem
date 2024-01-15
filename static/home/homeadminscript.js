@@ -215,7 +215,7 @@ function showItem(category) {
                                 const itemHTML = `
                                     <div>
                                         <img src="${imageUrl}" alt="${selectedItem.item_name}" style="width: 100px; height: 100px;">
-                                        <button data-delete-target="${selectedItem.item_id}" onclick="deleteItem(${selectedItem.item_id})">-</button>
+                                        <button data-delete-target="${selectedItem.item_id}" onclick="deleteItem(${selectedItem.item_id})"><i class="fa fa-trash"></i></button>
                                         <p>${selectedItem.item_name} </p>
                                     </div>
                                 `
