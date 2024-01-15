@@ -170,6 +170,7 @@ function closeItem(informationId) {
 function closeForm() {
     console.log('Closing item form');
     formId.classList.remove('active');
+    location.reload()
 }
 
 function closeCategoryForm() {
