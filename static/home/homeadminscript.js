@@ -5,6 +5,10 @@ const informationId = document.getElementById('item_information')
 const backCategory = document.getElementById('back_category')
 const itemContainer = document.getElementById('item_list')
 const backEditButton = document.getElementById('edit_back_buttons')
+const formId = document.getElementById('add_item')
+const categoryId = document.getElementById('add_category_form')
+const confirmationPopUp = document.getElementById('delete_confirmation')
+const addSuccessPopUp = document.getElementById('success_popup')
 
 function fetchData(itemId) {
     fetch('/api/item_inventory/')
@@ -125,9 +129,45 @@ function openItem(informationId) {
     }
 }
 
+function openForm(formId) {
+    console.log('Opening item form');
+    if (formId) {
+        formId.classList.add('active');
+    }
+}
+
+function openCategoryForm(categoryId) {
+    console.log('Opening category form');
+    if (categoryId) {
+        categoryId.classList.add('active');
+    }
+}
+
+function openConfirmation(confirmationPopUp) {
+    console.log('Opening confirmation');
+    if (confirmationPopUp) {
+        confirmationPopUp.classList.add('active');
+    }
+}
+
 function closeItem(informationId) {
     console.log('Closing Item');
     informationId.classList.remove('active');
+}
+
+function closeForm() {
+    console.log('Closing item form');
+    formId.classList.remove('active');
+}
+
+function closeCategoryForm() {
+    console.log('Closing category form');
+    categoryId.classList.remove('active');
+}
+
+function closeConfirmation() {
+    console.log('Closing confirmation popup');
+    confirmationPopUp.classList.remove('active');
 }
 
 function showItem(category) {
@@ -231,25 +271,10 @@ function showAllCategoryButtons() {
 
     });
     var itemContainer = document.getElementById('item_list');
+    var buttonContainer = document.getElementById('edit_back_buttons')
     itemContainer.innerHTML = '';
+    buttonContainer.innerHTML = ''
 
-}
-
-function deleteItem(item_id) {
-    const csrfToken = document.cookie.split(';').find(cookie => cookie.trim().startsWith('csrftoken=')).split('=')[1];
-    fetch(`/delete_item/?item_id=${item_id}`, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': csrfToken
-        },
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data.message);
-        
-    })
-    .catch(error => console.error('Error:', error));
 }
 
 function addItem() {
@@ -261,7 +286,6 @@ function addItem() {
             const itemForm = document.getElementById('itemFormId');
             const csrfToken = document.cookie.split(';').find(cookie => cookie.trim().startsWith('csrftoken=')).split('=')[1];
                 if (itemForm) {
-                    
                     itemForm.addEventListener('submit', function (event) {
                         event.preventDefault();
                     
@@ -278,16 +302,218 @@ function addItem() {
                         .then(data => {
                             console.log(data);
                             if (data.message) {
-                            
+                                formContainer.innerHTML = ''
+                                fetch('/get_stock_form/')
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        console.log(data)
+                                        const formContainer = document.getElementById('add_stock_form');
+                                        formContainer.innerHTML = data.stock_form_html;
+                                        const stockForm = document.getElementById('stockFormId');
+                                        if(stockForm){
+                                            stockForm.addEventListener('submit', function (event) {
+                                                event.preventDefault();
+                                                const formStockData = new FormData(stockForm);
+                                                formStockData.append('csrfmiddlewaretoken', csrfToken);
+                                                fetch('/save_stock_form/', {
+                                                    method: 'POST',
+                                                    body: formStockData
+                                                })
+                                                .then(response => response.json())
+                                                .then(data => {
+                                                    console.log(data);
+                                                    if (data.message) {
+                                                        formContainer.innerHTML = ''
+                                                        formContainer.innerHTML = `
+                                                        <p>The item has been successfully added with its stock!</p>
+                                                        <button onclick="refreshPage()">Ok</button>
+                                                        `
+                                                    } else if (data.error) {
+                                                        
+                                                        console.error(data.error);
+                                                    }
+                                                    
+                                                })
+                                                .catch(error => console.error('Error submitting form:', error));
+                                            })
+                                        }
+                                    })
                             } else if (data.error) {
                                 
                                 console.error(data.error);
                             }
                         })
                         .catch(error => console.error('Error submitting form:', error));
-                    });                   
+
+                    });   
+                    openForm(formId)                
                 }
         })
+}
+
+function deleteItem(item_id) {
+    confirmationPopUp.innerHTML = `
+    <p>Are you sure you want to delete this item?</p>
+    <button class="delete_confirm">Yes</button>
+    <button class="delete_denied">No</button>
+    `
+    openConfirmation(confirmationPopUp)
+
+    confirmationPopUp.addEventListener('click', function(event){
+        if (event.target.matches('.delete_confirm')) {
+            const csrfToken = document.cookie.split(';').find(cookie => cookie.trim().startsWith('csrftoken=')).split('=')[1];
+            fetch(`/delete_item/?item_id=${item_id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrfToken
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.message);
+                
+            })
+            .catch(error => console.error('Error:', error));
+            confirmationPopUp.innerHTML = `
+            <p>The item has been deleted successfully</p>
+            <button onclick="refreshPage()">Back</button>
+            `
+        }
+        else if (event.target.matches('.delete_denied')) {
+            closeConfirmation()
+        }
+    })
+    
+}
+
+function addCategory() {
+    fetch('/get_category_form/')
+        .then(response => response.json())
+        .then(data => {
+            const formContainer = document.getElementById('add_category_form');
+            formContainer.innerHTML = data.category_form_html;
+            const categoryForm = document.getElementById('categoryFormId');
+            const csrfToken = document.cookie.split(';').find(cookie => cookie.trim().startsWith('csrftoken=')).split('=')[1];
+                if (categoryForm) {
+                    categoryForm.addEventListener('submit', function (event) {
+                        event.preventDefault();
+                    
+                        const formData = new FormData(categoryForm);
+
+                        formData.append('csrfmiddlewaretoken', csrfToken);
+                        console.log(formData)
+                        console.log('FormData:', formData);
+                        fetch('/save_category_form/', {
+                            method: 'POST',
+                            body: formData
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log(data);
+                            if (data.message) {
+                                formContainer.innerHTML = `
+                                <p>The item has been successfully added with its stock!</p>
+                                <button onclick="refreshPage()">Ok</button>
+                                `
+                            } else if (data.error) {
+                                
+                                console.error(data.error);
+                            }
+                        })
+                        .catch(error => console.error('Error submitting form:', error));
+
+                    });
+                    openCategoryForm(categoryId)                   
+                }
+        })
+}
+
+function deleteCategory(category_id) {
+    confirmationPopUp.innerHTML = `
+    <p>Are you sure you want to delete this category?</p>
+    <button class="delete_confirm">Yes</button>
+    <button class="delete_denied">No</button>
+    `
+    openConfirmation(confirmationPopUp)
+    
+    confirmationPopUp.addEventListener('click', function(event){
+        if (event.target.matches('.delete_confirm')) {
+            const csrfToken = document.cookie.split(';').find(cookie => cookie.trim().startsWith('csrftoken=')).split('=')[1];
+            fetch(`/delete_category/?category_id=${category_id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrfToken
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.message);
+                
+            })
+            .catch(error => console.error('Error:', error));
+
+            confirmationPopUp.innerHTML = `
+            <p>The category has been deleted successfully</p>
+            <button onclick="refreshPage()">Back</button>
+            `
+        }
+
+        else if (event.target.matches('.delete_denied')) {
+            closeConfirmation()
+        }
+    })
+    
+}
+
+function editCategory() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/get_category/', true);
+    xhr.onload = function () {
+        if (xhr.status != 200) {
+            console.error('Request failed with status ' + xhr.status);
+            
+        } else {
+            var responseData = JSON.parse(xhr.responseText);
+            var categories = responseData.categories;
+            var categoryContainer = document.getElementById('category_container');
+            
+            document.getElementById('edit_category_buttons').innerHTML = `
+                <button onclick="addCategory()">Add</button>
+                <button class="remove_category">Remove</button>
+                <button onclick="refreshPage()">Back</button>
+            `
+
+            document.getElementById('edit_category_buttons').addEventListener('click', function(event){
+                if (event.target.matches('.remove_category')){
+                    categoryContainer.innerHTML = ''
+                    if (Array.isArray(categories)) {
+                        categories.forEach(category => {
+                            const categoryName = category.category_name;
+                            console.log(categoryName);
+                            document.getElementById
+                            const categoryHTML = `
+                                <div>
+                                    <button onclick="deleteCategory(${category.id})" class="category_button">remove</button>
+                                    <p>${category.item_category}</p>
+                                </div>
+                            `;
+
+                            categoryContainer.innerHTML += categoryHTML;
+                            
+                        });
+                    }
+                }
+            })
+            
+        }
+    };
+    xhr.send();
+}
+
+function refreshPage() {
+    location.reload()
 }
 
 selectItem.forEach(button => {

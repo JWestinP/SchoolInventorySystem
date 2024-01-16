@@ -16,7 +16,13 @@ class ItemSerializer(serializers.ModelSerializer):
         model = Item
         fields = '__all__'  # Include all fields
         depth = 1  # Include one level of related objects
-
+        
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = '__all__'  # Include all fields
+        depth = 1  # Include one level of related objects
+    
 @login_required
 def admin_home(request):
     current_user = request.user
@@ -128,6 +134,11 @@ def get_stock_form(request):
     stock_form_html = render_to_string('home/stock_form.html', {'stock_form': stock_form}, request=request)
     return JsonResponse({'stock_form_html' : stock_form_html})
 
+def get_category_form(request):
+    category_form = CategoryForm()
+    category_form_html = render_to_string('home/category_form.html', {'category_form': category_form}, request=request)
+    return JsonResponse({'category_form_html' : category_form_html})
+
 def get_items(request):
     category = request.GET.get('category')
     print(category)
@@ -147,6 +158,13 @@ def get_items(request):
         # Log the exception for debugging purposes
         print(f'Error in your_ajax_view: {e}')
         return JsonResponse({'error': 'Internal server error'}, status=500)
+
+def get_category(request):
+    categories = Category.objects.all()
+    serializer = CategorySerializer(categories, many=True)
+    serializer_data = serializer.data
+    
+    return JsonResponse({'categories' : serializer_data})
 
 @login_required
 def save_borrow_form(request):
@@ -193,18 +211,45 @@ def save_item_form(request):
         model_instance = item_form.save(commit=False)
         model_instance.save()
         
+        request.session['item'] = model_instance.item_id
         return JsonResponse({'message': 'Form submitted successfully'})
 
     else:
         print('Form is NOT valid!')
         print('Errors:', item_form.errors.as_data())
         return JsonResponse({'error': 'Invalid form submission'}, status=400)
+    
 def save_stock_form(request):
     stock_form = StockForm(request.POST)
-    
+    specific_item = request.session.get('item')
     if stock_form.is_valid():
+        item_instance = get_object_or_404(Item, item_id = specific_item)
         model_instance = stock_form.save(commit=False)
+        model_instance.item_current_quantity = model_instance.item_total_quantity
+        model_instance.item_borrowed_quantity = 0
+        model_instance.item_information = item_instance
         model_instance.save()
+        
+        del request.session['item']
+        return JsonResponse({'message': 'Form submitted successfully'})
+
+    else:
+        print('Form is NOT valid!')
+        print('Errors:', stock_form.errors.as_data())
+        return JsonResponse({'error': 'Invalid form submission'}, status=400)
+
+def save_category_form(request):
+    category_form = CategoryForm(request.POST)
+    
+    if category_form.is_valid():
+        model_instance = category_form.save(commit=False)
+        model_instance.save()
+        return JsonResponse({'message': 'Form submitted successfully'})
+
+    else:
+        print('Form is NOT valid!')
+        print('Errors:', category_form.errors.as_data())
+        return JsonResponse({'error': 'Invalid form submission'}, status=400)
 
 def get_item_inventory(request):
     item_inventory = Stock.objects.all()
@@ -230,3 +275,12 @@ def delete_item(request):
         return JsonResponse({'message': 'Item deleted successfully'})
     else:
         return JsonResponse({'message': 'Item ID not provided'}, status=400)
+    
+def delete_category(request):
+    category_pk = request.GET.get('category_id', None)
+
+    if category_pk is not None:
+        Category.objects.filter(id=category_pk).delete()
+        return JsonResponse({'message': 'Category deleted successfully'})
+    else:
+        return JsonResponse({'message': 'Category ID not provided'}, status=400)    
