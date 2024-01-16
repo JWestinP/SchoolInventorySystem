@@ -7,6 +7,9 @@
     </head>
     <h1>ADMIN HOME</h1>
     <body>
+        {% if user.is_authenticated %}
+            <h1>>{{ user.username }}</h1>
+        {% endif %}
         <button><a href="{% url 'admin_home' %}">Home</a></button>
         <button><a href="{% url 'admin_recents' %}">Recents</a></button>
         <button><a href="{% url 'admin_unreturned' %}">Unreturned</a></button>

@@ -8,6 +8,9 @@
     </head>
     <h1>FACULTY HOME</h1>
     <body>
+        {% if user.is_authenticated %}
+            <h1>>Welcome, {{ user.username }}</h1>
+        {% endif %}
 
      <form method="get" action="{% url 'home' %}">
         <input type="text" name="q" placeholder="Search by name,id,category" value="{{ query }}">
