@@ -1537,14 +1537,29 @@ button:hover {
   background-color: white; /* Slightly lighter color on hover */
   color: black;
 }
- /*row item*/
- .rowitembutton{
-  display: flex;
-  align-items: center;
-  height: 100%;
-  
- }
+.square-container{
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  border: 2px solid black;
 
+}
+.item-row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  
+
+}
+.row-container{
+  display: flex;
+  flex-wrap: wrap;
+
+}
+ 
 
   /* Media queries for responsiveness */
   @media screen and (max-width: 768px) {

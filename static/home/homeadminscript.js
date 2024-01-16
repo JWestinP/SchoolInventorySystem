@@ -248,9 +248,13 @@ function showItem(category) {
                     data.items.forEach(selectedItem => {
                         const imageUrl = `${selectedItem.item_photo}`
                         const itemHTML = `
-                            <div>
-                                <img src="${imageUrl}" alt="${selectedItem.item_name}" style="width: 100px; height: 100px;">
-                                <button data-item-target="${selectedItem.item_id}" class="item_button">${selectedItem.item_name}</button>
+                            <div class="row-container">
+                                 <div class="square-container">
+                                     <div class="item-row">
+                                         <img src="${imageUrl}" alt="${selectedItem.item_name}" style="width: 100px; height: 100px;">
+                                         <button data-item-target="${selectedItem.item_id}" class="item_button">${selectedItem.item_name}</button>
+                                    </div>
+                                </div>
                             </div>
                         `
                         itemContainer.innerHTML += itemHTML
