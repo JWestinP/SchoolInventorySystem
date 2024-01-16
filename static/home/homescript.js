@@ -146,7 +146,11 @@ function showItem(category) {
             try {
                 var data = JSON.parse(xhr.responseText)
                 console.log('Received data:', data)
-    
+
+                document.getElementById('back-button').innerHTML = `
+                <button id="back_category" onclick="showAllCategoryButtons()">Back</button>
+                `;
+
                 itemContainer.innerHTML += `<p>${data.items.length} items in category: ${data.items[0].item_category.item_category}</p>`;
                 
                 itemContainer.addEventListener('click', function (event) {
@@ -168,7 +172,6 @@ function showItem(category) {
                             <div>
                                 <img src="${imageUrl}" alt="${selectedItem.item_name}" style="width: 100px; height: 100px;">
                                 <button data-item-target="${selectedItem.item_id}" class="item_button">${selectedItem.item_name}</button>
-                                <button id="back_category" onclick="showAllCategoryButtons()">Back</button>
                             </div>
                         `
                         itemContainer.innerHTML += itemHTML
@@ -203,6 +206,8 @@ function showAllCategoryButtons() {
     });
     var itemContainer = document.getElementById('item_list');
     itemContainer.innerHTML = '';
+
+    location.reload()
 
 }
 
