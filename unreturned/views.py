@@ -7,7 +7,11 @@ from datetime import datetime
 
 # Create your views here.
 def unreturned(request):
-    unreturned_items = Unreturned_Item.objects.all()
+    user = request.user
+    unreturned_items = Unreturned_Item.objects.filter(item_borrowed__item_borrower = user)
+
+
+    # unreturned_items = Unreturned_Item.objects.all()
 
     return render(request, 'unreturned/unreturned.html',
                 {'unreturned_items': unreturned_items})
