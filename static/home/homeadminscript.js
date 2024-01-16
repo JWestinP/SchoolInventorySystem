@@ -32,7 +32,7 @@ function fetchData(itemId) {
             if (selectedItem) {
                 const imageUrl = `${selectedItem.item_photo}`
                 document.getElementById('item_header').innerHTML = `
-                    <img src="${imageUrl}" alt="${selectedItem.item_name}" style="width: 100px; border:1px solid #E67C37; height: 100px;">
+                    <img src="${imageUrl}" alt="${selectedItem.item_name}" style="width: 100px; border:1px solid black; height: 100px;">
                     <p>Item ID: ${selectedItem.item_id}</p>
                     <p>Name: ${selectedItem.item_name}</p>
                     <p>Category: ${selectedItem.item_category}</p>
