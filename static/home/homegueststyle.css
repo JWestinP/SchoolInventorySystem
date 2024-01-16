@@ -397,7 +397,7 @@ Start coding here
     gap: 1em;
 }
 
-.item_button, .back-button{
+.back-button{
     background-color: rgb(255, 255, 255);
     border:solid  rgb(153, 153, 153) 2px;
     padding-top: 5px;
@@ -413,7 +413,7 @@ Start coding here
     font-family: Arial;
 }
 
-.item_button:hover, .back-button:hover {
+.back-button:hover {
     color: rgb(230,124,55);
     border: solid rgb(230,124,55) 2px;
 }

@@ -151,7 +151,7 @@ function showItem(category) {
                 var data = JSON.parse(xhr.responseText)
                 console.log('Received data:', data)
                 document.getElementById('back-button').innerHTML = `
-                <button id="back_category" onclick="showAllCategoryButtons()">Back</button>
+                <button id="back_category" onclick="showAllCategoryButtons()" class="back-button">Back</button>
                 `;
                 itemContainer.addEventListener('click', function (event) {
                     
@@ -179,10 +179,7 @@ function showItem(category) {
 
                                 <div class= "items-button">
                                     <button data-item-target="${selectedItem.item_id}" class="item_button">${selectedItem.item_name}</button>
-<<<<<<< HEAD
-=======
                                     
->>>>>>> b2914a5a250b90392dfd06d7683cf0a06c947fb9
                                 </div>
 
                             </div>
