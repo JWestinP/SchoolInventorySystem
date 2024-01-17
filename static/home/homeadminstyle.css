@@ -416,7 +416,7 @@ body {
   }
   .items, .item-items {
     display: flex;
-    flex-direction: column;/* Stack items vertically */
+    flex-direction: row;/* Stack items vertically */
     align-items: center;
     position: relative;
     justify-content: space-between;
@@ -571,39 +571,7 @@ body {
     right: 10px;
     cursor: pointer;
   }
-  button.add {
-    background-color: #28a745;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    margin-left: auto;
-  }
-  
-  /* Hover effect for "Add Items" button */
-  button.add:hover {
-    background-color: #218838;
-  }
-  
-  /* Styles for the "Remove Items" button */
-  button.remove {
-    background-color: #dc3545;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    margin-right: auto;
-  }
-  
-  /* Hover effect for "Remove Items" button */
-  button.remove:hover {
-    background-color: #c82333;
-  }
-  
+ 
   /* Styles for the button container */
   .button-container {
     display: flex;
@@ -622,7 +590,7 @@ body {
     width: auto; /* Fixed width */
     height: auto; /* Fixed height to make it a square */
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
     position: absolute;
     top: 50%;
@@ -1339,7 +1307,7 @@ button p:hover {
 }
 #borrowFormId {
   max-width: 150px;
-  margin: 80px -230px auto;
+  margin: 90px -230px auto;
   padding: 10px;
   border-radius: 8px;
 }
@@ -1612,35 +1580,27 @@ button:hover {
   background-color: white; /* Slightly lighter color on hover */
   color: black;
 }
+
 .items_div {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   padding-top: 0;
+  flex-wrap: wrap; /* Allow items to wrap to the next row if necessary */
 }
 
-.row-container{
-  flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1em;
-  padding: 10px;
-}
-
-.square-container{
+.square-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-content: center;
-  border: 2px solid rgb(171,177,177);
+  border: 2px solid rgb(171, 177, 177);
   border-radius: 6px;
   height: 180px;
   width: 130px;
-  padding-top: 10px;
-  padding-left: 10px;
-  padding-right: 10px; 
-  padding-bottom: 20px;
+  padding: 10px; /* Adjust padding as needed */
   background-color: rgb(255, 255, 255);
+  margin: 10px; /* Adjust margin for spacing between items */
   flex-shrink: 0;
 }
 
@@ -1673,6 +1633,25 @@ button:hover {
   align-content: center;
   gap: 1em;
 }
+/*add back remove*/
+#edit_back_buttons {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 10px;
+  position: absolute;
+  margin-top: 350px;
+  margin-left: 80px;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+#edit_back_buttons button {
+  margin-right: 10px; /* Adjust the right margin for spacing */
+  border: 4px solid black;
+}
+
+
 
   /* Media queries for responsiveness */
   @media screen and (max-width: 768px) {
@@ -1780,6 +1759,12 @@ button:hover {
     .form-popup {
       width: 90%;
   }
+  #edit_back_buttons {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
 }
 
 
