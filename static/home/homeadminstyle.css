@@ -1241,26 +1241,91 @@ button p:hover {
   margin: 0;
 }
 
+
+
+
+/* Style for the borrow form */
 /* Style for the close button */
 .close_button {
+  margin-top: 5px;
+  margin-bottom: auto;
   background: none;
   border: none;
   font-size: 20px;
-  color: #fff;
+  color: black;
   cursor: pointer;
 }
+.item_information {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  justify-content: space-between;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 200ms ease-in-out;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.40);
+  border-radius: 10px;
+  z-index: 10;
+  background-color: white;
+  max-width: 700px;
+  padding: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  
+}
 
-/*borrow popup*/
+.item_information.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+
+.item_header {
+  padding: 15px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-right: 1px solid black;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 150px;
+}
+
+.item-header-pic {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  padding-bottom: 5px;
+  flex: 1;
+}
+
+.name{
+  font-size: 20px;
+}
+
+.header-info {
+  padding-top: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-top: 1px solid black;
+  font-size: 15px;
+  gap: 5px;
+
+}
 /*table quantity*/
 #item_body table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 #item_body td {
   border: 2px solid black;
-  padding: 8px;
+  padding: 5px;
   text-align: left;
 
 }
@@ -1272,39 +1337,49 @@ button p:hover {
 #item_body tr:hover {
   background-color: #ddd;
 }
-
-/* Style for the borrow form */
-#item_form {
-  padding: auto;
-  margin-top: 20px;
-  border: 2px solid white;
-
-}
 #borrowFormId {
+  max-width: 150px;
+  margin: 80px -230px auto;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.borrow-row {
+  margin-top: 5px;
+  margin-left: -90px;
+}
+
+.item-borrow-row {
   display: flex;
   flex-direction: column;
-  max-width: 400px;
-  margin: 0 auto;
-}
-
-#borrowFormId label {
+  align-items: flex-start;
   margin-bottom: 15px;
 }
 
-#borrowFormId input[type="text"],
-#borrowFormId input[type="number"] {
+.item-borrow-row p {
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.item-borrow-row input[type="text"],
+.item-borrow-row input[type="date"] {
+  width: 100%;
   padding: 10px;
   margin-bottom: 10px;
   box-sizing: border-box;
 }
 
-#borrowFormId button {
-  padding: 10px;
+.item-borrow-row input[type="submit"] {
   background-color: #3498db;
   color: #fff;
   border: none;
   cursor: pointer;
+  padding: 12px;
+  border-radius: 5px;
+  font-size: 16px;
 }
+
 /*additem*/
 .form-popup {
   display: block; /* Change to 'none' if you want it hidden by default */
@@ -1537,29 +1612,67 @@ button:hover {
   background-color: white; /* Slightly lighter color on hover */
   color: black;
 }
-.square-container{
-  width: 150px;
-  height: 150px;
-  overflow: hidden;
-  border: 2px solid black;
-
-}
-.item-row{
+.items_div {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  height: 100%;
-  box-sizing: border-box;
-  padding: 10px;
-  
-
+  justify-content: flex-start;
+  padding-top: 0;
 }
+
 .row-container{
-  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   flex-wrap: wrap;
-
+  gap: 1em;
+  padding: 10px;
 }
- 
+
+.square-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+  border: 2px solid rgb(171,177,177);
+  border-radius: 6px;
+  height: 180px;
+  width: 130px;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px; 
+  padding-bottom: 20px;
+  background-color: rgb(255, 255, 255);
+  flex-shrink: 0;
+}
+
+.square-container:hover {
+  border: solid  rgb(230,124,55) 2px;
+}
+
+.item-photo {
+  display: flex;
+  width: 130px;
+  align-items: center;
+  margin-right: 10px;
+  padding-bottom: 5px;
+  border-bottom: 0.5px solid rgb(171,177,177);
+}
+
+.item-name{
+  margin-top: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.item-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 5px;
+  flex-wrap: wrap;
+  align-content: center;
+  gap: 1em;
+}
 
   /* Media queries for responsiveness */
   @media screen and (max-width: 768px) {

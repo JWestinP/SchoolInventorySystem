@@ -32,11 +32,16 @@ function fetchData(itemId) {
             if (selectedItem) {
                 const imageUrl = `${selectedItem.item_photo}`
                 document.getElementById('item_header').innerHTML = `
-                    <img src="${imageUrl}" alt="${selectedItem.item_name}" style="width: 100px; border:1px solid black; height: 100px;">
+              
+                <div class="item-header-pic">
+                <button data-close-button class="close_button">&times;</button>  
+                    <img src="${imageUrl}" alt="${selectedItem.item_name}" style="width: 150px; border:1px solid black; height: 150px;">
+                </div>
+                <div class="header-info">    
                     <p>Item ID: ${selectedItem.item_id}</p>
                     <p>Name: ${selectedItem.item_name}</p>
                     <p>Category: ${selectedItem.item_category}</p>
-                    <button data-close-button class="close_button">&times;</button> 
+                  
                
                 `;
                 document.body.addEventListener('click', function (event) {
@@ -47,7 +52,7 @@ function fetchData(itemId) {
                 });
     
                 document.getElementById('item_body').innerHTML = `
-                <table>
+                <table class="table-row">
                 
                <tr>
                     <td>Description</td>
@@ -250,8 +255,10 @@ function showItem(category) {
                         const itemHTML = `
                             <div class="row-container">
                                  <div class="square-container">
-                                     <div class="item-row">
-                                         <img src="${imageUrl}" alt="${selectedItem.item_name}" style="width: 100px; height: 100px;">
+                                    <div class="item-photo">
+                                        <img src="${imageUrl}" alt="${selectedItem.item_name}" style="width: 100px; height: 100px;">
+                                    </div> 
+                                    <div class="item-button">  
                                          <button data-item-target="${selectedItem.item_id}" class="item_button">${selectedItem.item_name}</button>
                                     </div>
                                 </div>
