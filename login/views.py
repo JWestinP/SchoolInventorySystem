@@ -16,7 +16,14 @@ def user_login(request):
         
         if user is not None:
             login(request, user)
-            return redirect('home')
+            group_names = []
+            if user.groups.exists():
+                group_names = user.groups.values_list('name', flat=True)[:1]  # Get the first two group names
+                
+            if 'Admin' in group_names:
+                return redirect('admin_home')  
+            elif 'Faculty' in group_names:
+                return redirect('home')
         
         else:
             messages.error(request, "Invalid email or password, please try again.")
