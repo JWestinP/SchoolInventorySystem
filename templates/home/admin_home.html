@@ -6,18 +6,22 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
         <title>ADMIN HOME</title>
     <body>
-        <form method="GET" action="{% url 'search_items_admin' %}">
-            <input type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
-            <button type="submit">Search</button>
-          </form>
         <header>
             <div class="logo left">
                 <img src="static/home/LSPU.png" alt="Left Logo">
             </div>
+            
             <div class="search-bar">
-                <input type="text" class="search-input" placeholder="Search...">
-                <i class="fas fa-search"></i>
+                <form method="GET" action="{% url 'search_items_admin' %}">
+                    
+                    <input type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
+                    <button class="searchbb" type="submit">Search</button>
+                </div>
+                  </form>
             </div>
+
+            <!--  <input type="text" class="search-input" placeholder="Search..."> 
+                <i class="fas fa-search"></i> -->
             <div class="logo right">
                 <img src="static/home/CSS.png" alt="Right Logo">
             </div> 
