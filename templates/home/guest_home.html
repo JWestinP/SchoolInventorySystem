@@ -7,10 +7,6 @@
     </head>
 
     <body>
-        <form method="GET" action="{% url 'search_items_guest' %}">
-            <input type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
-            <button type="submit">Search</button>
-          </form>
         
         <div class="header">
             
@@ -19,8 +15,8 @@
             </div>
 
             <div class="middle-section">
-                <form method="get" action="{% url 'home' %}">
-                    <input class="search-bar" type="text" placeholder="Search by name,id,category" value="{{ query }}">
+                <form method="GET" action="{% url 'search_items_guest' %}">
+                    <input class="search-bar" type="text" placeholder="Search for name/id/category" name="q" value="{{ query }}">
                     <input class="search-button" type="submit" value="Search">
                 </form>
             </div>
@@ -31,7 +27,6 @@
             
         </div>
         
-        {% include 'home/result_list.html' %}
         <div class="guest-button-grid">
 
             <button class="guest-buttons-tabs"><a href="{% url 'guest_home' %}">Home</a></button>
@@ -73,7 +68,9 @@
                         
                     </div>
                 {% endfor %}
+                {% include 'home/result_list_guest.html' %}
                 <div class="item_information" id="item_information">
+                    
                     <div class="item_header" id="item_header">
                        
                     </div>
@@ -94,6 +91,6 @@
                     
        
         <script defer src="{% static 'home/homeguestscript.js' %}"></script>
-        {% include 'home/result_list_guest.html' %}
+        
     </body>
 </html>
