@@ -3,6 +3,7 @@ from django.contrib import messages
 from .forms import UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from .models import Profile
 
 
 # Create your views here.
@@ -45,6 +46,7 @@ def editprofile(request):
     # Retrieve the user's profile
     #user_profile = User.objects.get(pk=request.user.id).profile
     user_profile = request.user.profile
+
 
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance=request.user)
