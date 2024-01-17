@@ -18,10 +18,10 @@ class Item(models.Model):
         return f"{self.item_id} - {self.item_name} ({self.item_category})"
 
 class Stock(models.Model):
-    item_information = models.OneToOneField(Item, on_delete=models.CASCADE)
+    item_information = models.OneToOneField(Item, on_delete=models.CASCADE, null=True, blank=True)
     item_total_quantity = models.IntegerField()
-    item_current_quantity = models.IntegerField()
-    item_borrowed_quantity = models.IntegerField()
+    item_current_quantity = models.IntegerField(null=True, blank=True)
+    item_borrowed_quantity = models.IntegerField(null=True, blank=True)
     
     def __str__(self):
         return f"{self.item_information.item_id} - {self.item_information.item_name} ({self.item_information.item_category})"

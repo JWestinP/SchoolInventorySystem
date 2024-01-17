@@ -4,9 +4,11 @@ from .forms import UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
+from home.decorators import allowed_users
 
 # Create your views here.
 @login_required
+@allowed_users(allowed_roles=['Faculty'])
 def userprofile(request):
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance=request.user)
@@ -36,6 +38,7 @@ def userprofile(request):
     return render(request, 'userprofile/userprofile.html', context)
 
 @login_required
+@allowed_users(allowed_roles=['Admin'])
 def admin_userprofile(request):
     user_profile = Profile.objects.get(user=request.user) 
     return render(request, 'userprofile/admin_userprofile.html',{'user_profile': user_profile})
