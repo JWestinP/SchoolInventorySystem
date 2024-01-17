@@ -235,7 +235,6 @@ function showItem(category) {
                         }
                     }
                 })
-                
                 itemContainer.innerHTML += `<p>${data.items.length} items in category: ${data.items[0].item_category.item_category}</p>`;
                 itemContainer.addEventListener('click', function (event) {
                     
@@ -256,7 +255,7 @@ function showItem(category) {
                             <div class="row-container">
                                  <div class="square-container">
                                     <div class="item-photo">
-                                        <img src="${imageUrl}" alt="${selectedItem.item_name}" style="width: auto; height: auto;">
+                                        <img src="${imageUrl}" alt="${selectedItem.item_name}" style="width: 100px; height: 100px;">
                                     </div> 
                                     <div class="item-button">  
                                          <button data-item-target="${selectedItem.item_id}" class="item_button">${selectedItem.item_name}</button>
