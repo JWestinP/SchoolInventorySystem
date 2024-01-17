@@ -1,45 +1,48 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" href="{% static 'notification/notificationstyle.css' %}">
-        <title>NOTIFICATION</title>
-    </head>
-    <h1>NOTIFICATION</h1>
-    <body>
-        <form method="GET" action="{% url 'search_items' %}">
-            <input type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
-            <button type="submit">Search</button>
-          </form>
-        <button><a href="{% url 'home' %}">Home</a></button>
-        <button><a href="{% url 'recents' %}">Recents</a></button>
-        <button><a href="{% url 'show_unreturned_items' %}">Unreturned</a></button>
-        <button><a href="{% url 'notification' %}">Notification</a>
-            {% if unreturned_item_exist %}
-            <span class="notification-indicator">!</span>
-            {% endif %}
-        </button>
-        <button><a href="{% url 'userprofile' %}">Account</a></button>
-        <button><a href="{% url 'logout' %}">Logout</a></button>
-        {% include 'home/result_list.html' %}
+<head>
+   <title>Notifications</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link href="https://fonts.googleapis.com/css?family=Orienta:regular" rel="stylesheet" />
+   <link rel="stylesheet" href="notifications.css">
+</head>
+<style>
+</style> 
+<body>
+   <header>
+      <div class="header">
+        <div class="logo-left">
+         <img src="img\lspu-logo.png" alt="Left Logo">
+        </div>
 
-        {% if unreturned_item_exist %}
-        <p>You have unreturned items. Please check the Unreturned Items tab for more details.</p>
+        <div class="search">
+         <input type="text" class="search-input" placeholder="CLEANING MATERIALS" style="width: 1046px;height: 30px;left: 187px;border-radius: 10px;border: 4px;">
+         <i class="fas fa-search"></i>
+       </div>
 
-        <ul>
-            {% for item_info in unreturned_items %}
-            <li>
-                Item ID: {{ item_info.item_name }} - 
-                {{ item_info.item_days_not_returned }} days overdue
-                (Borrowed on {{ item_info.item_date_borrowed|date:"F d, Y" }})
-            </li>
-            {% endfor %}
-        </ul>
+         <div class="logo-right">
+            <img src="img\ccs-logo.png" alt="Right Logo">
+         </div>
+        
+      </div>
+    </header>
+<div class="head"></div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+   <div class="container">
+      <a href="{% url 'search' &}" class="navbar-brand">Home</a>
+      <a href="{recents}" class="navbar-brand">Recents</a>
+      <a href="{unreturned}" class="navbar-brand">Unreturned</a>
+      <a href="{% url 'notifications' &}" class="navbar-brand">Notifications</a>
+      <a href="{% url 'account' &}" class="navbar-brand">Account</a>
+   </div>
+</nav>
 
-        <p>Please return the items after each use. Thanks!</p>
-        {% else %}
-        <p>No unreturned items at the moment.</p>
-        {% endif %}
-    </body>
-    
+<div id="main" class="form">
+   <div class="item">
+     <p>Messages</p>
+  </div>
+</div>
+  
+</body>
 </html>
