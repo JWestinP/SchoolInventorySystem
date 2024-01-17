@@ -997,8 +997,6 @@ input[name="q"] {
     background-image: url(../home/furnitures.png);
     background-size: 160px;
     background-position: center;
-    
-    
   }
   .category_button:nth-child(3){
     background-image: url(../home/documents.png);
