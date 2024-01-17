@@ -7,11 +7,16 @@
     </head>
     <h1>ADMIN USER PROFILE</h1>
     <body>
+        <form method="GET" action="{% url 'search_items_admin' %}">
+            <input type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
+            <button type="submit">Search</button>
+          </form>
         <button><a href="{% url 'admin_home' %}">Home</a></button>
         <button><a href="{% url 'admin_recents' %}">Recents</a></button>
         <button><a href="{% url 'admin_unreturned' %}">Unreturned</a></button>
         <button><a href="{% url 'members' %}">Members</a></button>
         <button><a href="{% url 'admin_userprofile' %}">Account</a></button>
         <button><a href="{% url 'logout' %}">Logout</a></button>
+        {% include 'home/result_list_admin.html' %}
     </body>
 </html>
