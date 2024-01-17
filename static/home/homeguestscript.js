@@ -218,6 +218,7 @@ function showAllCategoryButtons() {
     });
     var itemContainer = document.getElementById('item_list');
     itemContainer.innerHTML = '';
+    location.reload()
 
 }
 
