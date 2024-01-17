@@ -1015,7 +1015,7 @@ input[name="q"] {
 
 
   .category_button:hover {
-    background-color: #f36d34;
+    background-color: orange;
   }
   /*edit button*/
   #edit_category_buttons {
