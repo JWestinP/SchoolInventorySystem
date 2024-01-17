@@ -7,6 +7,10 @@
 
     </head>
     <body>
+        <form method="GET" action="{% url 'search_items_admin' %}">
+            <input type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
+            <button type="submit">Search</button>
+          </form>
         <body>
     <header>
         <div class="logo left">
@@ -49,5 +53,6 @@
         <div class="recent-lines"></div>
     </div> 
     </div>
+        {% include 'home/result_list_admin.html' %}
     </body>
 </html>

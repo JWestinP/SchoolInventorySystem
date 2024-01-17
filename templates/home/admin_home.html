@@ -6,6 +6,10 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
         <title>ADMIN HOME</title>
     <body>
+        <form method="GET" action="{% url 'search_items_admin' %}">
+            <input type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
+            <button type="submit">Search</button>
+          </form>
         <header>
             <div class="logo left">
                 <img src="static/home/LSPU.png" alt="Left Logo">
@@ -38,7 +42,8 @@
                         <div id="edit_category_buttons">
                             <h1 class="h1item">Categories</h1>
                             <button onclick="editCategory()"><i class="fa fa-edit"></i></button>
-                        </div>
+                        </div>        
+
                         <div class="categories" id="category_container">
                             {% for category in categories %}
                             <button onclick="showItem('{{ category }}')" class="category_button">{{ category }}</button>
@@ -191,7 +196,9 @@
             
             
         </div>
-
+        
+        {% include 'home/result_list_admin.html' %}
+        
         <script defer src="{% static 'home/homeadminscript.js' %}"></script>
         <!-- end ng code ni westin -->
     </body>
