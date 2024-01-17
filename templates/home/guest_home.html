@@ -31,22 +31,25 @@
             
         </div>
         
-
-        
+        {% include 'home/result_list.html' %}
         <div class="guest-button-grid">
-            {% include 'home/result_list.html' %}
+
             <button class="guest-buttons-tabs"><a href="{% url 'guest_home' %}">Home</a></button>
             <button class="guest-buttons-tabs"><a href="{% url 'logout' %}">Log out</a></button>
         </div>    
 
-        <div id="back-button">
-            
-        </div>
+
         
         <div class="category-container">
-            <p class="category-container-title">
-                Categories 
-            </p>   
+            <div class="category-title-button">
+                <p class="category-container-title">
+                    Categories 
+                </p>  
+                
+                <div id="back-button">
+                
+                </div>
+            </div>
             <!-- category-grid -->
             <div class="categories">
 

@@ -179,7 +179,7 @@ function showItem(category) {
 
                                 <div class= "items-button">
                                     <button data-item-target="${selectedItem.item_id}" class="item_button">${selectedItem.item_name}</button>
-                                    
+
                                 </div>
 
                             </div>
