@@ -6,18 +6,15 @@
         <title>ADMIN UNRETURNED</title>
     </head>
     <body>
-        <div>
+        <div class="search-bar">
             <form method="GET" action="{% url 'search_items_admin' %}">
             <input type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
             <button type="submit">Search</button>
           </form>
+        </div>
         <header>
             <div class="logo left">
                 <img src="static/unreturned/LSPU.png" alt="Left Logo">
-            </div>
-            <div class="search-bar">
-                <input type="text" class="search-input" placeholder="Search...">
-                <i class="fas fa-search"></i>
             </div>
             <div class="logo right">
                 <img src="static/unreturned/CSS.png" alt="Right Logo">
@@ -35,36 +32,38 @@
             </div>
         </nav>
         </div>
+        
 
         <div id="container" class="rounded_corners">
 
             <!-- test block code -->
             <!-- template for the items -->
             {% for item in unreturned_items reversed %}
-            <div id="wrapper">
+            <div id="wrapper" style="border: 1px solid black; margin: 10px; padding: 10px;
+            background-color: #f9f9f9; border-radius: 10px;">
 
-                <div id="top">
-                    <div id="left">
+                <div id="top" style="display: flex; align-items: center;">
+                    <div id="left" style="margin-right: 10px;">
                         {% if item.item_borrowed.item_stock.item_information.item_photo %}
-                            <img src="{{ item.item_borrowed.item_stock.item_information.item_photo.url }}" alt="" class="inventory_item" height="100%" object-fit="contain">
+                            <img src="{{ item.item_borrowed.item_stock.item_information.item_photo.url }}" class="inventory_item" height="100%" object-fit="contain">
                         {% endif %}
 
                     </div>
-                    <div id="right">
-                        <p id="item_name">{{ item.item_borrowed.item_stock.item_information.item_name }}</p>
-                        <p id="item_details">
+                    <div id="right" style="flex-grow: 1;">
+                        <p id="item_name" style="margin-left: 10px; font-weight: bold; font-size: large; margin-bottom: 10px;">{{ item.item_borrowed.item_stock.item_information.item_name }}</p>
+                        <p id="item_details" style="margin-left: 10px;">
                             Time Borrowed: {{ item.item_borrowed.item_date_borrowed }}<br />
                             Time Returned: {{ item.item_borrowed.item_date_returned }}<br />
                             Borrower: {{ item.item_borrowed.item_borrower }}
                         </p>
-                        <p id="item_quantity">Item Quantity: {{ item.item_borrowed.item_quantity }}</p>
+                        <p id="item_quantity" style="text-align: right; margin: 0; margin-right: 50px;">Item Quantity: {{ item.item_borrowed.item_quantity }}</p>
 
                     </div>
                 </div>
-                <div id="bottom">
+                <div id="bottom" style="display: flex; justify-content: flex-end;">
                     <div id="btn_con">
-                        <!-- <button id="return_btn" class="rounded_corners">Return</button> -->
-                        <a href="{% url 'admin_return_item' item.id item.item_borrowed.item_stock.id %}">Return</a>
+                        <button id="return_btn" class="rounded_corners" style="border-radius: 5px; padding: 5px 10px; background-color: #3498db; color: white; cursor: pointer;">
+                        <a href="{% url 'admin_return_item' item.id item.item_borrowed.item_stock.id %}">Return</a></button>
                     </div>
                 </div>
 

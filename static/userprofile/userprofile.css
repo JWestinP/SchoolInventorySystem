@@ -207,3 +207,34 @@ body {
     visibility: visible;
     transform: scaleX(1); /* Make the underline visible and scale it */
   }
+
+  .account-heading{
+    font-size: 30px;
+  }
+
+  .text-secondary{
+    margin-top: 12px;
+  }
+
+  .btn{
+    border-radius: 5px; padding: 5px 10px; background-color: #3498db; color: white; cursor: pointer;
+  }
+  .btn:hover{
+    background-color: orange;
+    
+  }
+
+  .form-container{
+    margin-left: 50px;
+    margin-top: 50px;
+  }
+
+  .form-group{
+    margin-top: 12px;
+    
+  }
+  .border-bottom{
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }

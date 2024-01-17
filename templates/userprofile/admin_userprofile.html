@@ -35,16 +35,16 @@
         </nav>
 
 
-        <div style="display: flex; align-items: center; margin-top: 20px;">
+        <div style="display: flex; align-items: center; margin-top: 30px; margin-left: 50px;">
             <img class="rounded-circle account-img" src="{{ user_profile.image.url }}" alt="Profile Image" style="max-width: 200px; max-height: 200px; object-fit: cover; border-radius: 50%;">
 
-            <div style="margin-left: 20px;">
+            <div style="margin-left: 30px;">
                 <h2 class="account-heading">{{ user_profile.user.username }}</h2>
-                <p class="text-secondary" style="margin-top: 10px;">Account Name: {{ user_profile.account_name }}</p>
-                <p class="text-secondary" style="margin-top: 10px;">Email: {{ user_profile.user.email }}</p>
-                <p class="text-secondary" style="margin-top: 10px;">Contact Number: {{ user_profile.contact_number }}</p>
+                <p class="text-secondary">Account Name: {{ user_profile.account_name }}</p>
+                <p class="text-secondary">Email: {{ user_profile.user.email }}</p>
+                <p class="text-secondary">Contact Number: {{ user_profile.contact_number }}</p>
 
-                <button><a href="{% url 'editprofile' %}">Edit Profile</a></button>
+                <button class="btn" style="margin-top: 20px;"><a href="{% url 'editprofile' %}">Edit Profile</a></button>
             </div>
         </div>
 

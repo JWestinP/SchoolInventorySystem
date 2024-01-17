@@ -26,6 +26,7 @@
             <!-- test block code -->
             <!-- template for the items -->
             {% for item in unreturned_items reversed %}
+            
             <div id="wrapper">
 
                 <div id="top">
@@ -35,6 +36,7 @@
                         {% endif %}
 
                     </div>
+
                     <div id="right">
                         <p id="item_name">{{ item.item_borrowed.item_stock.item_information.item_name }}</p>
                         <p id="item_details">

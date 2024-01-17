@@ -135,7 +135,7 @@ body {
     align-items: center;
   }
   
-  .search-input {
+  q {
     width: 95%; /* Adjusted to take 100% width on smaller screens */
     padding: 8px;
     font-size: 16px;
@@ -151,6 +151,7 @@ body {
     margin-top: 7px;
 
   }
+
   
   /* navigations */
   nav {
@@ -207,11 +208,17 @@ body {
     visibility: visible;
     transform: scaleX(1); /* Make the underline visible and scale it */
   }
-
-/* jonas design */
-/* * {
-    font-family: Arial, Helvetica, sans-serif; background-color: gray;
+#container {
+    border-radius: 10px; /* Adjust the value as needed for the desired roundness */
+    overflow: hidden; /* Ensure content inside doesn't overflow rounded corners */
 }
+  #return_btn:hover{
+    background-color: orange;
+  }
+/* jonas design 
+{
+    font-family: Arial, Helvetica, sans-serif; background-color: gray;
+/
 body {
     margin: 15px;
 }
