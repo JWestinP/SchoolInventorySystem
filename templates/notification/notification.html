@@ -13,7 +13,7 @@
           </form>
         <button><a href="{% url 'home' %}">Home</a></button>
         <button><a href="{% url 'recents' %}">Recents</a></button>
-        <button><a href="{% url 'show_unreturned_items' %}">Unreturned</a></button>
+        <button><a href="{% url 'unreturned' %}">Unreturned</a></button>
         <button><a href="{% url 'notification' %}">Notification</a>
             {% if unreturned_item_exist %}
             <span class="notification-indicator">!</span>

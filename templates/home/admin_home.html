@@ -6,6 +6,9 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
         <title>ADMIN HOME</title>
     <body>
+        {% if user.is_authenticated %}
+            <h1>>{{ user.username }}</h1>
+        {% endif %}
         <form method="GET" action="{% url 'search_items_admin' %}">
             <input type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
             <button type="submit">Search</button>

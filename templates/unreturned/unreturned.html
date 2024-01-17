@@ -6,82 +6,6 @@
         <title>UNRETURNED</title>
     </head>
 
-    <style>
-        * {
-            font-family: Arial, Helvetica, sans-serif; background-color: gray;
-        }
-        body {
-            margin: 15px;
-        }
-
-        #mema_title {
-            text-align: center;
-            padding: 15px;
-        }
-
-        #nav_btn {
-            width: 98%; display: flex; flex-direction: row; padding: 15px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        }
-
-        button {
-            width: 150px; height: 30px; margin: auto; border: none; background: none;
-        }
-
-        button a {
-            text-decoration: none; font-size: 22px; font-weight: 700; color: black;
-        }
-
-        #container {
-            width: 100%; float: right; margin-top: 20px; background-color: white; padding-top: 20px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        }
-
-        #wrapper {
-            width: 90%; margin: auto; outline: solid 1px gray; margin-bottom: 25px; height: 200px; display: flex; flex-direction: column; background-color: white;
-        }
-
-        #top {
-            width: 100%; outline: solid 1px gray; display: flex; height: 80%;
-        }
-
-        #top #left {
-            outline: solid 1px gray; width: 20%;
-        }
-
-        #top #right {
-            width: 80%;
-        }
-
-        #top #right #item_name {
-            margin-left: 15px; font-size: 22px; font-weight: 500; padding: 15px 0px;
-        }
-        #top #right #item_details {
-            margin-left: 15px; font-size: 12px;
-        }
-        #top #right #item_quantity {
-            margin-right: 15px; font-size: 18px; font-weight: 500; text-align: right;
-        }
-
-        #bottom {
-            width: 100%; outline: solid 1px gray; height: 20%;
-        }
-
-        #bottom #btn_con {
-            width: 100%; height: 100%; text-align: right;
-        }
-
-        #bottom #btn_con button {
-            margin: auto 0px; width: 15%; margin-right: 15px; border: 0px; outline: solid 1px gray;
-        }
-
-        .rounded_corners {
-            border-radius: 8px;
-        }
-
-        .active_tab{
-            text-decoration: underline; color: pink;
-        }
-    </style>
-
     <body>
         <h1 id="mema_title">Page ng UNRETURNED to boy. HAHA</h1>
         <form method="GET" action="{% url 'search_items' %}">
@@ -91,7 +15,7 @@
         <div id="nav_btn" class="rounded_corners">
             <button><a href="{% url 'home' %}">Home</a></button>
             <button><a href="{% url 'recents' %}">Recents</a></button>
-            <button><a href="{% url 'show_unreturned_items' %}" class="active_tab">Unreturned</a></button>
+            <button><a href="{% url 'unreturned' %}" class="active_tab">Unreturned</a></button>
             <button><a href="{% url 'notification' %}">Notification</a></button>
             <button><a href="{% url 'userprofile' %}">Account</a></button>
             <button><a href="{% url 'logout' %}">Logout</a></button>
@@ -99,54 +23,40 @@
         {% include 'home/result_list.html' %}
         <div id="container" class="rounded_corners">
 
-            <!-- isinama ko na yung style nya sa html
-            ayaw gumana pag external file ang gamit eh -->
-
             <!-- test block code -->
             <!-- template for the items -->
-            <!-- {% for item in unreturned_items %} -->
+            {% for item in unreturned_items reversed %}
             <div id="wrapper">
 
                 <div id="top">
                     <div id="left">
-                        <!-- {% if item.item_photo %}
-                            <img src="{{ item.item_photo.url }}" alt="" class="inventory_item" width="100%" height="100%" object-fit="contain">
-                        {% endif %} -->
-
-                        <!-- test image -->
-                        <img src="" alt="" width="100%" height="100%" object-fit="contain">
-                        <!-- test image -->
+                        {% if item.item_borrowed.item_stock.item_information.item_photo %}
+                            <img src="{{ item.item_borrowed.item_stock.item_information.item_photo.url }}" alt="" class="inventory_item" height="100%" object-fit="contain">
+                        {% endif %}
 
                     </div>
                     <div id="right">
-                        <!-- <p id="item_name">{{item.item_name}}</p>
+                        <p id="item_name">{{ item.item_borrowed.item_stock.item_information.item_name }}</p>
                         <p id="item_details">
-                            Time Borrowed: {{item.item_date_borrowed}}<br />
-                            Time Returned: {{item.item_days_not_returned}}<br />
-                            Borrower: {{item.item_borrower}}
+                            Time Borrowed: {{ item.item_borrowed.item_date_borrowed }}<br />
+                            Time Returned: {{ item.item_borrowed.item_date_returned }}<br />
+                            Borrower: {{ item.item_borrowed.item_borrower }}
                         </p>
-                        <p id="item_quantity">Item Quantity: {{item.item_quantity}}</p> -->
+                        <p id="item_quantity">Item Quantity: {{ item.item_borrowed.item_quantity }}</p>
 
-                        <!-- test text -->
-                        <p id="item_name"></p>
-                        <p id="item_details">
-                            Time Borrowed: <br />
-                            Time Returned: <br />
-                            Borrower:
-                        </p>
-                        <p id="item_quantity">Item Quantity: </p>
-                        <!-- test text -->
                     </div>
                 </div>
                 <div id="bottom">
                     <div id="btn_con">
-                        <button id="return_btn" class="rounded_corners">Return</button>
+                        <!-- <button id="return_btn" class="rounded_corners">Return</button> -->
+                        <a href="{% url 'return_item' item.id item.item_borrowed.item_stock.id %}">Return</a>
                     </div>
                 </div>
 
             </div>
-            <!-- {% endfor %} -->
+            {% endfor %}
             <!-- template for the items -->
+
         </div>
 
     </body>
