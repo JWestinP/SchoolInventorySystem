@@ -6,8 +6,15 @@
         <title>RECENTS</title>
     </head>
 
+    
+
     <body>
         <h1 id="mema_title">Page ng RECENTS to boy. HAHA</h1>
+
+        <form method="GET" action="{% url 'search_items' %}">
+            <input type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
+            <button type="submit">Search</button>
+          </form>
 
         <div id="nav_btn" class="rounded_corners">
             <button><a href="{% url 'home' %}">Home</a></button>
@@ -53,6 +60,8 @@
             <!-- template for the items -->
 
         </div>
-
+        
     </body>
 </html>
+
+{% include 'home/result_list.html' %}

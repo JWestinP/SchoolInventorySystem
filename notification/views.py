@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from recents.models import Borrowed_Item
 from unreturned.models import Unreturned_Item
-
 from datetime import timedelta, date, datetime
 from django.utils import timezone
+from home.decorators import allowed_users
 
 # Create your views here.
+@allowed_users(allowed_roles=['Faculty'])
 def notification(request):
     unreturned_items = get_unreturned_items_info(request)
     unreturned_item_exist = check(request)

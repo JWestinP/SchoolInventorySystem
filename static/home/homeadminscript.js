@@ -540,3 +540,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+
+function showBorrowForm(itemId) {
+    fetchData(itemId);  
+}
+

@@ -3,8 +3,10 @@ from django.http import HttpResponse
 from unreturned.models import *
 from .models import *
 from home.models import *
+from home.decorators import allowed_users
 
 # Create your views here.
+@allowed_users(allowed_roles=['Faculty'])
 def recents(request):
     user = request.user
     # item = Item.objects.filter(item_borrowed__item_borrower = user)
@@ -17,6 +19,7 @@ def recents(request):
                 {'borrowed_item': borrowed_item,
                 'item': item})
 
+@allowed_users(allowed_roles=['Admin'])
 def admin_recents(request):
     item = Item.objects.all()
     borrowed_item = Borrowed_Item.objects.all()
