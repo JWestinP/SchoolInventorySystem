@@ -7,16 +7,54 @@
     </head>
     <h1>ADMIN RECENTS</h1>
     <body>
-        <form method="GET" action="{% url 'search_items_admin' %}">
+        <div>
+            <form method="GET" action="{% url 'search_items_admin' %}">
             <input type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
             <button type="submit">Search</button>
           </form>
         <button><a href="{% url 'admin_home' %}">Home</a></button>
-        <button><a href="{% url 'admin_recents' %}">Recents</a></button>
-        <button><a href="{% url 'admin_unreturned' %}">Unreturned</a></button>
-        <button><a href="{% url 'members' %}">Members</a></button>
-        <button><a href="{% url 'admin_userprofile' %}">Account</a></button>
-        <button><a href="{% url 'logout' %}">Logout</a></button>
+            <button><a href="{% url 'admin_recents' %}">Recents</a></button>
+            <button><a href="{% url 'admin_unreturned' %}">Unreturned</a></button>
+            <button><a href="{% url 'members' %}">Members</a></button>
+            <button><a href="{% url 'admin_userprofile' %}">Account</a></button>
+            <button><a href="{% url 'logout' %}">Logout</a></button>
+        </div>
+
+        <div id="container" class="rounded_corners">
+
+            <!-- test block code -->
+            <!-- template for the items -->
+            {% for items in borrowed_item reversed %}
+            <div id="wrapper">
+                <div id="top">
+                    <div id="left">
+                        {% if items.item_stock.item_information.item_photo %}
+                            <img src="{{ items.item_stock.item_information.item_photo.url }}" alt="" class="inventory_item"  height="100%" object-fit="contain">
+                        {% endif %}
+
+                    </div>
+                    <div id="right">
+                        <p id="item_name">{{items.item_stock.item_information.item_name}}</p>
+                        <p id="item_details">
+                            Time Borrowed: {{items.item_date_borrowed}}<br />
+                            Time Returned: {{items.item_date_returned}}<br />
+                            Borrower: {{items.item_borrower}}
+                        </p>
+                        <p id="item_quantity">Item Quantity: {{items.item_quantity}}</p>
+
+                    </div>
+                </div>
+                <div id="bottom">
+                    <!-- <div id="btn_con">
+                        <button id="return_btn" class="rounded_corners">Return</button>
+                    </div> -->
+                </div>
+
+            </div>
+            {% endfor %}
+            <!-- template for the items -->
+
+        </div>
         {% include 'home/result_list_admin.html' %}
     </body>
 </html>
