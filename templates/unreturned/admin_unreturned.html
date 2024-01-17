@@ -6,7 +6,8 @@
         <title>ADMIN UNRETURNED</title>
     </head>
     <body>
-        <form method="GET" action="{% url 'search_items_admin' %}">
+        <div>
+            <form method="GET" action="{% url 'search_items_admin' %}">
             <input type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
             <button type="submit">Search</button>
           </form>
@@ -26,13 +27,50 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
                 <a href="{% url 'admin_home' %}" class="navbar-brand">Home</a>
-                <a href="{% url 'admin_recents' %}" class="navbar-brand">Recents</a>
-                <a href="{% url 'admin_unreturned' %}" class="navbar-brand">Unreturned</a>
-                <a href="{% url 'members' %}" class="navbar-brand">Members</a>
-                <a href="{% url 'admin_userprofile' %}" class="navbar-brand">Account</a>
-                <a href="{% url 'logout' %}" class="navbar-brand">Logout</a>
+                    <a href="{% url 'admin_recents' %}" class="navbar-brand">Recents</a>
+                    <a href="{% url 'admin_unreturned' %}" class="navbar-brand">Unreturned</a>
+                    <a href="{% url 'members' %}" class="navbar-brand">Members</a>
+                    <a href="{% url 'admin_userprofile' %}" class="navbar-brand">Account</a>
+                    <a href="{% url 'logout' %}" class="navbar-brand">Logout</a>
             </div>
         </nav>
+        </div>
+
+        <div id="container" class="rounded_corners">
+
+            <!-- test block code -->
+            <!-- template for the items -->
+            {% for item in unreturned_items reversed %}
+            <div id="wrapper">
+
+                <div id="top">
+                    <div id="left">
+                        {% if item.item_borrowed.item_stock.item_information.item_photo %}
+                            <img src="{{ item.item_borrowed.item_stock.item_information.item_photo.url }}" alt="" class="inventory_item" height="100%" object-fit="contain">
+                        {% endif %}
+
+                    </div>
+                    <div id="right">
+                        <p id="item_name">{{ item.item_borrowed.item_stock.item_information.item_name }}</p>
+                        <p id="item_details">
+                            Time Borrowed: {{ item.item_borrowed.item_date_borrowed }}<br />
+                            Time Returned: {{ item.item_borrowed.item_date_returned }}<br />
+                            Borrower: {{ item.item_borrowed.item_borrower }}
+                        </p>
+                        <p id="item_quantity">Item Quantity: {{ item.item_borrowed.item_quantity }}</p>
+
+                    </div>
+                </div>
+                <div id="bottom">
+                    <div id="btn_con">
+                        <!-- <button id="return_btn" class="rounded_corners">Return</button> -->
+                        <a href="{% url 'admin_return_item' item.id item.item_borrowed.item_stock.id %}">Return</a>
+                    </div>
+                </div>
+
+            </div>
+            {% endfor %}
+            <!-- template for the items -->
         {% include 'home/result_list_admin.html' %}
     </body>
 </html>
