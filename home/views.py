@@ -283,6 +283,36 @@ def search_items(request):
 
     return render(request, 'home/home.html', {'results': results, 'query': query})
 
+def search_items_admin(request):
+    query = request.GET.get('q')
+
+    if query:
+        # Perform a case-insensitive search on the item name, category, and item id
+        results = Item.objects.filter(
+            models.Q(item_name__icontains=query) |
+            models.Q(item_category__item_category__icontains=query) |
+            models.Q(item_id__icontains=query)
+        )
+    else:
+        return redirect('admin_home')
+
+    return render(request, 'home/admin_home.html', {'results': results, 'query': query})
+
+def search_items_guest(request):
+    query = request.GET.get('q')
+
+    if query:
+        # Perform a case-insensitive search on the item name, category, and item id
+        results = Item.objects.filter(
+            models.Q(item_name__icontains=query) |
+            models.Q(item_category__item_category__icontains=query) |
+            models.Q(item_id__icontains=query)
+        )
+    else:
+        return redirect('guest_home')
+
+    return render(request, 'home/guest_home.html', {'results': results, 'query': query})
+
 
 def delete_item(request):
     item_pk = request.GET.get('item_id', None)

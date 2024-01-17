@@ -1,0 +1,20 @@
+<div id="resultImageContainer"></div>
+
+{% if results %}
+  <ul>
+    <a href="{% url 'admin_home' %}"><button>Back</button></a>
+    {% for result in results %}
+      <li>
+        <div>
+          <img src="{% if result.item_photo %}/media/{{ result.item_photo }}{% else %}/static/path/to/placeholder-image.jpg{% endif %}" alt="{{ result.item_name }}" style="width: 100px; height: 100px;">
+          <button onclick="showBorrowForm('{{ result.item_id }}', '{{ result.item_name }}')">{{ result.item_name }}</button>
+          <button onclick="deleteItem('{{ result.item_id }}')">Remove</button>
+          
+        </div>
+      </li>
+    {% endfor %}
+    <button onclick="addItem('{{ result.item_id }}')">Add Item</button>
+  </ul>
+{% else %}
+
+{% endif %}
