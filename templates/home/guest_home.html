@@ -7,6 +7,10 @@
     </head>
 
     <body>
+        <form method="GET" action="{% url 'search_items_guest' %}">
+            <input type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
+            <button type="submit">Search</button>
+          </form>
         <h1>GUEST HOME</h1>
         <div class="header">
             
@@ -87,5 +91,6 @@
                     
        
         <script defer src="{% static 'home/homeguestscript.js' %}"></script>
+        {% include 'home/result_list_guest.html' %}
     </body>
 </html>

@@ -7,9 +7,13 @@
     </head>
     <h1>NOTIFICATION</h1>
     <body>
+        <form method="GET" action="{% url 'search_items' %}">
+            <input type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
+            <button type="submit">Search</button>
+          </form>
         <button><a href="{% url 'home' %}">Home</a></button>
         <button><a href="{% url 'recents' %}">Recents</a></button>
-        <button><a href="{% url 'show_unreturned_items' %}">Unreturned</a></button>
+        <button><a href="{% url 'unreturned' %}">Unreturned</a></button>
         <button><a href="{% url 'notification' %}">Notification</a>
             {% if unreturned_item_exist %}
             <span class="notification-indicator">!</span>
@@ -17,6 +21,7 @@
         </button>
         <button><a href="{% url 'userprofile' %}">Account</a></button>
         <button><a href="{% url 'logout' %}">Logout</a></button>
+        {% include 'home/result_list.html' %}
 
         {% if unreturned_item_exist %}
         <p>You have unreturned items. Please check the Unreturned Items tab for more details.</p>

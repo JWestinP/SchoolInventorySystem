@@ -8,18 +8,21 @@
     </head>
     <h1>FACULTY HOME</h1>
     <body>
-        <form method="get" action="{% url 'home' %}">
-            <input class="search-bar" type="text" placeholder="Search by name,id,category" value="{{ query }}">
-            <input class="search-button" type="submit" value="Search">
-        </form>
+        {% if user.is_authenticated %}
+            <h1>>Welcome, {{ user.username }}</h1>
+        {% endif %}
 
-                {% include 'home/result_list.html' %}
-                <button class="buttons-tabs"><a href="{% url 'home' %}">Home</a></button>
-                <button class="buttons-tabs"><a href="{% url 'recents' %}">Recents</a></button>
-                <button class="buttons-tabs"><a href="{% url 'show_unreturned_items' %}">Unreturned</a></button>
-                <button class="buttons-tabs"><a href="{% url 'notification' %}">Notification</a></button>
-                <button class="buttons-tabs"><a href="{% url 'userprofile' %}">Account</a></button>
-                <button class="buttons-tabs"><a href="{% url 'logout' %}">Logout</a></button>
+        <form method="GET" action="{% url 'search_items' %}">
+            <input type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
+            <button type="submit">Search</button>
+          </form>
+        
+        <button><a href="{% url 'home' %}">Home</a></button>
+        <button><a href="{% url 'recents' %}">Recents</a></button>
+        <button><a href="{% url 'unreturned' %}">Unreturned</a></button>
+        <button><a href="{% url 'notification' %}">Notification</a></button>
+        <button><a href="{% url 'userprofile' %}">Account</a></button>
+        <button><a href="{% url 'logout' %}">Logout</a></button>
 
 
                 {% for category in categories %}
@@ -28,6 +31,10 @@
                 {% endfor %}
 
 
+        <div id="back-button">
+            
+        </div>
+
         <div id="category_item" class="category_div">
             <div id="item_list">
 
@@ -35,13 +42,13 @@
             <h1>{{ current_category }}</h1>
             {% for item in cleaning_inventory %}
                 <div>
-                    
+
                 </div>
             {% endfor %}
             <div class="item_information" id="item_information">
                 <div class="item_header" id="item_header">
 
-                    <button data-close-button class="close_button">&times;</button>                          
+                    <button data-close-button class="close_button">&times;</button>
                 </div>
 
                 <div class="item_body" id="item_body">
@@ -50,11 +57,15 @@
                 <div class="item_form" id="item_form">
 
                 </div>
-                
+
             </div>
-            
+
         </div>
 
+        {% include 'home/result_list.html' %}
+       
+
         <script defer src="{% static 'home/homescript.js' %}"></script>
+       
     </body>
 </html>
