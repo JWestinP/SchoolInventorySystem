@@ -7,21 +7,21 @@
 
     </head>
     <body>
-        <div>
-            <form method="GET" action="{% url 'search_items_admin' %}">
-            <input type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
-            <button type="submit">Search</button>
-          </form>
+        
     <header>
         <div class="logo left">
-            <img src="static/home/LSPU.png" alt="Left Logo">
+            <img src="/static/home/LSPU.png" alt="Left Logo">
         </div>
         <div class="search-bar">
-            <input type="text" class="search-input" placeholder="Search...">
-            <i class="fas fa-search"></i>
+            <form method="GET" action="{% url 'search_items_admin' %}">
+                
+                <input type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
+                <button class="searchbb" type="submit">Search</button>
+            </div>
+              </form>
         </div>
         <div class="logo right">
-            <img src="static/home/CSS.png" alt="Right Logo">
+            <img src="/static/home/CSS.png" alt="Right Logo">
         </div> 
     </header>
     <div class="head"></div>
@@ -35,9 +35,9 @@
                 <a href="{% url 'logout' %}" class="navbar-brand">Logout</a>
         </div>
     </nav>
-    <div id="mainForm" class="form">
+   <!-- <div id="mainForm" class="form">
     <div id="recentForm" class="recent-form-items">
-        <!-- Your existing content here -->
+       Your existing content here 
         <div class="recent-items">
             <img src="static/home/clean.png" alt="clean">
             <div class="recent-items-text">
@@ -52,9 +52,9 @@
         </div>
         <div class="recent-lines"></div>
     </div> 
-    </div>
-        </div>
-
+    </div> -->
+        </div> 
+        <div id="mainForm" class="form">
         <div id="container" class="rounded_corners">
 
             <!-- test block code -->
@@ -76,6 +76,7 @@
                             Borrower: {{items.item_borrower}}
                         </p>
                         <p id="item_quantity">Item Quantity: {{items.item_quantity}}</p>
+                      
 
                     </div>
                 </div>
@@ -84,11 +85,12 @@
                         <button id="return_btn" class="rounded_corners">Return</button>
                     </div> -->
                 </div>
-
+                <div class="recent-lines"></div>
             </div>
             {% endfor %}
             <!-- template for the items -->
 
+        </div>
         </div>
         {% include 'home/result_list_admin.html' %}
     </body>

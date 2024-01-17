@@ -8,7 +8,7 @@
     <body>
         <header>
             <div class="logo left">
-                <img src="static/home/LSPU.png" alt="Left Logo">
+                <img src="/static/home/LSPU.png" alt="Left Logo">
             </div>
             
             <div class="search-bar">
@@ -23,7 +23,7 @@
             <!--  <input type="text" class="search-input" placeholder="Search..."> 
                 <i class="fas fa-search"></i> -->
             <div class="logo right">
-                <img src="static/home/CSS.png" alt="Right Logo">
+                <img src="/static/home/CSS.png" alt="Right Logo">
             </div> 
         </header>
         <div class="head"></div>
@@ -52,9 +52,10 @@
                             {% for category in categories %}
                             <button onclick="showItem('{{ category }}')" class="category_button">{{ category }}</button>
                             {% endfor %}
-                            {% include 'home/result_list_admin.html' %}
+                           
                         </div>
                         <!-- BAGO -->
+                        {% include 'home/result_list_admin.html' %}
                        
                 
                         <div id="add_category_form" class="add_category_form">

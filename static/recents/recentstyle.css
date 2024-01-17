@@ -742,6 +742,96 @@ body {
     #selectAllCheckbox {
       margin-right: 10px; /* Add space between checkbox and label */
     }
+    
+    .search-bar {
+      flex-grow: 1;
+      margin-left: 2%;
+  }
+  
+  .search-form {
+      display: flex;
+      align-items: center;
+  }
+  
+  input[name="q"] {
+      width: 90%;
+      padding: 6px;
+      font-size: 16px;
+      border: 2px solid black;
+      border-radius: 4px;
+      margin-right: 14px;
+  }
+  
+  .searchbb {
+      color: firebrick;
+      font-size: 18px;
+      cursor: pointer;
+  }
+  #container {
+    border-radius: 10px; /* Adjust the value as needed for the desired roundness */
+    overflow: hidden; /* Ensure content inside doesn't overflow rounded corners */
+}
+
+.rounded_corners {
+    border-radius: 10px; /* Adjust the value as needed for the desired roundness */
+}
+
+#wrapper {
+    border: 1px solid black; /* Optional: Add a border for better visibility */
+    margin: 10px;
+    padding: 10px;
+    background-color: #f9f9f9; /* Optional: Add a background color for better visibility */
+    border-radius: 10px;
+}
+
+#return_btn {
+    border-radius: 5px; /* Adjust the value as needed for the desired roundness */
+    padding: 5px 10px;
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+}
+
+#bottom {
+    display: flex;
+    justify-content: flex-end; /* Align items to the right */
+}
+
+#top {
+    display: flex;
+    align-items: center;
+}
+
+#left {
+    margin-right: 10px; /* Adjust the margin as needed */
+}
+
+#right {
+    flex-grow: 1;
+}
+
+#item_name {
+    margin-left: 10px; /* Remove default margin */
+    font-weight: bold;
+    font-size: large;
+    margin-bottom: 10px;
+}
+
+#item_details {
+   margin-left: 10px;
+     
+}
+#item_quantity {
+  text-align: right; /* Align the text to the right */
+  margin: 0; /* Remove default margin */
+  margin-right: 50px;
+}
+    
+
+
+
+
+
   /* Media queries for responsiveness */
   @media screen and (max-width: 768px) {
     header {
