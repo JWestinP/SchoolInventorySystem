@@ -32,8 +32,8 @@ class StockForm(forms.ModelForm):
     class Meta:
         model = Stock
         fields = '__all__'
-        
-        widgets = {
-            'item_current_quantity' : forms.HiddenInput(),
-            'item_borrowed' : forms.HiddenInput(),
-        }
+
+class CategoryForm(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = '__all__'

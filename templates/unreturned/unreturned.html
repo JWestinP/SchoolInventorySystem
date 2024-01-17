@@ -84,7 +84,10 @@
 
     <body>
         <h1 id="mema_title">Page ng UNRETURNED to boy. HAHA</h1>
-
+        <form method="GET" action="{% url 'search_items' %}">
+            <input type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
+            <button type="submit">Search</button>
+          </form>
         <div id="nav_btn" class="rounded_corners">
             <button><a href="{% url 'home' %}">Home</a></button>
             <button><a href="{% url 'recents' %}">Recents</a></button>
@@ -93,7 +96,7 @@
             <button><a href="{% url 'userprofile' %}">Account</a></button>
             <button><a href="{% url 'logout' %}">Logout</a></button>
         </div>
-
+        {% include 'home/result_list.html' %}
         <div id="container" class="rounded_corners">
 
             <!-- isinama ko na yung style nya sa html

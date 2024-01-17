@@ -7,19 +7,35 @@
     </head>
     <h1>ADMIN HOME</h1>
     <body>
+        <form method="GET" action="{% url 'search_items_admin' %}">
+            <input type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
+            <button type="submit">Search</button>
+          </form>
         <button><a href="{% url 'admin_home' %}">Home</a></button>
         <button><a href="{% url 'admin_recents' %}">Recents</a></button>
         <button><a href="{% url 'admin_unreturned' %}">Unreturned</a></button>
         <button><a href="{% url 'members' %}">Members</a></button>
         <button><a href="{% url 'admin_userprofile' %}">Account</a></button>
         <button><a href="{% url 'logout' %}">Logout</a></button>
+        
 
-        <div class="categories">
+        <div class="categories" id="category_container">
             {% for category in categories %}
             <button onclick="showItem('{{ category }}')" class="category_button">{{ category }}</button>
             {% endfor %}
         </div>
+
+        <div id="edit_category_buttons">
+            <button onclick="editCategory()">Edit</button>
+        </div>
+
+        <div id="add_category_form" class="add_category_form">
+
+        </div>
         
+        <div id="delete_confirmation" class="delete_confirmation">
+
+        </div>
         
         <div id="category_item" class="category_div">
             <div id="item_list">
@@ -28,7 +44,7 @@
             <div id="edit_back_buttons">
                 
             </div>
-            <div id="add_item">
+            <div id="add_item" class="add_item">
                 <div id="add_item_form">
 
                 </div>
@@ -38,6 +54,7 @@
                 <div id="success_popup">
 
                 </div>
+                
             </div>
             <h1>{{ current_category }}</h1>
             {% for item in cleaning_inventory %}
@@ -62,7 +79,9 @@
             
             
         </div>
-
+        
+        {% include 'home/result_list_admin.html' %}
+        
         <script defer src="{% static 'home/homeadminscript.js' %}"></script>
     </body>
 </html>
