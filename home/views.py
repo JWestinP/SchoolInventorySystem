@@ -10,6 +10,8 @@ from django.apps import apps
 from django.contrib.auth.decorators import login_required
 from rest_framework import serializers
 from .models import Item, Category
+from .decorators import allowed_users
+
 
 # Create your views here.
 class ItemSerializer(serializers.ModelSerializer):
@@ -25,6 +27,7 @@ class CategorySerializer(serializers.ModelSerializer):
         depth = 1  # Include one level of related objects
     
 @login_required
+@allowed_users(allowed_roles=['Admin'])
 def admin_home(request):
     current_user = request.user
     
@@ -45,51 +48,17 @@ def admin_home(request):
         'categories' : categories,
     })
 
-@login_required
 def guest_home(request):
     return render(request, ('home/guest_home.html'))
 
 @login_required
+@allowed_users(allowed_roles=['Faculty'])
 def home(request):
     current_user = request.user
     query = request.GET.get('q', '')  # Get the search query from the URL parameter 'q'
 
     # Initialize queryset variables
     furniture_items = room_items = cleaning_material_items = technology_items = dean_approval_items = None
-
-    # If a search query is provided
-    # if query:
-    #     try:
-    #         query_int = int(query)
-    #         furniture_items = Furniture.objects.filter(Q(item_name__icontains=query) | Q(item_id=query_int))
-    #         room_items = Room.objects.filter(Q(item_name__icontains=query) | Q(item_id=query_int))
-    #         cleaning_material_items = Cleaning_Material.objects.filter(Q(item_name__icontains=query) | Q(item_id=query_int))
-    #         technology_items = Technology.objects.filter(Q(item_name__icontains=query) | Q(item_id=query_int))
-    #         dean_approval_items = Dean_Approval_Needed_Item.objects.filter(Q(item_name__icontains=query) | Q(item_id=query_int))
-    #     except ValueError:
-    #         furniture_items = Furniture.objects.filter(item_name__icontains=query)
-    #         room_items = Room.objects.filter(item_name__icontains=query)
-    #         cleaning_material_items = Cleaning_Material.objects.filter(item_name__icontains=query)
-    #         technology_items = Technology.objects.filter(item_name__icontains=query)
-    #         dean_approval_items = Dean_Approval_Needed_Item.objects.filter(item_name__icontains=query)
-
-    #         if query and query.lower() == "furniture":
-    #             furniture_items = Furniture.objects.all()
-    #         if query and query.lower() == "room":
-    #             room_items = Room.objects.all()
-    #         if query and query.lower() == "cleaning material":
-    #             cleaning_material_items = Cleaning_Material.objects.all()
-    #         if query and query.lower() == "technology":
-    #             technology_items = Technology.objects.all()
-    #         if query and query.lower() == "dean approval needed item":
-    #             dean_approval_items = Dean_Approval_Needed_Item.objects.all()
-
-    # cleaning_inventory = Cleaning_Material.objects.all()
-    # gadget_inventory = Technology.objects.all()
-    # furniture_inventory = Furniture.objects.all()
-    # room_inventory = Room.objects.all()
-    # dean_inventory = Dean_Approval_Needed_Item.objects.all()
-
 
     categories = Category.objects.all()
     borrow_form = BorrowForm()
@@ -113,11 +82,6 @@ def home(request):
         'query' : query,
         'borrow_form' : borrow_form,
         'categories' : categories,
-        # 'cleaning_inventory' : cleaning_inventory,
-        # 'gadget_inventory' : gadget_inventory,
-        # 'furniture_inventory' : furniture_inventory,
-        # 'room_inventory' : room_inventory,
-        # 'dean_inventory' : dean_inventory,
     })
 
 def get_borrow_form(request):
