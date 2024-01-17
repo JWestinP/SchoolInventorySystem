@@ -219,28 +219,30 @@ body {
   }
   
   .search-bar {
-    flex-grow: 1;
-    margin-left: 2%;
     display: flex;
     align-items: center;
-  }
-  
-  .search-input {
-    width: 95%; /* Adjusted to take 100% width on smaller screens */
-    padding: 8px;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+input[name="q"] {
+    padding: 6px;
+    width: 100%;
     font-size: 16px;
-    border: none;
+    border: 2px solid black;
     border-radius: 4px;
-  }
-  
-  .fa-search {
-    margin-left: -5%;
+    margin-right: 10px; /* Add margin-right to provide space between the input and the button */
+}
+
+.searchbb {
     color: firebrick;
     font-size: 18px;
     cursor: pointer;
-    margin-top: 7px;
-
-  }
+}
   
   /* navigations */
   nav {
