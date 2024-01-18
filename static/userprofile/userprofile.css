@@ -145,11 +145,16 @@ body {
   }
 
   .search-bar button[type=submit]{
-    
+    cursor: pointer;
     padding: 8px;
     font-size: 16px;
-    border: none;
+    border: 1px solid gray;
     border-radius: 4px;
+    
+  }
+
+  .search-bar button:hover{
+    color: orange;
   }
   
   
@@ -219,7 +224,11 @@ body {
   }
 
   .btn{
-    border-radius: 5px; padding: 5px 10px; background-color: #3498db; color: white; cursor: pointer;
+    border-radius: 5px; 
+    padding: 5px 10px; 
+    background-color: #3498db; 
+    color: white; 
+    cursor: pointer;
   }
   .btn:hover{
     background-color: orange;
