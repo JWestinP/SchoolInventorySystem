@@ -424,7 +424,7 @@ html{
    gap: 10px;
  }
 
- .item .container {
+ .item_information {
   text-align: center;
   padding: 20px 0;
   background: #fff;
