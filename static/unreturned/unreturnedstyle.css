@@ -270,7 +270,7 @@ html{
     border: 2px solid black;
     margin-left: 15rem;
     margin-top: -10rem;
-    width: 81.5%;
+    width: 81.8%;
  }
 
 p{
@@ -278,6 +278,9 @@ p{
     margin-top: 5px;
  }
 
+.p1{
+    margin-left: 60rem;
+}
  .group{
     border: 2px solid gray;
     border-radius: 15px;
