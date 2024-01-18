@@ -54,7 +54,8 @@
                         {% endif %}
 
                     </div>
-                    <div id="right" class="disc">
+                    <div id="main" class="disc">
+                    <div id="right">
                         <p id="item_name">{{ item.item_borrowed.item_stock.item_information.item_name }}</p>
                         <p id="item_details">
                             Time Borrowed: {{ item.item_borrowed.item_date_borrowed }}<br />
@@ -72,7 +73,7 @@
                         <a href="{% url 'return_item' item.id item.item_borrowed.item_stock.id %}">Return</a>
                     </div>
                 </div>
-
+                </div>
             </div>
             {% endfor %}
             <!-- template for the items -->
