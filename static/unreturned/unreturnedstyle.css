@@ -177,3 +177,38 @@ button a {
 .active_tab{
     text-decoration: underline; color: pink;
 } */
+
+
+html{
+    overflow-x: hidden;
+ }
+ 
+ body{
+    background: #eee;
+ }
+ 
+ .header{
+    background-color: #7a1a22;
+    height: 100px;;
+    width: 1500px;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+ }
+     
+ .head{
+    display: flex;
+    background-color:#E67C37;
+    padding: 5px;
+    width: 1500px;
+ }
+     
+ .header .logo-left img{
+    width: 135px;
+    padding: 2rem;
+ }
+    
+ .header .logo-right img{
+    width: 95px;
+    padding: 3rem;
+ }

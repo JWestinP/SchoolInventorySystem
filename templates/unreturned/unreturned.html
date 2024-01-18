@@ -7,6 +7,26 @@
     </head>
 
     <body>
+        <header>
+            <div class="header">
+              <div class="logo-left">
+               <img src="media\logo\lspu-logo.png" alt="LSPU Logo">
+              </div>
+              
+              <div class="search">
+                <form method="GET" action="{% url 'search_items' %}">
+                  <input type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category" style="width: 950px;height: 30px;left: 187px;border-radius: 10px;border: 4px;margin-top: 15px;">
+                  <button type="submit" style="margin-left: 960px;">Search</button>
+                </form>
+             </div>
+      
+               <div class="logo-right">
+                  <img src="media\logo\ccs-logo.png" alt="CSS Logo">
+               </div>
+              
+            </div>
+          </header>
+          <div class="head"></div>
         <h1 id="mema_title">Page ng UNRETURNED to boy. HAHA</h1>
         <form method="GET" action="{% url 'search_items' %}">
             <input type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
