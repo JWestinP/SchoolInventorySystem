@@ -166,7 +166,7 @@ html{
     transform: scaleX(1); /* Make the underline visible and scale it */
  }
  
- .form{
+ .form-container{
     background-color: #f8f9fa;
     padding: 13rem 0;
     border: 2px solid #dee2e6;
