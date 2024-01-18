@@ -432,7 +432,7 @@ html{
     transform: scale(.9);
  }
  
- .item .container .category h3{
+ .categories h1{
     position: center;
     bottom: 1rem; left: 1.5rem;
     font-size: 2rem;
