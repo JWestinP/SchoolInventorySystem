@@ -353,7 +353,7 @@ html{
     text-align: left;
  }
 
-.containers-categories {
+.categories {
    background-color: #f8f9fa;
    padding: 15px 0;
    border: 2px solid #dee2e6;
@@ -370,7 +370,7 @@ html{
   padding: 5px;
 }
 
- .containers-categories {
+ .categories {
   background-color: #f8f9fa;
   padding: 10px 0;
   border-bottom: 1px solid black;
