@@ -285,16 +285,6 @@ html{
    border-radius: 0.5px;
  }
 
- p{
-  width: 200px;
-  height: 20px;
-  font-family: orienta;
-  font-weight: 400;
-  font-size: 35px;
-  line-height: 41.83px;
-  text-align: right;
-}
-
  nav {
     background-color: #f8f9fa;
     padding: 15px 0;
