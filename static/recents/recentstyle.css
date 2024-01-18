@@ -288,7 +288,7 @@ button a {
     transform: scaleX(1); /* Make the underline visible and scale it */
   }
 
-  .rounded_corners {
+  .rounded_corner {
     background-color: #f8f9fa;
     padding: 15px 0;
     border-bottom: 1px solid #dee2e6;
