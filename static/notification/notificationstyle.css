@@ -139,6 +139,14 @@ html{
     padding: 6rem;
  }
  
+ .search{
+   width: 1046px;
+   height: 30px;
+   left: 187px;
+   border-radius: 10px;
+   border: 4px;
+ }
+ 
  /*navigations*/
  nav{
     background-color: #f8f9fa;
