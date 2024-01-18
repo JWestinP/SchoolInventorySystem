@@ -371,6 +371,7 @@ html{
 
  .categories {
   display: grid;
+  align-content: center;
   grid-template-columns: auto auto auto auto auto;
   gap: 10px;
   padding: 20px;
