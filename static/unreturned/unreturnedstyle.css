@@ -211,7 +211,7 @@ html{
     
  .header .logo-right img{
     width: 95px;
-    padding: 2rem;
+    padding: 3rem;
  }
 
  /*navigations*/
@@ -250,7 +250,6 @@ html{
  .rounded_corners{
     background-color: #f8f9fa;
     padding: 13rem 0;
-    height: 50rem;
     border: 2px solid #dee2e6;
     border-bottom: 1px solid #dee2e6;
     box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.1);
@@ -269,9 +268,9 @@ html{
 
  .disc{
     border: 2px solid black;
-    margin-left: 18rem;
+    margin-left: 15rem;
     margin-top: -10rem;
-    width: 73%;
+    width: 68.5%;
  }
 
 p{
@@ -280,7 +279,7 @@ p{
  }
 
 .quan{
-    margin-left: 50rem;
+    margin-left: 58rem;
     margin-bottom: .5rem;
 }
  .group{
@@ -290,6 +289,6 @@ p{
  }
 
  .btn{
-    margin-left: 70rem;
+    margin-left: 75rem;
     margin-bottom: .5rem;
  }
