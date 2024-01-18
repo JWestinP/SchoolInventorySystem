@@ -201,6 +201,10 @@ html{
 .pic{
     margin-left: 5rem;
 }
+
+.btn{
+   margin-left: 15rem;
+}
  
  a:link{
     color: #000;
