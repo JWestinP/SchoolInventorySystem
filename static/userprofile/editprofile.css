@@ -166,7 +166,7 @@ html{
     transform: scaleX(1); /* Make the underline visible and scale it */
  }
  
- .form{
+ .form-group{
     background-color: #f8f9fa;
     padding: 13rem 0;
     border: 2px solid #dee2e6;
@@ -175,6 +175,7 @@ html{
     margin: 30px 70px 0; /* Adjusted margin for better responsiveness */
     border-radius: 15px;
  }
+
  a:link{
     color: #000;
     background-color: transparent;
