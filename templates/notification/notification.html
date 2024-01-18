@@ -43,15 +43,7 @@
      {% include 'home/result_list.html' %}
 <div id="main" class="form">
    <div id="wrapper">
-      <div id="notice">
-         {% if unreturned_item_exist %}
-         <p>You have unreturned items. Please check the Unreturned Items tab for more details.<br>Please return the items after each use. Thanks!</p>
-      </div>
-   
-       
-       {% else %}
-       <p>No unreturned items at the moment.</p>
-       {% endif %}
+      
       {% for item_info in unreturned_items %}
       <li>
           Item ID: {{ item_info.item_name }} - 
@@ -61,6 +53,15 @@
       </li>
       {% endfor %}
    </div>
+   <div id="notice">
+      {% if unreturned_item_exist %}
+      <p>You have unreturned items. Please check the Unreturned Items tab for more details.<br>Please return the items after each use. Thanks!</p>
+   </div>
+
+    
+    {% else %}
+    <p>No unreturned items at the moment.</p>
+    {% endif %}
 
   </div>
 </div>
