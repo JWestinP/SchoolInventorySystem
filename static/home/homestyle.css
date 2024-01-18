@@ -415,7 +415,7 @@ html{
   cursor: pointer;
 }
 
- .categories {
+ .items h3 {
    font-weight: bold;
    margin: 10px; /* Adjust the margin as needed */
    margin-left: 10px;
