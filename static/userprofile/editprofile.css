@@ -110,7 +110,7 @@ html{
  .header{
     background-color: #7a1a22;
     height: 100px;;
-    width: 1520px;
+    width: 1500px;
     flex-grow: 1;
     display: flex;
     align-items: center;
@@ -120,7 +120,7 @@ html{
     display: flex;
     background-color:#E67C37;
     padding: 6px;
-    width: 1520px;
+    width: 1500px;
  }
      
  .header .logo-left img{
