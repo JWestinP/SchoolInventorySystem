@@ -45,22 +45,22 @@
                 <div id="top" style="display: flex; align-items: center;">
                     <div id="left" style="margin-right: 10px;">
                         {% if item.item_borrowed.item_stock.item_information.item_photo %}
-                            <img src="{{ item.item_borrowed.item_stock.item_information.item_photo.url }}" class="inventory_item" height="100%" object-fit="contain">
+                            <img src="{{ item.item_borrowed.item_stock.item_information.item_photo.url }}" class="inventory_item" height="100%" object-fit="scale-down">
                         {% endif %}
 
                     </div>
                     <div id="right" style="flex-grow: 1;">
                         <p id="item_name" style="margin-left: 10px; font-weight: bold; font-size: large; margin-bottom: 10px;">{{ item.item_borrowed.item_stock.item_information.item_name }}</p>
-                        <p id="item_details" style="margin-left: 10px;">
+                        <p id="item_details" style="margin-left: 10px; margin: 10px;">
                             Time Borrowed: {{ item.item_borrowed.item_date_borrowed }}<br />
                             Time Returned: {{ item.item_borrowed.item_date_returned }}<br />
                             Borrower: {{ item.item_borrowed.item_borrower }}
                         </p>
-                        <p id="item_quantity" style="text-align: right; margin: 0; margin-right: 50px;">Item Quantity: {{ item.item_borrowed.item_quantity }}</p>
+                        <p id="item_quantity" style="text-align: right; margin-right: 50px;">Item Quantity: {{ item.item_borrowed.item_quantity }}</p>
 
                     </div>
                 </div>
-                <div id="bottom" style="display: flex; justify-content: flex-end;">
+                <div id="bottom" style="display: flex; justify-content: flex-end; margin-right: 30px;">
                     <div id="btn_con">
                         <button id="return_btn" class="rounded_corners" style="border-radius: 5px; padding: 5px 10px; background-color: #3498db; color: white; cursor: pointer;">
                         <a href="{% url 'admin_return_item' item.id item.item_borrowed.item_stock.id %}">Return</a></button>

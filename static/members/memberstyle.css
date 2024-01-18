@@ -128,20 +128,20 @@ Start coding here
   }
   
 
-  .search-bar {
+  .search-bar form{
     flex-grow: 1;
-    margin-left: 2%;
+    margin-left: 0%;
     display: flex;
     align-items: center;
   }
 
   .search-bar input[type=text]{
-    width: 300%; /* Adjusted to take 100% width on smaller screens */
+    width: 800px;
     padding: 8px;
     font-size: 16px;
     border: none;
     border-radius: 4px;
-    
+    flex: 1;
   }
 
   .search-bar button[type=submit]{
@@ -150,7 +150,7 @@ Start coding here
     font-size: 16px;
     border: 1px solid gray;
     border-radius: 4px;
-    
+    margin-left: 8px;
   }
 
   .search-bar button:hover{
@@ -211,4 +211,22 @@ Start coding here
   .navbar-brand:hover::before {
     visibility: visible;
     transform: scaleX(1); /* Make the underline visible and scale it */
+  }
+
+  .square-container{
+    justify-content: center;
+    padding-top: 30vmin;
+    width: 30vmin;
+    background-color:#dee2e6;
+    border: 1px solid black;
+    margin: 30px;
+    display: flex;
+    border-radius: 15px;
+  }
+   
+  .details{
+    font-size: large;
+    text-align: center;
+    padding-bottom: 10px;
+    font-weight: bold;
   }
