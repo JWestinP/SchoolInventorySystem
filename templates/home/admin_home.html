@@ -11,13 +11,11 @@
                 <img src="/static/home/adminhome/LSPU.png" alt="Left Logo">
             </div>
             
-            <div class="search-bar">
+            <div class="middle-section">
                 <form method="GET" action="{% url 'search_items_admin' %}">
-                    
-                    <input type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
-                    <button class="searchbb" type="submit">Search</button>
-                </div>
-                  </form>
+                    <input class="search-bar" type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
+                    <button class="search-button" type="submit">Search</button>
+                </form>
             </div>
 
             <div class="logo right">

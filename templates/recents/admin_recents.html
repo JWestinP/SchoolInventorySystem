@@ -10,29 +10,18 @@
         
     <header>
         <div class="logo left">
-            <img src="/static/home/LSPU.png" alt="Left Logo">
-        </div>
-        <!--<div class="search-bar">
-            <form method="GET" action="{% url 'search_items_admin' %}">
-                <input type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
-                <button class="searchbb" type="submit">Search</button>
-            </div>
-              </form>
-        </div> -->
-
-        <div>
-            <form method="GET" action="{% url 'search_items_admin' %}">
-            <input type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
-            <button type="submit">Search</button>
-          </form>
+            <img src="/static/home/adminhome/LSPU.png" alt="Left Logo">
         </div>
 
-
-
-
+        <div class="middle-section">
+            <form method="GET" action="{% url 'search_items_admin' %}">
+                <input class="search-bar" type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
+                <button class="search-button" type="submit">Search</button>
+            </form>
+        </div>
 
         <div class="logo right">
-            <img src="/static/home/CSS.png" alt="Right Logo">
+            <img src="/static/home/adminhome/CSS.png" alt="Right Logo">
         </div> 
     </header>
     <div class="head"></div>
@@ -46,30 +35,11 @@
                 <a href="{% url 'logout' %}" class="navbar-brand">Logout</a>
         </div>
     </nav>
-   <!-- <div id="mainForm" class="form">
-    <div id="recentForm" class="recent-form-items">
-       Your existing content here 
-        <div class="recent-items">
-            <img src="static/home/clean.png" alt="clean">
-            <div class="recent-items-text">
-                <h4>Name of Item:</h4><br>
-                <p>Time Borrowed:</p>
-                <p>Time Returned:</p>
-                <p>Borrower:</p>
-                <div class="right-text">
-                    <p>Item Quantity:</p>
-                </div>
-            </div>
-        </div>
-        <div class="recent-lines"></div>
-    </div> 
-    </div> -->
         </div> 
         <div id="mainForm" class="form">
         <div id="container" class="rounded_corners">
 
-            <!-- test block code -->
-            <!-- template for the items -->
+
             {% for items in borrowed_item reversed %}
             <div id="wrapper">
                 <div id="top">
@@ -92,14 +62,12 @@
                     </div>
                 </div>
                 <div id="bottom">
-                    <!-- <div id="btn_con">
-                        <button id="return_btn" class="rounded_corners">Return</button>
-                    </div> -->
+
                 </div>
                 <div class="recent-lines"></div>
             </div>
             {% endfor %}
-            <!-- template for the items -->
+
 
         </div>
         </div>
