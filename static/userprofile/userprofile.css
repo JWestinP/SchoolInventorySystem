@@ -178,7 +178,7 @@ html{
  
  .form-group {
     background-color: #f8f9fa;
-    padding: 10rem;
+    padding: 1rem;
     border-bottom: 1px solid black;
     margin: 35px 35px 35px 35px; /* Adjusted margin for better responsiveness */
     border-radius: 15px;
