@@ -113,7 +113,7 @@ html{
     background: #eee;
  }
  
-header{
+ .header{
     background-color: #7a1a22;
     height: 100px;;
     width: 1500px;
@@ -122,25 +122,25 @@ header{
     align-items: center;
  }
      
-head{
+ .head{
     display: flex;
     background-color:#E67C37;
     padding: 10px;
     width: 1450px;
  }
      
-header .logo-left img{
+ .header .logo-left img{
     width: 135px;
     padding: 2rem;
  }
     
-header .logo-right img{
+ .header .logo-right i{
     width: 95px;
     padding: 6rem;
  }
  
  /*navigations*/
-nav{
+ nav{
     background-color: #f8f9fa;
     padding: 15px 0;
     border-bottom: 1px solid #dee2e6;
@@ -149,7 +149,7 @@ nav{
     border-radius: 15px;
  }
  
-navbar-brand {
+ .navbar-brand {
     color: black;
     font-weight: bold;
     font-size: 1.5rem;
@@ -162,17 +162,17 @@ navbar-brand {
  }
  
  /* Add hover effect */
-navbar-brand:hover {
+ .navbar-brand:hover {
     color:firebrick; /* Change text color on hover */
     font-weight: lighter; /* Change font weight on hover, adjust as needed */
  }
  
-navbar-brand:hover::before {
+ .navbar-brand:hover::before {
     visibility: visible;
     transform: scaleX(1); /* Make the underline visible and scale it */
  }
  
-form{
+ .form{
     background-color: #f8f9fa;
     padding: 13rem 0;
     border: 2px solid #dee2e6;
@@ -191,7 +191,7 @@ form{
     line-height: 41.83px;
     text-align: right;
  }
-form-item {
+ .form-item {
     background-color: #f8f9fa;
     padding: 10rem;
     border-bottom: 1px solid black;
@@ -202,25 +202,25 @@ form-item {
     padding: auto;
  }
  
-a:link{
+ a:link{
     color: #000;
     background-color: transparent;
     text-decoration: none;
  }
   
-a:visited{
+ a:visited{
     color: #92141e;
     background-color: transparent;
     text-decoration: none;
  }
   
-a:hover{
+ a:hover{
     color: #000;
     background-color: transparent;
     text-decoration: underline;
  }
   
-a:active{
+ a:active{
     color: #92141e;
     background-color: transparent;
     text-decoration: underline;
