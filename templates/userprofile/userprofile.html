@@ -13,8 +13,10 @@
           </div>
           
           <div class="search">
-           <input type="text" class="search-input" placeholder="CLEANING MATERIALS" style="width: 1046px;height: 30px;left: 187px;border-radius: 10px;border: 4px;">
-           <i class="fas fa-search"></i>
+            <form method="GET" action="{% url 'search_items' %}">
+              <input type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category" style="width: 1046px;height: 30px;left: 187px;border-radius: 10px;border: 4px;">
+              <button type="submit">Search</button>
+            </form>
          </div>
   
            <div class="logo-right">
