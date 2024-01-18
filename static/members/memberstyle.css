@@ -213,7 +213,7 @@ Start coding here
     transform: scaleX(1); /* Make the underline visible and scale it */
   }
 
-  .square-container{
+  /*.square-container{
     justify-content: center;
     padding-top: 30vmin;
     width: 30vmin;
@@ -230,7 +230,7 @@ Start coding here
     padding-bottom: 10px;
     font-weight: bold;
   }
-
+*/
 
 .user_info {
     position: fixed;
@@ -249,3 +249,62 @@ Start coding here
 .user_info.active {
     transform: translate(-50%, -50%) scale(1);
 }
+
+#user_info button {
+  background-color: #dee2e6;
+  color: black;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 430px;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+#user_info button:hover{
+  color: orange;
+}
+
+#user_info p{
+  margin-top: 5px;
+  margin-left: 10px;
+  font-weight: bold;
+  align-items: center;
+  display: flex;
+  padding-top: 5px;
+}
+
+.user-button {
+  background-color:#dee2e6;
+  color: black;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.users button{
+  text-align: center;
+  width: 150px;
+  height: 150px;
+  border-radius: 15px;
+  cursor: pointer;
+  margin-right: 30px;
+  font-size: large;
+}
+
+.users button:hover {
+  background-color: orange;  /* Baguhin ang kulay sa hover */
+  color: white;  /* Baguhin ang text color sa hover */
+}
+
+@media only screen and (max-width: 768px) {
+  .users button {
+      width: 100%;  /* Gawing full width sa mobile */
+      height: auto;  /* Auto height */
+      margin-right: 0;  /* Alisin ang margin sa right para maging full width */
+  }
+}
+
+
+
+

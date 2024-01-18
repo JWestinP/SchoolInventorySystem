@@ -29,7 +29,7 @@ function showUser(user_pk){
                         <p>User Name: ${userName}</p>
                         <p>Total Recents: ${totalRecents}</p>
                         <p>Total Unreturned: ${totalUnreturned}</p>
-                        <button onclick='reloadPage()'>x</button>
+                        <button onclick='reloadPage()'> Back</button>
                     `;
                 } else {
                     console.error('User data not found in the response');
@@ -42,6 +42,7 @@ function showUser(user_pk){
         openUser(userContainer)
     }
 }
+ 
 
 function openUser(userContainer) {
     console.log('Opening user');
@@ -53,3 +54,4 @@ function openUser(userContainer) {
 function reloadPage(){
     location.reload()
 }
+

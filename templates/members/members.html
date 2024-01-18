@@ -33,16 +33,11 @@
         </nav>
         {% include 'home/result_list_admin.html' %}
 
-        <div class="square-container">
-             <p class="details"> Name <br/>
-                Details </p> 
-             <p ></p>  
-
-        </div>
-
+        <div class="users" style="margin-left: 50px; margin: 30px;">
         {% for users in faculty %}
           <button onclick="showUser('{{ users.id }}')">{{ users.username }}</button>
         {% endfor %}
+    </div>
 
         <div id="user_info" class="user_info">
 

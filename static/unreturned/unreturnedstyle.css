@@ -222,6 +222,12 @@ body {
     background-color: orange;
   }
 
+  #inventory_item {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
 
 /* jonas design 
 {

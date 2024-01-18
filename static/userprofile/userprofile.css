@@ -226,8 +226,8 @@ body {
   .btn{
     border-radius: 5px; 
     padding: 5px 10px; 
-    background-color: #3498db; 
-    color: white; 
+    background-color:#dee2e6; 
+    color: black; 
     cursor: pointer;
   }
   .btn:hover{
@@ -249,3 +249,5 @@ body {
     font-weight: bold;
     margin-bottom: 10px;
   }
+
+  
