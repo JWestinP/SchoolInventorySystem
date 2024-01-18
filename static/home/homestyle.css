@@ -283,7 +283,7 @@ html{
    padding: 6px;
    font-size: 13px;
    border: none;
-   border-radius: 2px;
+   border-radius: 0.5px;
  }
 
  nav {
