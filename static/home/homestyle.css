@@ -423,7 +423,7 @@ html{
    gap: 10px;
  }
 
- .item_information {
+ .containers {
   text-align: center;
   padding: 20px 0;
   background: #fff;
