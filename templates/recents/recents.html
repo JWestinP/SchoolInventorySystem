@@ -2,47 +2,28 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="{% static '\recents\recentstyle.css' %}" />
+        <link rel="stylesheet" href="{% static 'recents/recentstyle.css' %}" />
         <title>RECENTS</title>
     </head>
-   
-    <header>
-        <div class="logo"></div>
-      <div class="logo-cont"></div>
-      <div class="left">
-        <img src="static\recents\logo\LSPU.png" alt="">
-      </div>
-
-      <form method="GET" action="{% url 'search_items' %}"></form>
-      <div class="search-bar">
-        <input type="text" name="q" value="{{ query }}" class="search-input" placeholder="Search for name/id/category">
-        <button type="submit">Search</button>
-        
-    <i class="fas fa-search"></i>
-
-        </div>
-      </form>
-      <div class="right">
-      <div class="logo-cont"></div>
-        <img src="static\recents\logo\ccs.png" alt="">
-      </div>
-
-    </header>
+    
 
     <body>
+        <h1 id="mema_title">Page ng RECENTS to boy. HAHA</h1>
 
-        <div class="head">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="containers">
+        <form method="GET" action="{% url 'search_items' %}">
+            <input type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
+            <button type="submit">Search</button>
+          </form>
+
         <div id="nav_btn" class="rounded_corners">
-            <button><a href="{% url 'home' %}" class="navbar-brand">Home</a></button>
-            <button><a href="{% url 'recents' %}" class="active_tab" class="navbar-brand">Recents</a></button>
-            <button><a href="{% url 'unreturned' %}" class="navbar-brand">Unreturned</a></button>
-            <button><a href="{% url 'notification' %}" class="navbar-brand">Notification</a></button>
-            <button><a href="{% url 'userprofile' %}" class="navbar-brand">Account</a></button>
-            <button><a href="{% url 'logout' %}" class="navbar-brand">Logout</a></button>
+            <button><a href="{% url 'home' %}">Home</a></button>
+            <button><a href="{% url 'recents' %}" class="active_tab">Recents</a></button>
+            <button><a href="{% url 'unreturned' %}">Unreturned</a></button>
+            <button><a href="{% url 'notification' %}">Notification</a></button>
+            <button><a href="{% url 'userprofile' %}">Account</a></button>
+            <button><a href="{% url 'logout' %}">Logout</a></button>
         </div>
-       </nav>
+
         <div id="container" class="rounded_corners">
 
             <!-- test block code -->
