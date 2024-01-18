@@ -110,7 +110,7 @@ html{
  .header{
     background-color: #7a1a22;
     height: 100px;;
-    width: 1500px;
+    width: 1450px;
     flex-grow: 1;
     display: flex;
     align-items: center;
@@ -119,8 +119,8 @@ html{
  .head{
     display: flex;
     background-color:#E67C37;
-    padding: 5px;
-    width: 1500px;
+    padding: 10px;
+    width: 1430px;
  }
      
  .header .logo-left img{
@@ -130,7 +130,7 @@ html{
     
  .header .logo-right img{
     width: 95px;
-    padding: 3rem;
+    padding: 6rem;
  }
  
  /*navigations*/
@@ -149,7 +149,7 @@ html{
     font-size: 1.5rem;
     margin-right: 10px;
     margin-left: 10px;
-    padding: 3rem;
+    padding: 4rem;
     text-decoration: none; /* Remove underline */
     position: relative; /* Position for the pseudo-element */
     transition: color 0.3s ease, font-weight 0.3s ease; /* Add a smooth color and font weight transition */
@@ -166,10 +166,9 @@ html{
     transform: scaleX(1); /* Make the underline visible and scale it */
  }
  
- .form-container{
+ .form{
     background-color: #f8f9fa;
-    padding: 8rem 0;
-    margin-top: -.5rem;
+    padding: 13rem 0;
     border: 2px solid #dee2e6;
     border-bottom: 1px solid #dee2e6;
     box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.1);
@@ -177,15 +176,31 @@ html{
     border-radius: 15px;
  }
  
- .form-group {
+ .form-item {
     background-color: #f8f9fa;
-    padding: 1rem;
+    padding: 10rem;
     border-bottom: 1px solid black;
     margin: 35px 35px 35px 35px; /* Adjusted margin for better responsiveness */
     border-radius: 15px;
     border: 3px solid gray; /* Add border style */
     border-radius: 10px; /* Add border-radius for rounded corners */
+    padding: auto;
  }
+ 
+ p{
+    font-family: orienta;
+    font-weight: bold;
+    text-align: left;
+    margin-top: -10rem;
+    margin-left: 15rem;
+ }
+ 
+.fclty{
+   margin-left: -15rem;
+}
+.pic{
+    margin-left: 5rem;
+}
  
  a:link{
     color: #000;
