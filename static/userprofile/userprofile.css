@@ -199,12 +199,6 @@ html{
     margin-left: 5rem;
 }
  
-.btn{
-    border: 3px solid gray;
-    border-radius: 10px;
-    margin-left: 16.5rem;
- }
- 
  a:link{
     color: #000;
     background-color: transparent;
