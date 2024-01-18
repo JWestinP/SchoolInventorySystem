@@ -193,6 +193,10 @@ body{
     margin-left: 2rem;
     margin-top: -7rem;
  }
+
+ li{
+    margin-left: 2rem;
+ }
  .form-item {
     background-color: #f8f9fa;
     padding: 10rem;
