@@ -42,20 +42,20 @@
        
         {% include 'home/result_list.html' %}
         <div id="main" class="form">
-         
+         <div class="item">
             <div class="pic">
         <div style="display: flex; align-items: center; margin-top: 20px;">
             <img class="rounded-circle account-img" src="{{ user.profile.image.url }}" alt="Profile Image" style="max-width: 200px; max-height: 200px; object-fit: cover; border-radius: 50%;">
          </div>
-         <div class="item">
+            <div class="info">
             <div style="margin-left: 20px;">
                     <h2 class="account-heading">{{ user.username }}</h2>
                     <p class="text-secondary" style="margin-top: 10px;">Account Name: {{ user.profile.account_name }}</p>
                     <p class="text-secondary" style="margin-top: 10px;">Email: {{ user.email }}</p>
                     <p class="text-secondary" style="margin-top: 10px;">Contact Number: {{ user.profile.contact_number }}</p>
- 
 
                     <button><a href="{% url 'editprofile' %}">Edit Profile</a></button>
+            </div>
               </div>
                </div>
             </div>
