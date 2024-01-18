@@ -344,7 +344,7 @@ html{
         border-radius: 15px;
 }
 
-.containers .head {
+.containers .navbar-brand {
     color: black;
    font-weight: bold;
    font-size: 2rem;
