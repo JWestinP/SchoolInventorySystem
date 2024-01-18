@@ -185,20 +185,20 @@ html{
     border: 3px solid gray; /* Add border style */
     border-radius: 10px; /* Add border-radius for rounded corners */
     padding: auto;
- } 
+ }
  
-.pic{
-    margin-left: 10rem;
-}
-
-.info .p{
+ p{
     font-family: orienta;
     font-weight: bold;
     text-align: left;
     margin-top: -10rem;
     margin-left: 1rem;
  }
-
+ 
+.pic{
+    margin-left: 10rem;
+}
+ 
  .button{
     border: 3px solid gray;
     border-radius: 10px;
