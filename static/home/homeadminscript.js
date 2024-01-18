@@ -211,7 +211,7 @@ function showItem(category) {
                 <button id="back_category" onclick="showAllCategoryButtons()">Back</button>
                 `;
                 
-                document.getElementById('edit_back_buttons').addEventListener('click', function(event){
+                document.getElementById('edit_category_buttons').addEventListener('click', function(event){
                     if (event.target.matches('.remove_item')){
                         itemContainer.innerHTML = ''
                         if (Array.isArray(data.items)) {
