@@ -205,7 +205,8 @@ body{
  }
  
 .unreturn{
-    display:contents;
+    width: 300px;
+    margin: auto;
 }
 
  a:link{
