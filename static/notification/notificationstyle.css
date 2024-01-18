@@ -197,6 +197,11 @@ body{
     margin-left: 2rem;
     margin-top: .5rem;
  }
+
+ ul{
+margin-top: -.5rem;
+ }
+
  .form-item {
     background-color: #f8f9fa;
     padding: 10rem;
