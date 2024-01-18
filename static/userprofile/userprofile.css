@@ -206,6 +206,11 @@ html{
    margin-left: 15rem;
    margin-top: 1rem;
 }
+
+.info{
+   margin-left: 20rem;
+   margin-top: 10rem;
+}
  
  a:link{
     color: #000;
