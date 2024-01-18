@@ -218,12 +218,12 @@ button a {
  
   .logo .logo-cont .left img{
    width: 135px;
-   padding: 2rem;
+   margin-left: auto;
   }
   
   .logo .logo-cont .right img{
    width: 95px;
-   padding: 6rem;
+   margin-right: auto;
   }
  
   .search-bar{
