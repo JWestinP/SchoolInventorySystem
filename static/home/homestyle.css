@@ -423,13 +423,13 @@ html{
    gap: 10px;
  }
 
- .containers {
+ .item_information {
   text-align: center;
   padding: 20px 0;
+  background: #fff;
   box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);  
   outline: .1rem solid #ccc;
   outline-offset: 0;
-  gap: 10px;
   cursor: pointer;
 }
 
