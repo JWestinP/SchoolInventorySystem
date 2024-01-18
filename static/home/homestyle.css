@@ -246,28 +246,30 @@ html{
     background: #eee;
  }
 
- head {
-   display: flex;
-   background-color: orange;
-   padding: 10px;
+ .header {
+    background-color: #7a1a22;
+    height: 100px;;
+    width: 1500px;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
  }
 
- header {
-   display: flex;
-   background-color: firebrick;
+ .head {
+    display: flex;
+   background-color:#E67C37;
    padding: 10px;
-   justify-content: space-between;
-   align-items: center;
+   width: 1450px;
  }
 
  .logo .logo-cont .left img{
   width: 135px;
-  margin-right: auto;
+  padding: 2rem;
  }
  
  .logo .logo-cont .right img{
   width: 95px;
-  margin-left: auto;
+  padding: 6rem;
  }
 
  .search-bar{
