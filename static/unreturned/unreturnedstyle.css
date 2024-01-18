@@ -255,7 +255,7 @@ html{
     box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.1);
     margin: 30px 70px 0; /* Adjusted margin for better responsiveness */
     border-radius: 15px;
-    column-gap: 5rem;
+    column-gap: 500rem;
  }
 
  .inventory_item{
