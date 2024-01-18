@@ -253,7 +253,7 @@ html{
  header {
    display: flex;
    background-color: firebrick;
-   padding: 15px;
+   padding: 10px;
    justify-content: space-between;
    align-items: center;
  }
@@ -329,7 +329,7 @@ html{
    transform: scaleX(1); /* Make the underline visible and scale it */
  }
 
- .categories {
+ .item .container{
    display: grid;
    grid-template-columns: auto auto auto auto auto;
    gap: 10px;
@@ -407,7 +407,7 @@ html{
    margin-top: 15px;
  }
 
- .containers {
+ .container .categories{
   text-align: center;
   padding: 20px 0;
   background: #fff;
@@ -417,7 +417,7 @@ html{
   cursor: pointer;
 }
 
- .categories:hover{
+ .container .categories:hover{
     outline: .2rem solid #FF7F00;
     outline-offset: -1rem;
     cursor: pointer;
