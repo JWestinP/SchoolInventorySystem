@@ -266,9 +266,8 @@ html{
 
  .disc{
     border: 2px solid black;
-    border-radius: 15px;
     margin-left: 15rem;
-    margin-top: 1rem;
+    margin-top: -1rem;
  }
 
 p{
