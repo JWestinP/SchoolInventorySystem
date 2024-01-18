@@ -361,7 +361,7 @@ html{
   padding: 10px;
 }
 
- .item-form-item {
+ .containers {
   background-color: #f8f9fa;
   padding: 10px 0;
   border-bottom: 1px solid black;
@@ -373,7 +373,7 @@ html{
   
 }
 
- .form-items{
+ .containers {
   background-color: #f8f9fa;
   padding: 10px 0;
   border-bottom: 1px solid black;
@@ -407,7 +407,7 @@ html{
    margin-top: 15px;
  }
 
- .containers {
+ .categories{
   text-align: center;
   padding: 20px 0;
   background: #fff;
