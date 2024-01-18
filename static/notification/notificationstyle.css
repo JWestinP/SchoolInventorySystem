@@ -204,9 +204,8 @@ body{
     padding: auto;
  }
  
- p{
+ li{
     margin-left: 5rem;
-    font-weight: 100;
  }
  a:link{
     color: #000;
