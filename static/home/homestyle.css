@@ -329,7 +329,7 @@ html{
    transform: scaleX(1); /* Make the underline visible and scale it */
  }
 
- .containers {
+ .item .container{
    display: grid;
    grid-template-columns: auto auto auto auto auto;
    gap: 10px;
@@ -361,7 +361,7 @@ html{
   padding: 10px;
 }
 
- .item-form-item {
+ .categories {
   background-color: #f8f9fa;
   padding: 10px 0;
   border-bottom: 1px solid black;
@@ -373,7 +373,7 @@ html{
   
 }
 
- .form-items{
+ .categories {
   background-color: #f8f9fa;
   padding: 10px 0;
   border-bottom: 1px solid black;
