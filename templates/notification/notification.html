@@ -47,9 +47,6 @@
    <div class="item">
     {% if unreturned_item_exist %}
 
-    <p>You have unreturned items. Please check the Unreturned Items tab for more details.</p>
-    <hr>
-
     <ul>
         {% for item_info in unreturned_items %}
         <li>
@@ -61,10 +58,8 @@
     </ul>
 
     <p>Please return the items after each use. Thanks!</p>
-    <hr>
     {% else %}
     <p>No unreturned items at the moment.</p>
-    <hr>
     {% endif %}
   </div>
 </div>
