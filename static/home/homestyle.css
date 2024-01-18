@@ -344,7 +344,7 @@ html{
     text-align: left;
  }
 
-.head {
+.head .container{
    background-color: #f8f9fa;
    padding: 15px 0;
    border: 2px solid #dee2e6;
@@ -406,14 +406,6 @@ html{
    margin-left: 10px;
    margin-top: 15px;
  }
-
- .containers {
-    text-align: center;
-    padding: 20px 0;
-    outline: .1rem solid #ccc;
-    outline-offset: 0;
-    cursor: pointer;
-  }
 
  .categories {
   text-align: center;
