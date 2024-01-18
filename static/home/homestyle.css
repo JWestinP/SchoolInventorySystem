@@ -434,7 +434,7 @@ html{
   cursor: pointer;
 }
 
- .item .container .category:hover{
+ .item .information:hover{
     outline: .2rem solid #FF7F00;
     outline-offset: -1rem;
     cursor: pointer;
