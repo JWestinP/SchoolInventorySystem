@@ -211,7 +211,7 @@ html{
     
  .header .logo-right img{
     width: 95px;
-    padding: 3rem;
+    padding: 2rem;
  }
 
  /*navigations*/
@@ -262,6 +262,7 @@ html{
     border-radius: 15px;
     margin-left: .5rem;
     margin-top: .5rem;
+    height: 150px;
  }
 
  .disc{
