@@ -44,7 +44,8 @@
         <button><a href="{% url 'userprofile' %}" class="navbar-brand">Account</a></button>
         <button><a href="{% url 'logout' %}" class="navbar-brand">Logout</a></button>
          </div>
-
+        </nav>
+        
         <div class="categories">
             {% for category in categories %}
             <button onclick="showItem('{{ category }}')" class="category_button">{{ category }}</button>
