@@ -384,7 +384,7 @@ html{
   padding: auto;
 } 
 
-.navbar-brand .containers {
+.navbar-brand {
   text-align: center;
   padding:1.5rem;
   background: #fff;
