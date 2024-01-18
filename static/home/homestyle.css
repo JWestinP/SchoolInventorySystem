@@ -249,7 +249,7 @@ html{
    width: 1450px;
  }
 
- header {
+ .item_header {
    display: flex;
    background-color: firebrick;
    padding: 10px;
