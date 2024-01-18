@@ -363,7 +363,7 @@ html{
   padding: 10px;
 }
 
- .categories {
+ .item-form-item {
   background-color: #f8f9fa;
   padding: 10px 0;
   border-bottom: 1px solid black;
@@ -409,7 +409,7 @@ html{
    margin-top: 15px;
  }
 
- .item .container .category{
+ .categories {
   text-align: center;
   padding: 20px 0;
   background: #fff;
