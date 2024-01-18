@@ -15,7 +15,7 @@
           <div class="search">
             <form method="GET" action="{% url 'search_items' %}">
               <input type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category" style="width: 1046px;height: 30px;left: 187px;border-radius: 10px;border: 4px;">
-              <button type="submit">Search</button>
+              <button type="submit" style="left: 200px;">Search</button>
             </form>
          </div>
   
@@ -26,10 +26,6 @@
         </div>
       </header>
       <div class="head"></div>
-        <form method="GET" action="{% url 'search_items' %}">
-            <input type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
-            <button type="submit">Search</button>
-          </form>
 
           <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
