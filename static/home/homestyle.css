@@ -382,7 +382,7 @@ html{
   
 }
 
- .form-items{
+ .categories {
   background-color: #f8f9fa;
   padding: 10px 0;
   border-bottom: 1px solid black;
@@ -393,7 +393,7 @@ html{
   padding: auto;
 } 
 
-.form-item .items{
+.categories {
   text-align: center;
   padding:1.5rem;
   background: #fff;
