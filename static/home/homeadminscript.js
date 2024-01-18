@@ -545,7 +545,7 @@ function editCategory() {
                             <div>
                             <button class="category_button">${category.item_category}</button><br>
                             <button><p onclick="deleteCategory(${category.id})"><i class="fa fa-trash" ></i>Remove</p></button>
-                        </div>
+                        </div>                
                         
                             `;
 

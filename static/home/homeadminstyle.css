@@ -986,7 +986,7 @@ input[name="q"] {
     text-align: center; /* Center the text horizontally */
     
 }
-
+ /*image ng category*/
 
   .category_button:nth-child(1){
     background-image: url(../home/clean.png);
@@ -1015,6 +1015,7 @@ input[name="q"] {
   .category_button:hover {
     background-color: orange;
   }
+
   /*edit button*/
   #edit_category_buttons {
     display: flex;
@@ -1600,14 +1601,12 @@ button:hover {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  padding: 10px;
-  border: 2px black;
 }
 
 .square-container {
   display: flex;
   flex-direction: column; /* Change this to 'row' */
-  border: 2px solid rgb(171, 177, 177);
+  border: 2px solid  orange;
   border-radius: 6px;
   height: 150px;
   width: 130px;
@@ -1616,14 +1615,9 @@ button:hover {
   padding-right: 10px;
   padding-bottom: 10px;
   background-color: rgb(255, 255, 255);
+  margin: 10px;
   flex-shrink: 0;
 }
-
-.row-container:hover {
-  border: solid rgb(230, 124, 55) 2px;
-  
-}
-
 .item-photo {
   display: flex;
   width: 130px;
@@ -1675,8 +1669,28 @@ button:hover {
   background-color: orange;
 }
 
+/*result list*/
+.box{
+  display: flex;
+  flex-direction: column; /* Change this to 'row' */
+  border: 2px solid rgb(171, 177, 177);
+  border-radius: 6px;
+  height: 150px;
+  width: 130px;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  margin-left:10px;
+  background-color: rgb(255, 255, 255);
+  flex-shrink: 0;
+}
+.result-button{
+  margin-left:10px;
+  margin-bottom:10px;
+  font-weight: 800;
 
-
+}
   /* Media queries for responsiveness */
   @media screen and (max-width: 768px) {
     header {
