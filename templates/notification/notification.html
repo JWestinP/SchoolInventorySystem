@@ -8,26 +8,24 @@
    <link rel="stylesheet" href="{% static '/notification/notificationstyle.css' %}">
 </head>
 <body>
-   <header>
-      <div class="header">
-        <div class="logo-left">
-         <img src="media\logo\lspu-logo.png" alt="LSPU Logo">
-        </div>
-
-        <div class="search">
-          <form method="GET" action="{% url 'search_items' %}">
-            <input type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
-            <button type="submit">Search</button>
-          </form>
-       </div>
-
-         <div class="logo-right">
-            <img src="media\logo\ccs-logo.png" alt="CSS Logo">
+    <header>
+        <div class="header">
+          <div class="logo-left">
+           <img src="media\logo\lspu-logo.png" alt="LSPU Logo">
+          </div>
+          
+          <div class="search">
+           <input type="text" class="search-input" placeholder="CLEANING MATERIALS" style="width: 1046px;height: 30px;left: 187px;border-radius: 10px;border: 4px;">
+           <i class="fas fa-search"></i>
          </div>
-        
-      </div>
-    </header>
-<div class="head"></div>
+  
+           <div class="logo-right">
+              <img src="media\logo\ccs-logo.png" alt="CSS Logo">
+           </div>
+          
+        </div>
+      </header>
+      <div class="head"></div>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
    <div class="container">
       <a href="{% url 'home' %}" class="navbar-brand">Home</a>
