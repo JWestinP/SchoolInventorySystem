@@ -270,7 +270,7 @@ html{
     border: 2px solid black;
     margin-left: 15rem;
     margin-top: -10rem;
-    width: 90%;
+    width: 85%;
  }
 
 p{
@@ -285,5 +285,5 @@ p{
  }
 
  .btn{
-    margin-left: 90rem;
+    margin-left: 60rem;
  }
