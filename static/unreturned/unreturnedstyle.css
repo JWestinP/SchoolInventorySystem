@@ -260,13 +260,14 @@ html{
  .inventory_item{
     border: 2px solid black;
     border-radius: 15px;
+    margin-left: 2rem;
  }
 
  .disc{
     border: 2px solid black;
     border-radius: 15px;
     margin-left: 15rem;
-    margin-top: 10rem;
+    margin-top: -10rem;
  }
 
 p{
