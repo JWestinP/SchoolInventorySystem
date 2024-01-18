@@ -86,7 +86,7 @@ table {
 hr {
     display:block;
     height:1px;
-    border:0;  
+    border:0;
     border-top:1px solid #cccccc;
     margin:1em 0;
     padding:0;
@@ -100,6 +100,7 @@ input, select {
 Start coding here
 */
 body {
+  /* Your existing body styles */
   line-height:1;
   line-height:1;
   height: 100%;
@@ -281,78 +282,42 @@ body {
     transform: scaleX(1); /* Make the underline visible and scale it */
   }
 
-
-.user_info {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    transition: 200ms ease-in-out;
-    border: 1px solid black;
-    border-radius: 10px;
-    z-index: 10;
-    background-color: white;
-    width: 500px;
-    max-width: 80%;
-}
-
-.user_info.active {
-    transform: translate(-50%, -50%) scale(1);
-}
-
-#user_info button {
-  background-color: #dee2e6;
-  color: black;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-left: 430px;
-  margin-bottom: 10px;
-  padding: 5px;
-}
-
-#user_info button:hover{
-  color: orange;
-}
-
-#user_info p{
-  margin-top: 5px;
-  margin-left: 10px;
-  font-weight: bold;
-  align-items: center;
-  display: flex;
-  padding-top: 5px;
-}
-
-.user-button {
-  background-color:#dee2e6;
-  color: black;
-  padding: 10px;
-  border: none;
-  cursor: pointer;
-  margin-right: 10px;
-}
-
-.users button{
-  text-align: center;
-  width: 150px;
-  height: 150px;
-  border-radius: 15px;
-  cursor: pointer;
-  margin-right: 30px;
-  font-size: large;
-}
-
-.users button:hover {
-  background-color: orange;  /* Baguhin ang kulay sa hover */
-  color: white;  /* Baguhin ang text color sa hover */
-}
-
-@media only screen and (max-width: 768px) {
-  .users button {
-      width: 100%;  /* Gawing full width sa mobile */
-      height: auto;  /* Auto height */
-      margin-right: 0;  /* Alisin ang margin sa right para maging full width */
+  .form{
+    background-color: #f8f9fa;
+    padding: 15px 0;
+    border: 2px solid #dee2e6;
+    border-bottom: 1px solid #dee2e6;
+    box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.1);
+    margin: 30px 70px 0; /* Adjusted margin for better responsiveness */
+    border-radius: 15px;
   }
+#container {
+    border-radius: 10px; /* Adjust the value as needed for the desired roundness */
+    overflow: hidden; /* Ensure content inside doesn't overflow rounded corners */
+    
+}
+  #return_btn:hover{
+    background-color: orange;
+  }
+
+  .inventory_item {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+.recent-lines {
+  width: 100%;
+  border-top: 2px solid gray; /* Line color */
+  margin-top: 10px; /* Adjust margin as needed */
+  margin-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 6px;
+}
+
+#bottom {
+  display: flex;
+  justify-content: flex-end; /* Align items to the right */
 }
 
 #wrapper {
@@ -363,15 +328,57 @@ body {
   border-radius: 10px;
 }
 
-.form{
-  background-color: #f8f9fa;
-  padding: 15px 0;
-  border: 2px solid #dee2e6;
-  border-bottom: 1px solid #dee2e6;
-  box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.1);
-  margin: 30px 70px 0; /* Adjusted margin for better responsiveness */
-  border-radius: 15px;
+#top {
+  display: flex;
+  align-items: center;
 }
 
+#left {
+  margin-right: 10px; /* Adjust the margin as needed */
+}
 
+.inventory_item {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
 
+#right {
+  flex-grow: 1;
+}
+
+#item_name {
+  margin-left: 10px; /* Remove default margin */
+  font-weight: bold;
+  font-size: large;
+  margin-bottom: 10px;
+}
+
+#item_details {
+  margin-left: 10px; 
+}
+
+#item_quantity {
+  text-align: right; /* Align the text to the right */
+  margin: 0; /* Remove default margin */
+  margin-right: 50px;
+}
+
+#return_btn {
+  float: right;  /* This will float the element to the right */
+  margin-right: 10px;
+  border: 2px solid orange;
+  font-size: 18px;
+  font-weight: 500;
+  background-color: white;
+  
+}
+
+#return_btn:hover {
+  background-color: orange;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}

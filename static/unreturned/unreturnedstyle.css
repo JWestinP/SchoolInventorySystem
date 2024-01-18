@@ -99,11 +99,140 @@ input, select {
 /*
 Start coding here
 */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .head {
+    display: flex;
+    background-color: orange;
+    padding: 10px;
+  }
+  
+  header {
+    display: flex;
+    background-color: firebrick;
+    padding: 15px;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo.left img {
+    width: 135px;
+    margin-right: auto;
+  }
+  
+  .logo.right img {
+    width: 80px;
+    margin-left: auto;
+  }
+  
+  .search-bar form{
+    flex-grow: 1;
+    margin-left: 0%;
+    display: flex;
+    align-items:center;
+    
+  }
 
-/* jonas design */
-/* * {
-    font-family: Arial, Helvetica, sans-serif; background-color: gray;
+  .search-bar input[type=text]{
+    width: 800px; /* Adjusted to take 100% width on smaller screens */
+    padding: 8px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    flex: 1;
+  }
+
+  .search-bar button[type=submit]{
+    cursor: pointer;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid gray;
+    border-radius: 4px;
+    margin-left: 8px;
+  }
+
+  .search-bar button:hover{
+    color: orange;
+  }
+  
+  /* navigations */
+  nav {
+    background-color: #f8f9fa;
+    padding: 15px 0;
+    border-bottom: 1px solid #dee2e6;
+    box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.1);
+    margin: 30px 70px 0; /* Adjusted margin for better responsiveness */
+    border-radius: 15px;
+  }
+  
+  .container, .recent-container{
+    display: flex;
+    justify-content: space-between;
+    
+  }
+  .item-container{
+    display: flex;
+    justify-content: space-between;
+    
+  }
+  .navbar-brand {
+    color: black;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-right: 30px;
+    margin-left: 30px;
+    text-decoration: none; /* Remove underline */
+    position: relative; /* Position for the pseudo-element */
+    transition: color 0.3s ease, font-weight 0.3s ease; /* Add a smooth color and font weight transition */
+  }
+  
+  /* Create an underline pseudo-element */
+  .navbar-brand::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: firebrick; /* Initial underline color */
+    visibility: hidden;
+    transform: scaleX(0); /* Initially invisible */
+    transition: all 0.3s ease; /* Add a smooth transition for visibility and scale */
+  }
+  
+  /* Add hover effect */
+  .navbar-brand:hover {
+    color:firebrick; /* Change text color on hover */
+    font-weight: lighter; /* Change font weight on hover, adjust as needed */
+  }
+  
+  .navbar-brand:hover::before {
+    visibility: visible;
+    transform: scaleX(1); /* Make the underline visible and scale it */
+  }
+#container {
+    border-radius: 10px; /* Adjust the value as needed for the desired roundness */
+    overflow: hidden; /* Ensure content inside doesn't overflow rounded corners */
+    
 }
+  #return_btn:hover{
+    background-color: orange;
+  }
+
+  #inventory_item {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* jonas design 
+{
+    font-family: Arial, Helvetica, sans-serif; background-color: gray;
+/
 body {
     margin: 15px;
 }
