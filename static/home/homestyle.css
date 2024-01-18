@@ -356,29 +356,6 @@ html{
   padding: 20px;
 }
 
- .item-form-item {
-  background-color: #f8f9fa;
-  padding: 10px 0;
-  border-bottom: 1px solid black;
-  margin: 35px 35px 35px 35px; /* Adjusted margin for better responsiveness */
-  border-radius: 15px;
-  border: 3px solid gray; /* Add border style */
-  border-radius: 10px; /* Add border-radius for rounded corners */
-  padding: auto;
-  
-}
-
- .form-items{
-  background-color: #f8f9fa;
-  padding: 10px 0;
-  border-bottom: 1px solid black;
-  margin: 35px 35px 35px 35px; /* Adjusted margin for better responsiveness */
-  border-radius: 15px;
-  border: 3px solid gray; /* Add border style */
-  border-radius: 10px; /* Add border-radius for rounded corners */
-  padding: auto;
-} 
-
 .form-item .items:hover{
   outline: .2rem solid #FF7F00;
   outline-offset: -1rem;
