@@ -243,13 +243,6 @@ html{
     background: #eee;
  }
 
- head {
-   display: flex;
-   background-color: orange;
-   padding: 10px;
-   width: 1450px;
- }
-
  header {
    display: flex;
    background-color: firebrick;
@@ -257,6 +250,13 @@ html{
    justify-content: space-between;
    align-items: center;
  }
+
+ head {
+    display: flex;
+    background-color: orange;
+    padding: 10px;
+    width: 1450px;
+  }
 
  .logo .logo-cont .left img{
   width: 135px;
