@@ -168,7 +168,7 @@ html{
  
  .form-container{
     background-color: #f8f9fa;
-    padding: 13rem 0;
+    padding: 8rem 0;
     border: 2px solid #dee2e6;
     border-bottom: 1px solid #dee2e6;
     box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.1);
@@ -185,23 +185,6 @@ html{
     border: 3px solid gray; /* Add border style */
     border-radius: 10px; /* Add border-radius for rounded corners */
  }
-
-.btn{
-margin-left: 18rem;
-margin-top: 1rem;
-}
-
- p{
-    font-family: orienta;
-    font-weight:lighter;
-    text-align: left;
-    margin-top: .5rem;
-    margin-left: 18rem;
- }
- 
-.pic{
-    margin-left: 5rem;
-}
  
  a:link{
     color: #000;
