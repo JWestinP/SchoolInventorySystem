@@ -48,13 +48,13 @@
             <div id="wrapper">
 
                 <div id="top">
-                    <div id="left" class="pctr">
+                    <div id="left">
                         {% if item.item_borrowed.item_stock.item_information.item_photo %}
                             <img src="{{ item.item_borrowed.item_stock.item_information.item_photo.url }}" alt="" class="inventory_item" height="100%" object-fit="contain">
                         {% endif %}
 
                     </div>
-                    <div id="right">
+                    <div id="right" class="disc">
                         <p id="item_name">{{ item.item_borrowed.item_stock.item_information.item_name }}</p>
                         <p id="item_details">
                             Time Borrowed: {{ item.item_borrowed.item_date_borrowed }}<br />

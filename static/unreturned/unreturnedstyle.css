@@ -248,6 +248,7 @@ html{
  }
 
  .rounded_corners{
+    background-color: #f8f9fa;
     padding: 13rem 0;
     border: 2px solid #dee2e6;
     border-bottom: 1px solid #dee2e6;
@@ -256,7 +257,12 @@ html{
     border-radius: 15px;
  }
 
- .pctr{
+ .inventory_item{
+    border: 2px solid black;
+    border-radius: 15px;
+ }
+
+ .disc{
     border: 2px solid black;
     border-radius: 15px;
  }
