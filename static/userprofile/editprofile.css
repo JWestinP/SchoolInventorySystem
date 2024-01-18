@@ -168,6 +168,12 @@ html{
  
  .form-group{
     background-color: #f8f9fa;
+    padding: 13rem 0;
+    border: 2px solid #dee2e6;
+    border-bottom: 1px solid #dee2e6;
+    box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.1);
+    margin: 30px 70px 0; /* Adjusted margin for better responsiveness */
+    border-radius: 15px;
  }
 
  a:link{
