@@ -1,8 +1,10 @@
-/* Reset stylesheet */
-html, div, span, object, iframe,
+/*
+Reset stylesheet
+*/
+html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 abbr, address, cite, code,
-del, dfn, em, ins, kbd, q, samp,
+del, dfn, em, img, ins, kbd, q, samp,
 small, strong, sub, sup, var,
 b, i,
 dl, dt, dd, ol, ul, li,
@@ -20,11 +22,9 @@ time, mark, audio, video {
     background:transparent;
 }
 
-
 body {
     line-height:1;
 }
-
 
 article,aside,details,figcaption,figure,
 footer,header,hgroup,menu,nav,section {
@@ -45,6 +45,14 @@ q:before, q:after {
     content:none;
 }
 
+a {
+    margin:0;
+    padding:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
 /* change colours to suit your needs */
 ins {
     background-color:#ff9;
@@ -55,7 +63,7 @@ ins {
 /* change colours to suit your needs */
 mark {
     background-color:#ff9;
-    color:#b1b7a3;
+    color:#000;
     font-style:italic;
     font-weight:bold;
 }
@@ -88,30 +96,9 @@ input, select {
     vertical-align:middle;
 }
 
-#cleaning {
-    display: none;
-}
-
-#gadget {
-    display: none;
-}
-
-#furniture {
-    display: none;
-}
-
-#room {
-    display: none;
-}
-
-#dean {
-    display: none;
-}
-
-h1 {
-    color: red;
-}
-
+/*
+Start coding here
+*/
 .inventory_item {
     width: 100px;
     height: 100px;
@@ -136,7 +123,7 @@ h1 {
     transform: translate(-50%, -50%) scale(1);
 }
 
-/* .add_item {
+.add_item {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -188,517 +175,1665 @@ h1 {
 
 .delete_confirmation.active {
     transform: translate(-50%, -50%) scale(1);
-} */
-
-
-
-/* Start here */
-body {
-    /* Your existing body styles */
-    line-height:1;
-    line-height:1;
-    height: 100%;
-    width : 100%;
-    min-height : 100vh;
-    background: rgb(255, 255, 255);
-    margin: 0; 
-    overflow-x: hidden;
-    overflow-y : scroll;
-    font-family: Arial, sans-serif; /* Adjust the font family as needed */
-    padding-top: 100px;
-  }
-
-
-/* Search bar / header */
-.header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    background-color: rgb(113,26,33); /* Top color for the header */
-    padding: 5px;
-    border-bottom: 20px solid rgb(230,124,55); /* Bottom color */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visibility */
-  
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-}
-  
-.left-section {
-    width: 100px;
-    display: flex;
-    align-items: center;
-    margin-left: 10px;
-    flex-shrink: 0;
-}
-  
-.lspu-logo{
-    width: 90px;
-    border-radius:50px;
-}
-  
-.middle-section {
-    flex: 1;
-    margin-left: 10px;
-    margin-right: 10px;
-    display: flex;
-    align-items: center;
-}
-  
-form {
-    display: flex;
-    flex: 1;
-    align-items: center;
-}
-
-.search-bar {
-    flex: 1;
-    height: 14px;
-    padding: 10px;
-    margin: 5px;
-    border: none;
-    border-radius: 3px;
-    outline: none;
-    background-color: white;
-    color: #000000; /* Set text color to be visible on the background color */
-    font-size: 15px;
-    box-shadow: inset 1px 2px 5px rgba(0, 0, 0, 0.2);
-    width: 0;
-}
-  
-.search-bar::placeholder{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 15px;
-}
-  
-.search-button {
-    background-color: rgb(230,124,55); /* Set the submit button color */
-    color: #ffffff;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 3px;
-    margin-right: 10px;
-    cursor: pointer;
 } 
-  
-.search-button:hover  {
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
-}
-  
-.right-section {
-    width: 100px;
-    display: flex;
-    align-items: center;
-    margin-right: 10px;
-    flex-shrink: 0;
-}
-  
-.ccs-logo{
-    width: 92px;
-    border-radius:46px;
-}
-  
-/* Buttons (home and logout) */
-.buttons-box {
-    background-color: rgb(255, 255, 255);
-    background-color: rgb(255, 255, 255);
-    padding-top: 3px;
-    padding-bottom: 3px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.20); /* Optional: Add a shadow for better visibility */
-    margin-top: 30px;
-    margin-left: 50px;
-    margin-right: 50px;
-    border-radius: 5px;
-}
-
-.button-grid{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin-top: 5px;
-    flex-wrap: wrap;
-    align-content: first baseline;
-    gap: 1em;
-}
-  
-.buttons-tabs {
-    background-color: rgb(255,255,255);
-    border: none;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 16px;
-    padding-right: 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    vertical-align: top;
-    transition-duration: 0.4s;
-}
-    
-.buttons-tabs:hover  {
-    color: rgb(230,124,55);
-    text-decoration: underline solid  rgb(230,124,55) 2px;
-}
-
-.buttons-tabs:active {
-    color: rgb(230,124,55);
-    text-decoration: underline solid  rgb(230,124,55) 2px;
-}
-
-a{
-    font-size: 20px;
-    font-weight: bold;
-    color: rgb(0, 0, 0);
-    font-family: Arial;
-}
-  
-a:link { 
-    text-decoration: none; 
-} 
-  
-a:hover { 
-    color: rgb(230,124,55);
-    text-decoration: underline solid  rgb(230,124,55) 2px;
-} 
-
-a:active { 
-    color: rgb(230,124,55);
-    text-decoration: underline solid  rgb(230,124,55) 2px;
-} 
-
-
-.category-container {
-    background-color: rgb(255, 255, 255);
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.20); /* Optional: Add a shadow for better visibility */
-    margin-top: 45px;
-    margin-left: 50px;
-    margin-right: 50px;
-    border-radius: 5px;
-}
-  
-.search-back-button{
-    background-color: rgb(255, 255, 255);
-    border:solid  rgb(153, 153, 153) 2px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 8px;
-    padding-right: 8px;
-    border-radius: 5px;
-    cursor: pointer;
-    vertical-align: top;
-    font-size: 20px;
-    font-weight: 500;
-    text-align: center;
-    text-decoration: none;
-    font-family: Arial;
-}
-
-.search-back-button:hover {
-    color: rgb(230,124,55);
-    border: solid rgb(230,124,55) 2px;
-    text-decoration: none;
-}
-
-.category-title-button{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    
-}  
-
-.category-container-title {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 35px;
-    margin-top: 10px;
-    margin-left: 18px;
-    width: 0;
-}
-  
-.categories {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    align-content: space-evenly;
-    gap: 1em;
-    padding-top: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-.category_button {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    border: 0.5px solid rgb(171,177,177);
-    border-radius: 6px;
-    height: 230px;
-    width: 170px;
-    padding-top: 10px;
-    padding-left: 10px;
-    padding-right: 10px; 
-    padding-bottom: 20px;
-    background-color: rgb(255, 255, 255);
-    background-repeat: no-repeat;
-    background-size: 130px;
-    background-position: 50%  20% ;
-    transition-duration: 0.2s;
-
-    margin-top: 5px;
-    font-size: 20px;
-    font-weight: 500;
-    text-align: center bottom;
-    font-family: Arial;
-    background-color: solid rgb(171,177,177) 1px;
-    
-}
-  
-.category_button:hover {
-    border: 2px solid rgb(230,124,55);
-    box-shadow: 8px 8px 10px rgba(113,26,33, 0.40);
-}
-
-.category_button:nth-child(1) {
-    background-image: url(../home/categories_icon/cleaninggg.png);
-    background-size: 120px;
-}
-
-.category_button:nth-child(2) {
-    background-image: url(../home/categories_icon/furni.png);
-    
-}
-
-.category_button:nth-child(3) {
-    background-image: url(../home/categories_icon/roooom.png);
-}
-
-.category_button:nth-child(4) {
-    background-image: url(../home/categories_icon/documents.png);
-}
-
-.category_button:nth-child(5) {
-    background-image: url(../home/categories_icon/GADGETS.png);
-}
-
-
-/* List of items */
-.items_div {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    padding-top: 0;
-}
-
-.items-grid{
-    flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 1em;
-    padding: 10px;
-}
-
-.items {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-content: center;
-    border: 2px solid rgb(171,177,177);
-    border-radius: 6px;
-    height: 180px;
-    width: 130px;
-    padding-top: 10px;
-    padding-left: 10px;
-    padding-right: 10px; 
-    padding-bottom: 20px;
-    background-color: rgb(255, 255, 255);
-    flex-shrink: 0;
-}
-
-.items:hover {
-    border: solid  rgb(230,124,55) 2px;
-}
-
-.item-pic {
-    display: flex;
-    width: 130px;
-    align-items: center;
-    margin-right: 10px;
-    padding-bottom: 5px;
-    border-bottom: 0.5px solid rgb(171,177,177);
-}
-
-.item-name{
-    margin-top: 5px;
-    font-size: 14px;
-    font-weight: bold;
-    text-align: center;
-}
-
-.items-button {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin-top: 5px;
-    flex-wrap: wrap;
-    align-content: center;
-    gap: 1em;
-}
-
-.item_button{
-    background-color: rgb(255, 255, 255);
-    border:solid  rgb(153, 153, 153) 2px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 8px;
-    padding-right: 8px;
-    border-radius: 5px;
-    cursor: pointer;
-    vertical-align: top;
-    font-size: 12px;
-    font-weight: 500;
-    text-align: center bottom;
-    font-family: Arial;
-}
-
-.back-button{
-    background-color: rgb(255, 255, 255);
-    border:solid  rgb(153, 153, 153) 2px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 8px;
-    padding-right: 8px;
-    border-radius: 5px;
-    cursor: pointer;
-    vertical-align: top;
-    font-size: 20px;
-    font-weight: 500;
-    text-align: center bottom;
-    font-family: Arial;
-}
-
-.item_button:hover {
-    color: rgb(230,124,55);
-    border: solid rgb(230,124,55) 2px;
-}
-
-
-.back-button:hover {
-    color: rgb(230,124,55);
-    border: solid rgb(230,124,55) 2px;
-}
-
-
-/* BORROWING ITEM BOX */
-#cleaning {
-    display: none;
-}
-
-#gadget {
-    display: none;
-}
-
-#furniture {
-    display: none;
-}
-
-#room {
-    display: none;
-}
-
-#dean {
-    display: none;
-}
-
-h1 {
-    color: red;
-}
-
-.inventory_item {
-    width: 100px;
-    height: 100px;
-    object-fit: contain;
-}
-
-.item_information {
-    position: fixed;
-    display: flex;
-    flex-direction: row;
-    flex: 1;
-    justify-content: space-between;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    transition: 200ms ease-in-out;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.40);
-    border-radius: 10px;
-    z-index: 10;
-    background-color: white;
-    max-width: 700px;
-    padding: 10px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 15px;
-    
-}
-
-.item_information.active {
-    transform: translate(-50%, -50%) scale(1);
-}
 
 .item_header {
     padding: 10px 15px;
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    border-right: 1px solid black;
-    font-family: Arial, Helvetica, sans-serif;
-    width: 150px;
+    border-bottom: 1px solid black;
 }
 
-.item-header-pic {
-    display: flex;
-    align-items: center;
-    margin-right: 10px;
-    padding-bottom: 5px;
-    flex: 1;
-}
-
-.name{
-    font-size: 18px;
-}
-
-.item-header-info {
-    padding-top: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-    border-top: 1px solid black;
-    font-size: 12px;
-    gap: 5px;
-}
-
-.item_body {
-    padding: 10px;
-    display: flex; 
-    flex-direction: column;
-    gap: 4px;
-}
-
-.item_body .close_button {
+.item_header .close_button {
     cursor: pointer;
     border: none;
     outline: none;
     background: none;
     font-size: 1.25rem;
     font-style: bold;
-    align-self: flex-end;
-    margin-right: 0;
 }
 
 .item_body {
     padding: 10px 15px;
 }
+
+body {
+  /* Your existing body styles */
+  line-height:1;
+  line-height:1;
+  height: 100%;
+  width : 100%;
+  min-height : 100vh;
+  background: rgb(255, 255, 255);
+  margin: 0; 
+  overflow-x: hidden;
+  overflow-y : scroll;
+  font-family: Arial, sans-serif; /* Adjust the font family as needed */
+  padding-top: 100px;
+}
+  
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: rgb(113,26,33); /* Top color for the header */
+  padding: 5px;
+  border-bottom: 20px solid rgb(230,124,55); /* Bottom color */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visibility */
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+
+.logo.left {
+  width: 100px;
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  flex-shrink: 0;
+}
+
+.logo.right {
+  width: 100px;
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+.logo.left img {
+  width: 135px;
+  margin-right: auto;
+}
+  
+.logo.right img {
+  width: 80px;
+  margin-left: auto;
+}
+
+.head {
+  display: flex;
+  background-color: orange;
+  padding: 10px;
+}
+
+.middle-section {
+  flex: 1;
+  margin-left: 10px;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.search-form {
+  display: flex; /* Add this property to make the form a flex container */
+}
+
+.search-bar {
+  flex: 1!important;
+  height: 40px!important;
+  padding: 10px!important;
+  margin: 5px!important;
+  border-radius: 3px!important;
+  outline: none!important;
+  background-color: white!important;
+  color: #000000!important;
+  font-size: 15px!important;
+  box-shadow: inset 1px 2px 5px rgba(0, 0, 0, 0.2)!important;
+}
+
+.search-bar::placeholder {
+  font-family: Arial, Helvetica, sans-serif!important;
+  font-size: 15px!important;
+}
+
+.search-button {
+  background-color: rgb(230, 124, 55)!important;
+  color: #ffffff!important;
+  padding: 10px 15px!important;
+  border-radius: 3px!important;
+  cursor: pointer!important;
+  margin-left: 10px!important;
+}
+
+.search-button:hover {
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2)!important;
+}
+
+input[name="q"] {
+    width: 1060px;
+    padding: 6px;
+    font-size: 16px;
+    border-radius: 4px;
+    margin-right: 14px;
+    
+}
+
+form input[name="b"] {
+  width: 80px !important;
+  font-size: 14px !important;
+  margin-right: 14px !important;
+  background-color: rgb(230, 124, 55) !important;
+  color: #ffffff !important;
+  padding: 8px 12px !important;
+  border: 2px solid orange !important;
+  border-radius: 5px !important;
+  cursor: pointer !important;
+  margin-left: 10px !important;
+  
+}
+
+  /* navigations */
+  nav {
+    background-color: #f8f9fa;
+    padding: 15px 0;
+    border-bottom: 1px solid #dee2e6;
+    box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.1);
+    margin: 30px 70px 0; /* Adjusted margin for better responsiveness */
+    border-radius: 15px;
+  }
+  
+  .container, .recent-container{
+    display: flex;
+    justify-content: space-between;
+    
+  }
+  .item-container{
+    display: flex;
+    justify-content: space-between;
+    
+  }
+  .navbar-brand {
+    color: black;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-right: 30px;
+    margin-left: 30px;
+    text-decoration: none; /* Remove underline */
+    position: relative; /* Position for the pseudo-element */
+    transition: color 0.3s ease, font-weight 0.3s ease; /* Add a smooth color and font weight transition */
+  }
+  
+  /* Create an underline pseudo-element */
+  .navbar-brand::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: firebrick; /* Initial underline color */
+    visibility: hidden;
+    transform: scaleX(0); /* Initially invisible */
+    transition: all 0.3s ease; /* Add a smooth transition for visibility and scale */
+  }
+  
+  /* Add hover effect */
+  .navbar-brand:hover {
+    color:firebrick; /* Change text color on hover */
+    font-weight: lighter; /* Change font weight on hover, adjust as needed */
+  }
+  
+  .navbar-brand:hover::before {
+    visibility: visible;
+    transform: scaleX(1); /* Make the underline visible and scale it */
+  }
+  .form{
+    background-color: #f8f9fa;
+    padding: 15px 0;
+    border: 2px solid #dee2e6;
+    border-bottom: 1px solid #dee2e6;
+    box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.1);
+    margin: 30px 70px 0; /* Adjusted margin for better responsiveness */
+    border-radius: 15px;
+  }
+  .form-item {
+    background-color: #f8f9fa;
+    padding: 10px 0;
+    border-bottom: 1px solid black;
+    margin: 35px 35px 35px 35px; /* Adjusted margin for better responsiveness */
+    border-radius: 15px;
+    border: 3px solid gray; /* Add border style */
+    border-radius: 10px; /* Add border-radius for rounded corners */
+    padding: auto;
+  }
+  .item-form-item {
+    background-color: #f8f9fa;
+    padding: 10px 0;
+    border-bottom: 1px solid black;
+    margin: 35px 35px 35px 35px; /* Adjusted margin for better responsiveness */
+    border-radius: 15px;
+    border: 3px solid gray; /* Add border style */
+    border-radius: 10px; /* Add border-radius for rounded corners */
+    padding: auto;
+  }
+  .form-items{
+    background-color: #f8f9fa;
+    padding: 10px 0;
+    border-bottom: 1px solid black;
+    margin: 35px 35px 35px 35px; /* Adjusted margin for better responsiveness */
+    border-radius: 15px;
+    border: 3px solid gray; /* Add border style */
+    border-radius: 10px; /* Add border-radius for rounded corners */
+    padding: auto;
+  } 
+  .form-item:hover {
+    border-color: orange; /* Change the background color on hover */
+  }
+  .item-form-item:hover {
+    border-color: orange; /* Change the background color on hover */
+  }
+  .orange-icon {
+    cursor: pointer;
+  }
+  h1 {
+    margin-left: 2rem; /* Adjust the margin for better readability */
+    font-size: 30px;
+    color: black;
+    margin-top: 10px;
+  }
+  .orange-icon {
+    color: orange; /* Set the color of the icon to orange */
+  }
+  .orange-icon1{
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: orange;
+    
+  }
+  .items, .item-items {
+    display: flex;
+    flex-direction: row;/* Stack items vertically */
+    align-items: center;
+    position: relative;
+    justify-content: space-between;
+  }
+  
+  .items i {
+    margin-bottom: 10px; /* Add margin to separate the icon and image */
+    margin-right: 10px;
+    color: orange; /* Adjust the color as needed */
+    
+  }
+  .line {
+        border-top: 2px solid gray; /* Line color */
+        flex-grow: 1;
+        margin: 15px 0; /* Adjust margin as needed */
+        size: 10px;
+  } 
+  .lines, .item-lines{
+    border-top: 2px solid gray; /* Line color */
+    flex-grow: 1;
+    margin: 15px 0; /* Adjust margin as needed */
+    size: 10px;
+  }
+  .line:hover {
+    border-color: orange; /* Change the background color on hover */
+  }
+  .item-content {
+    display: flex;
+    align-items: center;
+  }
+  .item-content p {
+    margin-right: 10px; /* Add margin between text and icon */
+  }
+  .items p {
+    font-weight: bold;
+    margin: 10px; /* Adjust the margin as needed */
+    margin-left: 10px;
+    margin-top: 15px;
+  }
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 50%;
+    height: 300px;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    align-items: center;
+  }
+  .modal-image .left { /*pic ng item na iaadd */
+    float: left;
+    width: 50%; /* Adjust the width of the image as needed */
+    height: 300px; /* Adjust the height of the image as needed */
+   
+  }
+  .modal-image .right{
+    float: left;
+    width: 50%; /* Adjust the width of the image as needed */
+    height: 100px; /* Adjust the height of the image as needed */
+  
+  }
+  /* Add your other styles here */
+  .left-preview {
+          width: 50%;
+          text-align: left;
+      }
+  
+   .form-group {
+          margin-bottom: 15px;
+      }
+  
+      .file-label {
+          vertical-align: top; /* Set vertical-align property to prevent the label from moving down */
+      }
+  .photo-container {
+              text-align: left;
+          }
+  
+          /* Additional styling for the image preview */
+          #photoPreview {
+              max-width: 100%;
+              max-height: 150px;
+              margin-top: 10px;
+              display: none;
+          }
+  input{
+    margin-bottom: 20px;
+  }
+  input[type="text"],
+  input[type="file"] {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    height: 40px;
+    float: right;
+    margin-top: 10px;
+    margin-right: 20px;
+  }
+  
+  .btn{
+    margin-top: 80px;
+  }
+  .addItem,
+  .cancelItem{
+    background-color: #fff;
+    padding: 9px;
+    border-radius: 3px;
+    border: 3px solid gray;
+    font-size: 15px;
+    margin-left: 15px;
+    text-align: center;
+  }
+  .addItem:hover,
+  .cancelItem:hover{
+    background-color: rgba(255, 166, 0, 0.689);
+    border: 3px solid rgba(255, 166, 0, 0.689);
+    color: white;
+  
+  }
+  
+  label[for="name"]{
+     margin-top: 20px;
+     margin-right: 70px;
+      font-weight: bold;
+      color: #0b0b0b;
+  
+  }
+  label[for="myFile"]{
+    
+     margin-top: 80px;
+     margin-right:90px;
+    font-weight: bold;
+    color: #0b0b0b;
+  }
+  .close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  }
+ 
+  /* Styles for the button container */
+  .button-container {
+    display: flex;
+    padding: 30px;
+    justify-content: space-between; /* Add margin to separate the buttons from the container */
+    background-color: #f8f9fa; /* Add background color to the button container */
+    border-radius: 10px; /* Add border-radius for rounded corners */
+    
+  }
+  
+  .add-form {
+    background-color: #f8f9fa;
+    padding: 30px;
+    border: 3px solid black ;
+    border-radius: 15px;
+    width: auto; /* Fixed width */
+    height: auto; /* Fixed height to make it a square */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 2px;
+  }
+  
+  input {
+    width: 60%;
+    padding: 8px;
+    margin-bottom: 2px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  button[type="submit"] {
+    margin-top: 10px;
+    background-color: whitesmoke;
+    color: orange;
+    padding: 10px 20px;
+    font-size: 15px;
+    cursor: pointer;
+    border: 2px solid orange;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: lightgoldenrodyellow;
+  }
+  
+      /* Add these styles to your existing CSS file */
+  .notification {
+      display: none;
+      background-color: #f44336;
+      color: #fff;
+      text-align: center;
+      padding: 15px;
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      z-index: 1000;
+  }
+  
+  .notification p {
+      margin-bottom: 10px;
+  }
+  
+  /* Styling for the modal */
+  #itemAddedModal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    z-index: 9999;
+  }
+  
+  /* Styling for the Okay button */
+  #okayButton {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /*Recent*/
+  .recent-form-items {
+    background-color: #f8f9fa;
+    padding: 0;
+    border-radius: 15px;
+    border: 2px solid gray; /* Add border style */
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column; /* Adjusted to column layout for better alignment */
+    margin:20px 30px 30px 20px;
+  }
+  
+  .recent-items {
+    display: flex;
+    align-items: center;
+  }
+  
+  .recent-lines {
+    width: 100%;
+    border-top: 2px solid gray; /* Line color */
+    margin-top: 10px; /* Adjust margin as needed */
+    margin-bottom: 40px;
+  }
+  
+  .recent-items img {
+    max-width: 100px;
+    padding: 15px; /* Set the maximum width of the image */
+  }
+  
+  .recent-items-text {
+    margin-top: 10px; /* Adjust margin as needed */
+    text-align: left;
+  }
+  
+  .recent-items-text h4 {
+    margin-top: 5px;
+    margin-bottom: 5px; /* Adjust margin as needed */
+    margin-left: 30px;
+  }
+  
+  .recent-items-text p {
+    margin: 5px 0 0 30px; /* Adjust margin as needed */
+  }
+  .right-text{
+    padding: 0;
+    text-align: right;
+  }
+  .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+  }
+  
+  .modal-content {
+      background-color: white;
+      color: black;
+      text-align: center;
+      padding: 15px;
+      border-radius: 5px;
+  }
+  
+  #okayButton {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+  }
+  
+  #okayButton:hover {
+      background-color: #45a049;
+  }
+   .select-container input {
+      display: flex;
+      margin-left:100px;
+   }
+  
+    #selectAllCheckbox {
+      margin-right: 10px; /* Add space between checkbox and label */
+    }
+    .add-item-btn {
+      padding: 10px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+  }
+  .add-item-btn:hover{
+    background-color: black;
+    color: wheat;
+  }
+  .item-modal {
+      display: flex;
+      justify-content: center;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .item-modal-content {
+      display: flex;
+      max-width: 600px;
+      background-color: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .item-modal-right {
+      width: 100%;
+      padding: 20px;
+      box-sizing: border-box;
+  }
+  
+  .item-close-modal {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+  }
+  
+  .item-label {
+      margin-bottom: 5px;
+      display: block;
+  }
+  
+  .item-input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+  }
+  
+  .item-btn {
+      display: flex;
+      gap: 10px;
+  }
+  
+  .item-btn button {
+      flex: 1;
+  }
+  
+  .item-photo-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+  }
+  
+  .item-preview-image {
+      max-width: 100px;
+      margin-right: 100px;
+  }
+  .item-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+  .item-form {
+    background: #fff; /* Add your desired background color */
+    border-radius: 5px;
+    padding: 100px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
+  }
+  .item-containerr {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .item-forms {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+  }
+  .input-label {
+    text-align: left;
+  }
+  .input-label label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  .item-input {
+    margin: 8px 0;
+    width: 100%;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-left: 190px;
+  }
+  label{
+    margin-left: 30px;
+  }
+  .item-preview-image {
+    max-width: 100%;
+    margin-top: 10px;
+  }
+  
+  .item-btn {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .item-btn button {
+    flex: 1;
+    margin-top: 50px;
+  }
+   /* bagong code*/
+
+  /*home categories*/
+  .categories {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+    font-family: Arial, Helvetica, sans-serif;
+   
+  }
+
+  
+    /*display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    border: 0.5px solid rgb(171, 177, 177);
+    border-radius: 6px;
+    height: 230px;
+    width: 170px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 20px;
+    background-color: rgb(255, 255, 255);
+    background-repeat: no-repeat;
+    background-size: 130px;
+    background-position: 50% 20%;
+    transition-duration: 0.2s;
+
+    margin-top: 5px;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: bottom;
+    color: #000;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: solid rgb(171, 177, 177) 1px;
+  */
+
+  .category_button {
+    position: relative;
+    color: black;
+    cursor: pointer;
+    border: 0.5px solid rgb(171, 177, 177);
+    border-radius: 6px;
+    height: 230px;
+    width: 170px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 20px;
+    background-color: rgb(255, 255, 255);
+    background-repeat: no-repeat;
+    background-size: 130px;
+    background-position: 50% 20%;
+    transition-duration: 0.2s;
+    margin-top: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    
+  }
+
+.category_button::after {
+    /* Create a pseudo-element to act as a spacer */
+    content: "";
+    display: block;
+    height: 100%; /* Take up the full height of the relative container */
+}
+
+.category_button span {
+    /* Absolute positioning for the text */
+    position: absolute;
+    bottom: 0; /* Align the text to the bottom */
+    left: 0; /* Align the text to the left */
+    right: 0; /* Align the text to the right */
+    text-align: center; /* Center the text horizontally */
+    
+}
+ /*image ng category*/
+
+  .category_button:nth-child(1){
+    background-image: url(../home/adminhome/clean.png);
+    background-size:110px;
+    background-position: center;
+  }
+  .category_button:nth-child(2){
+    background-image: url(../home/adminhome/furnitures.png);
+    background-size: 160px;
+    background-position: center;
+  }
+  .category_button:nth-child(3){
+    background-image: url(../home/adminhome/documents.png);
+    background-position: center;
+  }
+  .category_button:nth-child(4){
+    background-image: url(../home/adminhome/gadgets.png);
+    background-position: center;
+  }
+  .category_button:nth-child(5){
+    background-image: url(../home/adminhome/room.png);
+    background-position: center;
+  }
+
+
+  .category_button:hover {
+    background-color: orange;
+  }
+
+  /*edit button*/
+  #edit_category_buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px 0;
+  }
+
+  #edit_category_buttons button {
+    padding: 10px;
+    margin-right:30px;
+    background-color: white ;
+    color: black;
+    font-weight: bold;
+    border: 2px solid orange;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  #edit_category_buttons button:hover {
+    color: black;
+    background-color: orange;
+  }
+  .h1item{
+    margin-right: 10px;
+    
+  }
+
+  /*add category button sa edit*/
+/* Basic styles for the form container */
+#add_category_form {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+/* Styles for form inputs */
+#categoryFormId input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  margin: 0 auto 10px; /* Updated margin to center the input */
+  box-sizing: border-box;
+  display: block; /* Ensures that the input is treated as a block element */
+
+}
+
+/* Styles for buttons */
+#categoryFormId button {
+  background-color: white;
+  color: black;
+  padding: 10px;
+  border: 2px solid orange;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#categoryFormId button:hover {
+  background-color: orange;
+  color:#000;
+}
+
+/* Styles for success message */
+#successMessage {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#successMessage p {
+  font-size: 18px;
+  color: green;
+}
+
+#successMessage button {
+  background-color: #3498db;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#successMessage button:hover {
+  background-color: #2980b9;
+}
+/*remove */
+button {
+  background-color: white;
+  margin-top: 5px;
+  color: black;
+  border: 2px solid orange;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  
+}
+
+button:hover {
+  background-color: orange;
+}
+
+/* Icon styles */
+.fa-trash {
+  margin-right: 5px;
+}
+
+/* Text styles */
+button p {
+  margin: 0;
+}
+
+/* Center text vertically and horizontally */
+button p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Remove underline from anchor text */
+button p:hover {
+  text-decoration: none;
+}
+/*delete item*/
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* Pop-up form styles */
+.confirmation-pop-up {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  max-width: 400px; /* Adjust as needed */
+  width: 80%;
+  text-align: center;
+}
+
+/* Text styles */
+.confirmation-pop-up p {
+  margin-bottom: 20px;
+}
+
+/* Button styles */
+.delete_confirm, .delete_denied, .back_button {
+  padding: 10px;
+  margin: 5px;
+  cursor: pointer;
+  border: none;
+  width: 100px;
+}
+
+.delete_confirm {
+  background-color: white;
+  color: black;
+  border: 2px solid orange;
+}
+
+.delete_denied, .back_button {
+  background-color: white;
+  color: black;
+}
+
+
+
+#item_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: black;
+  padding: 10px;
+}
+
+#item_header img {
+  margin-right: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+#item_header p {
+  margin: 0;
+}
+
+
+
+
+/* Style for the borrow form */
+/* Style for the close button */
+.close_button {
+  margin-top: 5px;
+  margin-bottom: auto;
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: black;
+  cursor: pointer;
+}
+.item_information {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  justify-content: space-between;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 200ms ease-in-out;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.40);
+  border-radius: 10px;
+  z-index: 10;
+  background-color: white;
+  max-width: 700px;
+  padding: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  
+}
+
+.item_information.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+
+.item_header {
+  padding: 15px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-right: 1px solid black;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 150px;
+}
+
+.item-header-pic {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  padding-bottom: 5px;
+  flex: 1;
+}
+
+.name{
+  font-size: 20px;
+}
+
+.header-info {
+  padding-top: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-top: 1px solid black;
+  font-size: 15px;
+  gap: 5px;
+
+}
+/*table quantity*/
+#item_body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#item_body td {
+  border: 2px solid black;
+  padding: 5px;
+  text-align: left;
+
+}
+
+#item_body tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#item_body tr:hover {
+  background-color: #ddd;
+}
+#borrowFormId {
+  max-width: 150px;
+  margin: 90px -230px auto;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.borrow-row {
+  margin-top: 5px;
+  margin-left: -90px;
+}
+
+.item-borrow-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.item-borrow-row p {
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.item-borrow-row input[type="text"],
+.item-borrow-row input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.item-borrow-row input[type="submit"] {
+  background-color: white;
+  color: black;
+  border: 2px solid orange;
+  cursor: pointer;
+  padding: 12px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/*additem*/
+.form-popup {
+  display: block; /* Change to 'none' if you want it hidden by default */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fefefe;
+  padding: 20px;
+  border: 1px solid #ccc;
+  z-index: 999;
+  max-width: 400px;
+  width: 80%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.form-group {
+  margin-bottom: 15px;
+}
+
+/* Style for input containers */
+.input-container {
+  display: flex;
+  align-items: center;
+}
+
+/* Optional: Add some spacing between label and input */
+.input-container p {
+  margin-right: 10px;
+}
+
+/* Optional: Style the input fields */
+.input-container input
+{
+  padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.input-container select {
+  margin-top: 10px;
+  padding: 5px;
+  width: 50%;
+  box-sizing: border-box;
+}
+/* Optional: Style the textarea */
+.input-container textarea {
+  padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  resize: vertical; /* Allow vertical resizing of textarea */
+}
+/* Style for the submit button */
+/*add category button*/
+input[type="submit"] {
+  padding: 10px;
+  background-color: white;
+  color: black;
+  border: 2px solid orange;
+  cursor: pointer;
+}
+input[type="submit"]:hover{
+  background-color: orange;
+  color: black;
+}
+/* Style for the cancel button */
+.additem-button {
+  padding: 10px;
+  background-color: white;
+  color: black;
+  border: 2px solid orange;
+  cursor: pointer;
+  margin-left: 10px; /* Optional: Add some space between buttons */
+}
+.additem-button:hover{
+  background-color: orange;
+  color: black;
+}
+
+/* Optional: Hover effects */
+input[type="submit"]:hover,
+button:hover {
+  opacity: 0.8;
+  color:#000;
+  background-color: orange;
+}
+/*next popup*/
+.form-next {
+    display: block; /* Change to 'none' if you want it hidden by default */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fefefe;
+    padding: 20px;
+    border: 1px solid #ccc;
+    z-index: 999;
+    max-width: 400px;
+    width: 80%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Optional: Style for the cancel button */
+#stockFormPopup button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: white;
+    color: black;
+    border: 2px solid orange;
+    cursor: pointer;
+}
+#stockFormPopup button:hover{
+  margin-top: 10px;
+  padding: 10px;
+  background-color: orange;
+  color: black;
+}
+
+/* Style for the form popup container */
+        .form-popup {
+            display: block; /* Set to 'block' to make the form open by default */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fefefe;
+            padding: 20px;
+            border: 2px solid black;
+            z-index: 999;
+            max-width: 400px;
+            width: 80%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Style for the "Submit" button */
+        /* add item button final*/
+        .form-popup input[type="submit"] {
+            padding: 10px;
+            background-color: white;
+            color: black;
+            border: 2px solid orange;
+            cursor: pointer;
+        }
+
+        /* Style for the "Cancel" button */
+        .form-popup button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: white;
+            color: black;
+            border: 2px solid orange;
+            cursor: pointer;
+        }
+        .form-popup input[type="submit"]:hover{
+          background-color: orange
+        }
+
+/* Add this to your existing styles or in a separate stylesheet */
+.success-popup {
+  background-color: white; /* Green background */
+  color: black;
+  text-align: center;
+  padding: 15px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.success-popup p {
+  margin: 0;
+  font-size: 16px;
+}
+
+.success-popup button {
+  background-color: orange; /* Dark green button color */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.success-popup button:hover {
+  background-color: orange;
+  color: black;
+}
+        
+/*delete category*/
+.confirmation-popup-container {
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent gray background */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.confirmation-popup {
+  background-color: white;
+  color: black;
+  text-align: center;
+  padding: 15px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+
+}
+
+.confirmation-popup p {
+  margin: 0;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.confirmation-popup button {
+  color: black;
+  padding: 10px 20px;
+  border: 2px solid orange;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.confirmation-popup button:hover {
+  background-color: orange; /* Slightly lighter color on hover */
+  color: black;
+}
+
+.items_div {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding-top: 0;
+  flex-wrap: wrap; /* Allow items to wrap to the next row if necessary */
+}
+
+.row-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.square-container {
+  display: flex;
+  flex-direction: column; /* Change this to 'row' */
+  border: 2px solid  orange;
+  border-radius: 6px;
+  height: 150px;
+  width: 130px;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  background-color: rgb(255, 255, 255);
+  margin: 10px;
+  flex-shrink: 0;
+}
+.item-photo {
+  display: flex;
+  width: 130px;
+  align-items: center;
+  margin-right: 10px;
+  padding-bottom: 5px;
+  border-bottom: 0.5px solid rgb(171, 177, 177);
+}
+
+.item-name {
+  margin-top: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.item-button {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 5px;
+  flex-wrap: wrap;
+  align-content: center;
+  gap: 1em;
+}
+
+
+
+/*add back remove*/
+#edit_back_buttons {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 10px;
+  position: absolute;
+  margin-top: 300px;
+  margin-left: 80px;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+#edit_back_buttons button {
+  margin-right: 10px; /* Adjust the right margin for spacing */
+  border: 2px solid orange;
+  font-size: 18px;
+  font-weight: 500;
+  background-color: white;
+}
+#edit_back_buttons button:hover {
+  background-color: orange;
+}
+
+/*result list*/
+.box{
+  display: flex;
+  flex-direction: column; /* Change this to 'row' */
+  border: 2px solid rgb(171, 177, 177);
+  border-radius: 6px;
+  height: 150px;
+  width: 130px;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  margin-left:10px;
+  background-color: rgb(255, 255, 255);
+  flex-shrink: 0;
+}
+.result-button{
+  margin-left:10px;
+  margin-bottom:10px;
+  font-weight: 800;
+
+}
+/*remove pagclick ng item*/
+.item-box{
+  display: flex;
+  flex-direction: column; /* Change this to 'row' */
+  border: 2px solid orange;
+  border-radius: 6px;
+  height: 150px;
+  width: 130px;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  margin-left:10px;
+  margin-bottom: 10px;
+  background-color: rgb(255, 255, 255);
+  flex-shrink: 0;
+}
+
+
+
+  /* Media queries for responsiveness */
+  @media screen and (max-width: 768px) {
+    header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    nav {
+      margin: 10px; /* Adjusted margin for better responsiveness on smaller screens */
+    }
+  
+    .container 
+    {
+      flex-direction: column; /* Stack items vertically on smaller screens */
+      align-items: flex-start;
+    }
+    .item-container
+    {
+      flex-direction: column; /* Stack items vertically on smaller screens */
+      align-items: flex-start;
+    }
+  
+    .navbar-brand {
+      margin: 5px 10px; /* Adjusted margin for better spacing on smaller screens */
+    }
+    .form,.form-item, .item-form-item{
+      margin: 10px; /* Adjusted margin for better responsiveness */
+    }
+    h1 {
+      margin-left: 0.5rem; /* Adjust the margin for better readability */
+    }
+     .button-container {
+      flex-direction: column; /* Stack buttons vertically on smaller screens */
+      align-items: flex-start;
+    }
+   button.remove,
+    button.add {
+      margin-left: 0;
+      margin-right: 0;
+      margin-bottom: 10px; /* Add spacing between buttons in smaller screens */
+    }
+    /*delete item*/
+    .confirmation-pop-up {
+      max-width: 300px; /* Adjust for smaller screens */
+  }
+     
+    .confirmation-pop-up {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    /*borrow form table*/
+    #item_body td {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      border: none;
+      border-bottom: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+  
+    #item_body tr {
+      display: block;
+      margin-bottom: 10px;
+    }
+  
+    #item_body tr:last-child {
+      margin-bottom: 0;
+    }
+  
+    #item_body td:before {
+      content: attr(data-label);
+      font-weight: bold;
+      display: inline-block;
+      width: 50%;
+      box-sizing: border-box;
+    }
+    /*borrow form*/
+    #borrowFormId {
+      max-width: 100%;
+    }
+    /*item form*/
+    .form-popup {
+      width: 90%;
+  }
+  #edit_back_buttons {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+}
+
+
+  
 

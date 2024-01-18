@@ -1,105 +1,83 @@
-{% load static %}
 <!DOCTYPE html>
 <html>
     <head>
+        {% load static %}
         <link rel="stylesheet" href="{% static 'home/homestyle.css' %}">
-
-        <title>FACULTY HOME</title>
-    </head>
-    <h1>FACULTY HOME</h1>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <title>Faculty Home</title>
     <body>
-        <!-- {% if user.is_authenticated %}
-            <h1>>Welcome, {{ user.username }}</h1>
-        {% endif %} -->
-
-       
-        <div class="header">
-            
-            <div class="left-section">
-                <img class="lspu-logo" src="{% static 'home/logo/lspu-logo.png' %}">
+        
+        <header>
+            <div class="logo left">
+                <img src="/static/home/adminhome/LSPU.png" alt="Left Logo">
             </div>
-
+            
             <div class="middle-section">
-                <form method="GET" action="{% url 'search_items' %}">
-                    <input class="search-bar" type="text" placeholder="Search for name/id/category" name="q" value="{{ query }}">
-                    <input class="search-button" type="submit" value="Search">
+                <form method="GET" action="{% url 'search_items' %}" class="search-form">
+                    <input class="search-bar" type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
+                    <input class="search-button" type="submit" value="Search" name="b">
                 </form>
             </div>
 
-            <div class="right-section">
-                <img class="ccs-logo" src="{% static 'home/logo/ccs-logo.jpg' %}">
-            </div>
-            
-        </div>
-                {% include 'home/result_list.html' %}
-        <div class="buttons-box">
-            <div class="button-grid">
-                <button class="buttons-tabs"><a href="{% url 'home' %}">Home</a></button>
-                <button class="buttons-tabs"><a href="{% url 'recents' %}">Recents</a></button>
-                <button class="buttons-tabs"><a href="{% url 'unreturned' %}">Unreturned</a></button>
-                <button class="buttons-tabs"><a href="{% url 'notification' %}">Notification</a></button>
-                <button class="buttons-tabs"><a href="{% url 'userprofile' %}">Account</a></button>
-                <button class="buttons-tabs"><a href="{% url 'logout' %}">Logout</a></button>
-            </div>  
-        </div> 
+            <div class="logo right">
+                <img src="/static/home/adminhome/CSS.png" alt="Right Logo">
+            </div> 
+        </header>
 
-        
-        <div class="category-container">
-            <div class="category-title-button">
-                <p class="category-container-title">
-                    Categories 
-                </p>  
-                
-                <div id="back-button">
-                
+        <div class="head"></div>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+                <div class="container">
+                    <a href="{% url 'home' %}" class="navbar-brand">Home</a>
+                    <a href="{% url 'recents' %}" class="navbar-brand">Recents</a>
+                    <a href="{% url 'unreturned' %}" class="navbar-brand">Unreturned</a>
+                    <a href="{% url 'notification' %}" class="navbar-brand">Notification</a>
+                    <a href="{% url 'userprofile' %}" class="navbar-brand">Account</a>
+                    <a href="{% url 'logout' %}" class="navbar-brand">Logout</a>
                 </div>
-            </div>
-            <!-- category-grid -->
-            <div class="categories">
+            </nav>
 
-                {% for category in categories %}
-                <!-- CATEGORY-PREVIEW -->
-                <button onclick="showItem('{{ category }}')" class="category_button">
-                {{ category }}
-                </button>
-                {% endfor %}
-            </div>
-            
+                <div id="mainForm" class="form">
+                
+                    <div class="item">   
 
-            <div id="category_item" class="category_div">
-                <div id="item_list" class="items_div">
-
-
-                </div>
-                <h1>{{ current_category }}</h1>
-                {% for item in cleaning_inventory %}
-                    <div class="item">
+                        <div class="categories" id="category_container">
+                            {% for category in categories %}
+                            <button onclick="showItem('{{ category }}')" class="category_button">{{ category }}</button>
+                            {% endfor %}
+                           
+                        </div>
                         
-                    </div>
-                {% endfor %}
-                {% include 'home/result_list.html' %}
-                <div class="item_information" id="item_information">
-                    
-                    <div class="item_header" id="item_header">
+                        {% include 'home/result_list.html' %}
+                
+                        <div id="category_item" class="category_div">
+                            <div id="item_list">
+                
+                            </div>
+                            <div id="back-button">
+                                
+                            </div>  
+                            
+                        </div>
+                </div>
+
+            <h1>{{ current_category }}</h1>
+
+            <div class="item_information" id="item_information">
+                <div class="item_header" id="item_header">
                        
-                    </div>
+                </div>
 
-                    <div class="borrow-form">
-                        <div class="item_body" id="item_body">
-                            <button data-close-button class="close_button">&times;</button>      
+                <div class="item_body" id="item_body">
 
-                        </div>
-                        <div class="item_form" id="item_form">
+                </div>
+                <div class="item_form" id="item_form">
 
-                        </div>
-                    </div>
                 </div>
                 
             </div>
-        </div>
-                    
 
+        </div>
+             
         <script defer src="{% static 'home/homescript.js' %}"></script>
-       
     </body>
 </html>
