@@ -311,7 +311,7 @@ html{
  /* Create an underline pseudo-element */
  .navbar-brand::before {
     content: '';
-   position: absolute;
+   position: center;
    width: 100%;
    height: 2px;
    bottom: 0;
@@ -348,9 +348,6 @@ html{
     text-align: left;
  }
 
- .containers{
-    align-items: center;
- }
 .head head{
    background-color: #f8f9fa;
    padding: 20px 0;
