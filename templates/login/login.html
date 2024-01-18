@@ -1,25 +1,46 @@
-{% load static %}
 <!DOCTYPE html>
 <html>
     <head>
+        {% load static %}
         <link rel="stylesheet" href="{% static 'login/loginstyle.css' %}">
         <title>LOGIN</title>
+       
         {% for message in messages %}
         <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-            <strong>Message:</strong>{{ message }}
+            <strong></strong>{{ message }}
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
         {% endfor %}
-    </head>
+   
     <body>
+        <div class="form-container">
+            <div class="alert alert-{{ message.tags }}" style="display: block;">
+                <strong></strong> {{ message }}
+                <div class="imgcss">
+                    <img src="static/home/adminhome/CSS.png">
+                    <h2>COLLEGE OF <br></h2>
+                    <p>COMPUTER STUDIES</p>
+
+                   
+                </div>
+                <!--<span class="close" onclick="closeAlert(this.parentElement)">&times;</span>-->
+            </div>
+            
         <form action = "/login" method = "POST">
+            
+            
             {% csrf_token %}
+            <label>Email</label>
                 <input class = "email" type = "email" name = "email" id = "email" placeholder = "Input your email..." required>
+             <label>Password</label>
                 <input class = "password" type="password" name="password" id="password" placeholder="Input your password..." required>
     
-                <button type="submit">Login</button>
+                <button type="submit">LOG IN</button>
+                <button type="button" id="guestbtn">LOG IN AS GUEST</button>
             </form>
+            </div>
+        </head>
     </body>
 </html>
