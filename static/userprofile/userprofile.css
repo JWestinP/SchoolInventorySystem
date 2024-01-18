@@ -187,14 +187,17 @@ html{
     padding: auto;
  }
  
- p h2{
+ p{
     font-family: orienta;
     font-weight: bold;
     text-align: left;
     margin-top: -10rem;
-    margin-left: 25rem;
+    margin-left: 15rem;
  }
-
+ 
+h2{
+   margin-left: -15rem;
+}
 .pic{
     margin-left: 5rem;
 }
