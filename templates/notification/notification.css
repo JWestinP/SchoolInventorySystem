@@ -83,8 +83,9 @@ p{
    font-size: 35px;
    line-height: 41.83px;
    text-align: right;
-   padding: 1rem;
+   margin-bottom: .5rem;
 }
+
 .form-item {
    background-color: #f8f9fa;
    padding: 10rem;
