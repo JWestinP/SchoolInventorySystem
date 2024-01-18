@@ -28,15 +28,21 @@ function fetchData(itemId) {
             const selectedItem = items.find(item => item.item_id === parseInt(itemId));
             console.log('Selected item ID:', selectedItem.item_id);
 
-            
+            // items info
             if (selectedItem) {
                 const imageUrl = `${selectedItem.item_photo}`
                 document.getElementById('item_header').innerHTML = `
-                    <img src="${imageUrl}" alt="${selectedItem.item_name}" style="width: 100px; height: 100px;">
+              
+                <div class="item-header-pic">
+                <button data-close-button class="close_button">&times;</button>  
+                    <img src="${imageUrl}" alt="${selectedItem.item_name}" style="width: 150px; border:1px solid black; height: 150px;">
+                </div>
+                <div class="header-info">    
                     <p>Item ID: ${selectedItem.item_id}</p>
                     <p>Name: ${selectedItem.item_name}</p>
                     <p>Category: ${selectedItem.item_category}</p>
-                    <button data-close-button class="close_button">&times;</button> 
+                  
+               
                 `;
                 document.body.addEventListener('click', function (event) {
                     if (event.target.matches('.close_button')) {
@@ -46,10 +52,21 @@ function fetchData(itemId) {
                 });
     
                 document.getElementById('item_body').innerHTML = `
-                    <p>Description: ${selectedItem.item_description}</p>
-                    <p>Total Quantity: ${selectedItem.item_total}</p>
-                    <p>Borrowed Quantity: ${selectedItem.item_borrowed}</p>
-                    <p>Available Quantity: ${selectedItem.item_current}</p>
+                <table class="table-row">
+                
+               <tr>
+                    <td>Description</td>
+                    <td>Quantity</td>
+                    <td>Borrowed</td>
+                    <td>Available</td>
+                </tr>
+                <tr>
+                    <td>${selectedItem.item_description}</td>
+                    <td>${selectedItem.item_total}</td>
+                    <td>${selectedItem.item_borrowed}</td>
+                    <td>${selectedItem.item_current}</td>
+                </tr>
+            </table>
                 `;
     
                 const csrfToken = document.cookie.split(';').find(cookie => cookie.trim().startsWith('csrftoken=')).split('=')[1];
@@ -158,6 +175,7 @@ function closeItem(informationId) {
 function closeForm() {
     console.log('Closing item form');
     formId.classList.remove('active');
+    location.reload()
 }
 
 function closeCategoryForm() {
@@ -201,11 +219,12 @@ function showItem(category) {
                             data.items.forEach(selectedItem => {
                                 const imageUrl = `${selectedItem.item_photo}`
                                 const itemHTML = `
-                                    <div>
-                                        <img src="${imageUrl}" alt="${selectedItem.item_name}" style="width: 100px; height: 100px;">
-                                        <button data-delete-target="${selectedItem.item_id}" onclick="deleteItem(${selectedItem.item_id})">-</button>
-                                        <p>${selectedItem.item_name} </p>
-                                    </div>
+                                        <div class="item-box">
+                                            <img src="${imageUrl}" alt="${selectedItem.item_name}" style="width: 100px; height: 100px;">
+                                            <p>${selectedItem.item_name} </p>
+                                            <button data-delete-target="${selectedItem.item_id}" onclick="deleteItem(${selectedItem.item_id})"><i class="fa fa-trash"></i></button>
+                                            
+                                        </div>      
                                 `
                                 itemContainer.innerHTML += itemHTML
         
@@ -217,8 +236,6 @@ function showItem(category) {
                         }
                     }
                 })
-
-                itemContainer.innerHTML += `<p>${data.items.length} items in category: ${data.items[0].item_category.item_category}</p>`;
                 itemContainer.addEventListener('click', function (event) {
                     
                     if (event.target.matches('.item_button')) {
@@ -235,10 +252,16 @@ function showItem(category) {
                     data.items.forEach(selectedItem => {
                         const imageUrl = `${selectedItem.item_photo}`
                         const itemHTML = `
-                            <div>
-                                <img src="${imageUrl}" alt="${selectedItem.item_name}" style="width: 100px; height: 100px;">
-                                <button data-item-target="${selectedItem.item_id}" class="item_button">${selectedItem.item_name}</button>
-                            </div>
+                            <div class="row-container">
+                                 <div class="square-container">
+                                    <div class="item-photo">
+                                        <img src="${imageUrl}" alt="${selectedItem.item_name}" style="width: 100px; height: 100px;">
+                                    </div> 
+                                    <div class="item-button">  
+                                         <button data-item-target="${selectedItem.item_id}" class="item_button">${selectedItem.item_name}</button>
+                                    </div>
+                                 </div>
+                             </div>
                         `
                         itemContainer.innerHTML += itemHTML
 
@@ -325,8 +348,12 @@ function addItem() {
                                                     if (data.message) {
                                                         formContainer.innerHTML = ''
                                                         formContainer.innerHTML = `
-                                                        <p>The item has been successfully added with its stock!</p>
-                                                        <button onclick="refreshPage()">Ok</button>
+                                                        <div class="confirmation-popup-container">
+                                                            <div class="confirmation-popup">
+                                                                <p>The item has been successfully added with its stock!</p>
+                                                                <button onclick="refreshPage()">Ok</button>
+                                                            </div>
+                                                        </div>
                                                         `
                                                     } else if (data.error) {
                                                         
@@ -353,9 +380,14 @@ function addItem() {
 
 function deleteItem(item_id) {
     confirmationPopUp.innerHTML = `
-    <p>Are you sure you want to delete this item?</p>
-    <button class="delete_confirm">Yes</button>
-    <button class="delete_denied">No</button>
+    <div class="confirmation-popup-container">
+        <div class="confirmation-popup">
+            <p>Are you sure you want to delete this item?</p>
+            <button class="delete_confirm">Yes</button>
+            <button class="delete_denied">No</button>
+        </div>
+    </div>
+    
     `
     openConfirmation(confirmationPopUp)
 
@@ -376,8 +408,12 @@ function deleteItem(item_id) {
             })
             .catch(error => console.error('Error:', error));
             confirmationPopUp.innerHTML = `
-            <p>The item has been deleted successfully</p>
-            <button onclick="refreshPage()">Back</button>
+            <div class="confirmation-popup-container">
+                <div class="confirmation-popup">
+                    <p>The item has been deleted successfully</p>
+                    <button onclick="refreshPage()">Back</button>
+                <div>
+            </div>
             `
         }
         else if (event.target.matches('.delete_denied')) {
@@ -413,8 +449,12 @@ function addCategory() {
                             console.log(data);
                             if (data.message) {
                                 formContainer.innerHTML = `
-                                <p>The item has been successfully added with its stock!</p>
-                                <button onclick="refreshPage()">Ok</button>
+                                <div class="confirmation-popup-container">
+                                    <div class="success-popup">
+                                        <p>The item has been successfully added with its stock!</p>
+                                        <button onclick="refreshPage()">Ok</button>
+                                    </div>
+                                </div>   
                                 `
                             } else if (data.error) {
                                 
@@ -431,9 +471,13 @@ function addCategory() {
 
 function deleteCategory(category_id) {
     confirmationPopUp.innerHTML = `
-    <p>Are you sure you want to delete this category?</p>
-    <button class="delete_confirm">Yes</button>
-    <button class="delete_denied">No</button>
+    <div class="confirmation-popup-container">
+        <div class="confirmation-popup">
+                <p>Are you sure you want to delete this category?</p>
+                <button class="delete_confirm">Yes</button>
+                <button class="delete_denied">No</button>
+        </div>
+    </div>
     `
     openConfirmation(confirmationPopUp)
     
@@ -455,8 +499,12 @@ function deleteCategory(category_id) {
             .catch(error => console.error('Error:', error));
 
             confirmationPopUp.innerHTML = `
-            <p>The category has been deleted successfully</p>
-            <button onclick="refreshPage()">Back</button>
+            <div class="confirmation-popup-container">
+                <div class="confirmation-popup">
+                    <p>The category has been deleted successfully</p>
+                    <button onclick="refreshPage()">Back</button>
+                </div>
+            </div>
             `
         }
 
@@ -480,8 +528,8 @@ function editCategory() {
             var categoryContainer = document.getElementById('category_container');
             
             document.getElementById('edit_category_buttons').innerHTML = `
-                <button onclick="addCategory()">Add</button>
-                <button class="remove_category">Remove</button>
+                <button onclick="addCategory()"><i class="fa fa-plus"></i> Add</button>
+                <button class="remove_category"><i class="fa fa-trash"></i>Remove</button>
                 <button onclick="refreshPage()">Back</button>
             `
 
@@ -494,10 +542,11 @@ function editCategory() {
                             console.log(categoryName);
                             document.getElementById
                             const categoryHTML = `
-                                <div>
-                                    <button onclick="deleteCategory(${category.id})" class="category_button">remove</button>
-                                    <p>${category.item_category}</p>
-                                </div>
+                            <div>
+                            <button class="category_button">${category.item_category}</button><br>
+                            <button><p onclick="deleteCategory(${category.id})"><i class="fa fa-trash" ></i>Remove</p></button>
+                        </div>                
+                        
                             `;
 
                             categoryContainer.innerHTML += categoryHTML;

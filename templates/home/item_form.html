@@ -1,14 +1,42 @@
-<form action="/save_item_form/" id="itemFormId" method="post">
-    {% csrf_token %}
-    <p>Item name:</p>
-    {{ item_form.item_name }}
-    <p>Item description:</p>
-    {{ item_form.item_description }}
-    <p>Item photo:</p>
-    {{ item_form.item_photo }}
-    <p>Item category:</p>
-    {{ item_form.item_category }}
+<div class="confirmation-popup-container">
+    <form action="/save_item_form/" id="itemFormId" method="post" class="form-popup"> 
+        {% csrf_token %}
+        <!--<p>Item name:</p>
+        {{ item_form.item_name }}
+        <p>Item description:</p>
+        {{ item_form.item_description }}
+        <p>Item photo:</p>
+        {{ item_form.item_photo }}
+        <p>Item category:</p>
+        {{ item_form.item_category }}-->
+        <div class="form-group">
+                <p>Item category:</p>
+                <div class="input-container">
+                    {{ item_form.item_category }}
+                </div>
+        </div>
 
-    <input type="submit" value="Next">
-    <button onclick="closeForm()">Cancel</button>
-</form>
+        <div class="form-group">
+            <p>Item name:</p>
+            <div class="input-container">
+                {{ item_form.item_name }}
+            </div>
+        </div>
+
+            <div class="form-group">
+                <p>Item description:</p>
+                <div class="input-container">
+                    {{ item_form.item_description }}
+                </div>
+            </div>
+            <div class="form-group">
+                <p>Item photo:</p>
+                <div class="input-container">
+                    {{ item_form.item_photo }}
+                </div>
+            </div>
+
+        <input type="submit" value="Next">
+        <button onclick="closeForm()" class="additem-button">Cancel</button>
+    </form>
+</div>

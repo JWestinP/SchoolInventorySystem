@@ -2,34 +2,50 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="{% static 'recents/recentstyle.css' %}">
-        <title>ADMIN RECENTS</title>
+        <link rel="stylesheet" href="{% static 'recents/recentadminstyle.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
     </head>
-    <h1>ADMIN RECENTS</h1>
     <body>
-        <div>
-            <form method="GET" action="{% url 'search_items_admin' %}">
-            <input type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
-            <button type="submit">Search</button>
-          </form>
-        <button><a href="{% url 'admin_home' %}">Home</a></button>
-            <button><a href="{% url 'admin_recents' %}">Recents</a></button>
-            <button><a href="{% url 'admin_unreturned' %}">Unreturned</a></button>
-            <button><a href="{% url 'members' %}">Members</a></button>
-            <button><a href="{% url 'admin_userprofile' %}">Account</a></button>
-            <button><a href="{% url 'logout' %}">Logout</a></button>
+        
+        <header>
+        <div class="logo left">
+            <img src="/static/home/adminhome/LSPU.png" alt="Left Logo">
         </div>
 
+        <div class="middle-section">
+            <form method="GET" action="{% url 'search_items_admin' %}" class="search-form">
+                <input class="search-bar" type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
+                <input class="search-button" type="submit" value="Search" name="b">
+            </form>
+        </div>
+
+        <div class="logo right">
+            <img src="/static/home/adminhome/CSS.png" alt="Right Logo">
+        </div> 
+    </header>
+    <div class="head"></div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a href="{% url 'admin_home' %}" class="navbar-brand">Home</a>
+                <a href="{% url 'admin_recents' %}" class="navbar-brand">Recents</a>
+                <a href="{% url 'admin_unreturned' %}" class="navbar-brand">Unreturned</a>
+                <a href="{% url 'members' %}" class="navbar-brand">Members</a>
+                <a href="{% url 'admin_userprofile' %}" class="navbar-brand">Account</a>
+                <a href="{% url 'logout' %}" class="navbar-brand">Logout</a>
+        </div>
+    </nav>
+        </div> 
+        <div id="mainForm" class="form">
         <div id="container" class="rounded_corners">
 
-            <!-- test block code -->
-            <!-- template for the items -->
+
             {% for items in borrowed_item reversed %}
             <div id="wrapper">
                 <div id="top">
                     <div id="left">
                         {% if items.item_stock.item_information.item_photo %}
-                            <img src="{{ items.item_stock.item_information.item_photo.url }}" alt="" class="inventory_item"  height="100%" object-fit="contain">
+                            <img src="{{ items.item_stock.item_information.item_photo.url }}" alt="" class="inventory_item"  height="100%" object-fit="scale-down">
                         {% endif %}
 
                     </div>
@@ -41,19 +57,19 @@
                             Borrower: {{items.item_borrower}}
                         </p>
                         <p id="item_quantity">Item Quantity: {{items.item_quantity}}</p>
+                      
 
                     </div>
                 </div>
                 <div id="bottom">
-                    <!-- <div id="btn_con">
-                        <button id="return_btn" class="rounded_corners">Return</button>
-                    </div> -->
-                </div>
 
+                </div>
+                <div class="recent-lines"></div>
             </div>
             {% endfor %}
-            <!-- template for the items -->
 
+
+        </div>
         </div>
         {% include 'home/result_list_admin.html' %}
     </body>
