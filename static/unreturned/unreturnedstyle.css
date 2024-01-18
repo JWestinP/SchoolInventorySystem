@@ -255,22 +255,17 @@ html{
     box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.1);
     margin: 30px 70px 0; /* Adjusted margin for better responsiveness */
     border-radius: 15px;
+    column-gap: 5rem;
  }
 
- /*.inventory_item{
+ .inventory_item{
     border: 2px solid black;
     border-radius: 15px;
     margin-left: .5rem;
     margin-top: .5rem;
     height: 200px;
     width: 230px;
- } */
-
- .clearfix::after {
-    content: "";
-    clear: both;
-    display: table;
-  }
+ }
 
  .disc{
     border: 2px solid black;
