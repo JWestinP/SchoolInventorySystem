@@ -212,3 +212,36 @@ html{
     width: 95px;
     padding: 3rem;
  }
+
+ /*navigations*/
+ nav{
+    background-color: #f8f9fa;
+    padding: 15px 0;
+    border-bottom: 1px solid #dee2e6;
+    box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.1);
+    margin: 30px 70px 0; /* Adjusted margin for better responsiveness */
+    border-radius: 15px;
+ }
+ 
+ .navbar-brand {
+    color: black;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-right: 10px;
+    margin-left: 10px;
+    padding: 3rem;
+    text-decoration: none; /* Remove underline */
+    position: relative; /* Position for the pseudo-element */
+    transition: color 0.3s ease, font-weight 0.3s ease; /* Add a smooth color and font weight transition */
+ }
+ 
+ /* Add hover effect */
+ .navbar-brand:hover {
+    color:firebrick; /* Change text color on hover */
+    font-weight: lighter; /* Change font weight on hover, adjust as needed */
+ }
+ 
+ .navbar-brand:hover::before {
+    visibility: visible;
+    transform: scaleX(1); /* Make the underline visible and scale it */
+ }
