@@ -195,6 +195,10 @@ html{
     margin-left: 15rem;
  }
  
+h2{
+   margin-left: -15rem;
+   margin-top: -10rem;
+}
 .pic{
     margin-left: 5rem;
 }
