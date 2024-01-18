@@ -187,9 +187,10 @@ html{
     padding: auto;
  }
  
- .info{
+ .info h2{
 margin-left: 5rem;
  }
+
  p{
     font-family: orienta;
     font-weight: bold;
