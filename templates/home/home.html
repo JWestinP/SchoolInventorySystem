@@ -8,29 +8,33 @@
     </head>
     <h1>FACULTY HOME</h1>
     <body>
-        {% if user.is_authenticated %}
-            <h1>>Welcome, {{ user.username }}</h1>
-        {% endif %}
-    <header>
-        <div class="logo"></div>
 
-      <div class="logo-cont"></div>
+        <header>
+            <div class="logo"></div>
+    
+          <div class="logo-cont"></div>
+    
+          <div class="left">
+            <img src="media\logo\LSPU.png" alt="">
+          </div>
 
-      <div class="left">
-        <img src="media\logo\LSPU.png" alt="">
-      </div>
-      <div class="logo-cont">
-        <img src="media\logo\ccs.png" alt="">
-      </div>
-
-    </header>
-
-        <form method="GET" action="{% url 'search_items' %}">
-            <div class="search-bar">
+          <div class="search-bar">
             <input type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
             <button type="submit">Search</button>
             </div>
           </form>
+
+          <div class="logo-cont">
+            <img src="media\logo\ccs.png" alt="">
+          </div>
+    
+        </header>
+
+        {% if user.is_authenticated %}
+            <h1>>Welcome, {{ user.username }}</h1>
+        {% endif %}
+
+        <form method="GET" action="{% url 'search_items' %}">
 
           <div class="head"></div>
           <nav class="navbar navbar-expand-lg navbar-light bg-light">
