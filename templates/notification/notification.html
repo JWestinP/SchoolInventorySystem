@@ -57,13 +57,14 @@
       {% endfor %}
   </ul>
 
-         {% if unreturned_item_exist %}
+         <div>
+            {% if unreturned_item_exist %}
             <p>You have unreturned items. Please check the Unreturned Items tab for more details.</p>
-    
+         </div>
 
     <p>Please return the items after each use. Thanks!</p>
     {% else %}
-    <div></div>
+    
     <p>No unreturned items at the moment.</p>
     {% endif %}
   </div>
