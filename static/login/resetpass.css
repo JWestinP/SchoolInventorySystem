@@ -96,7 +96,6 @@ input, select {
     vertical-align:middle;
 }
 
-
 /*
 Start coding here
 */
@@ -217,7 +216,7 @@ body, html {
 
 .title-container{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     gap: 10px;
     margin: 0;
@@ -228,20 +227,31 @@ body, html {
     
 }
 
+.lock-logo{
+    width: 110px; /* Set a fixed width for the image */
+    height: auto; /* Maintain aspect ratio */
+    margin: 0;
+}
+
 .title{
     align-items: center;
     align-self: center;
-    font-size:25px;
+    font-size:20px;
     color: rgba(122, 26, 34);
     font-family: 'Arial';
     font-weight:800;
     text-align: left;
 }
 
-.ccs-logo{
-    width: 110px; /* Set a fixed width for the image */
-    height: auto; /* Maintain aspect ratio */
-    margin: 0;
+.frnote{
+  align-items: center;
+  align-self: center;
+  font-size:15px;
+  color: rgba(122, 26, 34);
+  font-family: 'Arial';
+  font-weight:800;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .forgot-pass-div{
@@ -259,13 +269,22 @@ label{
         
 }
 
+.new-pass{
+    color: rgba(122, 26, 34);
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 4px;
+    margin-left: 2px;
+        
+}
+
 .forgot_pass{
     color: rgba(122, 26, 34);
     font-weight: bold;
     font-size: 13px;
 }
 
-.email, .password {
+.email, .password, .form-field{
     border: 3px solid rgba(122, 26, 34);
     border-radius: 7px;
     width: 100%;
@@ -282,7 +301,7 @@ label{
     gap: 10px;
 }
 
-.login-button {
+.submit-button, .frconfirm_submit{
     width: 100%;
     box-sizing: border-box;
     padding: 10px;
@@ -299,7 +318,8 @@ label{
     cursor: pointer;
 }
 
-.guest-button{
+.back-button{
+    width: 100%;
     box-sizing: border-box;
     padding: 10px;
     width: 235px;
@@ -310,15 +330,18 @@ label{
     border: 4px solid rgb(171, 177, 177);
     border-radius: 21px;
     cursor: pointer;
+    text-align: center;
+    text-decoration: none;
 }
 
-.login-button:hover{
+.submit-button:hover, .frconfirm_submit:hover{
     background-color: rgb(199, 89, 15);
 }
 
-.guest-button:hover{
+.back-button:hover{
     background-color: rgb(171, 177, 177);
     color: rgb(255, 255, 255);
+    text-decoration: none;
 }
 
 
@@ -338,7 +361,7 @@ label{
         flex-direction: column;
         align-items: center;
         position: static;
-        margin-top: 300px;
+        margin-top: 450px;
     }
 
     .ccs-logo{
