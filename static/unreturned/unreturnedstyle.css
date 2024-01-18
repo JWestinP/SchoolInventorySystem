@@ -276,12 +276,13 @@ html{
 p{
     margin-left: 1.5rem;
     margin-top: 5px;
+    margin-bottom: .5rem;
  }
 
 .quan{
     margin-left: 48rem;
     margin-top: 2rem;
-    margin-bottom: 1rem;
+    margin-bottom: .5rem;
 }
  .group{
     border: 2px solid gray;
