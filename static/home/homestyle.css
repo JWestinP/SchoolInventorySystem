@@ -369,16 +369,6 @@ html{
     border-radius: 15px;
  }
 
- .categories h3{
-    background-color: #f8f9fa;
-    padding: 20px 0;
-    border: 2px solid #dee2e6;
-    border-bottom: 1px solid #dee2e6;
-    box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.1);
-    margin: 30px 70px 0; /* Adjusted margin for better responsiveness */
-    border-radius: 15px;
- }
-
  .categories {
   display: grid;
   grid-template-columns: auto auto auto auto auto;
@@ -455,7 +445,7 @@ html{
     transform: scale(.9);
  }
  
- .categories h1{
+ .categories h3{
     position: center;
     bottom: 1rem; left: 1.5rem;
     font-size: 2rem;
