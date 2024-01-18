@@ -257,6 +257,7 @@ html{
     border-radius: 15px;
  }
 
- .top .left img{
+ .pctr{
     border: 2px solid black;
+    border-radius: 15px;
  }
