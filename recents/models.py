@@ -9,7 +9,7 @@ class Borrowed_Item(models.Model):
     item_quantity = models.IntegerField()
     item_returned = models.BooleanField()
     item_date_borrowed = models.DateField()
-    item_date_returned = models.DateField(blank = True)
+    item_date_returned = models.DateField(null = True, blank = True)
     item_borrower = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):

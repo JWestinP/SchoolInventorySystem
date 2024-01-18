@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'userprofile/userprofileadminstyle.css' %}">
+        <title>EDIT USER PROFILE</title>
+    </head>
+<body>
+
+    <header>
+        <div class="logo left">
+            <img src="static/unreturned/unreturnedadmin/LSPU.png" alt="Left Logo">
+        </div>
+        <div class="middle-section">
+            <form method="GET" action="{% url 'search_items_admin' %}" class="search-form">
+                <input class="search-bar" type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
+                <input class="search-button" type="submit" value="Search" name="b">
+            </form>
+        </div>
+        <div class="logo right">
+            <img src="static/unreturned/unreturnedadmin/CSS.png" alt="Right Logo">
+        </div> 
+    </header>
+    <div class="head"></div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a href="{% url 'admin_home' %}" class="navbar-brand">Home</a>
+            <a href="{% url 'admin_recents' %}" class="navbar-brand">Recents</a>
+            <a href="{% url 'admin_unreturned' %}" class="navbar-brand">Unreturned</a>
+            <a href="{% url 'members' %}" class="navbar-brand">Members</a>
+            <a href="{% url 'admin_userprofile' %}" class="navbar-brand">Account</a>
+            <a href="{% url 'logout' %}" class="navbar-brand">Logout</a>
+        </div>
+    </nav>
+    <div id="mainForm" class="form">
+        <div id="container" class="rounded_corners">
+            <div class="form-container">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-4">EDIT PROFILE INFORMATION</legend>
+                        <div class="form-group">
+                            <label for="id_username">Username</label>
+                            <input type="text" class="form-control" id="id_username" name="username" value="{{ user.username }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="id_email">Email</label>
+                            <input type="email" class="form-control" id="id_email" name="email" placeholder="Enter email">
+                        </div>
+                        <div class="form-group">
+                            <label for="id_account_name">Account Name</label>
+                            <input type="text" class="form-control" id="id_account_name" name="account_name" placeholder="Enter account name">
+                        </div>
+                        <div class="form-group">
+                            <label for="id_contact_number">Contact Number</label>
+                            <input type="text" class="form-control" id="id_contact_number" name="contact_number" placeholder="Enter contact number">
+                        </div>
+                        <div class="form-group">
+                            <label for="id_image">Profile Image</label>
+                            <input type="file" class="form-control-file"  id="id_image" name="image">
+                        </div>
+                    </fieldset>
+                    <div class="form-group">
+                        <button class="btn btn-outline-info" type="submit">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

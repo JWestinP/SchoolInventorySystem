@@ -1,19 +1,17 @@
 <form action="/save_borrow_form/" id="borrowFormId" method="post">
-    {% csrf_token %}
-    <div class="item-form">
-        <div class="borrow-date">
-        <p>Borrowing Date:</p>
-        {{ borrow_form.item_date_borrowed }}
-        <p>Return Date(can be blank):</p>
-        {{ borrow_form.item_date_returned }}
-        {{ borrow_form.item_stock }}
-        </div>
-        <div class="borrow-quantity">
-        <p>Quantity:</p>
-        {{ borrow_form.item_quantity }}
-        <input class="borrow-button" type="submit" value="Submit">
-        </div>
+    {% csrf_token %}  
+    <div class="borrow-row">
+        <div class="item-borrow-row"> 
+            <p>Quantity to be borrowed:</p>
+            {{ borrow_form.item_quantity }}
+        
+            <p>Date when you want to borrow the item:</p>
+            {{ borrow_form.item_date_borrowed }}   
+            <p>Date when you want to return the item(can be blank):</p>
+            {{ borrow_form.item_date_returned }}
+            {{ borrow_form.item_stock }}
+            <input type="submit" value="Submit">
+        </div> 
     </div>
-
 </form>
 
