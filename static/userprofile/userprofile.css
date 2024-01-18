@@ -195,12 +195,12 @@ html{
  
 .form{
    background-color: #f8f9fa;
-   padding: 1rem 0;
    margin: 30px 70px 0; /* Adjusted margin for better responsiveness */
+   margin-left: 10rem;
 }
 
 .pic{
-   margin-top: 5rem;
+   margin-top: 10rem;
     margin-left: 5rem;
 }
  
