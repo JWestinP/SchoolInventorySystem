@@ -292,7 +292,7 @@ html{
    border-radius: 15px;
  }
 
- .navbar-brand {
+ .navbar-brand .continers{
    color: black;
    font-weight: bold;
    font-size: 2rem;
@@ -370,7 +370,7 @@ html{
   padding: 5px;
 }
 
- .containers {
+ .item-form-item {
   background-color: #f8f9fa;
   padding: 10px 0;
   border-bottom: 1px solid black;
