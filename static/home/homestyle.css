@@ -344,7 +344,7 @@ html{
     text-align: left;
  }
 
-.form{
+.navbar-brand {
    background-color: #f8f9fa;
    padding: 15px 0;
    border: 2px solid #dee2e6;
@@ -384,7 +384,7 @@ html{
   padding: auto;
 } 
 
-.navbar-brand {
+.form-item .items{
   text-align: center;
   padding:1.5rem;
   background: #fff;
