@@ -251,6 +251,7 @@ html{
     display:block;
     width: 1300px;
     height: 300px;
+    padding: 5px;
     background-color: #f8f9fa;
     padding: 13rem 0;
     border: 2px solid #dee2e6;
