@@ -204,11 +204,8 @@ body {
   line-height:1;
   height: 100%;
   width : 100%;
-  min-height : 100vh;
   background: rgb(255, 255, 255);
   margin: 0; 
-  overflow-x: hidden;
-  overflow-y : scroll;
   font-family: Arial, sans-serif; /* Adjust the font family as needed */
   padding-top: 100px;
 }
@@ -276,7 +273,6 @@ body {
   height: 40px!important;
   padding: 10px!important;
   margin: 5px!important;
-  border: 2px solid black!important;
   border-radius: 3px!important;
   outline: none!important;
   background-color: white!important;
@@ -294,7 +290,6 @@ body {
   background-color: rgb(230, 124, 55)!important;
   color: #ffffff!important;
   padding: 10px 15px!important;
-  border: 2px solid black!important;
   border-radius: 3px!important;
   cursor: pointer!important;
   margin-left: 10px!important;
@@ -306,7 +301,7 @@ body {
 
   
 input[name="q"] {
-    width: 1030px;
+    width: 1050px;
     padding: 6px;
     font-size: 16px;
     border: 2px solid black;
@@ -322,7 +317,7 @@ form input[name="b"] {
   background-color: rgb(230, 124, 55) !important;
   color: #ffffff !important;
   padding: 8px 12px !important;
-  border: 2px solid black !important;
+  border: 2px solid orange !important;
   border-radius: 5px !important;
   cursor: pointer !important;
   margin-left: 10px !important;
