@@ -354,14 +354,14 @@ html{
    border-radius: 15px;
  }
 
- .head {
+ .form-item {
   display: grid;
   grid-template-columns: auto auto auto auto auto;
   gap: 10px;
   padding: 10px;
 }
 
- .containers {
+ .item-form-item {
   background-color: #f8f9fa;
   padding: 10px 0;
   border-bottom: 1px solid black;
@@ -373,7 +373,7 @@ html{
   
 }
 
- .containers {
+ .form-items{
   background-color: #f8f9fa;
   padding: 10px 0;
   border-bottom: 1px solid black;
@@ -407,7 +407,7 @@ html{
    margin-top: 15px;
  }
 
- .categories{
+ .containers {
   text-align: center;
   padding: 20px 0;
   background: #fff;
