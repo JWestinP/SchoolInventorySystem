@@ -187,6 +187,9 @@ html{
     padding: auto;
  }
  
+ .info{
+   margin-top: -5rem;
+ }
  .info h2{
    margin-top: .5rem;
    margin-left: 18rem;
