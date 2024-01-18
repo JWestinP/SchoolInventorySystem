@@ -187,28 +187,12 @@ html{
     padding: auto;
  }
  
- .name{
+ p{
     font-family: orienta;
     font-weight: bold;
     text-align: center;
     margin-top: -10rem;
     margin-left: -41.5rem;
- }
- 
- .email{
-    font-family: orienta;
-    font-weight: bold;
-    text-align: left;
-    margin-top: 1rem;
-    margin-left: 16.5rem;
- }
- 
- .number{
-    font-family: orienta;
-    font-weight: bold;
-    text-align: center;
-    margin-top: 1rem;
-    margin-left: -41rem;
  }
  
  
