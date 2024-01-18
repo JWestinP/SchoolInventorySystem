@@ -371,7 +371,7 @@ html{
 
  .categories {
   display: grid;
-  padding: 20px;
+  padding: 20px 0;
   font-size: 30px;
   text-align: center;
 }
