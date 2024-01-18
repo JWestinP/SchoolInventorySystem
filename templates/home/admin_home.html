@@ -8,7 +8,7 @@
     <body>
         <header>
             <div class="logo left">
-                <img src="/static/home/LSPU.png" alt="Left Logo">
+                <img src="/static/home/adminhome/LSPU.png" alt="Left Logo">
             </div>
             
             <div class="search-bar">
@@ -20,10 +20,8 @@
                   </form>
             </div>
 
-            <!--  <input type="text" class="search-input" placeholder="Search..."> 
-                <i class="fas fa-search"></i> -->
             <div class="logo right">
-                <img src="/static/home/CSS.png" alt="Right Logo">
+                <img src="/static/home/adminhome/CSS.png" alt="Right Logo">
             </div> 
         </header>
         <div class="head"></div>
@@ -38,9 +36,7 @@
                 </div>
             </nav>
 
-                <!-- Home -->
                 <div id="mainForm" class="form">
-                    <!-- Home -->
                 
                     <div class="item">
                         <div id="edit_category_buttons">
@@ -55,7 +51,6 @@
                            
                         </div>
                         
-                        <!-- BAGO -->
                         {% include 'home/result_list_admin.html' %}
                        
                 
@@ -66,7 +61,7 @@
                         <div id="delete_confirmation" class="delete_confirmation">
                 
                         </div>
-                        <!-- END NG BAGO -->
+
                         <div id="category_item" class="category_div">
                             <div id="item_list">
                 
@@ -88,103 +83,6 @@
                         </div>
                 </div>
 
-                <!-- Items 
-                <div id="itemlist" class="form" style="display: none;">
-                    <h1>Items</h1>
-                    <form id="removeItemsForm" onsubmit="return confirmRemoveItems()">
-                        <div class="container" onclick="showForm('itemlist')">
-                            <div class="form-item">
-                                <div class="select-container">
-                                    <input class="select" type="checkbox" id="selectAllCheckbox">
-                                </div>
-                                <div class="items">
-                                    <img src="static/home/clean.png" alt="clean">
-                                    <div class="lines">
-                                        <p>Cleaning Materials</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <button type="submit" style="display: none;">Delete</button>
-                        </div>
-                    </form>
-
-                    <div class="button-container">
-                        <button class="remove">Remove Items</button>
-                        <button class="add" onclick="openItemForm('addItemForm')">Add Items</button>
-                    </div>
-                </div>
-
-               Add Item Form (Modal)
-        <div id="addItemForm" class="modal">
-            <div class="item-forms">
-                <form action="/action_page.php">
-                    <label for="item-itemNames">Choose Image:<input type="file" id="item-myFile" name="filename" onchange="previewImage()" class="item-input"></label>
-                    <div class="input-label">
-                        <label>Item Name:<input type="text" id="item-itemName" class="item-input"></label>
-                        <label>Description:<input type="text" id="item-itemName" class="item-input"></label>      
-                    </div>
-                    <label>Available Items:<input type="text" id="item-itemName" class="item-input"></label>
-                    <label for="item-preview">Preview:</label>
-                    <img id="item-preview" alt="Preview Image" class="item-preview-image">
-                    <div class="item-btn">
-                        <button class="item-cancelItem" onclick="cancelItem()">Cancel</button>
-                        <button class="add-item-btn" onclick="addItem()">Add Item</button>
-                    </div>
-                </form>
-            </div>
-    </div>
-
-                
-            
-              form pagclick ng orange add icon 
-                <div id="modal" class="modal">
-                    <div class="modal-content">
-                            <div class="left-preview">
-                                <img id="previewImage" alt="Uploaded Image">
-                            </div> 
-                        <div class="modal-right">
-                            <span class="close-modal" onclick="closeModal()">&times;</span>
-                            <label for="name"> Category Name:</label>
-                            <input type="text" id="nameInput" placeholder="Enter category name">
-                            <label for="myFile">Choose Photo:</label>
-                            <form action="/action_page.php">
-                                <input type="file" id="myFile" name="filename" onchange="previewImage()">
-                            </form>
-                            <div class="btn">
-                            <button class="cancelItem" onclick="cancel()">Back</button>
-                            <button class="addItem" onclick="addItem()">Add</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="recentForm" class="form" style="display: none;">
-                    <h1>Recent Form</h1>
-                   Your recent form content goes here 
-                </div>
-
-                <div id="unreturnedForm" class="form" style="display: none;">
-                    <h1>Unreturned Form</h1>
-                     Your unreturned form content goes here 
-                </div>
-
-                <div id="membersForm" class="form" style="display: none;">
-                    <h1>Members Form</h1>
-                    Your members form content goes here 
-                </div>
-
-                <div id="accountForm" class="form" style="display: none;">
-                    <h1>Account Form</h1>
-                    Your account form content goes here 
-                </div>
-
-                
-            </head> -->
-
-     <!-- start ng code ni westin -->
-
-
-        
             <h1>{{ current_category }}</h1>
 
             <div class="item_information" id="item_information">
@@ -200,13 +98,9 @@
                 </div>
                 
             </div>
-            
-            
+
         </div>
-        
-       
-        
+             
         <script defer src="{% static 'home/homeadminscript.js' %}"></script>
-        <!-- end ng code ni westin -->
     </body>
 </html>

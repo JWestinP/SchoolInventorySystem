@@ -989,25 +989,25 @@ input[name="q"] {
  /*image ng category*/
 
   .category_button:nth-child(1){
-    background-image: url(../home/clean.png);
+    background-image: url(../home/adminhome/clean.png);
     background-size:110px;
     background-position: center;
   }
   .category_button:nth-child(2){
-    background-image: url(../home/furnitures.png);
+    background-image: url(../home/adminhome/furnitures.png);
     background-size: 160px;
     background-position: center;
   }
   .category_button:nth-child(3){
-    background-image: url(../home/documents.png);
+    background-image: url(../home/adminhome/documents.png);
     background-position: center;
   }
   .category_button:nth-child(4){
-    background-image: url(../home/gadgets.png);
+    background-image: url(../home/adminhome/gadgets.png);
     background-position: center;
   }
   .category_button:nth-child(5){
-    background-image: url(../home/room.png);
+    background-image: url(../home/adminhome/room.png);
     background-position: center;
   }
 

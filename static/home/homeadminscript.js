@@ -236,7 +236,6 @@ function showItem(category) {
                         }
                     }
                 })
-                itemContainer.innerHTML += `<p>${data.items.length} items in category: ${data.items[0].item_category.item_category}</p>`;
                 itemContainer.addEventListener('click', function (event) {
                     
                     if (event.target.matches('.item_button')) {
