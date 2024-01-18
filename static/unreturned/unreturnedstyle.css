@@ -100,9 +100,19 @@ input, select {
 Start coding here
 */
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-  }
+  /* Your existing body styles */
+  line-height:1;
+  line-height:1;
+  height: 100%;
+  width : 100%;
+  min-height : 100vh;
+  background: rgb(255, 255, 255);
+  margin: 0; 
+  overflow-x: hidden;
+  overflow-y : scroll;
+  font-family: Arial, sans-serif; /* Adjust the font family as needed */
+  padding-top: 100px;
+}
   
   .head {
     display: flex;
@@ -112,50 +122,108 @@ body {
   
   header {
     display: flex;
-    background-color: firebrick;
-    padding: 15px;
+    flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    background-color: rgb(113,26,33); /* Top color for the header */
+    padding: 5px;
+    border-bottom: 20px solid rgb(230,124,55); /* Bottom color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visibility */
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
   }
   
+  .logo.left {
+    width: 100px;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    flex-shrink: 0;
+  }
+  
+  .logo.right {
+    width: 100px;
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    flex-shrink: 0;
+  }
   .logo.left img {
     width: 135px;
     margin-right: auto;
   }
-  
+    
   .logo.right img {
     width: 80px;
     margin-left: auto;
   }
   
-  .search-bar form{
-    flex-grow: 1;
-    margin-left: 0%;
-    display: flex;
-    align-items:center;
-    
-  }
-
-  .search-bar input[type=text]{
-    width: 800px; /* Adjusted to take 100% width on smaller screens */
-    padding: 8px;
-    font-size: 16px;
-    border: none;
-    border-radius: 4px;
+  .middle-section {
     flex: 1;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
   }
-
-  .search-bar button[type=submit]{
-    cursor: pointer;
-    padding: 8px;
-    font-size: 16px;
-    border: 1px solid gray;
-    border-radius: 4px;
-    margin-left: 8px;
+  
+  .search-form {
+    display: flex; /* Add this property to make the form a flex container */
   }
-
-  .search-bar button:hover{
-    color: orange;
+  
+  .search-bar {
+    flex: 1!important;
+    height: 20px!important;
+    padding: 10px!important;
+    border-radius: 7px!important;
+    outline: none!important;
+    background-color: white!important;
+    color: #000000!important;
+    font-size: 15px!important;
+    box-shadow: inset 1px 2px 5px rgba(0, 0, 0, 0.2)!important;
+  }
+  
+  .search-bar::placeholder {
+    font-family: Arial, Helvetica, sans-serif!important;
+    font-size: 15px!important;
+  }
+  
+  .search-button {
+    background-color: rgb(230, 124, 55)!important;
+    color: #ffffff!important;
+    padding: 10px 15px!important;
+    border-radius: 3px!important;
+    cursor: pointer!important;
+    margin-left: 10px!important;
+  }
+  
+  .search-button:hover {
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2)!important;
+  }
+  
+  input[name="q"] {
+      width: 1060px;
+      height: 300px;
+      padding: 6px;
+      font-size: 16px;
+      border-radius: 7px;
+      margin-right: 14px;
+      
+  }
+  
+  form input[name="b"] {
+    width: 80px !important;
+    font-size: 14px !important;
+    margin-right: 14px !important;
+    background-color: rgb(230, 124, 55) !important;
+    color: #ffffff !important;
+    padding: 8px 12px !important;
+    border: 2px solid orange !important;
+    border-radius: 5px !important;
+    cursor: pointer !important;
+    margin-left: 10px !important;
+    
   }
   
   /* navigations */
@@ -213,6 +281,16 @@ body {
     visibility: visible;
     transform: scaleX(1); /* Make the underline visible and scale it */
   }
+
+  .form{
+    background-color: #f8f9fa;
+    padding: 15px 0;
+    border: 2px solid #dee2e6;
+    border-bottom: 1px solid #dee2e6;
+    box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.1);
+    margin: 30px 70px 0; /* Adjusted margin for better responsiveness */
+    border-radius: 15px;
+  }
 #container {
     border-radius: 10px; /* Adjust the value as needed for the desired roundness */
     overflow: hidden; /* Ensure content inside doesn't overflow rounded corners */
@@ -222,205 +300,85 @@ body {
     background-color: orange;
   }
 
-  #inventory_item {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
+  .inventory_item {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
 }
 
-/* jonas design 
-{
-    font-family: Arial, Helvetica, sans-serif; background-color: gray;
-/
-body {
-    margin: 15px;
-}
-
-#mema_title {
-    text-align: center;
-    padding: 15px;
-}
-
-#nav_btn {
-    width: 98%; display: flex; flex-direction: row; padding: 15px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-button {
-    width: 150px; height: 30px; margin: auto; border: none; background: none;
-}
-
-button a {
-    text-decoration: none; font-size: 22px; font-weight: 700; color: black;
-}
-
-#container {
-    width: 100%; float: right; margin-top: 20px; background-color: white; padding-top: 20px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-#wrapper {
-    width: 90%; margin: auto; outline: solid 1px gray; margin-bottom: 25px; height: 200px; display: flex; flex-direction: column; background-color: white;
-}
-
-#top {
-    width: 100%; outline: solid 1px gray; display: flex; height: 80%;
-}
-
-#top #left {
-    outline: solid 1px gray; width: 20%; display: flex;
-}
-
-#top #left img{
-    margin: auto;
-}
-#top #right {
-    width: 80%;
-}
-
-#top #right #item_name {
-    margin-left: 15px; font-size: 22px; font-weight: 500; padding: 15px 0px;
-}
-#top #right #item_details {
-    margin-left: 15px; font-size: 12px;
-}
-#top #right #item_quantity {
-    margin-right: 15px; font-size: 18px; font-weight: 500; text-align: right;
+.recent-lines {
+  width: 100%;
+  border-top: 2px solid gray; /* Line color */
+  margin-top: 10px; /* Adjust margin as needed */
+  margin-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 6px;
 }
 
 #bottom {
-    width: 100%; outline: solid 1px gray; height: 20%;
+  display: flex;
+  justify-content: flex-end; /* Align items to the right */
 }
 
-#bottom #btn_con {
-    width: 100%; height: 100%; text-align: right;
+#wrapper {
+  border: 1px solid black; /* Optional: Add a border for better visibility */
+  margin: 10px;
+  padding: 10px;
+  background-color: #f9f9f9; /* Optional: Add a background color for better visibility */
+  border-radius: 10px;
 }
 
-#bottom #btn_con button {
-    margin: auto 0px; width: 15%; margin-right: 15px; border: 0px; outline: solid 1px gray;
+#top {
+  display: flex;
+  align-items: center;
 }
 
-.rounded_corners {
-    border-radius: 8px;
+#left {
+  margin-right: 10px; /* Adjust the margin as needed */
 }
 
-.active_tab{
-    text-decoration: underline; color: pink;
+.inventory_item {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
 }
 
-/*start*/
-
-html{
-    overflow-x: hidden;
- }
- 
- body{
-    background: #eee;
- }
- 
- .header{
-    background-color: #7a1a22;
-    height: 100px;;
-    width: 1520px;
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
- }
-     
- .head{
-    display: flex;
-    background-color:#E67C37;
-    padding: 5px;
-    width: 1500px;
- }
-     
- .header .logo-left img{
-    width: 135px;
-    padding: 1rem;
- }
-    
- .header .logo-right img{
-    width: 95px;
-    padding: 3rem;
- }
-
- /*navigations*/
- nav{
-    background-color: #f8f9fa;
-    padding: 15px 0;
-    border-bottom: 1px solid #dee2e6;
-    box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.1);
-    margin: 30px 70px 0; /* Adjusted margin for better responsiveness */
-    border-radius: 15px;
- }
- 
- .navbar-brand {
-    color: black;
-    font-weight: bold;
-    font-size: 1.5rem;
-    margin-right: 10px;
-    margin-left: 10px;
-    padding: 3rem;
-    text-decoration: none; /* Remove underline */
-    position: relative; /* Position for the pseudo-element */
-    transition: color 0.3s ease, font-weight 0.3s ease; /* Add a smooth color and font weight transition */
- }
- 
- /* Add hover effect */
- .navbar-brand:hover {
-    color:firebrick; /* Change text color on hover */
-    font-weight: lighter; /* Change font weight on hover, adjust as needed */
- }
- 
- .navbar-brand:hover::before {
-    visibility: visible;
-    transform: scaleX(1); /* Make the underline visible and scale it */
- }
-
- .rounded_corners{
-    background-color: #f8f9fa;
-    padding: 13rem 0;
-    border: 2px solid #dee2e6;
-    border-bottom: 1px solid #dee2e6;
-    box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.1);
-    margin: 30px 70px 0; /* Adjusted margin for better responsiveness */
-    border-radius: 15px;
- }
-
- .inventory_item{
-    border: 2px solid black;
-    border-radius: 15px;
-    margin-left: .5rem;
-    margin-top: .5rem;
-    height: 200px;
-    width: 230px;
- }
-
- .disc{
-    border: 2px solid black;
-    margin-left: 16rem;
-    margin-top: -10rem;
-    width: 68.5%;
-    gap: 10rem;
- }
-
-p{
-    margin-left: 1.5rem;
-    margin-top: 5px;
-    margin-bottom: .5rem;
- }
-
-.quan{
-    margin-left: 48rem;
-    margin-top: 2rem;
-    margin-bottom: .5rem;
+#right {
+  flex-grow: 1;
 }
- .group{
-    border: 2px solid gray;
-    border-radius: 15px;
-    margin-top: -10rem;
- }
 
- .btn{
-    margin-left: 68rem;
-    margin-bottom: .5rem;
- }
+#item_name {
+  margin-left: 10px; /* Remove default margin */
+  font-weight: bold;
+  font-size: large;
+  margin-bottom: 10px;
+}
+
+#item_details {
+  margin-left: 10px; 
+}
+
+#item_quantity {
+  text-align: right; /* Align the text to the right */
+  margin: 0; /* Remove default margin */
+  margin-right: 50px;
+}
+
+#return_btn {
+  float: right;  /* This will float the element to the right */
+  margin-right: 10px;
+  border: 2px solid orange;
+  font-size: 18px;
+  font-weight: 500;
+  background-color: white;
+  
+}
+
+#return_btn:hover {
+  background-color: orange;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
