@@ -18,6 +18,7 @@
             <img src="media\logo\LSPU.png" alt="">
           </div>
 
+          <form method="GET" action="{% url 'search_items' %}"></form>
           <div class="search-bar">
             <input type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
             <button type="submit">Search</button>
@@ -35,7 +36,6 @@
         {% endif %}
 
         <form method="GET" action="{% url 'search_items' %}">
-
           <div class="head"></div>
           <nav class="navbar navbar-expand-lg navbar-light bg-light">
               <div class="containers">
