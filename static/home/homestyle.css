@@ -292,7 +292,7 @@ html{
    border-radius: 15px;
  }
 
- .navbar-brand{
+ .navbar-brand {
    color: black;
    font-weight: bold;
    font-size: 2rem;
@@ -335,15 +335,6 @@ html{
    gap: 10px;
    padding: 15px;
  }
-
- .containers {
-        background-color: #f8f9fa;
-        padding: 15px 0;
-        border-bottom: 1px solid #dee2e6;
-        box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.1);
-        margin: 30px 70px 0; /* Adjusted margin for better responsiveness */
-        border-radius: 15px;
-}
  
  .item .title{
     font-size: 3.5rem;
@@ -353,14 +344,24 @@ html{
     text-align: left;
  }
 
- .form-item {
+.form{
+   background-color: #f8f9fa;
+   padding: 15px 0;
+   border: 2px solid #dee2e6;
+   border-bottom: 1px solid #dee2e6;
+   box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.1);
+   margin: 30px 70px 0; /* Adjusted margin for better responsiveness */
+   border-radius: 15px;
+ }
+
+ .head {
   display: grid;
   grid-template-columns: auto auto auto auto auto;
   gap: 10px;
-  padding: 5px;
+  padding: 10px;
 }
 
- .containers {
+ .item-form-item {
   background-color: #f8f9fa;
   padding: 10px 0;
   border-bottom: 1px solid black;
@@ -372,7 +373,7 @@ html{
   
 }
 
- .containers {
+ .form-items{
   background-color: #f8f9fa;
   padding: 10px 0;
   border-bottom: 1px solid black;
@@ -406,7 +407,7 @@ html{
    margin-top: 15px;
  }
 
- .containers {
+ .categories{
   text-align: center;
   padding: 20px 0;
   background: #fff;
