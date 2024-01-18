@@ -358,7 +358,7 @@ html{
   display: grid;
   grid-template-columns: auto auto auto auto auto;
   gap: 10px;
-  padding: 10px;
+  padding: 5px;
 }
 
  .item-form-item {
