@@ -203,12 +203,6 @@ body{
     border-radius: 10px; /* Add border-radius for rounded corners */
     padding: auto;
  }
- 
-.item{
-    margin: 20px;
-    padding: 20px;
-}
-
 
  a:link{
     color: #000;
