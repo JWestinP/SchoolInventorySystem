@@ -204,6 +204,9 @@ body{
     padding: auto;
  }
  
+ .chck{
+    margin-left: 5rem;
+ }
  a:link{
     color: #000;
     background-color: transparent;
