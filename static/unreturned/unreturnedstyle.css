@@ -248,7 +248,7 @@ html{
  }
 
  .rounded_corners{
-    display: grid;
+    display:inline;
     grid-template-columns: auto auto auto auto;
     grid-row-gap: 500px;
     grid-column-gap: 10px;
