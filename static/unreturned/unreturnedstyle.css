@@ -263,14 +263,14 @@ html{
     margin-left: .5rem;
     margin-top: .5rem;
     height: 200px;
-    width: 250px;
+    width: 230px;
  }
 
  .disc{
     border: 2px solid black;
     margin-left: 15rem;
     margin-top: -10rem;
-    width: 80px;
+    width: 80%;
  }
 
 p{
