@@ -353,16 +353,6 @@ html{
     text-align: left;
  }
 
-.form{
-   background-color: #f8f9fa;
-   padding: 15px 0;
-   border: 2px solid #dee2e6;
-   border-bottom: 1px solid #dee2e6;
-   box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.1);
-   margin: 30px 70px 0; /* Adjusted margin for better responsiveness */
-   border-radius: 15px;
- }
-
  .form-item {
   display: grid;
   grid-template-columns: auto auto auto auto auto;
@@ -370,7 +360,7 @@ html{
   padding: 5px;
 }
 
- .item-form-item {
+ .containers {
   background-color: #f8f9fa;
   padding: 10px 0;
   border-bottom: 1px solid black;
@@ -393,7 +383,7 @@ html{
   padding: auto;
 } 
 
-.containers {
+.form-item .items{
   text-align: center;
   padding:1.5rem;
   background: #fff;
