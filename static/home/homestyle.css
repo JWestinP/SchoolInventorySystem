@@ -446,7 +446,7 @@ html{
     color:#27ae60;
  }
 
- .item_information{
+ .item-preview{
   position: fixed;
   top:0; left:0;
   min-height: 100vh;
@@ -457,7 +457,7 @@ html{
   justify-content: center;     
 }
 
-.item_information .preview{
+.item-preview .preview{
   display: none;
   padding: 2rem;
   text-align: center;
@@ -467,7 +467,7 @@ html{
   width: 40rem;
 }
 
-.item_information .preview.active{
+.item-preview .preview.active{
   display: inline-block;
 }
 
