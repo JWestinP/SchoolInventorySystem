@@ -226,6 +226,7 @@ h1 {
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600&display=swap');
 
+
 *{
    font-family: 'Nunito', sans-serif;
    margin:0; padding:0;
@@ -347,12 +348,65 @@ html{
     text-align: left;
  }
 
+.head head{
+   background-color: #f8f9fa;
+   padding: 20px 0;
+   border: 2px solid #dee2e6;
+   border-bottom: 1px solid #dee2e6;
+   box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.1);
+   margin: 30px 70px 0; /* Adjusted margin for better responsiveness */
+   border-radius: 15px;
+ }
+
+ .categories {
+    background-color: #f8f9fa;
+    padding: 20px 0;
+    border: 2px solid #dee2e6;
+    border-bottom: 1px solid #dee2e6;
+    box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.1);
+    margin: 30px 70px 0; /* Adjusted margin for better responsiveness */
+    border-radius: 15px;
+ }
+
  .categories {
   display: grid;
   align-content: center;
   grid-template-columns: auto auto auto auto auto;
   gap: 10px;
   padding: 20px;
+}
+
+ .item-form-item {
+  background-color: #f8f9fa;
+  padding: 10px 0;
+  border-bottom: 1px solid black;
+  margin: 35px 35px 35px 35px; /* Adjusted margin for better responsiveness */
+  border-radius: 15px;
+  border: 3px solid gray; /* Add border style */
+  border-radius: 10px; /* Add border-radius for rounded corners */
+  padding: auto;
+  
+}
+
+ .form-items{
+  background-color: #f8f9fa;
+  padding: 10px 0;
+  border-bottom: 1px solid black;
+  margin: 35px 35px 35px 35px; /* Adjusted margin for better responsiveness */
+  border-radius: 15px;
+  border: 3px solid gray; /* Add border style */
+  border-radius: 10px; /* Add border-radius for rounded corners */
+  padding: auto;
+} 
+
+.form-item .items{
+  text-align: center;
+  padding:1.5rem;
+  background: #fff;
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);  
+  outline: .1rem solid #ccc;
+  outline-offset: 0;
+  cursor: pointer;
 }
 
 .form-item .items:hover{
@@ -574,6 +628,7 @@ html{
       margin-left: 0.5rem; /* Adjust the margin for better readability */
     }
 
+
 @media (max-width:991px){
 
    html{
@@ -597,5 +652,4 @@ html{
    }
 
 }
-
 
