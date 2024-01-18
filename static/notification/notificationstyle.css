@@ -215,8 +215,12 @@ body{
     background-color: transparent;
     text-decoration: underline;
  }
-  
- a:active{
+
+a:visited{
+   color: #92141e;
+   background-color: transparent;
+}
+a:active{
     color: #92141e;
     background-color: transparent;
     text-decoration: underline;
