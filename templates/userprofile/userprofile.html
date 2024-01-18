@@ -46,8 +46,10 @@
             <img class="rounded-circle account-img" src="{{ user.profile.image.url }}" alt="Profile Image" style="max-width: 200px; max-height: 200px; object-fit: cover; border-radius: 50%;">
          </div>
             
+         <div class="fclty">
+          <h2 class="account-heading">{{ user.username }}</h2>
+        </div>
             <div style="margin-left: 20px;">
-                    <div class="fclty"><h2 class="account-heading">{{ user.username }}</h2></div>
                     <p class="text-secondary" style="margin-top: 10px;">Account Name: {{ user.profile.account_name }}</p>
                     <p class="text-secondary" style="margin-top: 10px;">Email: {{ user.email }}</p>
                     <p class="text-secondary" style="margin-top: 10px;">Contact Number: {{ user.profile.contact_number }}</p>
