@@ -256,3 +256,7 @@ html{
     margin: 30px 70px 0; /* Adjusted margin for better responsiveness */
     border-radius: 15px;
  }
+
+ .left img{
+    border: 2px solid black;
+ }
