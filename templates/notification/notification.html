@@ -46,9 +46,11 @@
 <div id="main" class="form">
    <div class="item">
     {% if unreturned_item_exist %}
+    
     <div class="chck">
     <p>You have unreturned items. Please check the Unreturned Items tab for more details.</p>
    </div>
+
     <ul>
         {% for item_info in unreturned_items %}
         <li>
