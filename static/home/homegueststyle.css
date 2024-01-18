@@ -258,6 +258,35 @@ Start coding here
     border-radius: 5px;
 }
 
+.search-back{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 10px;
+}
+
+.search-back-button{
+    background-color: rgb(255, 255, 255);
+    border:solid  rgb(153, 153, 153) 2px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    vertical-align: top;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+    font-family: Arial;
+}
+
+.search-back-button:hover {
+    color: rgb(230,124,55);
+    border: solid rgb(230,124,55) 2px;
+    text-decoration: none;
+}
+
 .category-title-button{
     display: flex;
     flex-direction: row;
@@ -446,6 +475,7 @@ Start coding here
     color: rgb(230,124,55);
     border: solid rgb(230,124,55) 2px;
 }
+
 
 /* BORROWING ITEM BOX */
 #cleaning {
