@@ -335,6 +335,14 @@ html{
    gap: 10px;
    padding: 15px;
  }
+ .containers {
+        background-color: #f8f9fa;
+        padding: 15px 0;
+        border-bottom: 1px solid #dee2e6;
+        box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.1);
+        margin: 30px 70px 0; /* Adjusted margin for better responsiveness */
+        border-radius: 15px;
+}
  
  .item .title{
     font-size: 3.5rem;
