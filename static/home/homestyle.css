@@ -379,16 +379,6 @@ html{
   padding: auto;
 } 
 
-.form-item .items{
-  text-align: center;
-  padding:1.5rem;
-  background: #fff;
-  box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);  
-  outline: .1rem solid #ccc;
-  outline-offset: 0;
-  cursor: pointer;
-}
-
 .form-item .items:hover{
   outline: .2rem solid #FF7F00;
   outline-offset: -1rem;
