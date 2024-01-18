@@ -46,10 +46,9 @@
 <div id="main" class="form">
    <div class="item">
     {% if unreturned_item_exist %}
-    
-    <div class="chck">
+
     <p>You have unreturned items. Please check the Unreturned Items tab for more details.</p>
-   </div>
+    <hr>
 
     <ul>
         {% for item_info in unreturned_items %}
@@ -62,8 +61,10 @@
     </ul>
 
     <p>Please return the items after each use. Thanks!</p>
+    <hr>
     {% else %}
     <p>No unreturned items at the moment.</p>
+    <hr>
     {% endif %}
   </div>
 </div>
