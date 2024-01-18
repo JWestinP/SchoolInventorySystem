@@ -28,8 +28,8 @@
             <button type="submit">Search</button>
             </div>
           </form>
-
-          <div class="logo-cont">
+          <div class="right">
+          <div class="logo-cont"></div>
             <img src="media\logo\ccs.png" alt="">
           </div>
     
@@ -45,7 +45,7 @@
         <button><a href="{% url 'userprofile' %}" class="navbar-brand">Account</a></button>
         <button><a href="{% url 'logout' %}" class="navbar-brand">Logout</a></button>
          </div>
-         
+
         <div class="categories">
             {% for category in categories %}
             <button onclick="showItem('{{ category }}')" class="category_button">{{ category }}</button>
