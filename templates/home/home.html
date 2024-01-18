@@ -35,7 +35,7 @@
     
         </header>
 
-          <div class="head"></div>
+          <div class="head">
           <nav class="navbar navbar-expand-lg navbar-light bg-light">
               <div class="containers">
         <button><a href="{% url 'home' %}" class="navbar-brand">Home</a></button>
@@ -44,7 +44,7 @@
         <button><a href="{% url 'notification' %}" class="navbar-brand">Notification</a></button>
         <button><a href="{% url 'userprofile' %}" class="navbar-brand">Account</a></button>
         <button><a href="{% url 'logout' %}" class="navbar-brand">Logout</a></button>
-
+         </div>
         <div class="categories">
             {% for category in categories %}
             <button onclick="showItem('{{ category }}')" class="category_button">{{ category }}</button>
