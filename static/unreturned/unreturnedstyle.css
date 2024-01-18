@@ -248,6 +248,10 @@ html{
  }
 
  .rounded_corners{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-row-gap: 500px;
+    grid-column-gap: 10px;
     background-color: #f8f9fa;
     padding: 13rem 0;
     border: 2px solid #dee2e6;
