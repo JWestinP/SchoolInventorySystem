@@ -10,10 +10,10 @@
             <div class="logo left">
                 <img src="static/unreturned/unreturnedadmin/LSPU.png" alt="Left Logo">
             </div>
-            <div class="search-bar">
-                <form method="GET" action="{% url 'search_items_admin' %}">
-                    <input type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
-                    <button type="submit">Search</button>
+            <div class="middle-section">
+                <form method="GET" action="{% url 'search_items_admin' %}" class="search-form">
+                    <input class="search-bar" type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
+                    <input class="search-button" type="submit" value="Search" name="b">
                 </form>
             </div>
             <div class="logo right">
@@ -32,15 +32,17 @@
             </div>
         </nav>
         {% include 'home/result_list_admin.html' %}
+        <div id="mainForm" class="form">
+            <div id="container" class="rounded_corners">
+                <div class="users" style="margin-left: 50px; margin: 30px;">
+                    {% for users in faculty %}
+                    <button onclick="showUser('{{ users.id }}')">{{ users.username }}</button>
+                    {% endfor %}
+                </div>
+                <div id="user_info" class="user_info">
 
-        <div class="users" style="margin-left: 50px; margin: 30px;">
-        {% for users in faculty %}
-          <button onclick="showUser('{{ users.id }}')">{{ users.username }}</button>
-        {% endfor %}
-    </div>
-
-        <div id="user_info" class="user_info">
-
+                </div>
+            </div>
         </div>
     </body>
 

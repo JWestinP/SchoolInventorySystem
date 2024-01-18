@@ -86,7 +86,7 @@ table {
 hr {
     display:block;
     height:1px;
-    border:0;
+    border:0;  
     border-top:1px solid #cccccc;
     margin:1em 0;
     padding:0;
@@ -100,19 +100,19 @@ input, select {
 Start coding here
 */
 body {
-  /* Your existing body styles */
-  line-height:1;
-  line-height:1;
-  height: 100%;
-  width : 100%;
-  min-height : 100vh;
-  background: rgb(255, 255, 255);
-  margin: 0; 
-  overflow-x: hidden;
-  overflow-y : scroll;
-  font-family: Arial, sans-serif; /* Adjust the font family as needed */
-  padding-top: 100px;
-}
+    /* Your existing body styles */
+    line-height:1;
+    line-height:1;
+    height: 100%;
+    width : 100%;
+    min-height : 100vh;
+    background: rgb(255, 255, 255);
+    margin: 0; 
+    overflow-x: hidden;
+    overflow-y : scroll;
+    font-family: Arial, sans-serif; /* Adjust the font family as needed */
+    padding-top: 100px;
+  }
   
   .head {
     display: flex;
@@ -225,7 +225,6 @@ body {
     margin-left: 10px !important;
     
   }
-  
   /* navigations */
   nav {
     background-color: #f8f9fa;
@@ -282,6 +281,49 @@ body {
     transform: scaleX(1); /* Make the underline visible and scale it */
   }
 
+  .account-heading{
+    font-size: 30px;
+  }
+
+  .text-secondary{
+    margin-top: 12px;
+  }
+
+  .btn{
+    margin-right: 10px;
+    border: 2px solid orange;
+    font-size: 18px;
+    font-weight: 500;
+    background-color: white;
+  }
+  .btn:hover{
+    background-color: orange;
+    
+  }
+
+  .form-container{
+    margin-left: 50px;
+    margin-top: 50px;
+  }
+
+  .form-group{
+    margin-top: 12px;
+    
+  }
+  .border-bottom{
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  #wrapper {
+    border: 1px solid black; /* Optional: Add a border for better visibility */
+    margin: 10px;
+    padding: 10px;
+    background-color: #f9f9f9; /* Optional: Add a background color for better visibility */
+    border-radius: 10px;
+  }
+
   .form{
     background-color: #f8f9fa;
     padding: 15px 0;
@@ -291,94 +333,8 @@ body {
     margin: 30px 70px 0; /* Adjusted margin for better responsiveness */
     border-radius: 15px;
   }
-#container {
-    border-radius: 10px; /* Adjust the value as needed for the desired roundness */
-    overflow: hidden; /* Ensure content inside doesn't overflow rounded corners */
-    
-}
-  #return_btn:hover{
-    background-color: orange;
+
+  a {
+    text-decoration: none;
+    color: black;
   }
-
-  .inventory_item {
-    width: 100px;
-    height: 100px;
-    object-fit: contain;
-}
-
-.recent-lines {
-  width: 100%;
-  border-top: 2px solid gray; /* Line color */
-  margin-top: 10px; /* Adjust margin as needed */
-  margin-bottom: 20px;
-  padding-top: 10px;
-  padding-bottom: 6px;
-}
-
-#bottom {
-  display: flex;
-  justify-content: flex-end; /* Align items to the right */
-}
-
-#wrapper {
-  border: 1px solid black; /* Optional: Add a border for better visibility */
-  margin: 10px;
-  padding: 10px;
-  background-color: #f9f9f9; /* Optional: Add a background color for better visibility */
-  border-radius: 10px;
-}
-
-#top {
-  display: flex;
-  align-items: center;
-}
-
-#left {
-  margin-right: 10px; /* Adjust the margin as needed */
-}
-
-.inventory_item {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
-}
-
-#right {
-  flex-grow: 1;
-}
-
-#item_name {
-  margin-left: 10px; /* Remove default margin */
-  font-weight: bold;
-  font-size: large;
-  margin-bottom: 10px;
-}
-
-#item_details {
-  margin-left: 10px; 
-}
-
-#item_quantity {
-  text-align: right; /* Align the text to the right */
-  margin: 0; /* Remove default margin */
-  margin-right: 50px;
-}
-
-#return_btn {
-  float: right;  /* This will float the element to the right */
-  margin-right: 10px;
-  border: 2px solid orange;
-  font-size: 18px;
-  font-weight: 500;
-  background-color: white;
-  
-}
-
-#return_btn:hover {
-  background-color: orange;
-}
-
-a {
-  text-decoration: none;
-  color: black;
-}

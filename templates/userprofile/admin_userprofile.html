@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="{% static 'userprofile/userprofile.css' %}">
+        <link rel="stylesheet" href="{% static 'userprofile/userprofileadminstyle.css' %}">
         <title>ADMIN USER PROFILE</title>
     </head>
     <body>
@@ -10,10 +10,10 @@
             <div class="logo left">
                 <img src="static/unreturned/unreturnedadmin/LSPU.png" alt="Left Logo">
             </div>
-            <div class="search-bar">
-                <form method="GET" action="{% url 'search_items_admin' %}">
-                    <input type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
-                    <button type="submit">Search</button>
+            <div class="middle-section">
+                <form method="GET" action="{% url 'search_items_admin' %}" class="search-form">
+                    <input class="search-bar" type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
+                    <input class="search-button" type="submit" value="Search" name="b">
                 </form>
             </div>
             <div class="logo right">
@@ -32,7 +32,8 @@
             </div>
         </nav>
 
-
+        <div id="mainForm" class="form">
+            <div id="container" class="rounded_corners">
         <div style="display: flex; align-items: center; margin-top: 30px; margin-left: 50px;">
             <img class="rounded-circle account-img" src="{{ user_profile.image.url }}" alt="Profile Image" style="max-width: 200px; max-height: 200px; object-fit: cover; border-radius: 50%;">
 
@@ -51,6 +52,8 @@
                 margin-top: 20px; /* Adjust the margin as needed */
             }
         </style>
+            </div>
+        </div>
 
 
         {% include 'home/result_list_admin.html' %}

@@ -98,10 +98,20 @@ input, select {
 
 /*
 Start coding here
-*/body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-  }
+*/
+body {
+  line-height:1;
+  line-height:1;
+  height: 100%;
+  width : 100%;
+  min-height : 100vh;
+  background: rgb(255, 255, 255);
+  margin: 0; 
+  overflow-x: hidden;
+  overflow-y : scroll;
+  font-family: Arial, sans-serif; /* Adjust the font family as needed */
+  padding-top: 100px;
+}
   
   .head {
     display: flex;
@@ -111,50 +121,108 @@ Start coding here
   
   header {
     display: flex;
-    background-color: firebrick;
-    padding: 15px;
+    flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    background-color: rgb(113,26,33); /* Top color for the header */
+    padding: 5px;
+    border-bottom: 20px solid rgb(230,124,55); /* Bottom color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visibility */
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
   }
   
+  .logo.left {
+    width: 100px;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    flex-shrink: 0;
+  }
+  
+  .logo.right {
+    width: 100px;
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    flex-shrink: 0;
+  }
   .logo.left img {
     width: 135px;
     margin-right: auto;
   }
-  
+    
   .logo.right img {
     width: 80px;
     margin-left: auto;
   }
   
-
-  .search-bar form{
-    flex-grow: 1;
-    margin-left: 0%;
+  .middle-section {
+    flex: 1;
+    margin-left: 10px;
+    margin-right: 10px;
     display: flex;
     align-items: center;
   }
-
-  .search-bar input[type=text]{
-    width: 800px;
-    padding: 8px;
-    font-size: 16px;
-    border: none;
-    border-radius: 4px;
-    flex: 1;
+  
+  .search-form {
+    display: flex; /* Add this property to make the form a flex container */
   }
-
-  .search-bar button[type=submit]{
-    cursor: pointer;
-    padding: 8px;
-    font-size: 16px;
-    border: 1px solid gray;
-    border-radius: 4px;
-    margin-left: 8px;
+  
+  .search-bar {
+    flex: 1!important;
+    height: 20px!important;
+    padding: 10px!important;
+    border-radius: 7px!important;
+    outline: none!important;
+    background-color: white!important;
+    color: #000000!important;
+    font-size: 15px!important;
+    box-shadow: inset 1px 2px 5px rgba(0, 0, 0, 0.2)!important;
   }
-
-  .search-bar button:hover{
-    color: orange;
+  
+  .search-bar::placeholder {
+    font-family: Arial, Helvetica, sans-serif!important;
+    font-size: 15px!important;
+  }
+  
+  .search-button {
+    background-color: rgb(230, 124, 55)!important;
+    color: #ffffff!important;
+    padding: 10px 15px!important;
+    border-radius: 3px!important;
+    cursor: pointer!important;
+    margin-left: 10px!important;
+  }
+  
+  .search-button:hover {
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2)!important;
+  }
+  
+  input[name="q"] {
+      width: 1060px;
+      height: 300px;
+      padding: 6px;
+      font-size: 16px;
+      border-radius: 7px;
+      margin-right: 14px;
+      
+  }
+  
+  form input[name="b"] {
+    width: 80px !important;
+    font-size: 14px !important;
+    margin-right: 14px !important;
+    background-color: rgb(230, 124, 55) !important;
+    color: #ffffff !important;
+    padding: 8px 12px !important;
+    border: 2px solid orange !important;
+    border-radius: 5px !important;
+    cursor: pointer !important;
+    margin-left: 10px !important;
+    
   }
   
   /* navigations */
@@ -213,24 +281,6 @@ Start coding here
     transform: scaleX(1); /* Make the underline visible and scale it */
   }
 
-  /*.square-container{
-    justify-content: center;
-    padding-top: 30vmin;
-    width: 30vmin;
-    background-color:#dee2e6;
-    border: 1px solid black;
-    margin: 30px;
-    display: flex;
-    border-radius: 15px;
-  }
-   
-  .details{
-    font-size: large;
-    text-align: center;
-    padding-bottom: 10px;
-    font-weight: bold;
-  }
-*/
 
 .user_info {
     position: fixed;
@@ -305,6 +355,23 @@ Start coding here
   }
 }
 
+#wrapper {
+  border: 1px solid black; /* Optional: Add a border for better visibility */
+  margin: 10px;
+  padding: 10px;
+  background-color: #f9f9f9; /* Optional: Add a background color for better visibility */
+  border-radius: 10px;
+}
+
+.form{
+  background-color: #f8f9fa;
+  padding: 15px 0;
+  border: 2px solid #dee2e6;
+  border-bottom: 1px solid #dee2e6;
+  box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.1);
+  margin: 30px 70px 0; /* Adjusted margin for better responsiveness */
+  border-radius: 15px;
+}
 
 
 
