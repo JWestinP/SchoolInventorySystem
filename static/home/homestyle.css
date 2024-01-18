@@ -415,11 +415,12 @@ html{
   cursor: pointer;
 }
 
- .categories h3 {
+ .items h3 {
    font-weight: bold;
    margin: 10px; /* Adjust the margin as needed */
    margin-left: 10px;
    margin-top: 15px;
+   gap: 10px;
  }
 
  .item .container {
