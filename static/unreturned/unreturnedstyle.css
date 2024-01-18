@@ -257,14 +257,20 @@ html{
     border-radius: 15px;
  }
 
- .inventory_item{
+ /*.inventory_item{
     border: 2px solid black;
     border-radius: 15px;
     margin-left: .5rem;
     margin-top: .5rem;
     height: 200px;
     width: 230px;
- }
+ } */
+
+ .clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
 
  .disc{
     border: 2px solid black;
