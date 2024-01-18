@@ -205,8 +205,7 @@ function showItem(category) {
             try {
                 var data = JSON.parse(xhr.responseText)
                 console.log('Received data:', data)
-    
-                document.getElementById('edit_back_buttons').innerHTML = `
+                document.getElementById('edit_category_buttons').innerHTML = `
                 <button onclick="addItem()">Add</button>
                 <button class="remove_item">Remove</button>
                 <button id="back_category" onclick="showAllCategoryButtons()">Back</button>
@@ -297,7 +296,7 @@ function showAllCategoryButtons() {
     var buttonContainer = document.getElementById('edit_back_buttons')
     itemContainer.innerHTML = '';
     buttonContainer.innerHTML = ''
-
+    location.reload()
 }
 
 function addItem() {
