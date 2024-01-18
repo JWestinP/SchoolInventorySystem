@@ -86,7 +86,7 @@ table {
 hr {
     display:block;
     height:1px;
-    border:0;  
+    border:0;
     border-top:1px solid #cccccc;
     margin:1em 0;
     padding:0;
@@ -99,6 +99,7 @@ input, select {
 /*
 Start coding here
 */
+
 
 #cleaning {
     display: none;
@@ -148,60 +149,6 @@ h1 {
     transform: translate(-50%, -50%) scale(1);
 }
 
-/* .add_item {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    transition: 200ms ease-in-out;
-    border: 1px solid black;
-    border-radius: 10px;
-    z-index: 10;
-    background-color: white;
-    width: 500px;
-    max-width: 80%;    
-}
-
-.add_item.active {
-    transform: translate(-50%, -50%) scale(1);
-}
-
-.add_category_form {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    transition: 200ms ease-in-out;
-    border: 1px solid black;
-    border-radius: 10px;
-    z-index: 10;
-    background-color: white;
-    width: 500px;
-    max-width: 80%;    
-}
-
-.add_category_form.active {
-    transform: translate(-50%, -50%) scale(1);
-}
-
-.delete_confirmation {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    transition: 200ms ease-in-out;
-    border: 1px solid black;
-    border-radius: 10px;
-    z-index: 10;
-    background-color: white;
-    width: 500px;
-    max-width: 80%;     
-}
-
-.delete_confirmation.active {
-    transform: translate(-50%, -50%) scale(1);
-} */
-
 .item_header {
     padding: 10px 15px;
     display: flex;
@@ -223,30 +170,23 @@ h1 {
     padding: 10px 15px;
 }
 
-#cleaning_overlay {
-    position: fixed;
-    opacity: 0;
-    transition: 200ms ease-in-out;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, .5);
-    pointer-events: none;
-    z-index: 5;
-}
-
-#cleaning_overlay.active {
-    opacity: 1;
-    pointer-events: all;
-}
 /* styles.css */
 
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-  }
-  
+  /* Your existing body styles */
+  line-height:1;
+  line-height:1;
+  height: 100%;
+  width : 100%;
+  min-height : 100vh;
+  background: rgb(255, 255, 255);
+  margin: 0; 
+  overflow-x: hidden;
+  overflow-y : scroll;
+  font-family: Arial, sans-serif; /* Adjust the font family as needed */
+  padding-top: 100px;
+}
+
   .head {
     display: flex;
     background-color: orange;
@@ -255,45 +195,112 @@ body {
   
   header {
     display: flex;
-    background-color: firebrick;
-    padding: 15px;
+    flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    background-color: rgb(113,26,33); /* Top color for the header */
+    padding: 5px;
+    border-bottom: 20px solid rgb(230,124,55); /* Bottom color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visibility */
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1000
   }
   
+  .logo.left {
+    width: 100px;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    flex-shrink: 0;
+  }
+  
+  .logo.right {
+    width: 100px;
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    flex-shrink: 0;
+  }
   .logo.left img {
     width: 135px;
     margin-right: auto;
   }
-  
+    
   .logo.right img {
     width: 80px;
     margin-left: auto;
   }
-  
-  .search-bar {
-    flex-grow: 1;
-    margin-left: 2%;
+
+  .middle-section {
+    flex: 1;
+    margin-left: 10px;
+    margin-right: 10px;
     display: flex;
     align-items: center;
   }
   
-  .search-input {
-    width: 95%; /* Adjusted to take 100% width on smaller screens */
-    padding: 8px;
-    font-size: 16px;
-    border: none;
-    border-radius: 4px;
+  .search-form {
+    display: flex; /* Add this property to make the form a flex container */
   }
   
-  .fa-search {
-    margin-left: -5%;
-    color: firebrick;
-    font-size: 18px;
-    cursor: pointer;
-    margin-top: 7px;
-  
+  .search-bar {
+    flex: 1!important;
+    height: 40px!important;
+    padding: 10px!important;
+    margin: 5px!important;
+    border-radius: 3px!important;
+    outline: none!important;
+    background-color: white!important;
+    color: #000000!important;
+    font-size: 15px!important;
+    box-shadow: inset 1px 2px 5px rgba(0, 0, 0, 0.2)!important;
   }
+  
+  .search-bar::placeholder {
+    font-family: Arial, Helvetica, sans-serif!important;
+    font-size: 15px!important;
+  }
+  
+  .search-button {
+    background-color: rgb(230, 124, 55)!important;
+    color: #ffffff!important;
+    padding: 10px 15px!important;
+    border-radius: 3px!important;
+    cursor: pointer!important;
+    margin-left: 10px!important;
+  }
+  
+  .search-button:hover {
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2)!important;
+  }
+  
+    
+  input[name="q"] {
+      width: 1050px;
+      padding: 6px;
+      font-size: 16px;
+      border: 2px solid black;
+      border-radius: 4px;
+      margin-right: 14px;
+      
+  }
+  
+  form input[name="b"] {
+    width: 80px !important;
+    font-size: 14px !important;
+    margin-right: 14px !important;
+    background-color: rgb(230, 124, 55) !important;
+    color: #ffffff !important;
+    padding: 8px 12px !important;
+    border: 2px solid orange !important;
+    border-radius: 5px !important;
+    cursor: pointer !important;
+    margin-left: 10px !important;
+    
+  }
+  
   
   /* navigations */
   nav {
@@ -735,12 +742,16 @@ body {
   .recent-items-text {
     margin-top: 10px; /* Adjust margin as needed */
     text-align: left;
+    font-size: 20px;
+
   }
+
   
   .recent-items-text h4 {
     margin-top: 5px;
     margin-bottom: 5px; /* Adjust margin as needed */
     margin-left: 30px;
+    font-size: larger;
   }
   
   .recent-items-text p {
@@ -749,6 +760,8 @@ body {
   .right-text{
     padding: 0;
     text-align: right;
+    margin-left: 850px;
+
   }
   .modal {
       position: fixed;
@@ -781,290 +794,125 @@ body {
   #okayButton:hover {
       background-color: #45a049;
   }
-   .select-container input {
+   .select-container {
       display: flex;
-      margin-left:100px;
-   }
+      align-items: center;
+    }
   
     #selectAllCheckbox {
       margin-right: 10px; /* Add space between checkbox and label */
     }
-    .add-item-btn {
-      padding: 10px;
-      background-color: #4caf50;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-  }
-  .add-item-btn:hover{
-    background-color: black;
-    color: wheat;
-  }
-  .item-modal {
-      display: flex;
-      justify-content: center;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
+    /*ibang search*/
+   /* .search-bar {
+      flex-grow: 1;
+      margin-left: 2%;
   }
   
-  .item-modal-content {
-      display: flex;
-      max-width: 600px;
-      background-color: #fff;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .item-modal-right {
-      width: 100%;
-      padding: 20px;
-      box-sizing: border-box;
-  }
-  
-  .item-close-modal {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      cursor: pointer;
-  }
-  
-  .item-label {
-      margin-bottom: 5px;
-      display: block;
-  }
-  
-  .item-input {
-      width: 100%;
-      padding: 8px;
-      margin-bottom: 10px;
-      box-sizing: border-box;
-  }
-  
-  .item-btn {
-      display: flex;
-      gap: 10px;
-  }
-  
-  .item-btn button {
-      flex: 1;
-  }
-  
-  .item-photo-container {
+  .search-form {
       display: flex;
       align-items: center;
-      margin-bottom: 10px;
   }
   
-  .item-preview-image {
-      max-width: 100px;
-      margin-right: 100px;
-  }
-  .item-container {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-  }
-  .item-form {
-    background: #fff; /* Add your desired background color */
-    border-radius: 5px;
-    padding: 100px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
-  }
-  .item-containerr {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+  input[name="q"] {
+      width: 90%;
+      padding: 6px;
+      font-size: 16px;
+      border: 2px solid black;
+      border-radius: 4px;
+      margin-right: 14px;
   }
   
-  .modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .item-forms {
-    background-color: white;
-    padding: 20px;
+  .searchbb {
+      color: green;
+      font-size: 18px;
+      cursor: pointer;
+  } */
+  #container {
+    border-radius: 10px; /* Adjust the value as needed for the desired roundness */
+    overflow: hidden; /* Ensure content inside doesn't overflow rounded corners */
+}
+
+.rounded_corners {
+    border-radius: 10px; /* Adjust the value as needed for the desired roundness */
+}
+
+#wrapper {
+    border: 1px solid black; /* Optional: Add a border for better visibility */
+    margin: 10px;
+    padding: 10px;
+    background-color: #f9f9f9; /* Optional: Add a background color for better visibility */
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    width: 100%;
-  }
-  .input-label {
-    text-align: left;
-  }
-  .input-label label {
-    display: block;
+}
+
+#return_btn {
+    border-radius: 5px; /* Adjust the value as needed for the desired roundness */
+    padding: 5px 10px;
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+}
+
+#bottom {
+    display: flex;
+    justify-content: flex-end; /* Align items to the right */
+}
+
+#top {
+    display: flex;
+    align-items: center;
+}
+
+#left {
+    margin-right: 10px; /* Adjust the margin as needed */
+}
+
+#right {
+    flex-grow: 1;
+}
+
+#item_name {
+    margin-left: 10px; /* Remove default margin */
+    font-weight: bold;
+    font-size: large;
     margin-bottom: 10px;
-  }
-  .item-input {
-    margin: 8px 0;
-    width: 100%;
-    box-sizing: border-box;
-    width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
-    margin-left: 190px;
-  }
-  label{
-    margin-left: 30px;
-  }
-  .item-preview-image {
-    max-width: 100%;
-    margin-top: 10px;
-  }
-  
-  .item-btn {
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .item-btn button {
-    flex: 1;
-    margin-top: 50px;
-  }
-   /* bagong code*/
+}
 
-  /*home categories*/
-  .categories {
-    display: flex;
-    justify-content: space-around;
-    margin: 20px 0;
-    font-family: Arial, Helvetica, sans-serif;
-   
-  }
-
-  .category_button {
-    padding: 10px;
-    font-size: medium;
-    font-weight: bold;
+#item_details {
+   margin-left: 10px;
+     
+}
+#item_quantity {
+  text-align: right; /* Align the text to the right */
+  margin: 0; /* Remove default margin */
+  margin-right: 50px;
+}
+    /*search bar recent*/
+   input[name="q"] {
+      width: 1070px; /* Adjust the width as needed */
+      padding: 8px;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      margin-right: 10px;
+      margin-left: 10px;
+   }
+   button[type="submit"] {
+    width: 90px; /* Adjust the width as needed */
+    padding: 10px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border: 2px solid orange;
+    border-radius: 4px;
     background-color: white;
-    color: black;
-    border: 4px solid #7A1A22;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-
-  .category_button:hover {
-    background-color: #ff9f5f;
-  }
-  /*edit button*/
-  #edit_category_buttons {
-    display: flex;
-    justify-content: flex-end;
-    margin: 20px 0;
-  }
-
-  #edit_category_buttons button {
-    padding: 10px;
-    margin-right: 30px;
-    background-color:orangered ;
-    color: black;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-
-  #edit_category_buttons button:hover {
-    background-color: #d1e0ea;
-  }
-
-  /*add category button sa edit*/
-/* Basic styles for the form container */
-#add_category_form {
-  max-width: 400px;
-  margin: 20px auto;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #fff;
-}
-
-/* Styles for form inputs */
-#categoryFormId input[type="text"] {
-  width: 100%;
-  padding: 8px;
-  margin: 0 auto 10px; /* Updated margin to center the input */
-  box-sizing: border-box;
-  display: block; /* Ensures that the input is treated as a block element */
+    color: orange;
+    transition: background-color 0.3s ease; /* Smooth transition effect */
 
 }
 
-/* Styles for buttons */
-#categoryFormId button {
-  background-color: #3498db;
-  color: #fff;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+button[type="submit"]:hover {
+    background-color: lightgray; /* Change the background color on hover */
+    color: black; /* Change the text color on hover */
 }
-
-#categoryFormId button:hover {
-  background-color: #2980b9;
-}
-
-/* Styles for success message */
-#successMessage {
-  margin-top: 20px;
-  text-align: center;
-}
-
-#successMessage p {
-  font-size: 18px;
-  color: green;
-}
-
-#successMessage button {
-  background-color: #3498db;
-  color: #fff;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-#successMessage button:hover {
-  background-color: #2980b9;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1088,8 +936,7 @@ body {
     }
   
     .fa-search {
-    margin-left: 0;
-      
+      margin-left: 0;
     }
   
     .logo.left,
