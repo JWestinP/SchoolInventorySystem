@@ -280,7 +280,7 @@ html{
  }
 
  .search-input{
-   width: 90%; /* Adjusted to take 100% width on smaller screens */
+   width: 88%; /* Adjusted to take 100% width on smaller screens */
    padding: 6px;
    font-size: 13px;
    border: none;
