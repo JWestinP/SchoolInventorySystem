@@ -206,12 +206,12 @@ html{
      
  .header .logo-left img{
     width: 135px;
-    padding: 2rem;
+    padding: 1rem;
  }
     
  .header .logo-right img{
     width: 95px;
-    padding: 3rem;
+    padding: 4rem;
  }
 
  /*navigations*/
