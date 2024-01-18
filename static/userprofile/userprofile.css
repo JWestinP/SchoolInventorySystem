@@ -187,6 +187,9 @@ html{
     padding: auto;
  }
  
+ .info{
+margin-left: 5rem;
+ }
  p{
     font-family: orienta;
     font-weight: bold;
