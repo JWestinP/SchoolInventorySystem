@@ -222,6 +222,7 @@ h1 {
 .item_body {
     padding: 10px 15px;
 }
+/* start diols*/
 
 *{
    font-family: 'Nunito', sans-serif;
@@ -252,7 +253,7 @@ html{
  header {
    display: flex;
    background-color: firebrick;
-   padding: 10px;
+   padding: 15px;
    justify-content: space-between;
    align-items: center;
  }
@@ -328,7 +329,7 @@ html{
    transform: scaleX(1); /* Make the underline visible and scale it */
  }
 
- .item .container{
+ .categories{
    display: grid;
    grid-template-columns: auto auto auto auto auto;
    gap: 10px;
