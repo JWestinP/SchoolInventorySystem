@@ -384,7 +384,7 @@ html{
   padding: auto;
 } 
 
-.form-item .items{
+.navbar-brand .containers {
   text-align: center;
   padding:1.5rem;
   background: #fff;
