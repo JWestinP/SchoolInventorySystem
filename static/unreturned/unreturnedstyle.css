@@ -271,7 +271,7 @@ html{
     border: 2px solid black;
     margin-left: 10.5rem;
     margin-top: -.3rem;
-    width: 87%;
+    width: 8%;
     margin-bottom: 1px;
  }
 
@@ -287,7 +287,7 @@ p{
  .group{
     border: 2px solid gray;
     border-radius: 15px;
-    margin-top: -5rem;
+    margin-top: -3rem;
  }
 
  .btn{
