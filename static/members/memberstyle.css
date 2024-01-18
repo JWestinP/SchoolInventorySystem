@@ -134,21 +134,20 @@ Start coding here
     align-items: center;
   }
   
-  .search-input {
-    width: 95%; /* Adjusted to take 100% width on smaller screens */
+  .search-bar input[type=text]{
+    width: 300%; /* Adjusted to take 100% width on smaller screens */
     padding: 8px;
     font-size: 16px;
     border: none;
     border-radius: 4px;
   }
-  
-  .fa-search {
-    margin-left: -5%;
-    color: firebrick;
-    font-size: 18px;
-    cursor: pointer;
-    margin-top: 7px;
 
+  .search-bar button[type=submit]{
+    
+    padding: 8px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
   }
   
   /* navigations */

@@ -6,17 +6,15 @@
         <title>ADMIN USER PROFILE</title>
     </head>
     <body>
-        <form method="GET" action="{% url 'search_items_admin' %}">
-            <input type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
-            <button type="submit">Search</button>
-          </form>
         <header>
             <div class="logo left">
                 <img src="static/unreturned/LSPU.png" alt="Left Logo">
             </div>
             <div class="search-bar">
-                <input type="text" class="search-input" placeholder="Search...">
-                <i class="fas fa-search"></i>
+                <form method="GET" action="{% url 'search_items_admin' %}">
+                    <input type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
+                    <button type="submit">Search</button>
+                </form>
             </div>
             <div class="logo right">
                 <img src="static/unreturned/CSS.png" alt="Right Logo">
