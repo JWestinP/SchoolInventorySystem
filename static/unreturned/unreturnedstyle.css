@@ -281,12 +281,12 @@ p{
 .quan{
     margin-left: 48rem;
     margin-top: 2rem;
+    margin-bottom: -.5rem;
 }
  .group{
     border: 2px solid gray;
     border-radius: 15px;
     margin-top: -10rem;
-    margin-bottom: -.5rem;
  }
 
  .btn{
