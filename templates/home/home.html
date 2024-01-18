@@ -9,10 +9,6 @@
     <h1>FACULTY HOME</h1>
     <body>
 
-        {% if user.is_authenticated %}
-        <h1>Welcome, {{ user.username }}</h1>
-    {% endif %}
-
         <header>
             <div class="logo"></div>
     
@@ -37,6 +33,10 @@
           </div>
     
         </header>
+
+        {% if user.is_authenticated %}
+        <h1>Welcome, {{ user.username }}</h1>
+        {% endif %}
 
           <div class="head">
           <nav class="navbar navbar-expand-lg navbar-light bg-light">
