@@ -423,7 +423,7 @@ html{
    gap: 10px;
  }
 
- .item_information {
+ .item .container {
   text-align: center;
   padding: 20px 0;
   background: #fff;
@@ -433,7 +433,7 @@ html{
   cursor: pointer;
 }
 
- .item_information:hover{
+ .item .container:hover{
     outline: .2rem solid #FF7F00;
     outline-offset: -1rem;
     cursor: pointer;
