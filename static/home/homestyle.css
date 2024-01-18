@@ -354,7 +354,7 @@ html{
    border-radius: 15px;
  }
 
- .form-item {
+ .categories {
   display: grid;
   grid-template-columns: auto auto auto auto auto;
   gap: 10px;
@@ -407,7 +407,7 @@ html{
    margin-top: 15px;
  }
 
- .container .categories{
+ .categories{
   text-align: center;
   padding: 20px 0;
   background: #fff;
