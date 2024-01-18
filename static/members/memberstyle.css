@@ -99,3 +99,21 @@ input, select {
 /*
 Start coding here
 */
+
+.user_info {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    border: 1px solid black;
+    border-radius: 10px;
+    z-index: 10;
+    background-color: white;
+    width: 500px;
+    max-width: 80%;
+}
+
+.user_info.active {
+    transform: translate(-50%, -50%) scale(1);
+}
