@@ -45,10 +45,8 @@
 {% include 'home/result_list.html' %}
 <div id="main" class="form">
    <div class="item">
-      <div class="unreturn">
          {% if unreturned_item_exist %}
-            <p style="margin-top: 10px;">You have unreturned items. Please check the Unreturned Items tab for more details.</p>
-      </div>
+            <p>You have unreturned items. Please check the Unreturned Items tab for more details.</p>
     <ul>
         {% for item_info in unreturned_items %}
         <li>
