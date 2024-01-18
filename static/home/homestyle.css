@@ -406,7 +406,7 @@ html{
    margin-top: 15px;
  }
 
- .item .container .category{
+ .container .categories{
   text-align: center;
   padding: 20px 0;
   background: #fff;
@@ -416,7 +416,7 @@ html{
   cursor: pointer;
 }
 
- .item .container .category:hover{
+ .container .categories:hover{
     outline: .2rem solid #FF7F00;
     outline-offset: -1rem;
     cursor: pointer;
