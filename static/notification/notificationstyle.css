@@ -106,46 +106,38 @@ input, select {
 Start coding here
 */
 html{
-    overflow-x: hidden;
- }
- 
- body{
-    background: #eee;
- }
- 
- .header{
-    background-color: #7a1a22;
-    height: 100px;;
-    width: 1500px;
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
- }
-     
- .head{
-    display: flex;
-    background-color:#E67C37;
-    padding: 10px;
-    width: 1450px;
- }
-     
- .header .logo-left img{
-    width: 135px;
-    padding: 2rem;
- }
+   overflow-x: hidden;
+}
+
+body{
+   background: #eee;
+}
+
+.header{
+   background-color: #7a1a22;
+   height: 100px;;
+   width: 1500px;
+   flex-grow: 1;
+   display: flex;
+   align-items: center;
+}
     
- .header .logo-right i{
-    width: 95px;
-    padding: 2rem;
- }
- 
- .search{
-   width: 1046px;
-   height: 10px;
-   left: 187px;
-   border-radius: 10px;
-   border: 4px;
- }
+.head{
+   display: flex;
+   background-color:#E67C37;
+   padding: 10px;
+   width: 1500px;
+}
+    
+.header .logo-left img{
+   width: 135px;
+   padding: 2rem;
+}
+   
+.header .logo-right img{
+   width: 95px;
+   padding: 3rem;
+}
 
  /*navigations*/
  nav{
