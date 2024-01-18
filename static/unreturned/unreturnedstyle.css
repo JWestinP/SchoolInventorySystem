@@ -269,7 +269,7 @@ html{
  .disc{
     display: grid;
     grid-template-columns: auto auto auto auto;
-    grid-row-gap: 50px;
+    grid-row-gap: 500px;
     grid-column-gap: 10px;
     border: 2px solid black;
     margin-left: 16rem;
