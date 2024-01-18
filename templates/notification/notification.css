@@ -24,7 +24,7 @@ body{
     
 .header .logo-left img{
    width: 135px;
-   padding: 2rem;
+   padding: 1rem;
 }
    
 .header .logo-right img{
@@ -83,6 +83,7 @@ p{
    font-size: 35px;
    line-height: 41.83px;
    text-align: right;
+   padding: 1rem;
 }
 .form-item {
    background-color: #f8f9fa;
