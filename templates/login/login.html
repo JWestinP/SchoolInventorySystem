@@ -14,14 +14,54 @@
         {% endfor %}
     </head>
     <body>
-        <form action = "/login" method = "POST">
-            {% csrf_token %}
-                <input class = "email" type = "email" name = "email" id = "email" placeholder = "Input your email..." required>
-                <input class = "password" type="password" name="password" id="password" placeholder="Input your password..." required>
-    
-                <button type="submit">Login</button>
-            </form>
 
-            <div class = "forgot_pass"><a href="{% url 'reset_password' %}" target="_blank">Forgot password?</a> </div> 
+        <div class="right-design">
+
+            <div class="middle-section">
+                <img src="{% static 'login/lspu.png' %}" class="lspu-logo">
+            </div>
+
+            
+        </div>
+
+        <div class="left-design">
+
+            <div>
+                <img src="{% static 'login/top.png' %}" class="top">
+            </div>
+
+            <div>
+                <img src="{% static 'login/bot.png' %}" class="bot">
+            </div>
+
+        </div>
+
+
+        <div class="login-form-container">
+
+                <div class="title-container">
+                    <img src="{% static 'login/CCS.png' %}" class="ccs-logo">
+                    <h2 class="title">COLLEGE OF <br>COMPUTER STUDIES</h2>
+                </div>
+            
+            <form action = "/login" method = "POST">
+            
+                {% csrf_token %}
+                <label>Email</label>
+                    <input class="email" type = "email" name = "email" id = "email" placeholder = "Input your email..." required>
+                <div class="forgot-pass-div">
+                <label>Password</label>
+                     <div class = "forgot_pass"><a href="{% url 'reset_password' %}" target="_blank">Forgot password?</a> </div> 
+                </div>    
+                     <input class="password" type="password" name="password" id="password" placeholder="Input your password..." required>
+
+                    <div class="buttons">
+                        <button class="login-button" type="submit">LOG IN</button>
+                        <button class="guest-button" type="button" id="guestbtn">LOG IN AS GUEST</button>
+                    </div>
+                </form>
+
+            </div>
+           
     </body>
 </html>
