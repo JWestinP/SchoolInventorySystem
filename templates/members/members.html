@@ -39,5 +39,15 @@
              <p ></p>  
 
         </div>
+
+        {% for users in faculty %}
+          <button onclick="showUser('{{ users.id }}')">{{ users.username }}</button>
+        {% endfor %}
+
+        <div id="user_info" class="user_info">
+
+        </div>
     </body>
+
+    <script defer src="{% static 'members/memberscript.js' %}"></script>
 </html>
