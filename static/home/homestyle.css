@@ -370,7 +370,7 @@ html{
  }
 
  .categories {
-  display: inline-block;
+  display: flex;
   grid-template-columns: auto auto auto auto auto;
   gap: 10px;
   padding: 15px;
