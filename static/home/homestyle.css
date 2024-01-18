@@ -306,6 +306,7 @@ html{
    text-decoration: none; /* Remove underline */
    position: relative; /* Position for the pseudo-element */
    transition: color 0.3s ease, font-weight 0.3s ease; /* Add a smooth color and font weight transition */
+   gap: 10px;
  }
  
  /* Create an underline pseudo-element */
