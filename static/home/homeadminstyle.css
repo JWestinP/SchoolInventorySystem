@@ -199,7 +199,6 @@ Start coding here
 }
 
 body {
-  /* Your existing body styles */
   line-height:1;
   line-height:1;
   height: 100%;
@@ -218,7 +217,6 @@ body {
   padding: 5px;
   border-bottom: 20px solid rgb(230,124,55); /* Bottom color */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visibility */
-
   position: fixed;
   top: 0;
   right: 0;
