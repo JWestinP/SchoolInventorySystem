@@ -366,7 +366,7 @@ html{
   padding: 10px;
 }
 
- .item-form-item {
+ .categories {
   background-color: #f8f9fa;
   padding: 10px 0;
   border-bottom: 1px solid black;
@@ -378,7 +378,7 @@ html{
   
 }
 
- .categories {
+ .form-items{
   background-color: #f8f9fa;
   padding: 10px 0;
   border-bottom: 1px solid black;
