@@ -335,6 +335,7 @@ html{
    gap: 10px;
    padding: 15px;
  }
+
  .containers {
         background-color: #f8f9fa;
         padding: 15px 0;
@@ -343,18 +344,6 @@ html{
         margin: 30px 70px 0; /* Adjusted margin for better responsiveness */
         border-radius: 15px;
 }
-
-.containers .navbar-brand {
-    color: black;
-   font-weight: bold;
-   font-size: 2rem;
-   margin-right: 10px;
-   margin-left: 10px;
-   text-decoration: none; /* Remove underline */
-   position: relative; /* Position for the pseudo-element */
-   transition: color 0.3s ease, font-weight 0.3s ease; /* Add a smooth color and font weight transition */
-   gap: 15px;
-  }
  
  .item .title{
     font-size: 3.5rem;
@@ -381,7 +370,7 @@ html{
   padding: 5px;
 }
 
- .item-form-item {
+ .containers {
   background-color: #f8f9fa;
   padding: 10px 0;
   border-bottom: 1px solid black;
