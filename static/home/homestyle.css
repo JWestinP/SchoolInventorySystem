@@ -292,7 +292,7 @@ html{
    border-radius: 15px;
  }
 
- .navbar-brand .continers{
+ .navbar-brand {
    color: black;
    font-weight: bold;
    font-size: 2rem;
@@ -353,7 +353,7 @@ html{
     text-align: left;
  }
 
-.form{
+.head .containers {
    background-color: #f8f9fa;
    padding: 15px 0;
    border: 2px solid #dee2e6;
@@ -370,7 +370,7 @@ html{
   padding: 5px;
 }
 
- .item-form-item {
+ .head .containers {
   background-color: #f8f9fa;
   padding: 10px 0;
   border-bottom: 1px solid black;
