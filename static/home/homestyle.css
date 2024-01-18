@@ -348,6 +348,9 @@ html{
     text-align: left;
  }
 
+ .containers{
+    align-items: center;
+ }
 .head head{
    background-color: #f8f9fa;
    padding: 20px 0;
