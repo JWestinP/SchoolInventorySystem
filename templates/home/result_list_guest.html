@@ -1,12 +1,21 @@
 <div id="resultImageContainer"></div>
 {% if results %}
 <ul>
+    <div class="search-back">
+       <a href="{% url 'guest_home' %}" ><button class="search-back-button">Back</button></a>
+    </div>
 {% for result in results %}
     <li>
-        <div>
-            <img src="{% if result.item_photo %}/media/{{ result.item_photo }}{% else %}/static/path/to/placeholder-image.jpg{% endif %}" alt="{{ result.item_name }}" style="width: 100px; height: 100px;">
-            <button onclick="showBorrowForm('{{ result.item_id }}', '{{ result.item_name }}')">{{ result.item_name }}</button>
-            <a href="{% url 'guest_home' %}"><button>Back</button></a>
+        <div class="items-grid">
+            <div class="items">
+                <div class="item-pic">
+                    <img src="{% if result.item_photo %}/media/{{ result.item_photo }}{% else %}/static/path/to/placeholder-image.jpg{% endif %}" alt="{{ result.item_name }}" style="width: 130px;">
+                </div>
+                <div class="items-button">
+                       <button onclick="showBorrowForm('{{ result.item_id }}', '{{ result.item_name }}')" class="item_button">{{ result.item_name }}</button>
+                </div>
+                
+            </div>
         </div>
     </li>
 {% endfor %}

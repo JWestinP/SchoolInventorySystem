@@ -23,15 +23,21 @@ function fetchData(itemId) {
             const selectedItem = items.find(item => item.item_id === parseInt(itemId));
             console.log('Selected item ID:', selectedItem.item_id);
 
-            
+            // items info
             if (selectedItem) {
                 const imageUrl = `${selectedItem.item_photo}`
                 document.getElementById('item_header').innerHTML = `
-                    <img src="${imageUrl}" alt="${selectedItem.item_name}" style="width: 100px; height: 100px;">
+              
+                <div class="item-header-pic">
+                <button data-close-button class="close_button">&times;</button>  
+                    <img src="${imageUrl}" alt="${selectedItem.item_name}" style="width: 150px; border:1px solid black; height: 150px;">
+                </div>
+                <div class="header-info">    
                     <p>Item ID: ${selectedItem.item_id}</p>
                     <p>Name: ${selectedItem.item_name}</p>
                     <p>Category: ${selectedItem.item_category}</p>
-                    <button data-close-button class="close_button">&times;</button> 
+                  
+               
                 `;
                 document.body.addEventListener('click', function (event) {
                     if (event.target.matches('.close_button')) {
@@ -41,10 +47,21 @@ function fetchData(itemId) {
                 });
     
                 document.getElementById('item_body').innerHTML = `
-                    <p>Description: ${selectedItem.item_description}</p>
-                    <p>Total Quantity: ${selectedItem.item_total}</p>
-                    <p>Borrowed Quantity: ${selectedItem.item_borrowed}</p>
-                    <p>Available Quantity: ${selectedItem.item_current}</p>
+                <table class="table-row">
+                
+               <tr>
+                    <td>Description</td>
+                    <td>Quantity</td>
+                    <td>Borrowed</td>
+                    <td>Available</td>
+                </tr>
+                <tr>
+                    <td>${selectedItem.item_description}</td>
+                    <td>${selectedItem.item_total}</td>
+                    <td>${selectedItem.item_borrowed}</td>
+                    <td>${selectedItem.item_current}</td>
+                </tr>
+            </table>
                 `;
     
                 const csrfToken = document.cookie.split(';').find(cookie => cookie.trim().startsWith('csrftoken=')).split('=')[1];
@@ -148,10 +165,8 @@ function showItem(category) {
                 console.log('Received data:', data)
 
                 document.getElementById('back-button').innerHTML = `
-                <button id="back_category" onclick="showAllCategoryButtons()">Back</button>
+                <button id="back_category" onclick="showAllCategoryButtons()" class="back-button">Back</button>
                 `;
-
-                itemContainer.innerHTML += `<p>${data.items.length} items in category: ${data.items[0].item_category.item_category}</p>`;
                 
                 itemContainer.addEventListener('click', function (event) {
                     
@@ -169,10 +184,16 @@ function showItem(category) {
                     data.items.forEach(selectedItem => {
                         const imageUrl = `${selectedItem.item_photo}`
                         const itemHTML = `
-                            <div>
-                                <img src="${imageUrl}" alt="${selectedItem.item_name}" style="width: 100px; height: 100px;">
-                                <button data-item-target="${selectedItem.item_id}" class="item_button">${selectedItem.item_name}</button>
-                            </div>
+                        <div class="row-container">
+                                 <div class="square-container">
+                                    <div class="item-photo">
+                                        <img src="${imageUrl}" alt="${selectedItem.item_name}" style="width: 100px; height: 100px;">
+                                    </div> 
+                                    <div class="item-button">  
+                                         <button data-item-target="${selectedItem.item_id}" class="item_button">${selectedItem.item_name}</button>
+                                    </div>
+                                 </div>
+                             </div>
                         `
                         itemContainer.innerHTML += itemHTML
 

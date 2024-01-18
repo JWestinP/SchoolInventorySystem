@@ -49,7 +49,24 @@ def admin_home(request):
     })
 
 def guest_home(request):
-    return render(request, ('home/guest_home.html'))
+    current_user = request.user
+    
+    categories = Category.objects.all()
+    borrow_form = BorrowForm()
+    if request.method == 'POST':
+        borrow_form = BorrowForm(request.POST)
+        if borrow_form.is_valid():
+            model_instance = borrow_form.save(commit=False)
+            model_instance.item_borrower = current_user
+            model_instance.save()
+
+        else:
+            borrow_form = BorrowForm()
+            
+    return render(request, ('home/guest_home.html'), {
+        'borrow_form' : borrow_form,
+        'categories' : categories,
+    })
 
 @login_required
 @allowed_users(allowed_roles=['Faculty'])

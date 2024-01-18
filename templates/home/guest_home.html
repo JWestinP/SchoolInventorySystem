@@ -2,17 +2,95 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="{% static 'home/homestyle.css' %}">
+        <link rel="stylesheet" href="{% static 'home/homegueststyle.css' %}">
         <title>GUEST HOME</title>
     </head>
-    <h1>GUEST HOME</h1>
+
     <body>
-        <form method="GET" action="{% url 'search_items_guest' %}">
-            <input type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
-            <button type="submit">Search</button>
-          </form>
-        <button><a href="{% url 'home' %}">Home</a></button>
-        <button><a href="{% url 'logout' %}">Logout</a></button>
-        {% include 'home/result_list_guest.html' %}
+        
+        <div class="header">
+            
+            <div class="left-section">
+                <img class="lspu-logo" src="{% static 'home/logo/lspu-logo.png' %}">
+            </div>
+
+            <div class="middle-section">
+                <form method="GET" action="{% url 'search_items_guest' %}">
+                    <input class="search-bar" type="text" placeholder="Search for name/id/category" name="q" value="{{ query }}">
+                    <input class="search-button" type="submit" value="Search">
+                </form>
+            </div>
+
+            <div class="right-section">
+                <img class="ccs-logo" src="{% static 'home/logo/ccs-logo.jpg' %}">
+            </div>
+            
+        </div>
+        
+        <div class="guest-button-grid">
+
+            <button class="guest-buttons-tabs"><a href="{% url 'guest_home' %}">Home</a></button>
+            <button class="guest-buttons-tabs"><a href="{% url 'logout' %}">Log out</a></button>
+        </div>    
+
+
+        
+        <div class="category-container">
+            <div class="category-title-button">
+                <p class="category-container-title">
+                    Categories 
+                </p>  
+                
+                <div id="back-button">
+                
+                </div>
+            </div>
+            <!-- category-grid -->
+            <div class="categories">
+
+                {% for category in categories %}
+                <!-- CATEGORY-PREVIEW -->
+                <button onclick="showItem('{{ category }}')" class="category_button">
+                {{ category }}
+                </button>
+                {% endfor %}
+            </div>
+            
+
+            <div id="category_item" class="category_div">
+                <div id="item_list" class="items_div">
+
+
+                </div>
+                <h1>{{ current_category }}</h1>
+                {% for item in cleaning_inventory %}
+                    <div class="item">
+                        
+                    </div>
+                {% endfor %}
+                {% include 'home/result_list_guest.html' %}
+                <div class="item_information" id="item_information">
+                    
+                    <div class="item_header" id="item_header">
+                       
+                    </div>
+
+                    <div class="borrow-form">
+                        <div class="item_body" id="item_body">
+                            <button data-close-button class="close_button">&times;</button>      
+
+                        </div>
+                        <div class="item_form" id="item_form">
+
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+                    
+       
+        <script defer src="{% static 'home/homeguestscript.js' %}"></script>
+        
     </body>
 </html>

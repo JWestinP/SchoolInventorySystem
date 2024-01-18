@@ -27,11 +27,14 @@ function fetchData(itemId) {
             if (selectedItem) {
                 const imageUrl = `${selectedItem.item_photo}`
                 document.getElementById('item_header').innerHTML = `
+                    <div class="item-header-pic">
                     <img src="${imageUrl}" alt="${selectedItem.item_name}" style="width: 100px; height: 100px;">
-                    <p>Item ID: ${selectedItem.item_id}</p>
-                    <p>Name: ${selectedItem.item_name}</p>
+                    </div>
+                    <div class="item-header-info">
+                    <p class="name">Name: ${selectedItem.item_name}</p>
                     <p>Category: ${selectedItem.item_category}</p>
-                    <button data-close-button class="close_button">&times;</button> 
+                    <p >Item ID: ${selectedItem.item_id}</p>
+                    </div>
                 `;
                 document.body.addEventListener('click', function (event) {
                     if (event.target.matches('.close_button')) {
@@ -41,6 +44,7 @@ function fetchData(itemId) {
                 });
     
                 document.getElementById('item_body').innerHTML = `
+                    <button data-close-button class="close_button">&times;</button> 
                     <p>Description: ${selectedItem.item_description}</p>
                     <p>Total Quantity: ${selectedItem.item_total}</p>
                     <p>Borrowed Quantity: ${selectedItem.item_borrowed}</p>
@@ -146,9 +150,9 @@ function showItem(category) {
             try {
                 var data = JSON.parse(xhr.responseText)
                 console.log('Received data:', data)
-    
-                itemContainer.innerHTML += `<p>${data.items.length} items in category: ${data.items[0].item_category.item_category}</p>`;
-                
+                document.getElementById('back-button').innerHTML = `
+                <button id="back_category" onclick="showAllCategoryButtons()" class="back-button">Back</button>
+                `;
                 itemContainer.addEventListener('click', function (event) {
                     
                     if (event.target.matches('.item_button')) {
@@ -165,11 +169,22 @@ function showItem(category) {
                     data.items.forEach(selectedItem => {
                         const imageUrl = `${selectedItem.item_photo}`
                         const itemHTML = `
-                            <div>
-                                <img src="${imageUrl}" alt="${selectedItem.item_name}" style="width: 100px; height: 100px;">
-                                <button data-item-target="${selectedItem.item_id}" class="item_button">${selectedItem.item_name}</button>
-                                <button id="back_category" onclick="showAllCategoryButtons()">Back</button>
+                        <div class="items-grid">
+                        
+                            <div class="items">
+
+                                <div class="items-pic">
+                                    <img src="${imageUrl}" alt="${selectedItem.item_name}" class="item-pic">
+                                </div>  
+
+                                <div class= "items-button">
+                                    <button data-item-target="${selectedItem.item_id}" class="item_button">${selectedItem.item_name}</button>
+
+                                </div>
+
                             </div>
+
+                        </div>
                         `
                         itemContainer.innerHTML += itemHTML
 
@@ -203,6 +218,7 @@ function showAllCategoryButtons() {
     });
     var itemContainer = document.getElementById('item_list');
     itemContainer.innerHTML = '';
+    location.reload()
 
 }
 
