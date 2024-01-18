@@ -2,22 +2,22 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="{% static 'unreturned/unreturnedstyle.css' %}">
+        <link rel="stylesheet" href="{% static 'unreturned/unreturnedadminstyle.css' %}">
         <title>ADMIN UNRETURNED</title>
     </head>
     <body>
         <header>
             <div class="logo left">
-                <img src="static/unreturned/LSPU.png" alt="Left Logo">
+                <img src="static/unreturned/unreturnedadmin/LSPU.png" alt="Left Logo">
             </div>
-            <div class="search-bar">
-                <form method="GET" action="{% url 'search_items_admin' %}">
-                    <input type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
-                    <button type="submit">Search</button>
+            <div class="middle-section">
+                <form method="GET" action="{% url 'search_items_admin' %}" class="search-form">
+                    <input class="search-bar" type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
+                    <input class="search-button" type="submit" value="Search" name="b">
                 </form>
             </div>
             <div class="logo right">
-                <img src="static/unreturned/CSS.png" alt="Right Logo">
+                <img src="static/unreturned/unreturnedadmin/CSS.png" alt="Right Logo">
             </div> 
         </header>
         <div class="head"></div>
@@ -33,43 +33,47 @@
         </nav>
         </div>
         
-
+        <div id="mainForm" class="form">
         <div id="container" class="rounded_corners">
 
             <!-- test block code -->
             <!-- template for the items -->
             {% for item in unreturned_items reversed %}
-            <div id="wrapper" style="border: 1px solid black; margin: 10px; padding: 10px;
-            background-color: #f9f9f9; border-radius: 10px;">
+            <div id="wrapper">
 
-                <div id="top" style="display: flex; align-items: center;">
-                    <div id="left" style="margin-right: 10px;">
+                <div id="top">
+                    <div id="left">
                         {% if item.item_borrowed.item_stock.item_information.item_photo %}
-                            <img src="{{ item.item_borrowed.item_stock.item_information.item_photo.url }}" class="inventory_item" height="100%" object-fit="scale-down">
+                            <img src="{{ item.item_borrowed.item_stock.item_information.item_photo.url }}" class="inventory_item">
                         {% endif %}
 
                     </div>
-                    <div id="right" style="flex-grow: 1;">
-                        <p id="item_name" style="margin-left: 10px; font-weight: bold; font-size: large; margin-bottom: 10px;">{{ item.item_borrowed.item_stock.item_information.item_name }}</p>
-                        <p id="item_details" style="margin-left: 10px; margin: 10px;">
+                    <div id="right">
+                        <p id="item_name">{{ item.item_borrowed.item_stock.item_information.item_name }}</p>
+                        <p id="item_details">
                             Time Borrowed: {{ item.item_borrowed.item_date_borrowed }}<br />
                             Time Returned: {{ item.item_borrowed.item_date_returned }}<br />
                             Borrower: {{ item.item_borrowed.item_borrower }}
                         </p>
-                        <p id="item_quantity" style="text-align: right; margin-right: 50px;">Item Quantity: {{ item.item_borrowed.item_quantity }}</p>
+                        <p id="item_quantity">Item Quantity: {{ item.item_borrowed.item_quantity }}</p>
 
                     </div>
                 </div>
-                <div id="bottom" style="display: flex; justify-content: flex-end; margin-right: 30px;">
+                <div id="bottom">
+                    
+                </div>
+                <div class="recent-lines">
                     <div id="btn_con">
                         <button id="return_btn" class="rounded_corners" style="border-radius: 5px; padding: 5px 10px; background-color: #3498db; color: white; cursor: pointer;">
                         <a href="{% url 'admin_return_item' item.id item.item_borrowed.item_stock.id %}">Return</a></button>
                     </div>
                 </div>
-
             </div>
             {% endfor %}
             <!-- template for the items -->
         {% include 'home/result_list_admin.html' %}
+
+    </div>
+</div>
     </body>
 </html>
