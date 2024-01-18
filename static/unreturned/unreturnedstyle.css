@@ -274,3 +274,9 @@ p{
     margin-left: 1.5rem;
     margin-top: 5px;
  }
+
+ .group{
+    border: 2px solid gray;
+    border-radius: 15px;
+    margin-top: -10rem;
+ }
