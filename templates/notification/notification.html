@@ -45,14 +45,16 @@
 {% include 'home/result_list.html' %}
 <div id="main" class="form">
    <div class="item">
-         {% if unreturned_item_exist %}
-            <p>You have unreturned items. Please check the Unreturned Items tab for more details.</p>
+         
     <ul>
         {% for item_info in unreturned_items %}
         <li>
+         {% if unreturned_item_exist %}
+            <p>You have unreturned items. Please check the Unreturned Items tab for more details.</p>
             Item ID: {{ item_info.item_name }} - 
             {{ item_info.item_days_not_returned }} days overdue
             (Borrowed on {{ item_info.item_date_borrowed|date:"F d, Y" }})
+
         </li>
         {% endfor %}
     </ul>
