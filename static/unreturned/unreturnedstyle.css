@@ -262,13 +262,15 @@ html{
     border-radius: 15px;
     margin-left: .5rem;
     margin-top: .5rem;
-    height: 150px;
+    height: 20px;
+    width: 200px;
  }
 
  .disc{
     border: 2px solid black;
     margin-left: 15rem;
     margin-top: -10rem;
+    width:fit-content;
  }
 
 p{
