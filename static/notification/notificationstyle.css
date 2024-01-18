@@ -136,17 +136,17 @@ html{
     
  .header .logo-right i{
     width: 95px;
-    padding: 6rem;
+    padding: 2rem;
  }
  
  .search{
    width: 1046px;
-   height: 30px;
+   height: 10px;
    left: 187px;
    border-radius: 10px;
    border: 4px;
  }
- 
+
  /*navigations*/
  nav{
     background-color: #f8f9fa;
