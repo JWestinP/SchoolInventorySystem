@@ -354,7 +354,7 @@ html{
    border-radius: 15px;
  }
 
- .containers {
+ .form-item {
   display: grid;
   grid-template-columns: auto auto auto auto auto;
   gap: 10px;
