@@ -216,12 +216,6 @@ html{
     text-decoration: none;
  }
   
- a:visited{
-    color: #92141e;
-    background-color: transparent;
-    text-decoration: none;
- }
-  
  a:hover{
     color: #000;
     background-color: transparent;
