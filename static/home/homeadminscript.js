@@ -450,7 +450,7 @@ function addCategory() {
                                 formContainer.innerHTML = `
                                 <div class="confirmation-popup-container">
                                     <div class="success-popup">
-                                        <p>The item has been successfully added with its stock!</p>
+                                        <p>The category has been added successfully!</p>
                                         <button onclick="refreshPage()">Ok</button>
                                     </div>
                                 </div>   
