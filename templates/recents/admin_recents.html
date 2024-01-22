@@ -7,6 +7,7 @@
 
     </head>
     <body>
+       
         
         <header>
         <div class="logo left">
@@ -39,6 +40,10 @@
         <div id="mainForm" class="form">
         <div id="container" class="rounded_corners">
 
+            <form method="GET" action="{% url 'admin_search_recents' %}" class="search-form">
+                <input class="search-bar" type="text" name="q" value="{{ query }}" placeholder="Search for name/borrower">
+                <input class="search-button" type="submit" value="Search" name="b">
+            </form>
 
             {% for items in borrowed_item reversed %}
             <div id="wrapper">
