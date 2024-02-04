@@ -1,0 +1,72 @@
+#branding h1 a:link, #branding h1 a:visited {
+    color: black;
+}
+
+body {
+    background-color: rgb(78, 34, 34);
+}
+
+caption {
+    background-color: rgb(0, 255, 106)!important;
+    /* Add other styling as needed */
+  }
+
+tr:nth-child(even) {
+background-color: orange;
+}
+
+tr:nth-child(odd) {
+background-color: yellow;
+}
+
+#content-related {
+    background-color: grey;
+}
+
+#header {
+    background-color: pink;
+}
+
+div.breadcrumbs {
+    background-color: brown;
+}
+
+#changelist .actions {
+    background-color: orange!important;
+}
+
+#changelist .paginator {
+    background-color: violet!important;
+}
+
+#changelist .actions select {
+    background-color: aquamarine;
+}
+
+#changelist .actions .button {
+    background-color: blueviolet!important;
+}
+
+thead th {
+    background-color: magenta;
+}
+
+.object-tools a:link, .object-tools a:visited {
+    background-color: orange;
+}
+
+#nav-sidebar {
+    background-color: pink;
+}
+
+#nav-filter {
+    background-color: blue;
+}
+
+#toolbar {
+    background-color: green!important;
+}
+
+:root {
+    --body-bg: greenyellow;
+}
