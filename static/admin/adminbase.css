@@ -10,6 +10,10 @@ a:link, a:visited {
     font-weight: bold;
     
 }
+#logout-form button {
+    color: white;
+    font-weight: bold;
+}
 #content-related .module h2 {
     color: white;
     font-weight: bold;
@@ -49,7 +53,6 @@ background-color: #EAE7E7;
     
     
 }
-
 #header {
     background-color:#7A1A22 ;
     height: 70px;
@@ -86,12 +89,16 @@ thead th {
 }
 
 #nav-sidebar {
-    background-color: pink;
+    background-color: #d4d4d4;
 }
 
 #nav-filter {
-    background-color: blue;
+    background-color: whitesmoke;
 }
+#nav-sidebar .current-app .section:link, #nav-sidebar .current-app .section:visited {
+    color: white;
+}
+
 
 #toolbar {
     background-color: green!important;
