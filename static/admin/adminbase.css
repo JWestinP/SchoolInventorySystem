@@ -1,5 +1,5 @@
 #branding h1 a:link, #branding h1 a:visited {
-    color: black;
+    color: white;
 }
 
 body {
@@ -21,10 +21,13 @@ background-color: yellow;
 
 #content-related {
     background-color: grey;
+    color: #7A1A22;
 }
 
 #header {
-    background-color: pink;
+    background-color:#7A1A22 ;
+    height: 70px;
+    
 }
 
 div.breadcrumbs {
