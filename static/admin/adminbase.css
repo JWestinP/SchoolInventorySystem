@@ -49,9 +49,11 @@ background-color: #EAE7E7;
 #content-related {
     background-color: #e6e6e6;
     color: #7A1A22;
-    font-weight: 600;
-    
-    
+    font-weight: 600;  
+}
+.toggle-nav-sidebar {
+ background-color: white;
+ color: #7A1A22;
 }
 #header {
     background-color:#7A1A22 ;
