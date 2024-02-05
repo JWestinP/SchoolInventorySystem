@@ -5,7 +5,25 @@
     color: #7A1A22;
     font-weight: bold;
 }
-
+a:link, a:visited {
+    color: #7A1A22;
+    font-weight: bold;
+    
+}
+#content-related .module h2 {
+    color: white;
+    font-weight: bold;
+    background-color: #7A1A22;
+}
+#content-related h3{
+    color: #7A1A22;
+    font-weight: 500;
+    font-size: 18px;
+}
+.quiet, a.quiet:link, a.quiet:visited{
+    color: #7A1A22;
+    font-weight: 600;
+}
 body {
     background-color: #d4d4d4;
     
@@ -25,8 +43,10 @@ background-color: #EAE7E7;
 }
 
 #content-related {
-    background-color: grey;
+    background-color: #e6e6e6;
     color: #7A1A22;
+    font-weight: 600;
+    
     
 }
 
@@ -79,7 +99,6 @@ thead th {
 
 :root {
     --body-bg: greenyellow;
-    
     
 }
 
