@@ -8,7 +8,6 @@ body {
 
 caption {
     background-color: rgb(0, 255, 106)!important;
-    /* Add other styling as needed */
   }
 
 tr:nth-child(even) {
@@ -73,3 +72,52 @@ thead th {
 :root {
     --body-bg: greenyellow;
 }
+
+.submit-row {
+    background-color: blue!important;
+}
+
+.button, input[type=submit], input[type=button], .submit-row input, a.button {
+    background-color: aquamarine;
+}
+
+.button.default, input[type=submit].default, .submit-row input.default {
+    background-color: greenyellow;
+}
+
+.form-row {
+    background-color: orange;
+}
+
+.selector .selector-available h2 {
+    background-color: maroon!important;
+}
+
+.selector-chosen h2 {
+    background-color: pink!important;
+}
+
+.form-row img, .form-row input {
+    background-color: black;
+}
+
+.selector select {
+    background-color: black;
+}
+
+.selector-chooser li {
+    background-color: pink;
+}
+
+input[type=text], input[type=password], input[type=email], input[type=url], input[type=number], input[type=tel], textarea, select, .vTextField {
+    background-color: black;
+}
+
+.module h2, .module caption, .inline-group h2 {
+    background-color: orange;
+}
+
+#changelist-filter {
+    background-color: red!important;
+}
+
