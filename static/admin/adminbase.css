@@ -84,10 +84,14 @@ div.breadcrumbs {
     background-color: brown;
     
 }
+#changelist{
+    width: 1110px;
+}
 
 #changelist .actions {
     background-color: white!important;
-    width: 1089px !important;
+    width: 1088px !important;
+    border: 1px solid black !important;
 
 }
 
@@ -114,7 +118,7 @@ thead th {
 }
 
 .object-tools a:link, .object-tools a:visited {
-    background-color: orange;
+    background-color: #7A1A22;
 }
 
 #nav-sidebar {
@@ -283,6 +287,7 @@ table thead th.sorted .sortoptions a.sortremove{
 td{
     color: black !important;
     background-color: #EAE7E7;
+    
 }
 #changelist-filter a{
     font-weight: 500;
