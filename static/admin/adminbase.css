@@ -114,7 +114,7 @@ div.breadcrumbs {
 }
 
 thead th {
-    background-color: magenta;
+    background-color: #EAE7E7;
 }
 
 .object-tools a:link, .object-tools a:visited {
@@ -126,6 +126,10 @@ thead th {
 }
 
 #nav-filter {
+    background-color: whitesmoke;
+    color: black;
+}
+#nav-filter.no-results{
     background-color: whitesmoke;
 }
 #nav-sidebar .current-app .section:link, #nav-sidebar .current-app .section:visited {
@@ -150,12 +154,14 @@ thead th {
     background-color: white;
     color: black;
     font-weight: bold;
+    border: 1px solid black;
 }
 
 .button.default, input[type=submit].default, .submit-row input.default {
     background-color: white;
     color: black;
     font-weight: bold;
+    border: 1px solid black;
 }
 
 
@@ -308,4 +314,8 @@ td{
 }
 #changelist-filter li.selected{
     border: 5px solid #EAE7E7 !important;
+}
+.theme-toggle svg.theme-icon-when-auto, .theme-toggle svg.theme-icon-when-dark, .theme-toggle svg.theme-icon-when-light{
+    color: #7A1A22;
+    
 }
