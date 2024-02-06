@@ -200,11 +200,13 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
 
 
 .module h2, .module caption, .inline-group h2 {
-    background-color: orange;
+    background-color: #7A1A22;
+
+    
 }
 
 #changelist-filter {
-    background-color: red!important;
+    background-color: #EAE7E7!important;
 }
 a.active.selector-chooseall, a.active.selector-clearall{
     color: black !important;
@@ -253,4 +255,52 @@ th{
 }
 .button.default:active, input[type=submit].default:active, .button.default:focus, input[type=submit].default:focus, .button.default:hover, input[type=submit].default:hover{
     background-color: #d4d4d4;
+}
+.dashboard .module table td{
+    background-color: #EAE7E7;
+}
+.dashboard .module table td a{
+    background-color: #EAE7E7;
+}
+#nav-sidebar .module td{
+    background-color: #EAE7E7;
+}
+table thead th .text a {
+    background-color: #EAE7E7;
+    color: #7A1A22;
+}
+table thead th .text a:hover{
+    background-color: white;
+}
+table thead th.sorted .sortoptions{
+    background-color: #EAE7E7;
+    color: black;
+}
+table thead th.sorted .sortoptions a.sortremove{
+    background-color: #EAE7E7;
+    color: black !important;
+}
+td{
+    color: black !important;
+    background-color: #EAE7E7;
+}
+#changelist-filter a{
+    font-weight: 500;
+    color: black !important;
+}
+#changelist-filter details > summary{
+    color: black;
+}
+#changelist-filter ul:last-child{
+    background-color: #EAE7E7;
+    
+    
+}
+#changelist-filter h3, #changelist-filter details summary{
+    background-color: #EAE7E7 !important;
+    
+    font-weight: bold !important;
+}
+#changelist-filter li.selected{
+    border: 5px solid #EAE7E7 !important;
 }
