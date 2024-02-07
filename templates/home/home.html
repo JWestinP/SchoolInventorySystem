@@ -7,22 +7,22 @@
         <title>Faculty Home</title>
     <body>
         
-        <header>
-            <div class="logo left">
-                <img src="/static/home/adminhome/LSPU.png" alt="Left Logo">
+        <div class="header">
+            <div class="left-section">
+                <img class="lspu-logo" src="/static/home/adminhome/LSPU.png">
             </div>
             
             <div class="middle-section">
                 <form method="GET" action="{% url 'search_items' %}" class="search-form">
-                    <input class="search-bar" type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
-                    <input class="search-button" type="submit" value="Search" name="b">
+                    <input class="search-bar" type="text" value="{{ query }}" placeholder="Search for name/id/category">
+                    <input class="search-button" type="submit" value="Search">
                 </form>
             </div>
 
-            <div class="logo right">
-                <img src="/static/home/adminhome/CSS.png" alt="Right Logo">
+            <div class="right-section">
+                <img class="css-logo" src="/static/home/adminhome/CSS.png" >
             </div> 
-        </header>
+        </div>
 
         <div class="head"></div>
             <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
