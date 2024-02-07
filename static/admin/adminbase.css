@@ -1,5 +1,7 @@
 #branding h1 a:link, #branding h1 a:visited {
     color: white; 
+    margin-left: 90px;
+    
 }
 #site-purpose{
     color: #7A1A22;
@@ -76,7 +78,7 @@ font-weight: 700;
 
 #header {
     background-color:#7A1A22 ;
-    height: 70px;
+    height: 60px;
     
 }
 
@@ -154,14 +156,14 @@ thead th {
     background-color: white;
     color: black;
     font-weight: bold;
-    border: 1px solid black;
+    border: 2px solid #E67C37;
 }
 
 .button.default, input[type=submit].default, .submit-row input.default {
     background-color: white;
     color: black;
     font-weight: bold;
-    border: 1px solid black;
+    border: 2px solid #E67C37;
 }
 
 
@@ -317,5 +319,43 @@ td{
 }
 .theme-toggle svg.theme-icon-when-auto, .theme-toggle svg.theme-icon-when-dark, .theme-toggle svg.theme-icon-when-light{
     color: #7A1A22;
+    margin-right: 90px;
     
 }
+#user-tools, #logout-form button{
+    margin-right: 15px;
+}
+.logo.left {
+    width: 100px;
+    display: flex;
+    align-items: center;
+    margin-left: 10px; /* Adjust this value as needed */
+    flex-shrink: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.logo.right {
+    width: 100px;
+    display: flex;
+    align-items: center;
+    margin-right: 10px; /* Adjust this value as needed */
+    flex-shrink: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.logo.right img {
+    width: 65px; /* Adjust this value to make the logos smaller */
+    margin-top: 3px;
+}
+.logo.left img{
+    width: 110px;
+}
+
+
+
+
+
+ 
