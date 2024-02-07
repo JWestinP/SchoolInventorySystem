@@ -321,11 +321,11 @@ td{
 }
 .theme-toggle svg.theme-icon-when-auto, .theme-toggle svg.theme-icon-when-dark, .theme-toggle svg.theme-icon-when-light{
     color: #7A1A22;
-    margin-right: 90px;
+    margin-right: 110px;
     
 }
 #user-tools, #logout-form button{
-    margin-right: 15px;
+    margin-right: 20px;
 }
 .logo.left {
     width: 100px;
