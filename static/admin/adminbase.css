@@ -325,7 +325,7 @@ td{
     
 }
 #user-tools, #logout-form button{
-    margin-right: 20px;
+    margin-right: 40px;
 }
 .logo.left {
     width: 100px;
@@ -351,11 +351,12 @@ td{
 .logo.right img {
     width: 65px; /* Adjust this value to make the logos smaller */
     margin-top: 3px;
+    padding-right: 20px;
+
 }
 .logo.left img{
     width: 110px;
 }
-
 
 
 
