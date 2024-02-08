@@ -56,78 +56,90 @@ function fetchData(itemId) {
                 
                <tr>
                     <td>Description</td>
-                    <td>Quantity</td>
+                    <td>Total Quantity</td>
+                    <td>Total Pristine</td>
                     <td>Borrowed</td>
                     <td>Available</td>
+                    <td>Total Damaged</td>
                 </tr>
                 <tr>
                     <td>${selectedItem.item_description}</td>
                     <td>${selectedItem.item_total}</td>
+                    <td>${selectedItem.item_pristine}</td>
                     <td>${selectedItem.item_borrowed}</td>
                     <td>${selectedItem.item_current}</td>
+                    <td>${selectedItem.item_damaged}</td>
                 </tr>
             </table>
                 `;
     
                 const csrfToken = document.cookie.split(';').find(cookie => cookie.trim().startsWith('csrftoken=')).split('=')[1];
-    
-                fetch('/get_borrow_form/')
-                .then(response => response.json())
-                .then(data => {
-                    
-                    const formContainer = document.getElementById('item_form');
-                    formContainer.innerHTML = data.form_html;
-    
-                    const borrowForm = document.getElementById('borrowFormId');
-                    console.log('borrowForm:', borrowForm);
-                    if (borrowForm) {
-                        const itemStockInput = borrowForm.querySelector('[name="item_stock"]');
-                        if (selectedItem && selectedItem.item_id) {
-                            console.log('Selected Item:', selectedItem);
-                            console.log('Item Information:', selectedItem.item_id);
+                if (selectedItem.item_current > 0){
+                    fetch('/get_borrow_form/')
+                    .then(response => response.json())
+                    .then(data => {
+                        
+                        const formContainer = document.getElementById('item_form');
+                        formContainer.innerHTML = data.form_html;
+        
+                        const borrowForm = document.getElementById('borrowFormId');
+                        console.log('borrowForm:', borrowForm);
+                        if (borrowForm) {
+                            const itemStockInput = borrowForm.querySelector('[name="item_stock"]');
+                            if (selectedItem && selectedItem.item_id) {
+                                console.log('Selected Item:', selectedItem);
+                                console.log('Item Information:', selectedItem.item_id);
 
-                            if (selectedItem.item_id) {
-                                itemStockInput.value = selectedItem.stock_id;
-                                console.log('item_stockInput value:', itemStockInput.value);
-
+                                if (selectedItem.item_id) {
+                                    itemStockInput.value = selectedItem.stock_id;
+                                    console.log('item_stockInput value:', itemStockInput.value);
+                                } 
+                                else {
+                                    console.error('Missing item_information.item_id:', selectedItem.item_id);
+                                }
                             } 
                             else {
-                                console.error('Missing item_information.item_id:', selectedItem.item_id);
+                                console.error('Invalid selectedItem or item_information.', 'Selected Item:', selectedItem.item_id);
                             }
-                        } 
-                        else {
-                            console.error('Invalid selectedItem or item_information.', 'Selected Item:', selectedItem.item_id);
-                        }
 
-                        borrowForm.addEventListener('submit', function (event) {
-                            event.preventDefault();
-                        
-                            const formData = new FormData(borrowForm);
-    
-                            formData.append('csrfmiddlewaretoken', csrfToken);
-                            formData.append('source_item_id', selectedItem.item_id);
-                            formData.append('stock_id', selectedItem.stock_id);
-                            console.log(formData)
-                            console.log('FormData:', formData);
-                            fetch('/save_borrow_form/', {
-                                method: 'POST',
-                                body: formData
-                            })
-                            .then(response => response.json())
-                            .then(data => {
-                                console.log(data);
-                                if (data.message) {
-                                   
-                                } else if (data.error) {
+                            borrowForm.addEventListener('submit', function (event) {
+                                event.preventDefault();
+                            
+                                const formData = new FormData(borrowForm);
+        
+                                formData.append('csrfmiddlewaretoken', csrfToken);
+                                formData.append('source_item_id', selectedItem.item_id);
+                                formData.append('stock_id', selectedItem.stock_id);
+                                console.log(formData)
+                                console.log('FormData:', formData);
+                                fetch('/save_borrow_form/', {
+                                    method: 'POST',
+                                    body: formData
+                                })
+                                .then(response => response.json())
+                                .then(data => {
+                                    console.log(data);
+                                    if (data.message) {
                                     
-                                    console.error(data.error);
-                                }
-                            })
-                            .catch(error => console.error('Error submitting form:', error));
-                        });                   
-                    }
-                })
-    
+                                    } else if (data.error) {
+                                        
+                                        console.error(data.error);
+                                    }
+                                })
+                                .catch(error => console.error('Error submitting form:', error));
+                            });
+                                            
+                        }
+                    })
+                }
+
+                else {
+                    const formContainer = document.getElementById('item_form');
+                    formContainer.innerHTML = `
+                    <h1>Item currently out of stock</h1>
+                    `
+                }
+
                 openItem(informationId);
             }
             else {

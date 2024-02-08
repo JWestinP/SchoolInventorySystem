@@ -11,6 +11,10 @@
             {% csrf_token %}
             <p>Total item stock:</p>
             {{ stock_form.item_total_quantity }}
+            <p>Total pristine item in stock:</p>
+            {{ stock_form.item_pristine_quantity }}
+            <p>Total damaged item in stock:</p>
+            {{ stock_form.item_damaged_quantity }}
             <input type="submit" value="Submit">
             <button type="button" onclick="closeForm('stockFormPopup')">Cancel</button>
         </form>

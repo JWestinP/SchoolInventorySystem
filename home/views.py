@@ -153,28 +153,36 @@ def save_borrow_form(request):
     current_user = request.user
     borrow_form = BorrowForm(request.POST)
     stock_id = request.POST.get('stock_id')
+    stock_instance = get_object_or_404(Stock, pk=stock_id)
 
-    
     if borrow_form.is_valid():
-        model_instance = borrow_form.save(commit=False)
-        model_instance.item_borrower = current_user
-        model_instance.save()
+        item_borrowed_value = borrow_form.cleaned_data['item_quantity']
         
-        stock_id = int(stock_id)
+        if item_borrowed_value <= stock_instance.item_current_quantity & item_borrowed_value <= stock_instance.item_pristine_quantity:
+            model_instance = borrow_form.save(commit=False)
+            model_instance.item_borrower = current_user
+            model_instance.save()
+            
+            stock_id = int(stock_id)
 
-        stock_instance = get_object_or_404(Stock, pk=stock_id)
-        borrowed_count = model_instance.item_quantity
-        stock_instance.item_current_quantity -= borrowed_count
-        stock_instance.item_borrowed_quantity += borrowed_count
-    
-        stock_instance.save()
+            stock_instance = get_object_or_404(Stock, pk=stock_id)
+            borrowed_count = model_instance.item_quantity
+            stock_instance.item_current_quantity -= borrowed_count
+            stock_instance.item_pristine_quantity -= borrowed_count
+            stock_instance.item_borrowed_quantity += borrowed_count
         
-        unreturned_instance = Unreturned_Item.objects.create(item_borrowed = model_instance, item_days_not_returned = 0)
-        unreturned_instance.save()
-        print('updated current count')
+            stock_instance.save()
+            
+            unreturned_instance = Unreturned_Item.objects.create(item_borrowed = model_instance, item_days_not_returned = 0)
+            unreturned_instance.save()
+            print('updated current count')
 
-        # Return a success response
-        return JsonResponse({'message': 'Form submitted successfully'})
+            # Return a success response
+            return JsonResponse({'message': 'Form submitted successfully'})
+        
+        else:
+            print('Form is NOT valid! Borrowed value greater than current stock')
+            return JsonResponse({'error': 'Invalid form submission'}, status=400)
 
     else:
         print('Form is NOT valid!')
@@ -185,7 +193,7 @@ def save_borrow_form(request):
         print('Choices for item_stock:', item_stock_choices)
 
         return JsonResponse({'error': 'Invalid form submission'}, status=400)
-
+    
 def save_item_form(request):
     item_form = ItemForm(request.POST, request.FILES)
     
@@ -243,6 +251,8 @@ def get_item_inventory(request):
                    'item_description' : item.item_information.item_description,
                    'item_photo' : item.item_information.item_photo.url,
                    'item_total' : item.item_total_quantity,
+                   'item_pristine' : item.item_pristine_quantity,
+                   'item_damaged' : item.item_damaged_quantity,
                    'item_current' : item.item_current_quantity,
                    'item_borrowed' : item.item_borrowed_quantity,
                    'stock_id' : item.pk} for item in item_inventory]
@@ -293,7 +303,6 @@ def search_items_guest(request):
         return redirect('guest_home')
 
     return render(request, 'home/guest_home.html', {'results': results, 'query': query})
-
 
 def delete_item(request):
     item_pk = request.GET.get('item_id', None)
