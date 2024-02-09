@@ -5,6 +5,9 @@
         <link rel="stylesheet" href="{% static 'unreturned/unreturnedstyle.css' %}">
         <title>Faculty Unreturned</title>
     </head>
+
+    <script defer src="{% static 'unreturned/buttons_for_unreturned.js' %}"></script>
+
     <body>
         <header>
             <div class="logo left">
@@ -64,15 +67,14 @@
                 </div>
                 <div class="recent-lines">
                     <div id="btn_con">
-                        <button id="return_btn" class="rounded_corners">
-                        <a href="{% url 'return_item' item.id item.item_borrowed.item_stock.id item.item_borrowed.borrow_form_id %}">Return</a></button>
+                        <button id="return_btn" class="rounded_corners" onclick="">Return</button>
                     </div>
                 </div>
             </div>
 
-            <div class="test_pop_up">
+            <div class="test_pop_up" id="popup_form">
                 <h1>test</h1>
-                <a href="">Return</a>
+                <a href="{% url 'return_item' item.id item.item_borrowed.item_stock.id item.item_borrowed.borrow_form_id %}">Return</a>
             </div>
             {% endfor %}
             <!-- template for the items -->
