@@ -69,6 +69,7 @@
                 <div class="recent-lines">
                     <div id="btn_con">
                         <button id="return_btn" class="rounded_corners" onclick="show_hide_pop_up()">Return</button>
+                        <!-- <a href="{% url 'return_item' item.id item.item_borrowed.item_stock.id item.item_borrowed.borrow_form_id %}">Return</a> -->
                     </div>
                 </div>
             </div>
@@ -83,7 +84,9 @@
                     <label for="damaged">Damaged</label>
                     <input type="number" name="damaged" id="damaged" required >
 
-                    <a href="{% url 'return_item' item.id item.item_borrowed.item_stock.id item.item_borrowed.borrow_form_id %}">Return</a>
+                    <button onclick="show_hide_pop_up()">Cancel</button>
+
+                    <a href="">Return</a>
 
                 </form>
 
