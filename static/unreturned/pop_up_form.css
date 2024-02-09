@@ -32,6 +32,12 @@
     outline: 2px black;
 }
 
+#popup_form form .btn_section{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
 #popup_form button{
     height: 30px;
     width: fit-content;
@@ -40,6 +46,7 @@
     outline: 1px solid orange;
     background: none;
     border: none;
+    margin: 0px 15px;
 }
 
 #popup_form a {
@@ -48,4 +55,5 @@
     padding: 5px 15px;
     outline-style: solid;
     outline: 1px solid orange;
+    margin: 0px 15px;
 }
