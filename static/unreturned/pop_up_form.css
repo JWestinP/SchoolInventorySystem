@@ -11,8 +11,8 @@
 }
 
 #popup_form form {
-    padding: 50px;
     width: 50%;
+    padding: 15px;
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -26,7 +26,7 @@
 
 #popup_form input {
     height: 30px;
-    width: 80%;
+    width: 100%;
     margin: 15px 25px;
     outline-style: solid;
     outline: 2px black;
