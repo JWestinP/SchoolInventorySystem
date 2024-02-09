@@ -1,5 +1,6 @@
 /* nothing for now */
 #popup_form {
+    display: none;
     position: relative;
     top: 50%;
     left: 50%;
