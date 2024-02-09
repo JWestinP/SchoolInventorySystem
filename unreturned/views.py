@@ -8,14 +8,11 @@ from home.decorators import allowed_users
 from home.decorators import allowed_users
 
 # Create your views here.
-# test
+
 @allowed_users(allowed_roles=['Faculty'])
 def unreturned(request):
     user = request.user
     unreturned_items = Unreturned_Item.objects.filter(item_borrowed__item_borrower = user)
-
-
-    # unreturned_items = Unreturned_Item.objects.all()
 
     return render(request, 'unreturned/unreturned.html',
                 {'unreturned_items': unreturned_items})
