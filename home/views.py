@@ -215,7 +215,8 @@ def save_stock_form(request):
     if stock_form.is_valid():
         item_instance = get_object_or_404(Item, item_id = specific_item)
         model_instance = stock_form.save(commit=False)
-        model_instance.item_current_quantity = model_instance.item_total_quantity
+        model_instance.item_current_quantity = model_instance.item_pristine_quantity
+        
         model_instance.item_borrowed_quantity = 0
         model_instance.item_information = item_instance
         model_instance.save()
