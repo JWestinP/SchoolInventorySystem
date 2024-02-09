@@ -3,16 +3,34 @@
     position: relative;
     top: 50%;
     left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    background-color: white;
+    height: fit-content;
 }
 
 #popup_form form {
+    padding: 50px;
+    width: 80%;
+    margin: auto;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+}
+
+#popup_form input {
+    height: 30px;
+    width: 300px;
+    margin: 15px 25px;
+    outline-style: solid;
+    outline: 2px black;
 }
 
 #popup_form a {
     height: 30px;
+    width: fit-content;
+    padding: 5px 15px;
     outline-style: solid;
     outline: 1px solid orange;
-    color: orange;
+    align-self: center;
 }
