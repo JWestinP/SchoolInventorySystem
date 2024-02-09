@@ -74,11 +74,19 @@
             </div>
 
             <div class="test_pop_up" id="popup_form">
-                <label for="pristine">Pristine</label><br>
-                <input type="number" id="pristine" name="pristine" required ><br>
-                <label for="damaged">Damaged</label><br>
-                <input type="number" name="damaged" id="damaged" required ><br>
-                <a href="{% url 'return_item' item.id item.item_borrowed.item_stock.id item.item_borrowed.borrow_form_id %}">Return</a>
+
+                <form action="">
+
+                    <label for="pristine">Pristine</label><br>
+                    <input type="number" id="pristine" name="pristine" required ><br>
+
+                    <label for="damaged">Damaged</label><br>
+                    <input type="number" name="damaged" id="damaged" required ><br>
+
+                    <a href="{% url 'return_item' item.id item.item_borrowed.item_stock.id item.item_borrowed.borrow_form_id %}">Return</a>
+
+                </form>
+
             </div>
             {% endfor %}
             <!-- template for the items -->
