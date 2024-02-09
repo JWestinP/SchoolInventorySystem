@@ -2,3 +2,8 @@
 #popup_form {
 
 }
+
+#popup_form a {
+    height: 30px;
+    outline: 1px solid orange;
+}
