@@ -24,10 +24,13 @@ def admin_unreturned(request):
     return render(request, 'unreturned/admin_unreturned.html',
                 {'unreturned_items': unreturned_items})
 
-def return_item(request, item_id, item_stock_id):
+def return_item(request, item_id, item_stock_id, borrow_form_id):
 
     unreturned_items = Unreturned_Item.objects.get(pk=item_id)
     unreturned_items.item_borrowed.item_stock.item_current_quantity = unreturned_items.item_borrowed.item_stock.item_current_quantity + unreturned_items.item_borrowed.item_quantity
+
+    borrowed_item = Borrowed_Item.objects.get(pk=borrow_form_id)
+    borrowed_item.item_returned = True
 
     item = Stock.objects.get(pk = item_stock_id)
     item.item_current_quantity = unreturned_items.item_borrowed.item_stock.item_current_quantity
