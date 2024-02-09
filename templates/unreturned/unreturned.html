@@ -75,7 +75,7 @@
 
             <div class="test_pop_up" id="popup_form">
 
-                <form action="">
+                <form action="" method="post"> {% csrf_token %}
 
                     <label for="pristine">Pristine</label>
                     <input type="number" id="pristine" name="pristine" required >
