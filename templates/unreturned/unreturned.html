@@ -76,7 +76,7 @@
 
             <div class="test_pop_up" id="popup_form">
 
-                <form action="" method="post"> {% csrf_token %}
+                <form action="{% url 'return_item' item.id item.item_borrowed.item_stock.id item.item_borrowed.borrow_form_id %}" method="post"> {% csrf_token %}
 
                     <div class="input_section">
 
@@ -91,7 +91,7 @@
                     <div class="btn_section">
 
                         <button onclick="show_hide_pop_up()">Cancel</button>
-                        <a href="">Return</a>
+                        <input type="submit" name="return">
 
                     </div>
 
