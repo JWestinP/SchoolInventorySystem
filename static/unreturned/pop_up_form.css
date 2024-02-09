@@ -1,6 +1,7 @@
 /* nothing for now */
 #popup_form {
-
+    display: flex;
+    flex-direction: row;
 }
 
 #popup_form a {
