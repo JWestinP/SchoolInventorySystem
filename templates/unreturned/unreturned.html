@@ -73,7 +73,10 @@
             </div>
 
             <div class="test_pop_up" id="popup_form">
-                <h1>test</h1>
+                <label for="pristine">Pristine</label>
+                <input type="number" id="pristine" name="pristine" required >
+                <label for="damaged">Damaged</label>
+                <input type="number" name="damaged" id="damaged" required >
                 <a href="{% url 'return_item' item.id item.item_borrowed.item_stock.id item.item_borrowed.borrow_form_id %}">Return</a>
             </div>
             {% endfor %}
