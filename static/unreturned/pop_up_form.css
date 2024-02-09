@@ -1,5 +1,13 @@
 /* nothing for now */
 #popup_form {
+    position: relative;
+    top: 50%;
+    left: 50%;
+}
+
+#popup_form form {
+    display: flex;
+    flex-direction: column;
 }
 
 #popup_form a {
