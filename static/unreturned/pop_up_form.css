@@ -47,11 +47,3 @@
     border: none;
     margin: 0px 15px;
 }
-
-#popup_form a {
-    height: 30px;
-    width: fit-content;
-    outline-style: solid;
-    outline: 1px solid orange;
-    margin: 0px 15px;
-}
