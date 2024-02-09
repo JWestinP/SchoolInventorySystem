@@ -12,7 +12,7 @@
 
 #popup_form form {
     padding: 50px;
-    width: 80%;
+    width: 50%;
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -41,7 +41,6 @@
 #popup_form button{
     height: 30px;
     width: fit-content;
-    padding: 5px 15px;
     outline-style: solid;
     outline: 1px solid orange;
     background: none;
@@ -52,7 +51,6 @@
 #popup_form a {
     height: 30px;
     width: fit-content;
-    padding: 5px 15px;
     outline-style: solid;
     outline: 1px solid orange;
     margin: 0px 15px;
