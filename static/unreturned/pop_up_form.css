@@ -19,12 +19,27 @@
     justify-content: center;
 }
 
+#popup_form form .input_section{
+    display: flex;
+    flex-direction: column;
+}
+
 #popup_form input {
     height: 30px;
-    width: 300px;
+    width: 80%;
     margin: 15px 25px;
     outline-style: solid;
     outline: 2px black;
+}
+
+#popup_form button{
+    height: 30px;
+    width: fit-content;
+    padding: 5px 15px;
+    outline-style: solid;
+    outline: 1px solid orange;
+    background: none;
+    border: none;
 }
 
 #popup_form a {
@@ -33,5 +48,4 @@
     padding: 5px 15px;
     outline-style: solid;
     outline: 1px solid orange;
-    align-self: center;
 }
