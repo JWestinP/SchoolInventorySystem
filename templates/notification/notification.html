@@ -32,10 +32,6 @@
                <a href="{% url 'recents' %}" class="navbar-brand">Recents</a>
                <a href="{% url 'unreturned' %}" class="navbar-brand">Unreturned</a>
                <a href="{% url 'notification' %}" class="navbar-brand">Notification</a>
-               {% if unreturned_item_exist %}
-               <span class="notification-indicator">!</span>
-               {% endif %}
-
                <a href="{% url 'userprofile' %}" class="navbar-brand">Account</a>
                <a href="{% url 'logout' %}" class="navbar-brand">Logout</a>
          </div>
