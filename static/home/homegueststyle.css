@@ -182,6 +182,8 @@ a:active {
     color: rgb(230,124,55);
     text-decoration: underline solid  rgb(230,124,55) 2px;
 } 
+/* buttons end */
+
 
 article,aside,details,figcaption,figure,
 footer,header,hgroup,menu,nav,section {
@@ -345,6 +347,7 @@ Start coding here
 .category_button:hover {
     border: 2px solid rgb(230,124,55);
     box-shadow: 8px 8px 10px rgba(113,26,33, 0.40);
+    background-color: rgb(255, 137, 58);
 }
 
 .category_button:nth-child(1) {

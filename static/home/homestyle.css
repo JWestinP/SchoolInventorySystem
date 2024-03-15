@@ -212,8 +212,8 @@ body {
   font-family: Arial, sans-serif; /* Adjust the font family as needed */
   padding-top: 100px;
 }
-  
-header {
+
+.header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -221,14 +221,14 @@ header {
   padding: 5px;
   border-bottom: 20px solid rgb(230,124,55); /* Bottom color */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visibility */
-  z-index: 1000;
+
   position: fixed;
   top: 0;
   right: 0;
   left: 0;
 }
 
-.logo.left {
+.left-section {
   width: 100px;
   display: flex;
   align-items: center;
@@ -236,21 +236,83 @@ header {
   flex-shrink: 0;
 }
 
-.logo.right {
+.lspu-logo{
+  width: 90px;
+  border-radius:50px;
+  margin: 0;
+  padding: 0;
+}
+
+.middle-section {
+  flex: 1;
+  margin-left: 10px;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.search-form {
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+
+.search-bar {
+  flex: 1;
+  height: 14px;
+  padding: 10px;
+  margin: 5px;
+  border: none;
+  border-radius: 3px;
+  outline: none;
+  background-color: white;
+  color: #000000; /* Set text color to be visible on the background color */
+  font-size: 15px;
+  box-shadow: inset 1px 2px 5px rgba(0, 0, 0, 0.2);
+  width: 0;
+}
+
+.search-bar::placeholder {
+  font-family: Arial, Helvetica, sans-serif!important;
+  font-size: 15px!important;
+}
+
+.search-button {
+  background-color: rgb(230, 124, 55)!important;
+  color: #ffffff!important;
+  padding: 10px 15px!important;
+  border-radius: 3px!important;
+  cursor: pointer!important;
+  margin-right: 10px!important;
+  border: none;
+  width: 100px;
+  height: 43px;
+  margin-bottom: 0!important;
+}
+
+.search-button:hover {
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2)!important;
+}
+
+
+form {
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+
+
+.right-section {
   width: 100px;
   display: flex;
   align-items: center;
   margin-right: 10px;
   flex-shrink: 0;
 }
-.logo.left img {
-  width: 135px;
-  margin-right: auto;
-}
-  
-.logo.right img {
-  width: 80px;
-  margin-left: auto;
+
+.ccs-logo{
+  width: 92px;
+  border-radius:46px;
 }
 
 .head {
@@ -267,127 +329,109 @@ header {
   align-items: center;
 }
 
-.search-form {
-  display: flex; /* Add this property to make the form a flex container */
-}
-
-.search-bar {
-  flex: 1!important;
-  height: 40px!important;
-  padding: 10px!important;
-  margin: 5px!important;
-  border-radius: 3px!important;
-  outline: none!important;
-  background-color: white!important;
-  color: #000000!important;
-  font-size: 15px!important;
-  box-shadow: inset 1px 2px 5px rgba(0, 0, 0, 0.2)!important;
-}
-
-.search-bar::placeholder {
-  font-family: Arial, Helvetica, sans-serif!important;
-  font-size: 15px!important;
-}
-
-.search-button {
-  background-color: rgb(230, 124, 55)!important;
-  color: #ffffff!important;
-  padding: 10px 15px!important;
-  border-radius: 3px!important;
-  cursor: pointer!important;
-  margin-left: 10px!important;
-}
-
-.search-button:hover {
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2)!important;
-}
-
-input[name="q"] {
-    width: 1060px;
-    padding: 6px;
-    font-size: 16px;
-    border-radius: 4px;
-    margin-right: 14px;
-    
-}
-
-form input[name="b"] {
-  width: 80px !important;
-  font-size: 14px !important;
-  margin-right: 14px !important;
-  background-color: rgb(230, 124, 55) !important;
-  color: #ffffff !important;
-  padding: 8px 12px !important;
-  border: 2px solid orange !important;
-  border-radius: 5px !important;
-  cursor: pointer !important;
-  margin-left: 10px !important;
   
+/* Buttons (home and logout) */
+.buttons-box {
+  background-color: rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255);
+  padding-top: 3px;
+  padding-bottom: 3px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.20); /* Optional: Add a shadow for better visibility */
+  margin-top: 30px;
+  margin-left: 50px;
+  margin-right: 50px;
+  border-radius: 5px;
 }
 
-  /* navigations */
-  nav {
-    background-color: #f8f9fa;
-    padding: 15px 0;
-    border-bottom: 1px solid #dee2e6;
-    box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.1);
-    margin: 30px 70px 0; /* Adjusted margin for better responsiveness */
-    border-radius: 15px;
-  }
+.button-grid{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 5px;
+  flex-wrap: wrap;
+  align-content: first baseline;
+  gap: 1em;
+}
+
+.buttons-tabs {
+  background-color: rgb(255,255,255);
+  border: none;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 16px;
+  padding-right: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  vertical-align: top;
+  transition-duration: 0.4s;
+}
   
-  .container, .recent-container{
-    display: flex;
-    justify-content: space-between;
-    
-  }
-  .item-container{
-    display: flex;
-    justify-content: space-between;
-    
-  }
-  .navbar-brand {
-    color: black;
-    font-weight: bold;
-    font-size: 1.5rem;
-    margin-right: 30px;
-    margin-left: 30px;
-    text-decoration: none; /* Remove underline */
-    position: relative; /* Position for the pseudo-element */
-    transition: color 0.3s ease, font-weight 0.3s ease; /* Add a smooth color and font weight transition */
-  }
-  
-  /* Create an underline pseudo-element */
-  .navbar-brand::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: firebrick; /* Initial underline color */
-    visibility: hidden;
-    transform: scaleX(0); /* Initially invisible */
-    transition: all 0.3s ease; /* Add a smooth transition for visibility and scale */
-  }
-  
-  /* Add hover effect */
-  .navbar-brand:hover {
-    color:firebrick; /* Change text color on hover */
-    font-weight: lighter; /* Change font weight on hover, adjust as needed */
-  }
-  
-  .navbar-brand:hover::before {
-    visibility: visible;
-    transform: scaleX(1); /* Make the underline visible and scale it */
-  }
+.buttons-tabs:hover  {
+  color: rgb(230,124,55);
+  text-decoration: underline solid  rgb(230,124,55) 2px;
+}
+
+.buttons-tabs:active {
+  color: rgb(230,124,55);
+  text-decoration: underline solid  rgb(230,124,55) 2px;
+}
+
+a{
+  font-size: 20px;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+  font-family: Arial;
+}
+
+a:link { 
+  text-decoration: none; 
+} 
+
+a:hover { 
+  color: rgb(230,124,55);
+  text-decoration: underline solid  rgb(230,124,55) 2px;
+} 
+
+a:active { 
+  color: rgb(230,124,55);
+  text-decoration: underline solid  rgb(230,124,55) 2px;
+} 
+/* buttons end */
+
+
+/* Start Code- back button sa katabi nung category title pag nakapindot na yung category button */
+.back-button{
+  background-color: rgb(255, 255, 255);
+  border:solid  rgb(153, 153, 153) 2px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 8px;
+  padding-right: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  vertical-align: top;
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center bottom;
+  font-family: Arial;
+  margin-right: 10px;
+}
+
+.back-button:hover {
+  color: rgb(0, 0, 0);
+  border: solid rgb(230,124,55) 2px;
+}
+/* End Code- back button sa katabi nung category title pag nakapindot na yung category button */
+
+
   .form{
-    background-color: #f8f9fa;
-    padding: 15px 0;
-    border: 2px solid #dee2e6;
-    border-bottom: 1px solid #dee2e6;
-    box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.1);
-    margin: 30px 70px 0; /* Adjusted margin for better responsiveness */
-    border-radius: 15px;
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.20); /* Optional: Add a shadow for better visibility */
+    margin-top: 45px;
+    margin-left: 50px;
+    margin-right: 50px;
+    border-radius: 5px;
   }
   .form-item {
     background-color: #f8f9fa;
@@ -949,7 +993,20 @@ form input[name="b"] {
    
   }
 
-  
+  .category-title-button{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}  
+
+.category-container-title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 35px;
+    margin-top: 10px;
+    margin-left: 18px;
+    width: 0;
+}
     /*display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -977,25 +1034,29 @@ form input[name="b"] {
   */
 
   .category_button {
-    position: relative;
-    color: black;
-    cursor: pointer;
-    border: 0.5px solid rgb(171, 177, 177);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    border: 0.5px solid rgb(171,177,177);
     border-radius: 6px;
     height: 230px;
     width: 170px;
     padding-top: 10px;
     padding-left: 10px;
-    padding-right: 10px;
+    padding-right: 10px; 
     padding-bottom: 20px;
     background-color: rgb(255, 255, 255);
     background-repeat: no-repeat;
     background-size: 130px;
-    background-position: 50% 20%;
+    background-position: 50%  20% ;
     transition-duration: 0.2s;
+
     margin-top: 5px;
     font-size: 20px;
-    font-weight: bold;
+    font-weight: 500;
+    text-align: center bottom;
+    font-family: Arial;
+    background-color: solid rgb(171,177,177) 1px;
     
   }
 
@@ -1042,7 +1103,9 @@ form input[name="b"] {
 
 
   .category_button:hover {
-    background-color: orange;
+    border: 2px solid rgb(230,124,55);
+    box-shadow: 8px 8px 10px rgba(113,26,33, 0.40);
+    background-color: rgb(255, 137, 58);
   }
 
   /*edit button*/
@@ -1148,6 +1211,7 @@ button {
 button:hover {
   background-color: orange;
 }
+
 
 /* Icon styles */
 .fa-trash {
@@ -1430,7 +1494,7 @@ button p:hover {
 }
 /* Style for the submit button */
 /*add category button*/
-input[type="submit"] {
+/* input[type="submit"] {
   padding: 10px;
   background-color: white;
   color: black;
@@ -1440,7 +1504,7 @@ input[type="submit"] {
 input[type="submit"]:hover{
   background-color: orange;
   color: black;
-}
+} */
 /* Style for the cancel button */
 .additem-button {
   padding: 10px;
@@ -1740,6 +1804,7 @@ button:hover {
 
 
 
+  
   /* Media queries for responsiveness */
   @media screen and (max-width: 768px) {
     header {

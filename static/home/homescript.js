@@ -28,16 +28,16 @@ function fetchData(itemId) {
                 const imageUrl = `${selectedItem.item_photo}`
                 document.getElementById('item_header').innerHTML = `
               
-                <div class="item-header-pic">
-                <button data-close-button class="close_button">&times;</button>  
-                    <img src="${imageUrl}" alt="${selectedItem.item_name}" style="width: 150px; border:1px solid black; height: 150px;">
-                </div>
-                <div class="header-info">    
-                    <p>Item ID: ${selectedItem.item_id}</p>
-                    <p>Name: ${selectedItem.item_name}</p>
-                    <p>Category: ${selectedItem.item_category}</p>
-                  
-               
+                    <div class="item-header-pic">
+                    <button data-close-button class="close_button">&times;</button>  
+                        <img src="${imageUrl}" alt="${selectedItem.item_name}" style="width: 150px; border:1px solid black; height: 150px;">
+                    </div>
+                    <div class="header-info">    
+                        <p>Item ID: ${selectedItem.item_id}</p>
+                        <p>Name: ${selectedItem.item_name}</p>
+                        <p>Category: ${selectedItem.item_category}</p>
+                    
+                    </div>
                 `;
                 document.body.addEventListener('click', function (event) {
                     if (event.target.matches('.close_button')) {
