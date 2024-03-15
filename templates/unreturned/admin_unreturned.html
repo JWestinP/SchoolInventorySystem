@@ -36,6 +36,11 @@
         <div id="mainForm" class="form">
         <div id="container" class="rounded_corners">
 
+            <form method="GET" action="{% url 'admin_search_unreturned' %}" class="search-form">
+                <input class="search-bar" type="text" name="q" value="{{ query }}" placeholder="Search for name/borrower">
+                <input class="search-button" type="submit" value="Search" name="b">
+            </form>
+
             <!-- test block code -->
             <!-- template for the items -->
             {% for item in unreturned_items reversed %}
