@@ -3,8 +3,12 @@
 <html>
     <head>
         <link rel="stylesheet" href="{% static 'unreturned/unreturnedadminstyle.css' %}">
+        <link rel="stylesheet" href="{% static 'unreturned/pop_up_form.css' %}">
         <title>ADMIN UNRETURNED</title>
     </head>
+
+    <script defer src="{% static 'unreturned/buttons_for_unreturned.js' %}"></script>
+
     <body>
         <header>
             <div class="logo left">
@@ -64,10 +68,36 @@
                 </div>
                 <div class="recent-lines">
                     <div id="btn_con">
-                        <button id="return_btn" class="rounded_corners">
-                        <a href="{% url 'admin_return_item' item.id item.item_borrowed.item_stock.id item.item_borrowed.borrow_form_id %}">Return</a></button>
+                        <button id="return_btn" class="rounded_corners" onclick="show_hide_pop_up()">Return</button>
+                        <!-- <a href="{% url 'admin_return_item' item.id item.item_borrowed.item_stock.id item.item_borrowed.borrow_form_id %}">Return</a></button> -->
                     </div>
                 </div>
+            </div>
+
+            <div class="test_pop_up" id="popup_form">
+
+                <form action="{% url 'return_item' item.id item.item_borrowed.item_stock.id item.item_borrowed.borrow_form_id %}" method="post"> {% csrf_token %}
+
+                    <div class="input_section">
+
+                        <label for="pristine">Pristine</label>
+                        <input type="number" id="pristine" name="pristine" required >
+
+                        <label for="damaged">Damaged</label>
+                        <input type="number" name="damaged" id="damaged" required >
+
+                    </div>
+
+                    <div class="btn_section">
+
+                        <!-- <button onclick="show_hide_pop_up()">Cancel</button> -->
+                        <input type="button" value="Cancel" onclick="show_hide_pop_up()">
+                        <input type="submit" name="return" value="Return">
+
+                    </div>
+
+                </form>
+
             </div>
             {% endfor %}
             <!-- template for the items -->
