@@ -52,45 +52,51 @@
                         </div>
                     </div>
 
-                    <div class="item">   
+                    <div class="item">   <!-- category-grid -->
 
                         <div class="categories" id="category_container">
                             {% for category in categories %}
+                            <!-- CATEGORY-PREVIEW -->
                             <button onclick="showItem('{{ category }}')" class="category_button">{{ category }}</button>
                             {% endfor %}
                            
                         </div>
                         
-                        {% include 'home/result_list.html' %}
+                        
                 
                         <div id="category_item" class="category_div">
-                            <div id="item_list">
+                            <div id="item_list" class="items-div">
                 
                             </div>
                             <div id="back-button">
                                 
                             </div>  
-                            
-                        </div>
-                </div>
-
-            <h1>{{ current_category }}</h1>
-
-            <div class="item_information" id="item_information">
-                <div class="item_header" id="item_header">
-                       
-                </div>
-
-                <div class="item_body" id="item_body">
-
-                </div>
-                <div class="item_form" id="item_form">
-
-                </div>
+                            <h1>{{ current_category }}</h1>
+                                <div class="item">
+                                
+                                </div>
+                            {% include 'home/result_list.html' %}
+                        
                 
-            </div>
 
-        </div>
+            
+
+                            <div class="item_information" id="item_information">
+                                <div class="item_header" id="item_header">
+                                    
+                                </div>
+
+                                <div class="item_body" id="item_body">
+
+                                </div>
+                                <div class="item_form" id="item_form">
+
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+             </div>
              
         <script defer src="{% static 'home/homescript.js' %}"></script>
     </body>

@@ -424,6 +424,78 @@ a:active {
 /* End Code- back button sa katabi nung category title pag nakapindot na yung category button */
 
 
+
+/*start- new added-drin */
+.items-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  align-content: space-evenly;
+  gap: 1em;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+
+.items-grid{
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1em;
+  padding: 10px;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+  border: 2px solid rgb(171,177,177);
+  border-radius: 6px;
+  height: 180px;
+  width: 130px;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px; 
+  padding-bottom: 20px;
+  background-color: rgb(255, 255, 255);
+  flex-shrink: 0;
+}
+
+.items:hover {
+  border: solid  rgb(230,124,55) 2px;
+}
+
+.item-pic {
+  display: flex;
+  width: 130px;
+  align-items: center;
+  margin-right: 10px;
+  padding-bottom: 5px;
+  border-bottom: 0.5px solid rgb(171,177,177);
+}
+
+.item-name{
+  margin-top: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.items-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 5px;
+  flex-wrap: wrap;
+  align-content: center;
+  gap: 1em;
+}
+
+/*end- new added-drin */
   .form{
     background-color: rgb(255, 255, 255);
     padding: 20px;
@@ -986,11 +1058,21 @@ a:active {
 
   /*home categories*/
   .categories {
-    display: flex;
+    /* display: flex;
     justify-content: space-around;
     margin: 20px 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif; */
    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    align-content: space-evenly;
+    gap: 1em;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
   .category-title-button{
@@ -1058,47 +1140,37 @@ a:active {
     font-family: Arial;
     background-color: solid rgb(171,177,177) 1px;
     
-  }
-
-.category_button::after {
-    /* Create a pseudo-element to act as a spacer */
-    content: "";
-    display: block;
-    height: 100%; /* Take up the full height of the relative container */
 }
-
-.category_button span {
-    /* Absolute positioning for the text */
-    position: absolute;
-    bottom: 0; /* Align the text to the bottom */
-    left: 0; /* Align the text to the left */
-    right: 0; /* Align the text to the right */
-    text-align: center; /* Center the text horizontally */
-    
+  
+.category_button:hover {
+    border: 2px solid rgb(230,124,55);
+    box-shadow: 8px 8px 10px rgba(113,26,33, 0.40);
+    background-color: rgb(255, 137, 58);
 }
  /*image ng category*/
 
   .category_button:nth-child(1){
     background-image: url(../home/adminhome/clean.png);
     background-size:110px;
-    background-position: center;
+   
   }
   .category_button:nth-child(2){
     background-image: url(../home/adminhome/furnitures.png);
     background-size: 160px;
     background-position: center;
+    
   }
   .category_button:nth-child(3){
     background-image: url(../home/adminhome/documents.png);
-    background-position: center;
+    
   }
   .category_button:nth-child(4){
     background-image: url(../home/adminhome/gadgets.png);
-    background-position: center;
+   
   }
   .category_button:nth-child(5){
     background-image: url(../home/adminhome/room.png);
-    background-position: center;
+    
   }
 
 
