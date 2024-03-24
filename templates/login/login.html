@@ -35,6 +35,9 @@
                 <img src="{% static 'login/bot.png' %}" class="bot">
             </div>
 
+            <div class="guest_form">
+
+            </div>
         </div>
 
 
@@ -58,10 +61,14 @@
 
                     <div class="buttons">
                         <button class="login-button" type="submit">LOG IN</button>
-                        <button class="guest-button" type="button" id="guestbtn">LOG IN AS GUEST</button>
                     </div>
                 </form>
-
+                <div class="buttons">
+                    <form action="{% url 'guest_login' %}" method="post" class="guest-form">
+                        {% csrf_token %}
+                        <button class="guest-button" type="submit" id="guestbtn">LOG IN AS GUEST</button>
+                    </form>
+                </div>
             </div>
            
     </body>

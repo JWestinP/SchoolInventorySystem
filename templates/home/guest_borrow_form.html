@@ -1,0 +1,27 @@
+<form action="/guest_save_borrow_form/" id="borrowFormId" method="post">
+    {% csrf_token %}  
+    <div class="borrow-row">
+        <div class="item-borrow-row"> 
+            <p>Guest Name:</p>
+            {{ guest_form.guest_name }}
+            <p>Guest Course:</p>
+            {{ guest_form.guest_course }}
+            <p>Guest Section:</p>
+            {{ guest_form.guest_section }}
+
+
+            <p>Teacher Name:</p>
+            {{ user_form.user }}
+
+            <p>Quantity to be borrowed:</p>
+            {{ borrow_form.item_quantity }}
+            <p>Date when you want to borrow the item:</p>
+            {{ borrow_form.item_date_borrowed }}   
+            <p>Date when you want to return the item (can be blank):</p>
+            {{ borrow_form.item_date_returned }}
+            {{ borrow_form.item_stock }}
+
+            <input type="submit" value="Submit">
+        </div> 
+    </div>
+</form>
