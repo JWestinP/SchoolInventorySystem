@@ -25,11 +25,6 @@ class BorrowForm(forms.ModelForm):
 
         self.fields['item_stock'].queryset = Stock.objects.all()
 
-class GuestForm(forms.ModelForm):
-    class Meta:
-        model = Guest
-        fields = "__all__"
-
 class UserForm(forms.ModelForm):
     user = forms.ModelChoiceField(queryset=User.objects.all(),
                                   widget=forms.Select(attrs={'class': 'form-control'}))

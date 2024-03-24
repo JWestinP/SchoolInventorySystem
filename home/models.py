@@ -6,10 +6,7 @@ class Category(models.Model):
     
     def __str__(self):
         return self.item_category
-class Guest(models.Model):
-    guest_name = models.CharField(max_length = 64)
-    guest_course = models.CharField(max_length = 64)
-    guest_section = models.CharField(max_length = 64)
+
             
 class Item(models.Model):
     item_id = models.BigAutoField(primary_key = True)

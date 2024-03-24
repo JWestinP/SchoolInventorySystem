@@ -95,12 +95,10 @@ def get_borrow_form(request):
 
 def get_guest_borrow_form(request):
     borrow_form = BorrowForm()
-    guest_form = GuestForm()
     user_form = UserForm()
     
     form_html = render_to_string('home/guest_borrow_form.html', {
         'borrow_form': borrow_form,
-        'guest_form': guest_form,
         'user_form': user_form
     }, request=request)
     
@@ -157,8 +155,11 @@ def save_borrow_form(request):
 
     if borrow_form.is_valid():
         item_borrowed_value = borrow_form.cleaned_data['item_quantity']
-        
-        if item_borrowed_value <= stock_instance.item_current_quantity & item_borrowed_value <= stock_instance.item_pristine_quantity:
+        print(item_borrowed_value)
+        print(stock_instance.item_current_quantity)
+        print(stock_instance.item_pristine_quantity)
+        if item_borrowed_value <= stock_instance.item_current_quantity and item_borrowed_value <= stock_instance.item_pristine_quantity:
+
             model_instance = borrow_form.save(commit=False)
             model_instance.item_borrower = current_user
             model_instance.save()
@@ -196,13 +197,12 @@ def save_borrow_form(request):
     
 def guest_save_borrow_form(request):
     borrow_form = BorrowForm(request.POST)
-    guest_form = GuestForm(request.POST)
     user_form = UserForm(request.POST)
     
     stock_id = request.POST.get('stock_id')
     stock_instance = get_object_or_404(Stock, pk=stock_id)
 
-    if borrow_form.is_valid() and guest_form.is_valid() and user_form.is_valid():
+    if borrow_form.is_valid() and user_form.is_valid():
         item_borrowed_value = borrow_form.cleaned_data['item_quantity']
         
         if item_borrowed_value <= stock_instance.item_current_quantity and item_borrowed_value <= stock_instance.item_pristine_quantity:
@@ -212,6 +212,7 @@ def guest_save_borrow_form(request):
             user_id = user_form.cleaned_data['user'].id
 
             user = User.objects.get(id=user_id)
+            
             borrow_instance.item_borrower = user  # Assign the User object to item_borrower
             borrow_instance.save()
             
@@ -229,7 +230,7 @@ def guest_save_borrow_form(request):
             return JsonResponse({'error': 'Invalid form submission'}, status=400)
     else:
         print('Form is NOT valid!')
-        print('Errors:', borrow_form.errors.as_data(), guest_form.errors.as_data(), user_form.errors.as_data())
+        print('Errors:', borrow_form.errors.as_data(), user_form.errors.as_data())
 
         item_stock_choices = borrow_form.fields['item_stock'].queryset.values_list('pk', flat=True)
         print('Choices for item_stock:', item_stock_choices)

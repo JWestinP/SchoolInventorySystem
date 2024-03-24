@@ -1,0 +1,15 @@
+<form action="/save_return_form/" id="ReturnFormId" method="post">
+    {% csrf_token %}  
+    <div class="return-row">
+        <div class="item-return-row"> 
+            
+            <p>Pristine item quantity:</p>
+            {{ return_form.item_pristine_quantity }}
+        
+            <p>Damaged item quantity:</p>
+            {{ return_form.item_damaged_quantity }}   
+            
+            <input type="submit" value="Submit">
+        </div> 
+    </div>
+</form>

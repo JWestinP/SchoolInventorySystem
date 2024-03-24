@@ -59,10 +59,22 @@
                         <p id="item_details">
                             Time Borrowed: {{items.item_date_borrowed}}<br />
                             Time Returned: {{items.item_date_returned}}<br />
-                            Borrower: {{items.item_borrower}}
+                            Borrower: {{items.item_borrower}} <br />
+
+                            {% if items.guest_name %}
+                               Guest Borrower: {{ items.guest_name }} <br />
+                            {% endif %}
+                            {% if items.guest_course %}
+                               Guest Borrower: {{ items.guest_course }} <br />
+                            {% endif %}
+                            {% if items.guest_section %}
+                               Guest Borrower: {{ items.guest_section }} <br />
+                            {% endif %}
                         </p>
                         <p id="item_quantity">Item Quantity: {{items.item_quantity}}</p>
-                      
+                        <div class="guest_details">
+                            
+                        </div>
 
                     </div>
                 </div>

@@ -58,7 +58,16 @@
                         <p id="item_details">
                             Time Borrowed: {{ item.item_borrowed.item_date_borrowed }}<br />
                             Time Returned: {{ item.item_borrowed.item_date_returned }}<br />
-                            Borrower: {{ item.item_borrowed.item_borrower }}
+                            Borrower: {{ item.item_borrowed.item_borrower }}<br />
+                            {% if item.item_borrowed.guest_name %}
+                                Guest Borrower: {{ item.item_borrowed.guest_name }}<br />
+                            {% endif %}
+                            {% if item.item_borrowed.guest_course %}
+                                Guest Course: {{ item.item_borrowed.guest_course }}<br />
+                            {% endif %}
+                            {% if item.item_borrowed.guest_section %}
+                                Guest Section: {{ item.item_borrowed.guest_section }}<br />
+                            {% endif %}
                         </p>
                         <p id="item_quantity">Item Quantity: {{ item.item_borrowed.item_quantity }}</p>
 
@@ -68,9 +77,9 @@
                     
                 </div>
                 <div class="recent-lines">
+
                     <div id="btn_con">
-                        <button id="return_btn" class="rounded_corners">
-                        <a href="{% url 'admin_return_item' item.id item.item_borrowed.item_stock.id %}">Return</a></button>
+                        <button id="return_btn" class="rounded_corners" onclick="showReturnForm('{{item.item_borrowed.borrow_form_id}}')">Return</button>
                     </div>
                 </div>
             </div>
@@ -79,6 +88,11 @@
         {% include 'home/result_list_admin.html' %}
 
     </div>
+    <div id="return_container" class="return_container">
+                
+    </div>
 </div>
+<script defer src="{% static 'unreturned/unreturned.js' %}"></script>
+
     </body>
 </html>
