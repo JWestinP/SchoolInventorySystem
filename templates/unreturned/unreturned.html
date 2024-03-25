@@ -57,7 +57,17 @@
                         <p id="item_details">
                             Time Borrowed: {{ item.item_borrowed.item_date_borrowed }}<br />
                             Time Returned: {{ item.item_borrowed.item_date_returned }}<br />
-                            Borrower: {{ item.item_borrowed.item_borrower }}
+                            Borrower: {{ item.item_borrowed.item_borrower }}<br />
+
+                            {% if item.item_borrowed.guest_name %}
+                               Guest Borrower: {{ item.item_borrowed.guest_name }} <br />
+                            {% endif %}
+                            {% if item.item_borrowed.guest_course %}
+                               Guest Borrower: {{ item.item_borrowed.guest_course }} <br />
+                            {% endif %}
+                            {% if item.item_borrowed.guest_section %}
+                               Guest Borrower: {{ item.item_borrowed.guest_section }} <br />
+                            {% endif %}
                         </p>
                         <p id="item_quantity">Item Quantity: {{ item.item_borrowed.item_quantity }}</p>
 
