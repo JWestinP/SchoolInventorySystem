@@ -321,6 +321,30 @@ label{
     color: rgb(255, 255, 255);
 }
 
+.guest_form {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    justify-content: space-between;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.40);
+    border-radius: 10px;
+    z-index: 10;
+    background-color: white;
+    max-width: 700px;
+    padding: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    
+  }
+  
+  .guest_form.active {
+    transform: translate(-50%, -50%) scale(1);
+  }
 
 @media only screen and (max-width: 768px) {
     body, html {

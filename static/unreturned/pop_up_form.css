@@ -1,0 +1,49 @@
+/* nothing for now */
+#popup_form {
+    display: none;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    background-color: white;
+    height: fit-content;
+}
+
+#popup_form form {
+    width: 50%;
+    padding: 15px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#popup_form form .input_section{
+    display: flex;
+    flex-direction: column;
+}
+
+#popup_form input {
+    height: 30px;
+    width: 100%;
+    margin: 15px 25px;
+    outline-style: solid;
+    outline: 2px black;
+}
+
+/* #popup_form form .btn_section{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+#popup_form button{
+    height: 30px;
+    width: fit-content;
+    outline-style: solid;
+    outline: 1px solid orange;
+    background: none;
+    border: none;
+    margin: 0px 15px;
+} */

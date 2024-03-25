@@ -81,6 +81,7 @@ function fetchData(itemId) {
                         console.log('borrowForm:', borrowForm);
                         if (borrowForm) {
                             const itemStockInput = borrowForm.querySelector('[name="item_stock"]');
+                            console.log(itemStockInput);
                             if (selectedItem && selectedItem.item_id) {
                                 console.log('Selected Item:', selectedItem);
                                 console.log('Item Information:', selectedItem.item_id);

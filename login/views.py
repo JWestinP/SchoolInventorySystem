@@ -44,6 +44,12 @@ def user_logout(request):
     messages.success(request, "You've successfully logged out.")
     return redirect('login')
 
+def guest_login(request):
+    return redirect('guest_home')
+
+def user_guest(request):
+    pass
+
 def password_reset_request(request):
 	if request.method == "POST":
 		password_reset_form = PasswordResetForm(request.POST)
