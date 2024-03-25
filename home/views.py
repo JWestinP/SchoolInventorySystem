@@ -48,23 +48,10 @@ def admin_home(request):
         'categories' : categories,
     })
 
-def guest_home(request):
-    current_user = request.user
-    
+def guest_home(request):   
     categories = Category.objects.all()
-    borrow_form = BorrowForm()
-    if request.method == 'POST':
-        borrow_form = BorrowForm(request.POST)
-        if borrow_form.is_valid():
-            model_instance = borrow_form.save(commit=False)
-            model_instance.item_borrower = current_user
-            model_instance.save()
-
-        else:
-            borrow_form = BorrowForm()
             
     return render(request, ('home/guest_home.html'), {
-        'borrow_form' : borrow_form,
         'categories' : categories,
     })
 
@@ -105,6 +92,17 @@ def get_borrow_form(request):
     borrow_form = BorrowForm()
     form_html = render_to_string('home/borrow_form.html', {'borrow_form': borrow_form}, request=request)
     return JsonResponse({'form_html' : form_html})
+
+def get_guest_borrow_form(request):
+    borrow_form = BorrowForm()
+    user_form = UserForm()
+    
+    form_html = render_to_string('home/guest_borrow_form.html', {
+        'borrow_form': borrow_form,
+        'user_form': user_form
+    }, request=request)
+    
+    return JsonResponse({'form_html': form_html})
 
 def get_item_form(request):
     item_form = ItemForm()
@@ -153,28 +151,39 @@ def save_borrow_form(request):
     current_user = request.user
     borrow_form = BorrowForm(request.POST)
     stock_id = request.POST.get('stock_id')
+    stock_instance = get_object_or_404(Stock, pk=stock_id)
 
-    
     if borrow_form.is_valid():
-        model_instance = borrow_form.save(commit=False)
-        model_instance.item_borrower = current_user
-        model_instance.save()
-        
-        stock_id = int(stock_id)
+        item_borrowed_value = borrow_form.cleaned_data['item_quantity']
+        print(item_borrowed_value)
+        print(stock_instance.item_current_quantity)
+        print(stock_instance.item_pristine_quantity)
+        if item_borrowed_value <= stock_instance.item_current_quantity and item_borrowed_value <= stock_instance.item_pristine_quantity:
 
-        stock_instance = get_object_or_404(Stock, pk=stock_id)
-        borrowed_count = model_instance.item_quantity
-        stock_instance.item_current_quantity -= borrowed_count
-        stock_instance.item_borrowed_quantity += borrowed_count
-    
-        stock_instance.save()
-        
-        unreturned_instance = Unreturned_Item.objects.create(item_borrowed = model_instance, item_days_not_returned = 0)
-        unreturned_instance.save()
-        print('updated current count')
+            model_instance = borrow_form.save(commit=False)
+            model_instance.item_borrower = current_user
+            model_instance.save()
+            
+            stock_id = int(stock_id)
 
-        # Return a success response
-        return JsonResponse({'message': 'Form submitted successfully'})
+            stock_instance = get_object_or_404(Stock, pk=stock_id)
+            borrowed_count = model_instance.item_quantity
+            stock_instance.item_current_quantity -= borrowed_count
+            stock_instance.item_pristine_quantity -= borrowed_count
+            stock_instance.item_borrowed_quantity += borrowed_count
+        
+            stock_instance.save()
+            
+            unreturned_instance = Unreturned_Item.objects.create(item_borrowed = model_instance, item_days_not_returned = 0)
+            unreturned_instance.save()
+            print('updated current count')
+
+            # Return a success response
+            return JsonResponse({'message': 'Form submitted successfully'})
+        
+        else:
+            print('Form is NOT valid! Borrowed value greater than current stock')
+            return JsonResponse({'error': 'Invalid form submission'}, status=400)
 
     else:
         print('Form is NOT valid!')
@@ -185,7 +194,48 @@ def save_borrow_form(request):
         print('Choices for item_stock:', item_stock_choices)
 
         return JsonResponse({'error': 'Invalid form submission'}, status=400)
+    
+def guest_save_borrow_form(request):
+    borrow_form = BorrowForm(request.POST)
+    user_form = UserForm(request.POST)
+    
+    stock_id = request.POST.get('stock_id')
+    stock_instance = get_object_or_404(Stock, pk=stock_id)
 
+    if borrow_form.is_valid() and user_form.is_valid():
+        item_borrowed_value = borrow_form.cleaned_data['item_quantity']
+        
+        if item_borrowed_value <= stock_instance.item_current_quantity and item_borrowed_value <= stock_instance.item_pristine_quantity:
+            borrow_instance = borrow_form.save(commit=False)
+            
+            # Get the corresponding User object from the database
+            user_id = user_form.cleaned_data['user'].id
+
+            user = User.objects.get(id=user_id)
+            
+            borrow_instance.item_borrower = user  # Assign the User object to item_borrower
+            borrow_instance.save()
+            
+            stock_instance.item_current_quantity -= item_borrowed_value
+            stock_instance.item_pristine_quantity -= item_borrowed_value
+            stock_instance.item_borrowed_quantity += item_borrowed_value
+            stock_instance.save()
+            
+            unreturned_instance = Unreturned_Item.objects.create(item_borrowed=borrow_instance, item_days_not_returned=0)
+            unreturned_instance.save()
+
+            return JsonResponse({'message': 'Form submitted successfully'})
+        else:
+            print('Form is NOT valid! Borrowed value greater than current stock')
+            return JsonResponse({'error': 'Invalid form submission'}, status=400)
+    else:
+        print('Form is NOT valid!')
+        print('Errors:', borrow_form.errors.as_data(), user_form.errors.as_data())
+
+        item_stock_choices = borrow_form.fields['item_stock'].queryset.values_list('pk', flat=True)
+        print('Choices for item_stock:', item_stock_choices)
+
+        return JsonResponse({'error': 'Invalid form submission'}, status=400)
 def save_item_form(request):
     item_form = ItemForm(request.POST, request.FILES)
     
@@ -207,7 +257,8 @@ def save_stock_form(request):
     if stock_form.is_valid():
         item_instance = get_object_or_404(Item, item_id = specific_item)
         model_instance = stock_form.save(commit=False)
-        model_instance.item_current_quantity = model_instance.item_total_quantity
+        model_instance.item_current_quantity = model_instance.item_pristine_quantity
+        
         model_instance.item_borrowed_quantity = 0
         model_instance.item_information = item_instance
         model_instance.save()
@@ -243,6 +294,8 @@ def get_item_inventory(request):
                    'item_description' : item.item_information.item_description,
                    'item_photo' : item.item_information.item_photo.url,
                    'item_total' : item.item_total_quantity,
+                   'item_pristine' : item.item_pristine_quantity,
+                   'item_damaged' : item.item_damaged_quantity,
                    'item_current' : item.item_current_quantity,
                    'item_borrowed' : item.item_borrowed_quantity,
                    'stock_id' : item.pk} for item in item_inventory]
@@ -293,7 +346,6 @@ def search_items_guest(request):
         return redirect('guest_home')
 
     return render(request, 'home/guest_home.html', {'results': results, 'query': query})
-
 
 def delete_item(request):
     item_pk = request.GET.get('item_id', None)
