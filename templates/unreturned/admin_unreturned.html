@@ -3,8 +3,11 @@
 <html>
     <head>
         <link rel="stylesheet" href="{% static 'unreturned/unreturnedadminstyle.css' %}">
+        <link rel="stylesheet" href="{% static 'unreturned/pop_up_form.css' %}">
         <title>ADMIN UNRETURNED</title>
     </head>
+
+
     <body>
         <header>
             <div class="logo left">
@@ -18,7 +21,7 @@
             </div>
             <div class="logo right">
                 <img src="static/unreturned/unreturnedadmin/CSS.png" alt="Right Logo">
-            </div> 
+            </div>
         </header>
         <div class="head"></div>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -32,14 +35,9 @@
             </div>
         </nav>
         </div>
-        
+
         <div id="mainForm" class="form">
         <div id="container" class="rounded_corners">
-
-            <form method="GET" action="{% url 'admin_search_unreturned' %}" class="search-form">
-                <input class="search-bar" type="text" name="q" value="{{ query }}" placeholder="Search for name/borrower">
-                <input class="search-button" type="submit" value="Search" name="b">
-            </form>
 
             <!-- test block code -->
             <!-- template for the items -->
@@ -58,41 +56,54 @@
                         <p id="item_details">
                             Time Borrowed: {{ item.item_borrowed.item_date_borrowed }}<br />
                             Time Returned: {{ item.item_borrowed.item_date_returned }}<br />
-                            Borrower: {{ item.item_borrowed.item_borrower }}<br />
-                            {% if item.item_borrowed.guest_name %}
-                                Guest Borrower: {{ item.item_borrowed.guest_name }}<br />
-                            {% endif %}
-                            {% if item.item_borrowed.guest_course %}
-                                Guest Course: {{ item.item_borrowed.guest_course }}<br />
-                            {% endif %}
-                            {% if item.item_borrowed.guest_section %}
-                                Guest Section: {{ item.item_borrowed.guest_section }}<br />
-                            {% endif %}
+                            Borrower: {{ item.item_borrowed.item_borrower }}
                         </p>
                         <p id="item_quantity">Item Quantity: {{ item.item_borrowed.item_quantity }}</p>
 
                     </div>
                 </div>
                 <div id="bottom">
-                    
+
                 </div>
                 <div class="recent-lines">
-
                     <div id="btn_con">
-                        <button id="return_btn" class="rounded_corners" onclick="showReturnForm('{{item.item_borrowed.borrow_form_id}}')">Return</button>
+                        <button id="return_btn" class="rounded_corners" onclick="show_hide_pop_up()">Return</button>
+                        <!-- <a href="{% url 'admin_return_item' item.id item.item_borrowed.item_stock.id item.item_borrowed.borrow_form_id %}">Return</a></button> -->
                     </div>
                 </div>
+            </div>
+
+            <div class="test_pop_up" id="popup_form" style="display: none;">
+
+                <form action="{% url 'admin_return_item' item.id item.item_borrowed.item_stock.id item.item_borrowed.borrow_form_id %}" method="post"> {% csrf_token %}
+
+                    <div class="input_section">
+
+                        <label for="pristine">Pristine</label>
+                        <input type="number" id="pristine" name="pristine" required >
+
+                        <label for="damaged">Damaged</label>
+                        <input type="number" name="damaged" id="damaged" required >
+
+                    </div>
+
+                    <div class="btn_section">
+
+                        <input type="button" value="Cancel" onclick="show_hide_pop_up()">
+                        <input type="submit" name="return" value="Return">
+
+                    </div>
+
+                </form>
+
             </div>
             {% endfor %}
             <!-- template for the items -->
         {% include 'home/result_list_admin.html' %}
 
     </div>
-    <div id="return_container" class="return_container">
-                
-    </div>
 </div>
-<script defer src="{% static 'unreturned/unreturned.js' %}"></script>
+<script defer src="{% static 'unreturned/buttons_for_unreturned.js' %}"></script>
 
     </body>
 </html>
