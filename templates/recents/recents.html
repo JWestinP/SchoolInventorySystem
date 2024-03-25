@@ -25,18 +25,18 @@
         </div> 
     </header>
     <div class="head"></div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-                <a href="{% url 'home' %}" class="navbar-brand">Home</a>
-                <a href="{% url 'recents' %}" class="navbar-brand">Recents</a>
-                <a href="{% url 'unreturned' %}" class="navbar-brand">Unreturned</a>
-                <a href="{% url 'notification' %}" class="navbar-brand">Notification</a>
-                <a href="{% url 'userprofile' %}" class="navbar-brand">Account</a>
-                <a href="{% url 'logout' %}" class="navbar-brand">Logout</a>
-        </div>
-    </nav>
-        </div> 
-        <div id="mainForm" class="form">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                    <a href="{% url 'home' %}" class="navbar-brand">Home</a>
+                    <a href="{% url 'recents' %}" class="navbar-brand">Recents</a>
+                    <a href="{% url 'unreturned' %}" class="navbar-brand">Unreturned</a>
+                    <a href="{% url 'notification' %}" class="navbar-brand">Notification</a>
+                    <a href="{% url 'userprofile' %}" class="navbar-brand">Account</a>
+                    <a href="{% url 'logout' %}" class="navbar-brand">Logout</a>
+            </div>
+        </nav>
+    </div> 
+    <div id="mainForm" class="form">
         <div id="container" class="rounded_corners">
 
             <form method="GET" action="{% url 'faculty_search_recents' %}" class="search-form">
@@ -58,7 +58,17 @@
                         <p id="item_details">
                             Time Borrowed: {{items.item_date_borrowed}}<br />
                             Time Returned: {{items.item_date_returned}}<br />
-                            Borrower: {{items.item_borrower}}
+                            Borrower: {{items.item_borrower}} <br />
+
+                            {% if items.guest_name %}
+                               Guest Borrower: {{ items.guest_name }} <br />
+                            {% endif %}
+                            {% if items.guest_course %}
+                               Guest Borrower: {{ items.guest_course }} <br />
+                            {% endif %}
+                            {% if items.guest_section %}
+                               Guest Borrower: {{ items.guest_section }} <br />
+                            {% endif %}
                         </p>
                         <p id="item_quantity">Item Quantity: {{items.item_quantity}}</p>
                       
@@ -71,10 +81,8 @@
                 <div class="recent-lines"></div>
             </div>
             {% endfor %}
-
-
         </div>
-        </div>
+    </div>
         {% include 'home/result_list.html' %}
     </body>
 </html>

@@ -4,9 +4,8 @@ from django.forms import ModelForm
 from recents.models import Borrowed_Item
 from .models import *
 from django.core.exceptions import ValidationError
+from django.contrib.auth.models import User
 
-
-    
 class SearchForm(forms.Form):
     search_query = forms.CharField(max_length=128, required=False)
 
@@ -25,7 +24,22 @@ class BorrowForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
 
         self.fields['item_stock'].queryset = Stock.objects.all()
-        
+
+class UserForm(forms.ModelForm):
+    user = forms.ModelChoiceField(queryset=User.objects.all(),
+                                  widget=forms.Select(attrs={'class': 'form-control'}))
+
+    class Meta:
+        model = User
+        fields = ['user']
+        labels = {
+            'user': 'User',
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(UserForm, self).__init__(*args, **kwargs)
+        self.fields['user'].label_from_instance = lambda obj: f'{obj.id} - {obj.username}'
+
 class ItemForm(forms.ModelForm):
     class Meta:
         model = Item

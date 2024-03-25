@@ -6,7 +6,8 @@ class Category(models.Model):
     
     def __str__(self):
         return self.item_category
-    
+
+            
 class Item(models.Model):
     item_id = models.BigAutoField(primary_key = True)
     item_name = models.CharField(max_length = 128)
