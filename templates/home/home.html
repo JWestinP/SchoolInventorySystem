@@ -7,76 +7,96 @@
         <title>Faculty Home</title>
     <body>
         
-        <header>
-            <div class="logo left">
-                <img src="/static/home/adminhome/LSPU.png" alt="Left Logo">
+        <div class="header">
+            
+            <div class="left-section">
+                <img class="lspu-logo" src="{% static 'home/logo/lspu-logo.png' %}">
             </div>
             
             <div class="middle-section">
-                <form method="GET" action="{% url 'search_items' %}" class="search-form">
-                    <input class="search-bar" type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
-                    <input class="search-button" type="submit" value="Search" name="b">
+                <form method="GET" action="{% url 'search_items' %}">
+                    <input class="search-bar" type="text" placeholder="Search for name/id/category" name="q" value="{{ query }}">
+                    <input class="search-button" type="submit" value="Search">
                 </form>
             </div>
 
-            <div class="logo right">
-                <img src="/static/home/adminhome/CSS.png" alt="Right Logo">
-            </div> 
-        </header>
+             <div class="right-section">
+                 <img class="ccs-logo" src="{% static 'home/logo/ccs-logo.jpg' %}" >
+             </div>
+        
+         </div>
+    
 
         <div class="head"></div>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-                <div class="container">
-                    <a href="{% url 'home' %}" class="navbar-brand">Home</a>
-                    <a href="{% url 'recents' %}" class="navbar-brand">Recents</a>
-                    <a href="{% url 'unreturned' %}" class="navbar-brand">Unreturned</a>
-                    <a href="{% url 'notification' %}" class="navbar-brand">Notification</a>
-                    <a href="{% url 'userprofile' %}" class="navbar-brand">Account</a>
-                    <a href="{% url 'logout' %}" class="navbar-brand">Logout</a>
+         
+            <div class="buttons-box">
+                <div class="button-grid">
+                    <a href="{% url 'home' %}" class="buttons-tabs">Home</a>
+                    <a href="{% url 'recents' %}" class="buttons-tabs">Recents</a>
+                    <a href="{% url 'unreturned' %}" class="buttons-tabs">Unreturned</a>
+                    <a href="{% url 'notification' %}" class="buttons-tabs">Notification</a>
+                    <a href="{% url 'userprofile' %}" class="buttons-tabs">Account</a>
+                    <a href="{% url 'logout' %}" class="buttons-tabs">Logout</a>
                 </div>
-            </nav>
+            </div>
 
                 <div id="mainForm" class="form">
                 
-                    <div class="item">   
+                    <div class="category-title-button">
+                        <p class="category-container-title">
+                            Categories 
+                        </p>  
+                        
+                        <div id="back-button">
+                        
+                        </div>
+                    </div>
+
+                    <div class="item">   <!-- category-grid -->
 
                         <div class="categories" id="category_container">
                             {% for category in categories %}
+                            <!-- CATEGORY-PREVIEW -->
                             <button onclick="showItem('{{ category }}')" class="category_button">{{ category }}</button>
                             {% endfor %}
                            
                         </div>
                         
-                        {% include 'home/result_list.html' %}
+                        
                 
                         <div id="category_item" class="category_div">
-                            <div id="item_list">
+                            <div id="item_list" class="items-div">
                 
                             </div>
                             <div id="back-button">
                                 
                             </div>  
-                            
-                        </div>
-                </div>
-
-            <h1>{{ current_category }}</h1>
-
-            <div class="item_information" id="item_information">
-                <div class="item_header" id="item_header">
-                       
-                </div>
-
-                <div class="item_body" id="item_body">
-
-                </div>
-                <div class="item_form" id="item_form">
-
-                </div>
+                            <h1>{{ current_category }}</h1>
+                                <div class="item">
+                                
+                                </div>
+                            {% include 'home/result_list.html' %}
+                        
                 
-            </div>
 
-        </div>
+            
+
+                            <div class="item_information" id="item_information">
+                                <div class="item_header" id="item_header">
+                                    
+                                </div>
+
+                                <div class="item_body" id="item_body">
+
+                                </div>
+                                <div class="item_form" id="item_form">
+
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+             </div>
              
         <script defer src="{% static 'home/homescript.js' %}"></script>
     </body>

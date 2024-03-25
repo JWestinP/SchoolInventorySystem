@@ -198,6 +198,21 @@ Start coding here
     padding: 10px 15px;
 }
 
+/* start- Added -drin */
+.items_div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  align-content: space-evenly;
+  gap: 1em;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+/* end- Added -drin */
+
 body {
   /* Your existing body styles */
   line-height:1;
@@ -212,8 +227,7 @@ body {
   font-family: Arial, sans-serif; /* Adjust the font family as needed */
   padding-top: 100px;
 }
-  
-header {
+.header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -221,14 +235,14 @@ header {
   padding: 5px;
   border-bottom: 20px solid rgb(230,124,55); /* Bottom color */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visibility */
-  z-index: 1000;
+
   position: fixed;
   top: 0;
   right: 0;
   left: 0;
 }
 
-.logo.left {
+.left-section {
   width: 100px;
   display: flex;
   align-items: center;
@@ -236,72 +250,77 @@ header {
   flex-shrink: 0;
 }
 
-.logo.right {
-  width: 100px;
-  display: flex;
-  align-items: center;
-  margin-right: 10px;
-  flex-shrink: 0;
-}
-.logo.left img {
-  width: 135px;
-  margin-right: auto;
-}
-  
-.logo.right img {
-  width: 80px;
-  margin-left: auto;
-}
-
-.head {
-  display: flex;
-  background-color: orange;
-  padding: 10px;
+.lspu-logo{
+  width: 90px;
+  border-radius:50px;
 }
 
 .middle-section {
-  flex: 1;
-  margin-left: 10px;
-  margin-right: 10px;
-  display: flex;
-  align-items: center;
+  flex: 1 !important;
+  margin-left: 10px !important;
+  margin-right: 10px !important;
+  display: flex !important;
+  align-items: center !important;
 }
 
-.search-form {
-  display: flex; /* Add this property to make the form a flex container */
+form {
+  display: flex !important;
+  flex: 1 !important;
+  align-items: center !important;
 }
 
 .search-bar {
-  flex: 1!important;
-  height: 40px!important;
-  padding: 10px!important;
-  margin: 5px!important;
-  border-radius: 3px!important;
-  outline: none!important;
-  background-color: white!important;
-  color: #000000!important;
-  font-size: 15px!important;
-  box-shadow: inset 1px 2px 5px rgba(0, 0, 0, 0.2)!important;
+  display: flex;
+  flex: 1;
+  height: 14px;
+  padding: 10px;
+  margin: 5px;
+  border: none;
+  border-radius: 3px;
+  outline: none;
+  background-color: white;
+  color: #000000; /* Set text color to be visible on the background color */
+  font-size: 15px;
+  box-shadow: inset 1px 2px 5px rgba(0, 0, 0, 0.2);
+  width: 0;
 }
 
-.search-bar::placeholder {
-  font-family: Arial, Helvetica, sans-serif!important;
-  font-size: 15px!important;
+.search-bar::placeholder{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px; 
+  
 }
 
 .search-button {
-  background-color: rgb(230, 124, 55)!important;
-  color: #ffffff!important;
-  padding: 10px 15px!important;
-  border-radius: 3px!important;
-  cursor: pointer!important;
-  margin-left: 10px!important;
+  background-color: rgb(230,124,55) !important; /* Set the submit button color */
+   color: #ffffff !important;
+  padding: 10px 15px !important;
+  border: none !important;
+  border-radius: 3px !important;
+  margin-right: 10px !important;
+  cursor: pointer !important;
+  width: fit-content !important;
+  height: 40px;
+  margin-top: 7px;
+} 
+
+.search-button:hover  {
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2) !important;
 }
 
-.search-button:hover {
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2)!important;
+.right-section {
+  width: 100px;
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  flex-shrink: 0;
 }
 
+.ccs-logo{
+  width: 92px;
+  border-radius:46px;
+}
+/* 
 input[name="q"] {
     width: 1060px;
     padding: 6px;
@@ -323,69 +342,81 @@ form input[name="b"] {
   cursor: pointer !important;
   margin-left: 10px !important;
   
+} */
+
+/* Buttons (home and logout) */
+.buttons-box {
+  background-color: rgb(255, 255, 255);
+  padding-top: 3px;
+  padding-bottom: 3px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.20); /* Optional: Add a shadow for better visibility */
+  margin-top: 40px;
+  margin-left: 70px;
+  margin-right: 70px;
+  border-radius: 5px;
 }
 
-  /* navigations */
-  nav {
-    background-color: #f8f9fa;
-    padding: 15px 0;
-    border-bottom: 1px solid #dee2e6;
-    box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.1);
-    margin: 30px 70px 0; /* Adjusted margin for better responsiveness */
-    border-radius: 15px;
-  }
+.button-grid{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 5px;
+  flex-wrap: wrap;
+  align-content: first baseline;
+  gap: 1em;
+}
+
+.buttons-tabs {
+  background-color: rgb(255,255,255);
+  border: none;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 16px;
+  padding-right: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  vertical-align: top;
+  transition-duration: 0.4s;
+}
   
-  .container, .recent-container{
-    display: flex;
-    justify-content: space-between;
-    
-  }
-  .item-container{
-    display: flex;
-    justify-content: space-between;
-    
-  }
-  .navbar-brand {
-    color: black;
-    font-weight: bold;
-    font-size: 1.5rem;
-    margin-right: 30px;
-    margin-left: 30px;
-    text-decoration: none; /* Remove underline */
-    position: relative; /* Position for the pseudo-element */
-    transition: color 0.3s ease, font-weight 0.3s ease; /* Add a smooth color and font weight transition */
-  }
-  
-  /* Create an underline pseudo-element */
-  .navbar-brand::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: firebrick; /* Initial underline color */
-    visibility: hidden;
-    transform: scaleX(0); /* Initially invisible */
-    transition: all 0.3s ease; /* Add a smooth transition for visibility and scale */
-  }
-  
-  /* Add hover effect */
-  .navbar-brand:hover {
-    color:firebrick; /* Change text color on hover */
-    font-weight: lighter; /* Change font weight on hover, adjust as needed */
-  }
-  
-  .navbar-brand:hover::before {
-    visibility: visible;
-    transform: scaleX(1); /* Make the underline visible and scale it */
-  }
+.buttons-tabs:hover  {
+  color: rgb(230,124,55);
+  text-decoration: underline solid  rgb(230,124,55) 2px;
+}
+
+.buttons-tabs:active {
+  color: rgb(230,124,55);
+  text-decoration: underline solid  rgb(230,124,55) 2px;
+}
+
+a{
+  font-size: 20px;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+  font-family: Arial;
+}
+
+a:link { 
+  text-decoration: none; 
+} 
+
+a:hover { 
+  color: rgb(230,124,55);
+  text-decoration: underline solid  rgb(230,124,55) 2px;
+} 
+
+a:active { 
+  color: rgb(230,124,55);
+  text-decoration: underline solid  rgb(230,124,55) 2px;
+} 
+/* buttons end */
+
   .form{
-    background-color: #f8f9fa;
+    background-color: rgb(255, 255, 255);
     padding: 15px 0;
     border: 2px solid #dee2e6;
     border-bottom: 1px solid #dee2e6;
-    box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.20);
     margin: 30px 70px 0; /* Adjusted margin for better responsiveness */
     border-radius: 15px;
   }
@@ -941,14 +972,21 @@ form input[name="b"] {
    /* bagong code*/
 
   /*home categories*/
+  /* start -Added Drin */
   .categories {
     display: flex;
-    justify-content: space-around;
-    margin: 20px 0;
-    font-family: Arial, Helvetica, sans-serif;
-   
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    align-content: space-evenly;
+    gap: 1em;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+   font-family: Arial, Helvetica, sans-serif; 
   }
-
+/* end -Added Drin */
   
     /*display: flex;
     justify-content: center;
@@ -1025,7 +1063,7 @@ form input[name="b"] {
   .category_button:nth-child(2){
     background-image: url(../home/adminhome/furnitures.png);
     background-size: 160px;
-    background-position: center;
+    background-position: right;
   }
   .category_button:nth-child(3){
     background-image: url(../home/adminhome/documents.png);
@@ -1738,7 +1776,62 @@ button:hover {
   flex-shrink: 0;
 }
 
+/* start - new added -drin */
+.items-grid{
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1em;
+  padding: 10px;
+}
 
+.items {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+  border: 2px solid rgb(171,177,177);
+  border-radius: 6px;
+  height: 180px;
+  width: 130px;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px; 
+  padding-bottom: 20px;
+  background-color: rgb(255, 255, 255);
+  flex-shrink: 0;
+}
+
+.items:hover {
+  border: solid  rgb(230,124,55) 2px;
+}
+
+.item-pic {
+  display: flex;
+  width: 130px;
+  align-items: center;
+  margin-right: 10px;
+  padding-bottom: 5px;
+  border-bottom: 0.5px solid rgb(171,177,177);
+}
+
+.item-name{
+  margin-top: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.items-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 5px;
+  flex-wrap: wrap;
+  align-content: center;
+  gap: 1em;
+}
+/* end - new added -drin */
 
   /* Media queries for responsiveness */
   @media screen and (max-width: 768px) {

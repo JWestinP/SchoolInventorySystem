@@ -230,12 +230,22 @@ function showItem(category) {
                             data.items.forEach(selectedItem => {
                                 const imageUrl = `${selectedItem.item_photo}`
                                 const itemHTML = `
-                                        <div class="item-box">
-                                            <img src="${imageUrl}" alt="${selectedItem.item_name}" style="width: 100px; height: 100px;">
-                                            <p>${selectedItem.item_name} </p>
-                                            <button data-delete-target="${selectedItem.item_id}" onclick="deleteItem(${selectedItem.item_id})"><i class="fa fa-trash"></i></button>
-                                            
-                                        </div>      
+                                <div class="items-grid">
+                        
+                                <div class="items">
+    
+                                    <div class="items-pic">
+                                        <img src="${imageUrl}" alt="${selectedItem.item_name}" class="item-pic">
+                                    </div>  
+    
+                                    <div class= "items-button">
+                                        <button data-item-target="${selectedItem.item_id}" class="item_button">${selectedItem.item_name}</button>
+    
+                                    </div>
+    
+                                </div>
+    
+                            </div>    
                                 `
                                 itemContainer.innerHTML += itemHTML
         
