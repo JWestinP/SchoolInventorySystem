@@ -135,9 +135,7 @@ function fetchData(itemId) {
 
                 else {
                     const formContainer = document.getElementById('item_form');
-                    formContainer.innerHTML = `
-                    <h1>Item currently out of stock</h1>
-                    `
+                    formContainer.innerHTML = ''
                 }
 
                 openItem(informationId);

@@ -10,7 +10,6 @@ from django.core.exceptions import ObjectDoesNotExist
 
 import json
 
-# Create your views here.
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -73,7 +72,7 @@ def get_user_history(request):
         return JsonResponse({'user_history': serialized_data})
     
     except ObjectDoesNotExist:
-        # Handle the case where the user with the specified ID doesn't exist
+        
         return JsonResponse({'error': 'User not found'}, status=404)
     
 def get_user_unreturned(request):

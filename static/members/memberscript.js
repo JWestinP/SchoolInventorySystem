@@ -20,13 +20,11 @@ function showUser(user_pk){
                 if (response && response.user) {
                     var user = response.user;
                 
-                    // Access the data from the response
                     var userId = user.id;
                     var userName = user.username;
                     var totalRecents = response.total_recents;
                     var totalUnreturned = response.total_unreturned;
                 
-                    // Update the HTML content
                     document.getElementById('user_info').innerHTML = `
                         <p>User Name: ${userName}</p>
                         <button id="user_recents" onclick="showUserHistory(${userId})">Total Recents: ${totalRecents}</button>
@@ -63,7 +61,6 @@ function showUserHistory(user_pk) {
                     var userHistory = response.user_history;
                     var itemCounts = {};
 
-                    // Loop through each Borrowed_Item in userHistory
                     userHistory.forEach(function (borrowedItem) {
                         var itemId = borrowedItem.item_stock.item_information.item_id;
                         var itemStock = borrowedItem.item_stock.item_information.item_category
@@ -76,7 +73,6 @@ function showUserHistory(user_pk) {
                         }
                     });
 
-                    // Generate HTML content
                     var htmlContent = '<h2>User History</h2><ul>';
                     for (var itemId in itemCounts) {
                         console.log(itemId)
@@ -85,7 +81,6 @@ function showUserHistory(user_pk) {
                     }
                     htmlContent += '</ul>';
 
-                    // Insert HTML content into the userHistoryContainer
                     historyContainer.innerHTML = htmlContent;
 
                 } else {
@@ -117,7 +112,6 @@ function showUserUnreturned(user_pk) {
                     var userUnreturned = response.user_unreturned;
                     var itemCounts = {};
 
-                    // Loop through each Borrowed_Item in userHistory
                     userUnreturned.forEach(function (unreturnedItem) {
                         var itemId = unreturnedItem.item_borrowed.item_stock.item_information.item_id;
 
@@ -128,7 +122,6 @@ function showUserUnreturned(user_pk) {
                         }
                     });
 
-                    // Generate HTML content
                     var htmlContent = '<h2>User Unreturned</h2><ul>';
                     for (var itemId in itemCounts) {
                         console.log(itemId)
@@ -137,7 +130,6 @@ function showUserUnreturned(user_pk) {
                     }
                     htmlContent += '</ul>';
 
-                    // Insert HTML content into the userHistoryContainer
                     historyContainer.innerHTML = htmlContent;
 
                 } else {

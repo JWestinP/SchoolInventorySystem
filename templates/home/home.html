@@ -52,11 +52,10 @@
                         </div>
                     </div>
 
-                    <div class="item">   <!-- category-grid -->
+                    <div class="item">   
 
                         <div class="categories" id="category_container">
                             {% for category in categories %}
-                            <!-- CATEGORY-PREVIEW -->
                             <button onclick="showItem('{{ category }}')" class="category_button">{{ category }}</button>
                             {% endfor %}
                            

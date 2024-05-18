@@ -1,4 +1,3 @@
-/* nothing for now */
 #popup_form {
     display: none;
     position: relative;
@@ -32,18 +31,3 @@
     outline: 2px black;
 }
 
-/* #popup_form form .btn_section{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-}
-
-#popup_form button{
-    height: 30px;
-    width: fit-content;
-    outline-style: solid;
-    outline: 1px solid orange;
-    background: none;
-    border: none;
-    margin: 0px 15px;
-} */

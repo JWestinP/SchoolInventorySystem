@@ -24,8 +24,6 @@ def admin_userprofile(request):
 @login_required
 @allowed_users(allowed_roles=['Faculty'])
 def editprofile(request):
-    # Retrieve the user's profile
-    #user_profile = User.objects.get(pk=request.user.id).profile
     user_profile = request.user.profile
 
 
@@ -37,12 +35,10 @@ def editprofile(request):
             p_form.save()
             messages.success(request, f'Your account has been updated!')
 
-             # Check user's group and redirect accordingly
             if request.user.groups.filter(name='Admin').exists():
                 return redirect('admin_userprofile')
             else:
                 return redirect('userprofile')
-            #return redirect('userprofile')
     else:
         u_form = UserUpdateForm(instance=request.user)
         p_form = ProfileUpdateForm(instance=user_profile)
@@ -56,8 +52,7 @@ def editprofile(request):
 @login_required
 @allowed_users(allowed_roles=['Admin'])
 def editprofile_admin(request):
-    # Retrieve the user's profile
-    #user_profile = User.objects.get(pk=request.user.id).profile
+
     user_profile = request.user.profile
 
 
@@ -69,12 +64,10 @@ def editprofile_admin(request):
             p_form.save()
             messages.success(request, f'Your account has been updated!')
 
-             # Check user's group and redirect accordingly
             if request.user.groups.filter(name='Admin').exists():
                 return redirect('admin_userprofile')
             else:
                 return redirect('userprofile')
-            #return redirect('userprofile')
     else:
         u_form = UserUpdateForm(instance=request.user)
         p_form = ProfileUpdateForm(instance=user_profile)

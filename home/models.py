@@ -14,7 +14,7 @@ class Item(models.Model):
     item_category = models.ForeignKey(Category, on_delete=models.CASCADE)
     item_description = models.CharField(max_length = 256)
     item_photo = models.ImageField(blank = True, upload_to='item_photo')
-    
+    item_one_time_borrow = models.BooleanField()
     def __str__(self):
         return f"{self.item_id} - {self.item_name} ({self.item_category})"
 

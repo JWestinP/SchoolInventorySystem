@@ -21,7 +21,6 @@ time, mark, audio, video {
 }
 
 body {
-    /* Your existing body styles */
     line-height:1;
     line-height:1;
     height: 100%;
@@ -31,20 +30,20 @@ body {
     margin: 0; 
     overflow-x: hidden;
     overflow-y : scroll;
-    font-family: Arial, sans-serif; /* Adjust the font family as needed */
+    font-family: Arial, sans-serif; 
     padding-top: 100px;
   }
 
 
-/* Search bar / header */
+
 .header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: rgb(113,26,33); /* Top color for the header */
+    background-color: rgb(113,26,33); 
     padding: 5px;
-    border-bottom: 20px solid rgb(230,124,55); /* Bottom color */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visibility */
+    border-bottom: 20px solid rgb(230,124,55); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
   
     position: fixed;
     top: 0;
@@ -88,7 +87,7 @@ form {
     border-radius: 3px;
     outline: none;
     background-color: white;
-    color: #000000; /* Set text color to be visible on the background color */
+    color: #000000;
     font-size: 15px;
     box-shadow: inset 1px 2px 5px rgba(0, 0, 0, 0.2);
     width: 0;
@@ -100,7 +99,7 @@ form {
 }
   
 .search-button {
-    background-color: rgb(230,124,55); /* Set the submit button color */
+    background-color: rgb(230,124,55); 
     color: #ffffff;
     padding: 10px 15px;
     border: none;
@@ -126,7 +125,6 @@ form {
     border-radius:46px;
 }
   
-/* Buttons (home and logout) */
 .guest-button-grid{
     display: flex;
     flex-direction: row;
@@ -182,7 +180,6 @@ a:active {
     color: rgb(230,124,55);
     text-decoration: underline solid  rgb(230,124,55) 2px;
 } 
-/* buttons end */
 
 
 article,aside,details,figcaption,figure,
@@ -204,14 +201,12 @@ q:before, q:after {
     content:none;
 }
 
-/* change colours to suit your needs */
 ins {
     background-color:#ff9;
     color:#000;
     text-decoration:none;
 }
 
-/* change colours to suit your needs */
 mark {
     background-color:#ff9;
     color:#b1b7a3;
@@ -233,7 +228,6 @@ table {
     border-spacing:0;
 }
 
-/* change border colour to suit your needs */
 hr {
     display:block;
     height:1px;
@@ -247,9 +241,7 @@ input, select {
     vertical-align:middle;
 }
 
-/*
-Start coding here
-*/
+
 .category-container {
     background-color: rgb(255, 255, 255);
     padding: 20px;
@@ -373,7 +365,6 @@ Start coding here
 }
 
 
-/* List of items */
 .items_div {
     display: flex;
     flex-direction: row;
@@ -486,7 +477,6 @@ Start coding here
 }
 
 
-/* BORROWING ITEM BOX */
 #cleaning {
     display: none;
 }

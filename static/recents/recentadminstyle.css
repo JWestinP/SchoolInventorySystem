@@ -170,10 +170,8 @@ h1 {
     padding: 10px 15px;
 }
 
-/* styles.css */
 
 body {
-  /* Your existing body styles */
   line-height:1;
   line-height:1;
   height: 100%;
@@ -183,7 +181,7 @@ body {
   margin: 0; 
   overflow-x: hidden;
   overflow-y : scroll;
-  font-family: Arial, sans-serif; /* Adjust the font family as needed */
+  font-family: Arial, sans-serif; 
   padding-top: 100px;
 }
 
@@ -193,22 +191,22 @@ body {
     padding: 10px;
   }
   
-  header {
+  .header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: rgb(113,26,33); /* Top color for the header */
+    background-color: rgb(113,26,33); 
     padding: 5px;
-    border-bottom: 20px solid rgb(230,124,55); /* Bottom color */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visibility */
+    border-bottom: 20px solid rgb(230,124,55); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  
     position: fixed;
     top: 0;
     right: 0;
     left: 0;
-    z-index: 1000
   }
   
-  .logo.left {
+  .left-section {
     width: 100px;
     display: flex;
     align-items: center;
@@ -216,203 +214,198 @@ body {
     flex-shrink: 0;
   }
   
-  .logo.right {
-    width: 100px;
-    display: flex;
-    align-items: center;
-    margin-right: 10px;
-    flex-shrink: 0;
+  .lspu-logo{
+    width: 90px;
+    border-radius:50px;
   }
-  .logo.left img {
-    width: 135px;
-    margin-right: auto;
-  }
-    
-  .logo.right img {
-    width: 80px;
-    margin-left: auto;
-  }
-
+  
   .middle-section {
-    flex: 1;
-    margin-left: 10px;
-    margin-right: 10px;
-    display: flex;
-    align-items: center;
+    flex: 1 !important;
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+    display: flex !important;
+    align-items: center !important;
   }
   
-  .search-form {
-    display: flex; /* Add this property to make the form a flex container */
+  form {
+    display: flex !important;
+    flex: 1 !important;
+    align-items: center !important;
   }
   
   .search-bar {
-    flex: 1!important;
-    height: 40px!important;
-    padding: 10px!important;
-    margin: 5px!important;
-    border-radius: 3px!important;
-    outline: none!important;
-    background-color: white!important;
-    color: #000000!important;
-    font-size: 15px!important;
-    box-shadow: inset 1px 2px 5px rgba(0, 0, 0, 0.2)!important;
+    display: flex;
+    flex: 1;
+    height: 14px;
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 3px;
+    outline: none;
+    background-color: white;
+    color: #000000; 
+    font-size: 15px;
+    box-shadow: inset 1px 2px 5px rgba(0, 0, 0, 0.2);
+    width: 0;
   }
   
-  .search-bar::placeholder {
-    font-family: Arial, Helvetica, sans-serif!important;
-    font-size: 15px!important;
+  .search-bar::placeholder{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px; 
+    
   }
   
   .search-button {
-    background-color: rgb(230, 124, 55)!important;
-    color: #ffffff!important;
-    padding: 10px 15px!important;
-    border-radius: 3px!important;
-    cursor: pointer!important;
-    margin-left: 10px!important;
-  }
-  
-  .search-button:hover {
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2)!important;
-  }
-  
-    
-  input[name="q"] {
-      width: 1050px;
-      padding: 6px;
-      font-size: 16px;
-      border: 2px solid black;
-      border-radius: 4px;
-      margin-right: 14px;
-      
-  }
-  
-  form input[name="b"] {
-    width: 80px !important;
-    font-size: 14px !important;
-    margin-right: 14px !important;
-    background-color: rgb(230, 124, 55) !important;
-    color: #ffffff !important;
-    padding: 8px 12px !important;
-    border: 2px solid orange !important;
-    border-radius: 5px !important;
+    background-color: rgb(230,124,55) !important; 
+     color: #ffffff !important;
+    padding: 10px 15px !important;
+    border: none !important;
+    border-radius: 3px !important;
+    margin-right: 10px !important;
     cursor: pointer !important;
-    margin-left: 10px !important;
-    
+    width: fit-content !important;
+    height: 40px;
+    margin-top: 7px;
+  } 
+  
+  .search-button:hover  {
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2) !important;
   }
   
-  
-  /* navigations */
-  nav {
-    background-color: #f8f9fa;
-    padding: 15px 0;
-    border-bottom: 1px solid #dee2e6;
-    box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.1);
-    margin: 30px 70px 0; /* Adjusted margin for better responsiveness */
-    border-radius: 15px;
-  }
-  
-  .container, .recent-container{
+  .right-section {
+    width: 100px;
     display: flex;
-    justify-content: space-between;
-    
+    align-items: center;
+    margin-right: 10px;
+    flex-shrink: 0;
   }
-  .item-container{
+  
+  .ccs-logo{
+    width: 92px;
+    border-radius:46px;
+  }
+  
+  
+  .buttons-box {
+    background-color: rgb(255, 255, 255);
+    padding-top: 3px;
+    padding-bottom: 3px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.20);
+    margin-top: 40px;
+    margin-left: 70px;
+    margin-right: 70px;
+    border-radius: 5px;
+  }
+  
+  .button-grid{
     display: flex;
-    justify-content: space-between;
-    
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 5px;
+    flex-wrap: wrap;
+    align-content: first baseline;
+    gap: 1em;
   }
-  .navbar-brand {
-    color: black;
+  
+  .buttons-tabs {
+    background-color: rgb(255,255,255);
+    border: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    vertical-align: top;
+    transition-duration: 0.4s;
+  }
+    
+  .buttons-tabs:hover  {
+    color: rgb(230,124,55);
+    text-decoration: underline solid  rgb(230,124,55) 2px;
+  }
+  
+  .buttons-tabs:active {
+    color: rgb(230,124,55);
+    text-decoration: underline solid  rgb(230,124,55) 2px;
+  }
+  
+  a{
+    font-size: 20px;
     font-weight: bold;
-    font-size: 1.5rem;
-    margin-right: 30px;
-    margin-left: 30px;
-    text-decoration: none; /* Remove underline */
-    position: relative; /* Position for the pseudo-element */
-    transition: color 0.3s ease, font-weight 0.3s ease; /* Add a smooth color and font weight transition */
+    color: rgb(0, 0, 0);
+    font-family: Arial;
   }
   
-  /* Create an underline pseudo-element */
-  .navbar-brand::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: firebrick; /* Initial underline color */
-    visibility: hidden;
-    transform: scaleX(0); /* Initially invisible */
-    transition: all 0.3s ease; /* Add a smooth transition for visibility and scale */
-  }
+  a:link { 
+    text-decoration: none; 
+  } 
   
-  /* Add hover effect */
-  .navbar-brand:hover {
-    color:firebrick; /* Change text color on hover */
-    font-weight: lighter; /* Change font weight on hover, adjust as needed */
-  }
+  a:hover { 
+    color: rgb(230,124,55);
+    text-decoration: underline solid  rgb(230,124,55) 2px;
+  } 
   
-  .navbar-brand:hover::before {
-    visibility: visible;
-    transform: scaleX(1); /* Make the underline visible and scale it */
-  }
+  a:active { 
+    color: rgb(230,124,55);
+    text-decoration: underline solid  rgb(230,124,55) 2px;
+  } 
   .form{
     background-color: #f8f9fa;
     padding: 15px 0;
     border: 2px solid #dee2e6;
     border-bottom: 1px solid #dee2e6;
     box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.1);
-    margin: 30px 70px 0; /* Adjusted margin for better responsiveness */
+    margin: 30px 70px 0; 
     border-radius: 15px;
   }
   .form-item {
     background-color: #f8f9fa;
     padding: 10px 0;
     border-bottom: 1px solid black;
-    margin: 35px 35px 35px 35px; /* Adjusted margin for better responsiveness */
+    margin: 35px 35px 35px 35px; 
     border-radius: 15px;
-    border: 3px solid gray; /* Add border style */
-    border-radius: 10px; /* Add border-radius for rounded corners */
+    border: 3px solid gray;
+    border-radius: 10px; 
     padding: auto;
   }
   .item-form-item {
     background-color: #f8f9fa;
     padding: 10px 0;
     border-bottom: 1px solid black;
-    margin: 35px 35px 35px 35px; /* Adjusted margin for better responsiveness */
+    margin: 35px 35px 35px 35px; 
     border-radius: 15px;
-    border: 3px solid gray; /* Add border style */
-    border-radius: 10px; /* Add border-radius for rounded corners */
+    border: 3px solid gray; 
+    border-radius: 10px; 
     padding: auto;
   }
   .form-items{
     background-color: #f8f9fa;
     padding: 10px 0;
     border-bottom: 1px solid black;
-    margin: 35px 35px 35px 35px; /* Adjusted margin for better responsiveness */
+    margin: 35px 35px 35px 35px; 
     border-radius: 15px;
-    border: 3px solid gray; /* Add border style */
-    border-radius: 10px; /* Add border-radius for rounded corners */
+    border: 3px solid gray;
+    border-radius: 10px; 
     padding: auto;
   } 
   .form-item:hover {
-    border-color: orange; /* Change the background color on hover */
+    border-color: orange; 
   }
   .item-form-item:hover {
-    border-color: orange; /* Change the background color on hover */
+    border-color: orange; 
   }
   .orange-icon {
     cursor: pointer;
   }
   h1 {
-    margin-left: 2rem; /* Adjust the margin for better readability */
+    margin-left: 2rem; 
     font-size: 30px;
     color: black;
     margin-top: 10px;
   }
   .orange-icon {
-    color: orange; /* Set the color of the icon to orange */
+    color: orange; 
   }
   .orange-icon1{
     position: absolute;
@@ -423,43 +416,43 @@ body {
   }
   .items, .item-items {
     display: flex;
-    flex-direction: column;/* Stack items vertically */
+    flex-direction: column;
     align-items: center;
     position: relative;
     justify-content: space-between;
   }
   
   .items i {
-    margin-bottom: 10px; /* Add margin to separate the icon and image */
+    margin-bottom: 10px; 
     margin-right: 10px;
-    color: orange; /* Adjust the color as needed */
+    color: orange; 
     
   }
   .line {
-        border-top: 2px solid gray; /* Line color */
+        border-top: 2px solid gray; 
         flex-grow: 1;
-        margin: 15px 0; /* Adjust margin as needed */
+        margin: 15px 0; 
         size: 10px;
   } 
   .lines, .item-lines{
-    border-top: 2px solid gray; /* Line color */
+    border-top: 2px solid gray; 
     flex-grow: 1;
-    margin: 15px 0; /* Adjust margin as needed */
+    margin: 15px 0; 
     size: 10px;
   }
   .line:hover {
-    border-color: orange; /* Change the background color on hover */
+    border-color: orange;   
   }
   .item-content {
     display: flex;
     align-items: center;
   }
   .item-content p {
-    margin-right: 10px; /* Add margin between text and icon */
+    margin-right: 10px; 
   }
   .items p {
     font-weight: bold;
-    margin: 10px; /* Adjust the margin as needed */
+    margin: 10px; 
     margin-left: 10px;
     margin-top: 15px;
   }
@@ -487,19 +480,19 @@ body {
     text-align: center;
     align-items: center;
   }
-  .modal-image .left { /*pic ng item na iaadd */
+  .modal-image .left { 
     float: left;
-    width: 50%; /* Adjust the width of the image as needed */
-    height: 300px; /* Adjust the height of the image as needed */
+    width: 50%; 
+    height: 300px; 
    
   }
   .modal-image .right{
     float: left;
-    width: 50%; /* Adjust the width of the image as needed */
-    height: 100px; /* Adjust the height of the image as needed */
+    width: 50%; 
+    height: 100px; 
   
   }
-  /* Add your other styles here */
+
   .left-preview {
           width: 50%;
           text-align: left;
@@ -510,13 +503,12 @@ body {
       }
   
       .file-label {
-          vertical-align: top; /* Set vertical-align property to prevent the label from moving down */
+          vertical-align: top; 
       }
   .photo-container {
               text-align: left;
           }
   
-          /* Additional styling for the image preview */
           #photoPreview {
               max-width: 100%;
               max-height: 150px;
@@ -589,12 +581,10 @@ body {
     margin-left: auto;
   }
   
-  /* Hover effect for "Add Items" button */
   button.add:hover {
     background-color: #218838;
   }
   
-  /* Styles for the "Remove Items" button */
   button.remove {
     background-color: #dc3545;
     color: #fff;
@@ -606,18 +596,16 @@ body {
     margin-right: auto;
   }
   
-  /* Hover effect for "Remove Items" button */
   button.remove:hover {
     background-color: #c82333;
   }
   
-  /* Styles for the button container */
   .button-container {
     display: flex;
     padding: 30px;
-    justify-content: space-between; /* Add margin to separate the buttons from the container */
-    background-color: #f8f9fa; /* Add background color to the button container */
-    border-radius: 10px; /* Add border-radius for rounded corners */
+    justify-content: space-between; 
+    background-color: #f8f9fa; 
+    border-radius: 10px; 
     
   }
   
@@ -626,8 +614,8 @@ body {
     padding: 30px;
     border: 3px solid black ;
     border-radius: 15px;
-    width: auto; /* Fixed width */
-    height: auto; /* Fixed height to make it a square */
+    width: auto; 
+    height: auto; 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -667,7 +655,7 @@ body {
     background-color: lightgoldenrodyellow;
   }
   
-      /* Add these styles to your existing CSS file */
+
   .notification {
       display: none;
       background-color: #f44336;
@@ -686,7 +674,7 @@ body {
       margin-bottom: 10px;
   }
   
-  /* Styling for the modal */
+
   #itemAddedModal {
     display: none;
     position: fixed;
@@ -700,7 +688,7 @@ body {
     z-index: 9999;
   }
   
-  /* Styling for the Okay button */
+
   #okayButton {
     padding: 10px 20px;
     background-color: #4CAF50;
@@ -710,15 +698,15 @@ body {
     cursor: pointer;
   }
   
-  /*Recent*/
+
   .recent-form-items {
     background-color: #f8f9fa;
     padding: 0;
     border-radius: 15px;
-    border: 2px solid gray; /* Add border style */
+    border: 2px solid gray; 
     display: flex;
     justify-content: space-between;
-    flex-direction: column; /* Adjusted to column layout for better alignment */
+    flex-direction: column; 
     margin:20px 30px 30px 20px;
   }
   
@@ -729,18 +717,18 @@ body {
   
   .recent-lines {
     width: 100%;
-    border-top: 2px solid gray; /* Line color */
-    margin-top: 10px; /* Adjust margin as needed */
+    border-top: 2px solid gray; 
+    margin-top: 10px; 
     margin-bottom: 40px;
   }
   
   .recent-items img {
     max-width: 100px;
-    padding: 15px; /* Set the maximum width of the image */
+    padding: 15px; 
   }
   
   .recent-items-text {
-    margin-top: 10px; /* Adjust margin as needed */
+    margin-top: 10px; 
     text-align: left;
     font-size: 20px;
 
@@ -749,13 +737,13 @@ body {
   
   .recent-items-text h4 {
     margin-top: 5px;
-    margin-bottom: 5px; /* Adjust margin as needed */
+    margin-bottom: 5px; 
     margin-left: 30px;
     font-size: larger;
   }
   
   .recent-items-text p {
-    margin: 5px 0 0 30px; /* Adjust margin as needed */
+    margin: 5px 0 0 30px; 
   }
   .right-text{
     padding: 0;
@@ -800,52 +788,28 @@ body {
     }
   
     #selectAllCheckbox {
-      margin-right: 10px; /* Add space between checkbox and label */
+      margin-right: 10px; 
     }
-    /*ibang search*/
-   /* .search-bar {
-      flex-grow: 1;
-      margin-left: 2%;
-  }
-  
-  .search-form {
-      display: flex;
-      align-items: center;
-  }
-  
-  input[name="q"] {
-      width: 90%;
-      padding: 6px;
-      font-size: 16px;
-      border: 2px solid black;
-      border-radius: 4px;
-      margin-right: 14px;
-  }
-  
-  .searchbb {
-      color: green;
-      font-size: 18px;
-      cursor: pointer;
-  } */
+
   #container {
-    border-radius: 10px; /* Adjust the value as needed for the desired roundness */
-    overflow: hidden; /* Ensure content inside doesn't overflow rounded corners */
+    border-radius: 10px; 
+    overflow: hidden; 
 }
 
 .rounded_corners {
-    border-radius: 10px; /* Adjust the value as needed for the desired roundness */
+    border-radius: 10px;
 }
 
 #wrapper {
-    border: 1px solid black; /* Optional: Add a border for better visibility */
+    border: 1px solid black; 
     margin: 10px;
     padding: 10px;
-    background-color: #f9f9f9; /* Optional: Add a background color for better visibility */
+    background-color: #f9f9f9; 
     border-radius: 10px;
 }
 
 #return_btn {
-    border-radius: 5px; /* Adjust the value as needed for the desired roundness */
+    border-radius: 5px; 
     padding: 5px 10px;
     background-color: #3498db;
     color: white;
@@ -854,7 +818,7 @@ body {
 
 #bottom {
     display: flex;
-    justify-content: flex-end; /* Align items to the right */
+    justify-content: flex-end; 
 }
 
 #top {
@@ -863,7 +827,7 @@ body {
 }
 
 #left {
-    margin-right: 10px; /* Adjust the margin as needed */
+    margin-right: 10px; 
 }
 
 #right {
@@ -871,7 +835,7 @@ body {
 }
 
 #item_name {
-    margin-left: 10px; /* Remove default margin */
+    margin-left: 10px; 
     font-weight: bold;
     font-size: large;
     margin-bottom: 10px;
@@ -882,22 +846,14 @@ body {
      
 }
 #item_quantity {
-  text-align: right; /* Align the text to the right */
-  margin: 0; /* Remove default margin */
+  text-align: right; 
+  margin: 0; 
   margin-right: 50px;
 }
-    /*search bar recent*/
-   input[name="q"] {
-      width: 1070px; /* Adjust the width as needed */
-      padding: 8px;
-      font-size: 16px;
-      border: none;
-      border-radius: 4px;
-      margin-right: 10px;
-      margin-left: 10px;
-   }
+
+
    button[type="submit"] {
-    width: 90px; /* Adjust the width as needed */
+    width: 90px; 
     padding: 10px 10px;
     font-size: 14px;
     cursor: pointer;
@@ -905,13 +861,13 @@ body {
     border-radius: 4px;
     background-color: white;
     color: orange;
-    transition: background-color 0.3s ease; /* Smooth transition effect */
+    transition: background-color 0.3s ease; 
 
 }
 
 button[type="submit"]:hover {
-    background-color: lightgray; /* Change the background color on hover */
-    color: black; /* Change the text color on hover */
+    background-color: lightgray; 
+    color: black; 
 }
 
 
@@ -919,7 +875,6 @@ button[type="submit"]:hover {
 
 
 
-  /* Media queries for responsiveness */
   @media screen and (max-width: 768px) {
     header {
       flex-direction: column;
@@ -942,40 +897,40 @@ button[type="submit"]:hover {
     .logo.left,
     .logo.right {
       margin: 10px 0;
-      width: 100%; /* Adjust the width of the logos on smaller screens */
+      width: 100%; 
     }
     nav {
-      margin: 10px; /* Adjusted margin for better responsiveness on smaller screens */
+      margin: 10px; 
     }
   
     .container 
     {
-      flex-direction: column; /* Stack items vertically on smaller screens */
+      flex-direction: column; 
       align-items: flex-start;
     }
     .item-container
     {
-      flex-direction: column; /* Stack items vertically on smaller screens */
+      flex-direction: column; 
       align-items: flex-start;
     }
   
     .navbar-brand {
-      margin: 5px 10px; /* Adjusted margin for better spacing on smaller screens */
+      margin: 5px 10px; 
     }
     .form,.form-item, .item-form-item{
-      margin: 10px; /* Adjusted margin for better responsiveness */
+      margin: 10px; 
     }
     h1 {
-      margin-left: 0.5rem; /* Adjust the margin for better readability */
+      margin-left: 0.5rem; 
     }
      .button-container {
-      flex-direction: column; /* Stack buttons vertically on smaller screens */
+      flex-direction: column;
       align-items: flex-start;
     }
    button.remove,
     button.add {
       margin-left: 0;
       margin-right: 0;
-      margin-bottom: 10px; /* Add spacing between buttons in smaller screens */
+      margin-bottom: 10px; 
     }
   }

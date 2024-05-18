@@ -96,9 +96,7 @@ input, select {
     vertical-align:middle;
 }
 
-/*
-Start coding here
-*/
+
 .inventory_item {
     width: 100px;
     height: 100px;
@@ -199,7 +197,6 @@ Start coding here
 }
 
 body {
-  /* Your existing body styles */
   line-height:1;
   line-height:1;
   height: 100%;
@@ -209,7 +206,7 @@ body {
   margin: 0; 
   overflow-x: hidden;
   overflow-y : scroll;
-  font-family: Arial, sans-serif; /* Adjust the font family as needed */
+  font-family: Arial, sans-serif; 
   padding-top: 100px;
 }
 
@@ -217,11 +214,10 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: rgb(113,26,33); /* Top color for the header */
+  background-color: rgb(113,26,33); 
   padding: 5px;
-  border-bottom: 20px solid rgb(230,124,55); /* Bottom color */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visibility */
-
+  border-bottom: 20px solid rgb(230,124,55); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
   position: fixed;
   top: 0;
   right: 0;
@@ -266,7 +262,7 @@ body {
   border-radius: 3px;
   outline: none;
   background-color: white;
-  color: #000000; /* Set text color to be visible on the background color */
+  color: #000000; 
   font-size: 15px;
   box-shadow: inset 1px 2px 5px rgba(0, 0, 0, 0.2);
   width: 0;
@@ -330,13 +326,12 @@ form {
 }
 
   
-/* Buttons (home and logout) */
 .buttons-box {
   background-color: rgb(255, 255, 255);
   background-color: rgb(255, 255, 255);
   padding-top: 3px;
   padding-bottom: 3px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.20); /* Optional: Add a shadow for better visibility */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.20); 
   margin-top: 30px;
   margin-left: 50px;
   margin-right: 50px;
@@ -396,10 +391,8 @@ a:active {
   color: rgb(230,124,55);
   text-decoration: underline solid  rgb(230,124,55) 2px;
 } 
-/* buttons end */
 
 
-/* Start Code- back button sa katabi nung category title pag nakapindot na yung category button */
 .back-button{
   background-color: rgb(255, 255, 255);
   border:solid  rgb(153, 153, 153) 2px;
@@ -421,11 +414,9 @@ a:active {
   color: rgb(0, 0, 0);
   border: solid rgb(230,124,55) 2px;
 }
-/* End Code- back button sa katabi nung category title pag nakapindot na yung category button */
 
 
 
-/*start- new added-drin */
 .items-div {
   display: flex;
   flex-direction: row;
@@ -495,11 +486,10 @@ a:active {
   gap: 1em;
 }
 
-/*end- new added-drin */
   .form{
     background-color: rgb(255, 255, 255);
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.20); /* Optional: Add a shadow for better visibility */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.20);
     margin-top: 45px;
     margin-left: 50px;
     margin-right: 50px;
@@ -509,49 +499,49 @@ a:active {
     background-color: #f8f9fa;
     padding: 10px 0;
     border-bottom: 1px solid black;
-    margin: 35px 35px 35px 35px; /* Adjusted margin for better responsiveness */
+    margin: 35px 35px 35px 35px; 
     border-radius: 15px;
-    border: 3px solid gray; /* Add border style */
-    border-radius: 10px; /* Add border-radius for rounded corners */
+    border: 3px solid gray; 
+    border-radius: 10px; 
     padding: auto;
   }
   .item-form-item {
     background-color: #f8f9fa;
     padding: 10px 0;
     border-bottom: 1px solid black;
-    margin: 35px 35px 35px 35px; /* Adjusted margin for better responsiveness */
+    margin: 35px 35px 35px 35px; 
     border-radius: 15px;
-    border: 3px solid gray; /* Add border style */
-    border-radius: 10px; /* Add border-radius for rounded corners */
+    border: 3px solid gray; 
+    border-radius: 10px; 
     padding: auto;
   }
   .form-items{
     background-color: #f8f9fa;
     padding: 10px 0;
     border-bottom: 1px solid black;
-    margin: 35px 35px 35px 35px; /* Adjusted margin for better responsiveness */
+    margin: 35px 35px 35px 35px; 
     border-radius: 15px;
-    border: 3px solid gray; /* Add border style */
-    border-radius: 10px; /* Add border-radius for rounded corners */
+    border: 3px solid gray; 
+    border-radius: 10px; 
     padding: auto;
   } 
   .form-item:hover {
-    border-color: orange; /* Change the background color on hover */
+    border-color: orange; 
   }
   .item-form-item:hover {
-    border-color: orange; /* Change the background color on hover */
+    border-color: orange; 
   }
   .orange-icon {
     cursor: pointer;
   }
   h1 {
-    margin-left: 2rem; /* Adjust the margin for better readability */
+    margin-left: 2rem; 
     font-size: 30px;
     color: black;
     margin-top: 10px;
   }
   .orange-icon {
-    color: orange; /* Set the color of the icon to orange */
+    color: orange; 
   }
   .orange-icon1{
     position: absolute;
@@ -562,43 +552,43 @@ a:active {
   }
   .items, .item-items {
     display: flex;
-    flex-direction: row;/* Stack items vertically */
+    flex-direction: row;
     align-items: center;
     position: relative;
     justify-content: space-between;
   }
   
   .items i {
-    margin-bottom: 10px; /* Add margin to separate the icon and image */
+    margin-bottom: 10px; 
     margin-right: 10px;
-    color: orange; /* Adjust the color as needed */
+    color: orange; 
     
   }
   .line {
-        border-top: 2px solid gray; /* Line color */
+        border-top: 2px solid gray; 
         flex-grow: 1;
-        margin: 15px 0; /* Adjust margin as needed */
+        margin: 15px 0; 
         size: 10px;
   } 
   .lines, .item-lines{
-    border-top: 2px solid gray; /* Line color */
+    border-top: 2px solid gray; 
     flex-grow: 1;
-    margin: 15px 0; /* Adjust margin as needed */
+    margin: 15px 0; 
     size: 10px;
   }
   .line:hover {
-    border-color: orange; /* Change the background color on hover */
+    border-color: orange; 
   }
   .item-content {
     display: flex;
     align-items: center;
   }
   .item-content p {
-    margin-right: 10px; /* Add margin between text and icon */
+    margin-right: 10px; 
   }
   .items p {
     font-weight: bold;
-    margin: 10px; /* Adjust the margin as needed */
+    margin: 10px; 
     margin-left: 10px;
     margin-top: 15px;
   }
@@ -626,19 +616,18 @@ a:active {
     text-align: center;
     align-items: center;
   }
-  .modal-image .left { /*pic ng item na iaadd */
+  .modal-image .left { 
     float: left;
-    width: 50%; /* Adjust the width of the image as needed */
-    height: 300px; /* Adjust the height of the image as needed */
+    width: 50%; 
+    height: 300px; 
    
   }
   .modal-image .right{
     float: left;
-    width: 50%; /* Adjust the width of the image as needed */
-    height: 100px; /* Adjust the height of the image as needed */
+    width: 50%; 
+    height: 100px; 
   
   }
-  /* Add your other styles here */
   .left-preview {
           width: 50%;
           text-align: left;
@@ -649,13 +638,13 @@ a:active {
       }
   
       .file-label {
-          vertical-align: top; /* Set vertical-align property to prevent the label from moving down */
+          vertical-align: top; 
       }
   .photo-container {
               text-align: left;
           }
   
-          /* Additional styling for the image preview */
+         
           #photoPreview {
               max-width: 100%;
               max-height: 150px;
@@ -718,13 +707,12 @@ a:active {
     cursor: pointer;
   }
  
-  /* Styles for the button container */
   .button-container {
     display: flex;
     padding: 30px;
-    justify-content: space-between; /* Add margin to separate the buttons from the container */
-    background-color: #f8f9fa; /* Add background color to the button container */
-    border-radius: 10px; /* Add border-radius for rounded corners */
+    justify-content: space-between; 
+    background-color: #f8f9fa; 
+    border-radius: 10px; 
     
   }
   
@@ -733,8 +721,8 @@ a:active {
     padding: 30px;
     border: 3px solid black ;
     border-radius: 15px;
-    width: auto; /* Fixed width */
-    height: auto; /* Fixed height to make it a square */
+    width: auto; 
+    height: auto; 
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -774,7 +762,6 @@ a:active {
     background-color: lightgoldenrodyellow;
   }
   
-      /* Add these styles to your existing CSS file */
   .notification {
       display: none;
       background-color: #f44336;
@@ -793,7 +780,6 @@ a:active {
       margin-bottom: 10px;
   }
   
-  /* Styling for the modal */
   #itemAddedModal {
     display: none;
     position: fixed;
@@ -807,7 +793,6 @@ a:active {
     z-index: 9999;
   }
   
-  /* Styling for the Okay button */
   #okayButton {
     padding: 10px 20px;
     background-color: #4CAF50;
@@ -817,15 +802,14 @@ a:active {
     cursor: pointer;
   }
   
-  /*Recent*/
   .recent-form-items {
     background-color: #f8f9fa;
     padding: 0;
     border-radius: 15px;
-    border: 2px solid gray; /* Add border style */
+    border: 2px solid gray; 
     display: flex;
     justify-content: space-between;
-    flex-direction: column; /* Adjusted to column layout for better alignment */
+    flex-direction: column; 
     margin:20px 30px 30px 20px;
   }
   
@@ -836,29 +820,29 @@ a:active {
   
   .recent-lines {
     width: 100%;
-    border-top: 2px solid gray; /* Line color */
-    margin-top: 10px; /* Adjust margin as needed */
+    border-top: 2px solid gray; 
+    margin-top: 10px; 
     margin-bottom: 40px;
   }
   
   .recent-items img {
     max-width: 100px;
-    padding: 15px; /* Set the maximum width of the image */
+    padding: 15px;
   }
   
   .recent-items-text {
-    margin-top: 10px; /* Adjust margin as needed */
+    margin-top: 10px; 
     text-align: left;
   }
   
   .recent-items-text h4 {
     margin-top: 5px;
-    margin-bottom: 5px; /* Adjust margin as needed */
+    margin-bottom: 5px; 
     margin-left: 30px;
   }
   
   .recent-items-text p {
-    margin: 5px 0 0 30px; /* Adjust margin as needed */
+    margin: 5px 0 0 30px; 
   }
   .right-text{
     padding: 0;
@@ -901,7 +885,7 @@ a:active {
    }
   
     #selectAllCheckbox {
-      margin-right: 10px; /* Add space between checkbox and label */
+      margin-right: 10px;
     }
     .add-item-btn {
       padding: 10px;
@@ -988,10 +972,10 @@ a:active {
       align-items: center;
   }
   .item-form {
-    background: #fff; /* Add your desired background color */
+    background: #fff;
     border-radius: 5px;
     padding: 100px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
   }
   .item-containerr {
     display: flex;
@@ -1054,14 +1038,9 @@ a:active {
     flex: 1;
     margin-top: 50px;
   }
-   /* bagong code*/
 
-  /*home categories*/
   .categories {
-    /* display: flex;
-    justify-content: space-around;
-    margin: 20px 0;
-    font-family: Arial, Helvetica, sans-serif; */
+
    
     display: flex;
     flex-direction: row;
@@ -1089,31 +1068,6 @@ a:active {
     margin-left: 18px;
     width: 0;
 }
-    /*display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    border: 0.5px solid rgb(171, 177, 177);
-    border-radius: 6px;
-    height: 230px;
-    width: 170px;
-    padding-top: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-bottom: 20px;
-    background-color: rgb(255, 255, 255);
-    background-repeat: no-repeat;
-    background-size: 130px;
-    background-position: 50% 20%;
-    transition-duration: 0.2s;
-
-    margin-top: 5px;
-    font-size: 20px;
-    font-weight: 500;
-    text-align: bottom;
-    color: #000;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: solid rgb(171, 177, 177) 1px;
-  */
 
   .category_button {
     display: flex;
@@ -1147,7 +1101,6 @@ a:active {
     box-shadow: 8px 8px 10px rgba(113,26,33, 0.40);
     background-color: rgb(255, 137, 58);
 }
- /*image ng category*/
 
   .category_button:nth-child(1){
     background-image: url(../home/adminhome/clean.png);
@@ -1180,7 +1133,6 @@ a:active {
     background-color: rgb(255, 137, 58);
   }
 
-  /*edit button*/
   #edit_category_buttons {
     display: flex;
     justify-content: flex-end;
@@ -1208,8 +1160,7 @@ a:active {
     
   }
 
-  /*add category button sa edit*/
-/* Basic styles for the form container */
+
 #add_category_form {
   max-width: 400px;
   margin: 20px auto;
@@ -1219,17 +1170,15 @@ a:active {
   background-color: #fff;
 }
 
-/* Styles for form inputs */
 #categoryFormId input[type="text"] {
   width: 100%;
   padding: 8px;
-  margin: 0 auto 10px; /* Updated margin to center the input */
+  margin: 0 auto 10px; 
   box-sizing: border-box;
-  display: block; /* Ensures that the input is treated as a block element */
+  display: block;
 
 }
 
-/* Styles for buttons */
 #categoryFormId button {
   background-color: white;
   color: black;
@@ -1244,7 +1193,6 @@ a:active {
   color:#000;
 }
 
-/* Styles for success message */
 #successMessage {
   margin-top: 20px;
   text-align: center;
@@ -1267,7 +1215,6 @@ a:active {
 #successMessage button:hover {
   background-color: #2980b9;
 }
-/*remove */
 button {
   background-color: white;
   margin-top: 5px;
@@ -1285,28 +1232,23 @@ button:hover {
 }
 
 
-/* Icon styles */
 .fa-trash {
   margin-right: 5px;
 }
 
-/* Text styles */
 button p {
   margin: 0;
 }
 
-/* Center text vertically and horizontally */
 button p {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Remove underline from anchor text */
 button p:hover {
   text-decoration: none;
 }
-/*delete item*/
 .overlay {
   display: none;
   position: fixed;
@@ -1320,7 +1262,6 @@ button p:hover {
   z-index: 999;
 }
 
-/* Pop-up form styles */
 .confirmation-pop-up {
   background-color: #fff;
   padding: 20px;
@@ -1331,12 +1272,10 @@ button p:hover {
   text-align: center;
 }
 
-/* Text styles */
 .confirmation-pop-up p {
   margin-bottom: 20px;
 }
 
-/* Button styles */
 .delete_confirm, .delete_denied, .back_button {
   padding: 10px;
   margin: 5px;
@@ -1378,8 +1317,7 @@ button p:hover {
 
 
 
-/* Style for the borrow form */
-/* Style for the close button */
+
 .close_button {
   margin-top: 5px;
   margin-bottom: auto;
@@ -1449,7 +1387,6 @@ button p:hover {
   gap: 5px;
 
 }
-/*table quantity*/
 #item_body table {
   width: 100%;
   border-collapse: collapse;
@@ -1514,9 +1451,8 @@ button p:hover {
   font-size: 16px;
 }
 
-/*additem*/
 .form-popup {
-  display: block; /* Change to 'none' if you want it hidden by default */
+  display: block; 
   position: fixed;
   top: 50%;
   left: 50%;
@@ -1533,18 +1469,15 @@ button p:hover {
   margin-bottom: 15px;
 }
 
-/* Style for input containers */
 .input-container {
   display: flex;
   align-items: center;
 }
 
-/* Optional: Add some spacing between label and input */
 .input-container p {
   margin-right: 10px;
 }
 
-/* Optional: Style the input fields */
 .input-container input
 {
   padding: 8px;
@@ -1557,50 +1490,34 @@ button p:hover {
   width: 50%;
   box-sizing: border-box;
 }
-/* Optional: Style the textarea */
 .input-container textarea {
   padding: 8px;
   width: 100%;
   box-sizing: border-box;
-  resize: vertical; /* Allow vertical resizing of textarea */
+  resize: vertical; 
 }
-/* Style for the submit button */
-/*add category button*/
-/* input[type="submit"] {
-  padding: 10px;
-  background-color: white;
-  color: black;
-  border: 2px solid orange;
-  cursor: pointer;
-}
-input[type="submit"]:hover{
-  background-color: orange;
-  color: black;
-} */
-/* Style for the cancel button */
+
 .additem-button {
   padding: 10px;
   background-color: white;
   color: black;
   border: 2px solid orange;
   cursor: pointer;
-  margin-left: 10px; /* Optional: Add some space between buttons */
+  margin-left: 10px; 
 }
 .additem-button:hover{
   background-color: orange;
   color: black;
 }
 
-/* Optional: Hover effects */
 input[type="submit"]:hover,
 button:hover {
   opacity: 0.8;
   color:#000;
   background-color: orange;
 }
-/*next popup*/
 .form-next {
-    display: block; /* Change to 'none' if you want it hidden by default */
+    display: block; 
     position: fixed;
     top: 50%;
     left: 50%;
@@ -1614,7 +1531,6 @@ button:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Optional: Style for the cancel button */
 #stockFormPopup button {
     margin-top: 10px;
     padding: 10px;
@@ -1630,9 +1546,8 @@ button:hover {
   color: black;
 }
 
-/* Style for the form popup container */
         .form-popup {
-            display: block; /* Set to 'block' to make the form open by default */
+            display: block; 
             position: fixed;
             top: 50%;
             left: 50%;
@@ -1646,8 +1561,7 @@ button:hover {
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         }
 
-        /* Style for the "Submit" button */
-        /* add item button final*/
+
         .form-popup input[type="submit"] {
             padding: 10px;
             background-color: white;
@@ -1656,7 +1570,6 @@ button:hover {
             cursor: pointer;
         }
 
-        /* Style for the "Cancel" button */
         .form-popup button {
             margin-top: 10px;
             padding: 10px;
@@ -1669,9 +1582,8 @@ button:hover {
           background-color: orange
         }
 
-/* Add this to your existing styles or in a separate stylesheet */
 .success-popup {
-  background-color: white; /* Green background */
+  background-color: white; 
   color: black;
   text-align: center;
   padding: 15px;
@@ -1690,7 +1602,7 @@ button:hover {
 }
 
 .success-popup button {
-  background-color: orange; /* Dark green button color */
+  background-color: orange; 
   color: white;
   padding: 10px 20px;
   border: none;
@@ -1705,9 +1617,8 @@ button:hover {
   color: black;
 }
         
-/*delete category*/
 .confirmation-popup-container {
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent gray background */
+  background-color: rgba(0, 0, 0, 0.5); 
   position: fixed;
   top: 0;
   left: 0;
@@ -1750,7 +1661,7 @@ button:hover {
 }
 
 .confirmation-popup button:hover {
-  background-color: orange; /* Slightly lighter color on hover */
+  background-color: orange; 
   color: black;
 }
 
@@ -1759,7 +1670,7 @@ button:hover {
   flex-direction: row;
   justify-content: flex-start;
   padding-top: 0;
-  flex-wrap: wrap; /* Allow items to wrap to the next row if necessary */
+  flex-wrap: wrap; 
 }
 
 .row-container {
@@ -1770,7 +1681,7 @@ button:hover {
 
 .square-container {
   display: flex;
-  flex-direction: column; /* Change this to 'row' */
+  flex-direction: column; 
   border: 2px solid  orange;
   border-radius: 6px;
   height: 150px;
@@ -1810,7 +1721,6 @@ button:hover {
 
 
 
-/*add back remove*/
 #edit_back_buttons {
   display: flex;
   justify-content: space-between;
@@ -1824,7 +1734,7 @@ button:hover {
 }
 
 #edit_back_buttons button {
-  margin-right: 10px; /* Adjust the right margin for spacing */
+  margin-right: 10px; 
   border: 2px solid orange;
   font-size: 18px;
   font-weight: 500;
@@ -1834,10 +1744,9 @@ button:hover {
   background-color: orange;
 }
 
-/*result list*/
 .box{
   display: flex;
-  flex-direction: column; /* Change this to 'row' */
+  flex-direction: column;
   border: 2px solid rgb(171, 177, 177);
   border-radius: 6px;
   height: 150px;
@@ -1856,10 +1765,9 @@ button:hover {
   font-weight: 800;
 
 }
-/*remove pagclick ng item*/
 .item-box{
   display: flex;
-  flex-direction: column; /* Change this to 'row' */
+  flex-direction: column;
   border: 2px solid orange;
   border-radius: 6px;
   height: 150px;
@@ -1877,49 +1785,47 @@ button:hover {
 
 
   
-  /* Media queries for responsiveness */
   @media screen and (max-width: 768px) {
     header {
       flex-direction: column;
       align-items: flex-start;
     }
     nav {
-      margin: 10px; /* Adjusted margin for better responsiveness on smaller screens */
+      margin: 10px; 
     }
   
     .container 
     {
-      flex-direction: column; /* Stack items vertically on smaller screens */
+      flex-direction: column; 
       align-items: flex-start;
     }
     .item-container
     {
-      flex-direction: column; /* Stack items vertically on smaller screens */
+      flex-direction: column; 
       align-items: flex-start;
     }
   
     .navbar-brand {
-      margin: 5px 10px; /* Adjusted margin for better spacing on smaller screens */
+      margin: 5px 10px; 
     }
     .form,.form-item, .item-form-item{
-      margin: 10px; /* Adjusted margin for better responsiveness */
+      margin: 10px;
     }
     h1 {
-      margin-left: 0.5rem; /* Adjust the margin for better readability */
+      margin-left: 0.5rem;
     }
      .button-container {
-      flex-direction: column; /* Stack buttons vertically on smaller screens */
+      flex-direction: column;
       align-items: flex-start;
     }
    button.remove,
     button.add {
       margin-left: 0;
       margin-right: 0;
-      margin-bottom: 10px; /* Add spacing between buttons in smaller screens */
+      margin-bottom: 10px;
     }
-    /*delete item*/
     .confirmation-pop-up {
-      max-width: 300px; /* Adjust for smaller screens */
+      max-width: 300px; 
   }
      
     .confirmation-pop-up {
@@ -1928,7 +1834,6 @@ button:hover {
       left: 50%;
       transform: translate(-50%, -50%);
     }
-    /*borrow form table*/
     #item_body td {
       display: block;
       width: 100%;
@@ -1955,11 +1860,9 @@ button:hover {
       width: 50%;
       box-sizing: border-box;
     }
-    /*borrow form*/
     #borrowFormId {
       max-width: 100%;
     }
-    /*item form*/
     .form-popup {
       width: 90%;
   }

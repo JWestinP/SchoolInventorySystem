@@ -10,10 +10,8 @@ from home.decorators import allowed_users
 def notification(request):
     unreturned_items = get_unreturned_items_info(request)
     unreturned_item_exist = check(request)
-    print("unreturned_item_exist", unreturned_item_exist)
     
     context = {'unreturned_item_exist' : unreturned_item_exist, 'unreturned_items' : unreturned_items}
-    print ("Context" , context)
     
     return render(request, 'notification/notification.html', context)
 

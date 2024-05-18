@@ -106,7 +106,7 @@ body, html {
     font-family: Arial, sans-serif;
     display: flex;
     align-items: center;
-    justify-content: flex-end; /* Move the content to the right */
+    justify-content: flex-end;
     background-color: rgb(236,237,238);
 }
 
@@ -114,10 +114,10 @@ body, html {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: rgb(113,26,33); /* Top color for the header */
+    background-color: rgb(113,26,33); 
     padding: 5px;
-    border-right: 20px solid rgb(230,124,55); /* Bottom color */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visibility */
+    border-right: 20px solid rgb(230,124,55); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
     width: 500px;
     flex-shrink: 0;
 
@@ -172,7 +172,6 @@ body, html {
     left: 100px;
 }
 
-/* LOGIN FORM */
 .alert {
     display: none;
     padding-top: 15px;
@@ -228,8 +227,8 @@ body, html {
 }
 
 .lock-logo{
-    width: 110px; /* Set a fixed width for the image */
-    height: auto; /* Maintain aspect ratio */
+    width: 110px; 
+    height: auto; 
     margin: 0;
 }
 
@@ -348,7 +347,7 @@ label{
 @media only screen and (max-width: 768px) {
     body, html {
         flex-direction: column;
-        justify-content: center; /* Center the content on smaller screens */
+        justify-content: center; 
         width: auto;
         height: 100%;
 
@@ -380,9 +379,9 @@ label{
     .left-design {
         height: auto;
         bottom: 0;
-        top: unset; /* Resetting the top property */
+        top: unset; 
         align-items: center;
-        position: static; /* Centering the content horizontally */
+        position: static; 
     }
 
     .top{
@@ -399,8 +398,60 @@ label{
 
     .login-form-container {
         width: 100%;
-        margin: 0 auto; /* Center the container horizontally */
-        margin-bottom: 20px; /* Add margin to create space from the bottom */
+        margin: 0 auto; 
+        margin-bottom: 20px; 
     }
 
+    }
+
+
+    @media only screen and (max-width: 768px) {
+        .right-design {
+            width: 100%;
+            border-right: none;
+            border-bottom: 20px solid rgb(230, 124, 55);
+            flex-direction: column;
+            align-items: center;
+            position: static;
+            margin-top: 450px; 
+        }
+    
+        .ccs-logo{
+            width: 100px; 
+        }
+    
+        .middle-section {
+            margin: 20px; 
+        }
+    
+        .lspu-logo {
+            width: 100%; 
+            margin-bottom: 20px; 
+        }
+    
+        .left-design {
+            height: auto;
+            bottom: 0;
+            top: unset; 
+            align-items: center;
+            position: static; 
+        }
+    
+        .top{
+            margin-top: 17px; 
+            width: 150px; 
+            height: 350px; 
+        }
+    
+        .bot{
+            margin-left: -550px; 
+            width: 600px; 
+            height: 350px; 
+        }
+    
+        .login-form-container {
+            width: 100%;
+            margin: 0 auto; 
+            margin-bottom: 20px; 
+        }
     }

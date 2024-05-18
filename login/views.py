@@ -26,7 +26,7 @@ def user_login(request):
             login(request, user)
             group_names = []
             if user.groups.exists():
-                group_names = user.groups.values_list('name', flat=True)[:1]  # Get the first two group names
+                group_names = user.groups.values_list('name', flat=True)[:1]  
                 
             if 'Admin' in group_names:
                 return redirect('admin_home')  

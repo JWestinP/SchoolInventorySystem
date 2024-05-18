@@ -6,31 +6,35 @@
         <title>ADMIN USER PROFILE</title>
     </head>
     <body>
-        <header>
-            <div class="logo left">
-                <img src="static/unreturned/unreturnedadmin/LSPU.png" alt="Left Logo">
+        <div class="header">
+            
+            <div class="left-section">
+                <img class="lspu-logo" src="{% static 'home/logo/lspu-logo.png' %}">
             </div>
+
             <div class="middle-section">
-                <form method="GET" action="{% url 'search_items_admin' %}" class="search-form">
-                    <input class="search-bar" type="text" name="q" value="{{ query }}" placeholder="Search for name/id/category">
-                    <input class="search-button" type="submit" value="Search" name="b">
+                <form method="GET" action="{% url 'search_items_admin' %}">
+                    <input class="search-bar" type="text" placeholder="Search for name/id/category" name="q" value="{{ query }}">
+                    <input class="search-button" type="submit" value="Search">
                 </form>
             </div>
-            <div class="logo right">
-                <img src="static/unreturned/unreturnedadmin/CSS.png" alt="Right Logo">
-            </div> 
-        </header>
-        <div class="head"></div>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
-                <a href="{% url 'admin_home' %}" class="navbar-brand">Home</a>
-                <a href="{% url 'admin_recents' %}" class="navbar-brand">Recents</a>
-                <a href="{% url 'admin_unreturned' %}" class="navbar-brand">Unreturned</a>
-                <a href="{% url 'members' %}" class="navbar-brand">Members</a>
-                <a href="{% url 'admin_userprofile' %}" class="navbar-brand">Account</a>
-                <a href="{% url 'logout' %}" class="navbar-brand">Logout</a>
+
+            <div class="right-section">
+                <img class="ccs-logo" src="{% static 'home/logo/ccs-logo.jpg' %}">
             </div>
-        </nav>
+            
+        </div>
+        <div class="head"></div>
+            <nav class="buttons-box">
+                <div class="button-grid">
+                    <a href="{% url 'admin_home' %}" class="buttons-tabs">Home</a>
+                    <a href="{% url 'admin_recents' %}" class="buttons-tabs">Recents</a>
+                    <a href="{% url 'admin_unreturned' %}" class="buttons-tabs">Unreturned</a>
+                    <a href="{% url 'members' %}" class="buttons-tabs">Members</a>
+                    <a href="{% url 'admin_userprofile' %}" class="buttons-tabs">Account</a>
+                    <a href="{% url 'logout' %}" class="buttons-tabs">Logout</a>
+                </div>
+            </nav>
 
         <div id="mainForm" class="form">
             <div id="container" class="rounded_corners">
@@ -49,7 +53,7 @@
 
         <style>
             .form-container {
-                margin-top: 20px; /* Adjust the margin as needed */
+                margin-top: 20px; 
             }
         </style>
             </div>

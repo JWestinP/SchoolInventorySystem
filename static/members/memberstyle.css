@@ -109,7 +109,7 @@ body {
   margin: 0; 
   overflow-x: hidden;
   overflow-y : scroll;
-  font-family: Arial, sans-serif; /* Adjust the font family as needed */
+  font-family: Arial, sans-serif; 
   padding-top: 100px;
 }
   
@@ -119,22 +119,22 @@ body {
     padding: 10px;
   }
   
-  header {
+  .header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: rgb(113,26,33); /* Top color for the header */
+    background-color: rgb(113,26,33); 
     padding: 5px;
-    border-bottom: 20px solid rgb(230,124,55); /* Bottom color */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visibility */
-    z-index: 1000;
+    border-bottom: 20px solid rgb(230,124,55); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  
     position: fixed;
     top: 0;
     right: 0;
     left: 0;
   }
   
-  .logo.left {
+  .left-section {
     width: 100px;
     display: flex;
     align-items: center;
@@ -142,99 +142,140 @@ body {
     flex-shrink: 0;
   }
   
-  .logo.right {
-    width: 100px;
-    display: flex;
-    align-items: center;
-    margin-right: 10px;
-    flex-shrink: 0;
-  }
-  .logo.left img {
-    width: 135px;
-    margin-right: auto;
-  }
-    
-  .logo.right img {
-    width: 80px;
-    margin-left: auto;
+  .lspu-logo{
+    width: 90px;
+    border-radius:50px;
   }
   
   .middle-section {
-    flex: 1;
-    margin-left: 10px;
-    margin-right: 10px;
-    display: flex;
-    align-items: center;
+    flex: 1 !important;
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+    display: flex !important;
+    align-items: center !important;
   }
   
-  .search-form {
-    display: flex; /* Add this property to make the form a flex container */
+  form {
+    display: flex !important;
+    flex: 1 !important;
+    align-items: center !important;
   }
   
   .search-bar {
-    flex: 1!important;
-    height: 20px!important;
-    padding: 10px!important;
-    border-radius: 7px!important;
-    outline: none!important;
-    background-color: white!important;
-    color: #000000!important;
-    font-size: 15px!important;
-    box-shadow: inset 1px 2px 5px rgba(0, 0, 0, 0.2)!important;
+    display: flex;
+    flex: 1;
+    height: 14px;
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 3px;
+    outline: none;
+    background-color: white;
+    color: #000000; 
+    font-size: 15px;
+    box-shadow: inset 1px 2px 5px rgba(0, 0, 0, 0.2);
+    width: 0;
   }
   
-  .search-bar::placeholder {
-    font-family: Arial, Helvetica, sans-serif!important;
-    font-size: 15px!important;
-  }
-  
-  .search-button {
-    background-color: rgb(230, 124, 55)!important;
-    color: #ffffff!important;
-    padding: 10px 15px!important;
-    border-radius: 3px!important;
-    cursor: pointer!important;
-    margin-left: 10px!important;
-  }
-  
-  .search-button:hover {
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2)!important;
-  }
-  
-  input[name="q"] {
-      width: 1060px;
-      height: 300px;
-      padding: 6px;
-      font-size: 16px;
-      border-radius: 7px;
-      margin-right: 14px;
-      
-  }
-  
-  form input[name="b"] {
-    width: 80px !important;
-    font-size: 14px !important;
-    margin-right: 14px !important;
-    background-color: rgb(230, 124, 55) !important;
-    color: #ffffff !important;
-    padding: 8px 12px !important;
-    border: 2px solid orange !important;
-    border-radius: 5px !important;
-    cursor: pointer !important;
-    margin-left: 10px !important;
+  .search-bar::placeholder{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px; 
     
   }
   
-  /* navigations */
-  nav {
-    background-color: #f8f9fa;
-    padding: 15px 0;
-    border-bottom: 1px solid #dee2e6;
-    box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.1);
-    margin: 30px 70px 0; /* Adjusted margin for better responsiveness */
-    border-radius: 15px;
+  .search-button {
+    background-color: rgb(230,124,55) !important; 
+     color: #ffffff !important;
+    padding: 10px 15px !important;
+    border: none !important;
+    border-radius: 3px !important;
+    margin-right: 10px !important;
+    cursor: pointer !important;
+    width: fit-content !important;
+    height: 40px;
+    margin-top: 7px;
+  } 
+  
+  .search-button:hover  {
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2) !important;
   }
   
+  .right-section {
+    width: 100px;
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    flex-shrink: 0;
+  }
+  
+  .ccs-logo{
+    width: 92px;
+    border-radius:46px;
+  }
+  .buttons-box {
+    background-color: rgb(255, 255, 255);
+    padding-top: 3px;
+    padding-bottom: 3px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.20); 
+    margin-top: 40px;
+    margin-left: 70px;
+    margin-right: 70px;
+    border-radius: 5px;
+  }
+  
+  .button-grid{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 5px;
+    flex-wrap: wrap;
+    align-content: first baseline;
+    gap: 1em;
+  }
+  
+  .buttons-tabs {
+    background-color: rgb(255,255,255);
+    border: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    vertical-align: top;
+    transition-duration: 0.4s;
+  }
+    
+  .buttons-tabs:hover  {
+    color: rgb(230,124,55);
+    text-decoration: underline solid  rgb(230,124,55) 2px;
+  }
+  
+  .buttons-tabs:active {
+    color: rgb(230,124,55);
+    text-decoration: underline solid  rgb(230,124,55) 2px;
+  }
+  
+  a{
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    font-family: Arial;
+  }
+  
+  a:link { 
+    text-decoration: none; 
+  } 
+  
+  a:hover { 
+    color: rgb(230,124,55);
+    text-decoration: underline solid  rgb(230,124,55) 2px;
+  } 
+  
+  a:active { 
+    color: rgb(230,124,55);
+    text-decoration: underline solid  rgb(230,124,55) 2px;
+  } 
   .container, .recent-container{
     display: flex;
     justify-content: space-between;
@@ -251,12 +292,11 @@ body {
     font-size: 1.5rem;
     margin-right: 30px;
     margin-left: 30px;
-    text-decoration: none; /* Remove underline */
-    position: relative; /* Position for the pseudo-element */
-    transition: color 0.3s ease, font-weight 0.3s ease; /* Add a smooth color and font weight transition */
+    text-decoration: none; 
+    position: relative; 
+    transition: color 0.3s ease, font-weight 0.3s ease; 
   }
   
-  /* Create an underline pseudo-element */
   .navbar-brand::before {
     content: '';
     position: absolute;
@@ -264,21 +304,21 @@ body {
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: firebrick; /* Initial underline color */
+    background-color: firebrick; 
     visibility: hidden;
-    transform: scaleX(0); /* Initially invisible */
-    transition: all 0.3s ease; /* Add a smooth transition for visibility and scale */
+    transform: scaleX(0); 
+    transition: all 0.3s ease; 
   }
   
-  /* Add hover effect */
+ 
   .navbar-brand:hover {
-    color:firebrick; /* Change text color on hover */
-    font-weight: lighter; /* Change font weight on hover, adjust as needed */
+    color:firebrick; 
+    font-weight: lighter; 
   }
   
   .navbar-brand:hover::before {
     visibility: visible;
-    transform: scaleX(1); /* Make the underline visible and scale it */
+    transform: scaleX(1); 
   }
 
 
@@ -343,23 +383,23 @@ body {
 }
 
 .users button:hover {
-  background-color: orange;  /* Baguhin ang kulay sa hover */
-  color: white;  /* Baguhin ang text color sa hover */
+  background-color: orange;  
+  color: white;  
 }
 
 @media only screen and (max-width: 768px) {
   .users button {
-      width: 100%;  /* Gawing full width sa mobile */
-      height: auto;  /* Auto height */
-      margin-right: 0;  /* Alisin ang margin sa right para maging full width */
+      width: 100%;  
+      height: auto;  
+      margin-right: 0;  
   }
 }
 
 #wrapper {
-  border: 1px solid black; /* Optional: Add a border for better visibility */
+  border: 1px solid black; 
   margin: 10px;
   padding: 10px;
-  background-color: #f9f9f9; /* Optional: Add a background color for better visibility */
+  background-color: #f9f9f9; 
   border-radius: 10px;
 }
 
@@ -369,7 +409,7 @@ body {
   border: 2px solid #dee2e6;
   border-bottom: 1px solid #dee2e6;
   box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.1);
-  margin: 30px 70px 0; /* Adjusted margin for better responsiveness */
+  margin: 30px 70px 0; 
   border-radius: 15px;
 }
 
@@ -391,6 +431,94 @@ body {
   transform: translate(-50%, -50%) scale(1);
 }
 
+@media screen and (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  nav {
+    margin: 10px; 
+  }
 
+  .container 
+  {
+    flex-direction: column; 
+    align-items: flex-start;
+  }
+  .item-container
+  {
+    flex-direction: column; 
+    align-items: flex-start;
+  }
+
+  .navbar-brand {
+    margin: 5px 10px; 
+  }
+  .form,.form-item, .item-form-item{
+    margin: 10px; 
+  }
+  h1 {
+    margin-left: 0.5rem; 
+  }
+   .button-container {
+    flex-direction: column; 
+    align-items: flex-start;
+  }
+ button.remove,
+  button.add {
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 10px; 
+  }
+  /*delete item*/
+  .confirmation-pop-up {
+    max-width: 300px; 
+}
+   
+  .confirmation-pop-up {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  #item_body td {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+
+  #item_body tr {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  #item_body tr:last-child {
+    margin-bottom: 0;
+  }
+
+  #item_body td:before {
+    content: attr(data-label);
+    font-weight: bold;
+    display: inline-block;
+    width: 50%;
+    box-sizing: border-box;
+  }
+  #borrowFormId {
+    max-width: 100%;
+  }
+  .form-popup {
+    width: 90%;
+}
+#edit_back_buttons {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+}
 
 

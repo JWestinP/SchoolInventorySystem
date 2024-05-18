@@ -12,19 +12,17 @@ from rest_framework import serializers
 from .models import Item, Category
 from .decorators import allowed_users
 
-
-# Create your views here.
 class ItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = Item
-        fields = '__all__'  # Include all fields
-        depth = 1  # Include one level of related objects
+        fields = '__all__'  
+        depth = 1  
         
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields = '__all__'  # Include all fields
-        depth = 1  # Include one level of related objects
+        fields = '__all__' 
+        depth = 1  
     
 @login_required
 @allowed_users(allowed_roles=['Admin'])
@@ -59,9 +57,8 @@ def guest_home(request):
 @allowed_users(allowed_roles=['Faculty'])
 def home(request):
     current_user = request.user
-    query = request.GET.get('q', '')  # Get the search query from the URL parameter 'q'
-
-    # Initialize queryset variables
+    query = request.GET.get('q', '')  
+    
     furniture_items = room_items = cleaning_material_items = technology_items = dean_approval_items = None
 
     categories = Category.objects.all()
@@ -121,13 +118,10 @@ def get_category_form(request):
 
 def get_items(request):
     category = request.GET.get('category')
-    print(category)
     try:
         if category is not None and category != 'null':
-            # Your existing logic here
             items = Item.objects.filter(item_category__item_category=category)
 
-            # Use the serializer to serialize the queryset
             serializer = ItemSerializer(items, many=True)
             serialized_data = serializer.data
 
@@ -135,8 +129,6 @@ def get_items(request):
         else:
             raise ValueError('Invalid category parameter in the request.')
     except Exception as e:
-        # Log the exception for debugging purposes
-        print(f'Error in your_ajax_view: {e}')
         return JsonResponse({'error': 'Internal server error'}, status=500)
 
 def get_category(request):
@@ -152,13 +144,16 @@ def save_borrow_form(request):
     borrow_form = BorrowForm(request.POST)
     stock_id = request.POST.get('stock_id')
     stock_instance = get_object_or_404(Stock, pk=stock_id)
-
+    item_check = stock_instance.item_information.item_one_time_borrow
+    already_borrowed = False
+    if item_check:
+        borrowed_check = Unreturned_Item.objects.filter(item_borrowed__item_borrower = current_user).exists()
+        if borrowed_check:
+            already_borrowed = True
+            
     if borrow_form.is_valid():
         item_borrowed_value = borrow_form.cleaned_data['item_quantity']
-        print(item_borrowed_value)
-        print(stock_instance.item_current_quantity)
-        print(stock_instance.item_pristine_quantity)
-        if item_borrowed_value <= stock_instance.item_current_quantity and item_borrowed_value <= stock_instance.item_pristine_quantity:
+        if item_borrowed_value <= stock_instance.item_current_quantity and item_borrowed_value <= stock_instance.item_pristine_quantity and already_borrowed == False:
 
             model_instance = borrow_form.save(commit=False)
             model_instance.item_borrower = current_user
@@ -176,23 +171,13 @@ def save_borrow_form(request):
             
             unreturned_instance = Unreturned_Item.objects.create(item_borrowed = model_instance, item_days_not_returned = 0)
             unreturned_instance.save()
-            print('updated current count')
 
-            # Return a success response
             return JsonResponse({'message': 'Form submitted successfully'})
         
         else:
-            print('Form is NOT valid! Borrowed value greater than current stock')
             return JsonResponse({'error': 'Invalid form submission'}, status=400)
 
     else:
-        print('Form is NOT valid!')
-        print('Errors:', borrow_form.errors.as_data())
-
-        # Print the choices for the item_stock field
-        item_stock_choices = BorrowForm.base_fields['item_stock'].queryset.values_list('pk', flat=True)
-        print('Choices for item_stock:', item_stock_choices)
-
         return JsonResponse({'error': 'Invalid form submission'}, status=400)
     
 def guest_save_borrow_form(request):
@@ -208,12 +193,11 @@ def guest_save_borrow_form(request):
         if item_borrowed_value <= stock_instance.item_current_quantity and item_borrowed_value <= stock_instance.item_pristine_quantity:
             borrow_instance = borrow_form.save(commit=False)
             
-            # Get the corresponding User object from the database
             user_id = user_form.cleaned_data['user'].id
 
             user = User.objects.get(id=user_id)
             
-            borrow_instance.item_borrower = user  # Assign the User object to item_borrower
+            borrow_instance.item_borrower = user 
             borrow_instance.save()
             
             stock_instance.item_current_quantity -= item_borrowed_value
@@ -226,15 +210,8 @@ def guest_save_borrow_form(request):
 
             return JsonResponse({'message': 'Form submitted successfully'})
         else:
-            print('Form is NOT valid! Borrowed value greater than current stock')
             return JsonResponse({'error': 'Invalid form submission'}, status=400)
     else:
-        print('Form is NOT valid!')
-        print('Errors:', borrow_form.errors.as_data(), user_form.errors.as_data())
-
-        item_stock_choices = borrow_form.fields['item_stock'].queryset.values_list('pk', flat=True)
-        print('Choices for item_stock:', item_stock_choices)
-
         return JsonResponse({'error': 'Invalid form submission'}, status=400)
 def save_item_form(request):
     item_form = ItemForm(request.POST, request.FILES)
@@ -247,8 +224,7 @@ def save_item_form(request):
         return JsonResponse({'message': 'Form submitted successfully'})
 
     else:
-        print('Form is NOT valid!')
-        print('Errors:', item_form.errors.as_data())
+       
         return JsonResponse({'error': 'Invalid form submission'}, status=400)
     
 def save_stock_form(request):
@@ -267,8 +243,7 @@ def save_stock_form(request):
         return JsonResponse({'message': 'Form submitted successfully'})
 
     else:
-        print('Form is NOT valid!')
-        print('Errors:', stock_form.errors.as_data())
+      
         return JsonResponse({'error': 'Invalid form submission'}, status=400)
 
 def save_category_form(request):
@@ -280,14 +255,11 @@ def save_category_form(request):
         return JsonResponse({'message': 'Form submitted successfully'})
 
     else:
-        print('Form is NOT valid!')
-        print('Errors:', category_form.errors.as_data())
         return JsonResponse({'error': 'Invalid form submission'}, status=400)
 
 def get_item_inventory(request):
     item_inventory = Stock.objects.all()
 
-    # Convert each Item to a dictionary
     items_data = [{'item_id' : item.item_information.item_id,
                    'item_name' : item.item_information.item_name,
                    'item_category' : item.item_information.item_category.item_category,
@@ -299,14 +271,12 @@ def get_item_inventory(request):
                    'item_current' : item.item_current_quantity,
                    'item_borrowed' : item.item_borrowed_quantity,
                    'stock_id' : item.pk} for item in item_inventory]
-    print(items_data)
     return JsonResponse({'items': items_data}, safe=False)
 
 def search_items(request):
     query = request.GET.get('q')
 
     if query:
-        # Perform a case-insensitive search on the item name, category, and item id
         results = Item.objects.filter(
             models.Q(item_name__icontains=query) |
             models.Q(item_category__item_category__icontains=query) |
@@ -321,7 +291,6 @@ def search_items_admin(request):
     query = request.GET.get('q')
 
     if query:
-        # Perform a case-insensitive search on the item name, category, and item id
         results = Item.objects.filter(
             models.Q(item_name__icontains=query) |
             models.Q(item_category__item_category__icontains=query) |
@@ -336,7 +305,6 @@ def search_items_guest(request):
     query = request.GET.get('q')
 
     if query:
-        # Perform a case-insensitive search on the item name, category, and item id
         results = Item.objects.filter(
             models.Q(item_name__icontains=query) |
             models.Q(item_category__item_category__icontains=query) |

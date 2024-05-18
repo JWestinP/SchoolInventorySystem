@@ -331,7 +331,7 @@ td{
     width: 100px;
     display: flex;
     align-items: center;
-    margin-left: 10px; /* Adjust this value as needed */
+    margin-left: 10px; 
     flex-shrink: 0;
     position: absolute;
     top: 0;
@@ -342,14 +342,14 @@ td{
     width: 100px;
     display: flex;
     align-items: center;
-    margin-right: 10px; /* Adjust this value as needed */
+    margin-right: 10px; 
     flex-shrink: 0;
     position: absolute;
     top: 0;
     right: 0;
 }
 .logo.right img {
-    width: 65px; /* Adjust this value to make the logos smaller */
+    width: 65px; 
     margin-top: 3px;
     padding-right: 20px;
 
