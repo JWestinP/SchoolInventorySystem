@@ -172,7 +172,7 @@ def save_borrow_form(request):
             unreturned_instance = Unreturned_Item.objects.create(item_borrowed = model_instance, item_days_not_returned = 0)
             unreturned_instance.save()
 
-            return JsonResponse({'message': 'Form submitted successfully'})
+            return JsonResponse({'message': 'Item has been borrowed successfully'})
         
         else:
             return JsonResponse({'error': 'Invalid form submission'}, status=400)
@@ -208,7 +208,7 @@ def guest_save_borrow_form(request):
             unreturned_instance = Unreturned_Item.objects.create(item_borrowed=borrow_instance, item_days_not_returned=0)
             unreturned_instance.save()
 
-            return JsonResponse({'message': 'Form submitted successfully'})
+            return JsonResponse({'message': 'Item has been borrowed successfully'})
         else:
             return JsonResponse({'error': 'Invalid form submission'}, status=400)
     else:
@@ -221,7 +221,7 @@ def save_item_form(request):
         model_instance.save()
         
         request.session['item'] = model_instance.item_id
-        return JsonResponse({'message': 'Form submitted successfully'})
+        return JsonResponse({'message': 'Added new item successfully'})
 
     else:
        
@@ -240,7 +240,7 @@ def save_stock_form(request):
         model_instance.save()
         
         del request.session['item']
-        return JsonResponse({'message': 'Form submitted successfully'})
+        return JsonResponse({'message': 'Added new stock to item successfully'})
 
     else:
       
@@ -252,7 +252,7 @@ def save_category_form(request):
     if category_form.is_valid():
         model_instance = category_form.save(commit=False)
         model_instance.save()
-        return JsonResponse({'message': 'Form submitted successfully'})
+        return JsonResponse({'message': 'Category added successfully'})
 
     else:
         return JsonResponse({'error': 'Invalid form submission'}, status=400)
@@ -270,6 +270,7 @@ def get_item_inventory(request):
                    'item_damaged' : item.item_damaged_quantity,
                    'item_current' : item.item_current_quantity,
                    'item_borrowed' : item.item_borrowed_quantity,
+                   'item_one_time_borrow' : item.item_information.item_one_time_borrow,
                    'stock_id' : item.pk} for item in item_inventory]
     return JsonResponse({'items': items_data}, safe=False)
 

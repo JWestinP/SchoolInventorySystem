@@ -117,9 +117,9 @@ function fetchData(itemId) {
                                 .then(data => {
                                     console.log(data);
                                     if (data.message) {
-                                    
+                                        showPopup(data.message || data.error);
                                     } else if (data.error) {
-                                        
+                                        showPopup(data.message || data.error);
                                         console.error(data.error);
                                     }
                                 })
@@ -274,4 +274,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function showBorrowForm(itemId) {
     fetchData(itemId);  
+}
+
+function showPopup(message) {
+    const popup = document.getElementById('popup');
+    const popupMessage = document.getElementById('popup-message');
+    popupMessage.textContent = message;
+    popup.classList.add('active');
+
+    document.querySelector('.popup .close-btn').addEventListener('click', function() {
+        popup.classList.remove('active');
+    });
 }

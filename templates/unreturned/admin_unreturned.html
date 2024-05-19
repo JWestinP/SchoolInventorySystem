@@ -4,7 +4,7 @@
     <head>
         <link rel="stylesheet" href="{% static 'unreturned/unreturnedadminstyle.css' %}">
         <link rel="stylesheet" href="{% static 'unreturned/pop_up_form.css' %}">
-        <title>ADMIN UNRETURNED</title>
+        <title>Admin Unreturned</title>
     </head>
 
 
@@ -31,9 +31,9 @@
             <nav class="buttons-box">
                 <div class="button-grid">
                     <a href="{% url 'admin_home' %}" class="buttons-tabs">Home</a>
-                    <a href="{% url 'admin_recents' %}" class="buttons-tabs">Recents</a>
+                    <a href="{% url 'admin_recents' %}" class="buttons-tabs">History</a>
                     <a href="{% url 'admin_unreturned' %}" class="buttons-tabs">Unreturned</a>
-                    <a href="{% url 'members' %}" class="buttons-tabs">Members</a>
+                    <a href="{% url 'members' %}" class="buttons-tabs">Users</a>
                     <a href="{% url 'admin_userprofile' %}" class="buttons-tabs">Account</a>
                     <a href="{% url 'logout' %}" class="buttons-tabs">Logout</a>
                 </div>

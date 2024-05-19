@@ -40,7 +40,7 @@ def return_item(request, item_id, item_stock_id, borrow_form_id):
         unreturned_items.item_borrowed.item_stock.item_current_quantity = unreturned_items.item_borrowed.item_stock.item_current_quantity + int(pristine_no)
         unreturned_items.item_borrowed.item_stock.item_pristine_quantity = unreturned_items.item_borrowed.item_stock.item_pristine_quantity + int(pristine_no)
         unreturned_items.item_borrowed.item_stock.item_damaged_quantity = unreturned_items.item_borrowed.item_stock.item_damaged_quantity + int(damaged_no)
-        unreturned_items.item_borrowed.item_stock.item_borrowed_quantity = unreturned_items.item_borrowed.item_stock.item_damaged_quantity - borrowed_item.item_quantity
+        unreturned_items.item_borrowed.item_stock.item_borrowed_quantity = unreturned_items.item_borrowed.item_stock.item_borrowed_quantity - borrowed_item.item_quantity
 
         unreturned_items.save()
 

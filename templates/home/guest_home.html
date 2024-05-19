@@ -3,7 +3,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="{% static 'home/homegueststyle.css' %}">
-        <title>GUEST HOME</title>
+        <title>Guest Home</title>
     </head>
 
     <body>
@@ -87,7 +87,10 @@
                 
             </div>
         </div>
-                    
+        <div id="popup" class="popup">
+            <span class="close-btn">&times;</span>
+            <p id="popup-message"></p>
+        </div>            
        
         <script defer src="{% static 'home/homeguestscript.js' %}"></script>
         

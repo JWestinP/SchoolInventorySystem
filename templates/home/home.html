@@ -32,7 +32,7 @@
             <div class="buttons-box">
                 <div class="button-grid">
                     <a href="{% url 'home' %}" class="buttons-tabs">Home</a>
-                    <a href="{% url 'recents' %}" class="buttons-tabs">Recents</a>
+                    <a href="{% url 'recents' %}" class="buttons-tabs">History</a>
                     <a href="{% url 'unreturned' %}" class="buttons-tabs">Unreturned</a>
                     <a href="{% url 'notification' %}" class="buttons-tabs">Notification</a>
                     <a href="{% url 'userprofile' %}" class="buttons-tabs">Account</a>
@@ -96,7 +96,11 @@
                         </div>
                     </div>
              </div>
-             
+
+             <div id="popup" class="popup">
+                <span class="close-btn">&times;</span>
+                <p id="popup-message"></p>
+            </div>
         <script defer src="{% static 'home/homescript.js' %}"></script>
     </body>
 </html>

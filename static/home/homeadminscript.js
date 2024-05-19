@@ -28,7 +28,6 @@ function fetchData(itemId) {
             const selectedItem = items.find(item => item.item_id === parseInt(itemId));
             console.log('Selected item ID:', selectedItem.item_id);
 
-            // items info
             if (selectedItem) {
                 const imageUrl = `${selectedItem.item_photo}`
                 document.getElementById('item_header').innerHTML = `
@@ -41,7 +40,7 @@ function fetchData(itemId) {
                     <p>Item ID: ${selectedItem.item_id}</p>
                     <p>Name: ${selectedItem.item_name}</p>
                     <p>Category: ${selectedItem.item_category}</p>
-                  
+                    <p>One per user: ${selectedItem.item_one_time_borrow}</p>
                
                 `;
                 document.body.addEventListener('click', function (event) {
@@ -120,9 +119,9 @@ function fetchData(itemId) {
                                 .then(data => {
                                     console.log(data);
                                     if (data.message) {
-                                    
+                                        showPopup(data.message || data.error);
                                     } else if (data.error) {
-                                        
+                                        showPopup(data.message || data.error);
                                         console.error(data.error);
                                     }
                                 })
@@ -375,7 +374,7 @@ function addItem() {
                                                         </div>
                                                         `
                                                     } else if (data.error) {
-                                                        
+                                                        showPopup(data.message || data.error);
                                                         console.error(data.error);
                                                     }
                                                     
@@ -513,7 +512,6 @@ function deleteCategory(category_id) {
             .then(response => response.json())
             .then(data => {
                 console.log(data.message);
-                
             })
             .catch(error => console.error('Error:', error));
 
@@ -614,3 +612,13 @@ function showBorrowForm(itemId) {
     fetchData(itemId);  
 }
 
+function showPopup(message) {
+    const popup = document.getElementById('popup');
+    const popupMessage = document.getElementById('popup-message');
+    popupMessage.textContent = message;
+    popup.classList.add('active');
+
+    document.querySelector('.popup .close-btn').addEventListener('click', function() {
+        popup.classList.remove('active');
+    });
+}

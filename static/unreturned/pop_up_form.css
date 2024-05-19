@@ -4,9 +4,13 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 60%;
+    width: 700px;
+    max-width: 80%;
     background-color: white;
     height: fit-content;
+    border: 1px solid black;
+    border-radius: 10px;
+    transition: 200ms ease-in-out;
 }
 
 #popup_form form {

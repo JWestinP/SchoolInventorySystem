@@ -3,7 +3,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="{% static 'members/memberstyle.css' %}">
-        <title>MEMBERS</title>
+        <title>Users</title>
     </head>
     <body>
         <div class="header">
@@ -28,9 +28,9 @@
         <nav class="buttons-box">
             <div class="button-grid">
                 <a href="{% url 'admin_home' %}" class="buttons-tabs">Home</a>
-                <a href="{% url 'admin_recents' %}" class="buttons-tabs">Recents</a>
+                <a href="{% url 'admin_recents' %}" class="buttons-tabs">History</a>
                 <a href="{% url 'admin_unreturned' %}" class="buttons-tabs">Unreturned</a>
-                <a href="{% url 'members' %}" class="buttons-tabs">Members</a>
+                <a href="{% url 'members' %}" class="buttons-tabs">Users</a>
                 <a href="{% url 'admin_userprofile' %}" class="buttons-tabs">Account</a>
                 <a href="{% url 'logout' %}" class="buttons-tabs">Logout</a>
             </div>
