@@ -2,6 +2,9 @@
     {% csrf_token %}
     <p>Category name:</p>
     {{ category_form.item_category }}
+    <br>
+    <p>Category icon:</p>
+    {{ category_form.item_category_photo }}
     <input type="submit" value="Submit">
     <button onclick="closeCategoryForm()">Cancel</button>
 </form>

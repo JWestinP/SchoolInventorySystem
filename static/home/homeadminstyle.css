@@ -264,7 +264,7 @@ body {
 }
 
 form {
-  display: flex !important;
+  display: flex;
   flex: 1 !important;
   align-items: center !important;
 }
@@ -1000,7 +1000,7 @@ a:active {
     
 }
 
-  .category_button:nth-child(1){
+  /* .category_button:nth-child(1){
     background-image: url(../home/adminhome/clean.png);
     background-size:110px;
     background-position: center;
@@ -1021,8 +1021,13 @@ a:active {
   .category_button:nth-child(5){
     background-image: url(../home/adminhome/room.png);
     background-position: center;
-  }
+  } */
 
+  .category_button img{
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+  }
 
   .category_button:hover {
     background-color: orange;
@@ -1049,6 +1054,10 @@ a:active {
   #edit_category_buttons button:hover {
     color: black;
     background-color: orange;
+  }
+
+  #categoryFormId {
+    display: block!important;
   }
   .h1item{
     margin-right: 10px;

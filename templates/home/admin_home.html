@@ -47,7 +47,7 @@
 
                         <div class="categories" id="category_container">
                             {% for category in categories %}
-                            <button onclick="showItem('{{ category }}')" class="category_button">{{ category }}</button>
+                            <button onclick="showItem('{{ category }}')" class="category_button"><img src="{{ category.item_category_photo.url }}" alt="">{{ category.item_category }}</button>
                             {% endfor %}
                            
                         </div>

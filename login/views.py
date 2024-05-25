@@ -13,6 +13,8 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.db.models.query_utils import Q
 # Create your views here.
+
+#For user login and redirect
 @unauthenticated_user
 @never_cache
 def user_login(request):
@@ -22,6 +24,7 @@ def user_login(request):
         
         user = authenticate(username = email, password = password)
         
+        #For redirection depending on user's group
         if user is not None:
             login(request, user)
             group_names = []
@@ -39,17 +42,17 @@ def user_login(request):
     
     return render(request, 'login/login.html')
 
+#For user logout
 def user_logout(request):
     logout(request)
     messages.success(request, "You've successfully logged out.")
     return redirect('login')
 
+#For guest redirect
 def guest_login(request):
     return redirect('guest_home')
 
-def user_guest(request):
-    pass
-
+#For forgot password// initialize built in django forgot password
 def password_reset_request(request):
 	if request.method == "POST":
 		password_reset_form = PasswordResetForm(request.POST)

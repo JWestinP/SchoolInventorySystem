@@ -3,7 +3,8 @@ from django.db import models
 # Create your models here.
 class Category(models.Model):
     item_category = models.CharField(max_length = 64)
-    
+    item_category_photo = models.ImageField(blank = True, upload_to='item_category_photo')
+
     def __str__(self):
         return self.item_category
 
