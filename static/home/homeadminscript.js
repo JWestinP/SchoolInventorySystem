@@ -1,4 +1,3 @@
-var itemDisplay
 const category = document.getElementsByClassName('category_button')
 const selectItem = document.querySelectorAll('.item_button')
 const informationId = document.getElementById('item_information')
@@ -10,8 +9,34 @@ const categoryId = document.getElementById('add_category_form')
 const confirmationPopUp = document.getElementById('delete_confirmation')
 const addSuccessPopUp = document.getElementById('success_popup')
 
+var itemDisplay
+
+//In charge of hiding the category buttons when clicking a category
+function hideAllCategoryButtons() {
+    var categoryButtons = document.querySelectorAll('.category_button');
+    categoryButtons.forEach(function(button) {
+        button.style.display = 'none';
+    });
+}
+
+//In charge of showing the category buttons when closing a category
+function showAllCategoryButtons() {
+    
+    var categoryButtons = document.querySelectorAll('.category_button');
+    categoryButtons.forEach(function(button) {
+        button.style.display = 'inline';
+
+    });
+    var itemContainer = document.getElementById('item_list');
+    var buttonContainer = document.getElementById('edit_back_buttons')
+    itemContainer.innerHTML = '';
+    buttonContainer.innerHTML = ''
+    location.reload()
+}
+
+//In charge of showing the item list in a specific category
 function fetchData(itemId) {
-    fetch('/api/item_inventory/')
+    fetch('/item_inventory/')
         .then(response => {
             if (!response.ok) {
                 throw new Error(`Error ${response.status}: ${response.statusText}`);
@@ -148,55 +173,7 @@ function fetchData(itemId) {
         .catch(error => console.error('Error fetching data:', error));
 }
 
-function openItem(informationId) {
-    console.log('Opening Item');
-    if (informationId) {
-        informationId.classList.add('active');
-    }
-}
-
-function openForm(formId) {
-    console.log('Opening item form');
-    if (formId) {
-        formId.classList.add('active');
-    }
-}
-
-function openCategoryForm(categoryId) {
-    console.log('Opening category form');
-    if (categoryId) {
-        categoryId.classList.add('active');
-    }
-}
-
-function openConfirmation(confirmationPopUp) {
-    console.log('Opening confirmation');
-    if (confirmationPopUp) {
-        confirmationPopUp.classList.add('active');
-    }
-}
-
-function closeItem(informationId) {
-    console.log('Closing Item');
-    informationId.classList.remove('active');
-}
-
-function closeForm() {
-    console.log('Closing item form');
-    formId.classList.remove('active');
-    location.reload()
-}
-
-function closeCategoryForm() {
-    console.log('Closing category form');
-    categoryId.classList.remove('active');
-}
-
-function closeConfirmation() {
-    console.log('Closing confirmation popup');
-    confirmationPopUp.classList.remove('active');
-}
-
+//In charge of showing item information and item borrow form
 function showItem(category) {
     console.log('Sending request for category:', category)
 
@@ -227,17 +204,15 @@ function showItem(category) {
                             data.items.forEach(selectedItem => {
                                 const imageUrl = `${selectedItem.item_photo}`
                                 const itemHTML = `
-                                <div class="items-grid">
+                                <div class="row-container">
                         
-                                <div class="items">
-    
-                                    <div class="items-pic">
-                                        <img src="${imageUrl}" alt="${selectedItem.item_name}" class="item-pic">
+                                <div class="square-container">
+                                    <div class="item-photo">
+                                        <img src="${imageUrl}" alt="${selectedItem.item_name}" class="item-pic" style="width: 100px; height: 100px;">
                                     </div>  
     
-                                    <div class= "items-button">
-                                        <button data-item-target="${selectedItem.item_id}" class="item_button">${selectedItem.item_name}</button>
-    
+                                    <div class= "item-button">
+                                        <button onclick="deleteItem(${selectedItem.item_id})" class="item_button">${selectedItem.item_name}</button>
                                     </div>
     
                                 </div>
@@ -245,7 +220,6 @@ function showItem(category) {
                             </div>    
                                 `
                                 itemContainer.innerHTML += itemHTML
-        
                             })
                         } 
                         else {
@@ -297,27 +271,64 @@ function showItem(category) {
     };
 }
 
-function hideAllCategoryButtons() {
-    var categoryButtons = document.querySelectorAll('.category_button');
-    categoryButtons.forEach(function(button) {
-        button.style.display = 'none';
-    });
+//In charge of opening the pop up item window
+function openItem(informationId) {
+    console.log('Opening Item');
+    if (informationId) {
+        informationId.classList.add('active');
+    }
 }
 
-function showAllCategoryButtons() {
-    
-    var categoryButtons = document.querySelectorAll('.category_button');
-    categoryButtons.forEach(function(button) {
-        button.style.display = 'inline';
+//In charge of opening the pop up item addition form window
+function openForm(formId) {
+    console.log('Opening item form');
+    if (formId) {
+        formId.classList.add('active');
+    }
+}
 
-    });
-    var itemContainer = document.getElementById('item_list');
-    var buttonContainer = document.getElementById('edit_back_buttons')
-    itemContainer.innerHTML = '';
-    buttonContainer.innerHTML = ''
+//In charge of opening the pop up category addition form window
+function openCategoryForm(categoryId) {
+    console.log('Opening category form');
+    if (categoryId) {
+        categoryId.classList.add('active');
+    }
+}
+
+//In charge of opening the pop up item/category deletion window
+function openConfirmation(confirmationPopUp) {
+    console.log('Opening confirmation');
+    if (confirmationPopUp) {
+        confirmationPopUp.classList.add('active');
+    }
+}
+
+//In charge of closing the pop up item window
+function closeItem(informationId) {
+    console.log('Closing Item');
+    informationId.classList.remove('active');
+}
+
+//In charge of closing the pop up item addition window
+function closeForm() {
+    console.log('Closing item form');
+    formId.classList.remove('active');
     location.reload()
 }
 
+//In charge of closing the pop up category addition window
+function closeCategoryForm() {
+    console.log('Closing category form');
+    categoryId.classList.remove('active');
+}
+
+//In charge of closing the pop up item/category deletion window
+function closeConfirmation() {
+    console.log('Closing confirmation popup');
+    confirmationPopUp.classList.remove('active');
+}
+
+//In charge of adding a new item
 function addItem() {
     fetch('/get_item_form/')
         .then(response => response.json())
@@ -396,16 +407,15 @@ function addItem() {
         })
 }
 
+//In charge of deleting an exisiting item
 function deleteItem(item_id) {
     confirmationPopUp.innerHTML = `
-    <div class="confirmation-popup-container">
-        <div class="confirmation-popup">
-            <p>Are you sure you want to delete this item?</p>
-            <button class="delete_confirm">Yes</button>
-            <button class="delete_denied">No</button>
+        <p>Are you sure you want to delete this item?</p>
+        <div class="delete_buttons">
+        <button class="delete_confirm">Yes</button>
+        <button class="delete_denied">No</button>
         </div>
-    </div>
-    
+
     `
     openConfirmation(confirmationPopUp)
 
@@ -426,12 +436,8 @@ function deleteItem(item_id) {
             })
             .catch(error => console.error('Error:', error));
             confirmationPopUp.innerHTML = `
-            <div class="confirmation-popup-container">
-                <div class="confirmation-popup">
                     <p>The item has been deleted successfully</p>
                     <button onclick="refreshPage()">Back</button>
-                <div>
-            </div>
             `
         }
         else if (event.target.matches('.delete_denied')) {
@@ -441,97 +447,7 @@ function deleteItem(item_id) {
     
 }
 
-function addCategory() {
-    fetch('/get_category_form/')
-        .then(response => response.json())
-        .then(data => {
-            const formContainer = document.getElementById('add_category_form');
-            formContainer.innerHTML = data.category_form_html;
-            const categoryForm = document.getElementById('categoryFormId');
-            const csrfToken = document.cookie.split(';').find(cookie => cookie.trim().startsWith('csrftoken=')).split('=')[1];
-                if (categoryForm) {
-                    categoryForm.addEventListener('submit', function (event) {
-                        event.preventDefault();
-                    
-                        const formData = new FormData(categoryForm);
-
-                        formData.append('csrfmiddlewaretoken', csrfToken);
-                        console.log(formData)
-                        console.log('FormData:', formData);
-                        fetch('/save_category_form/', {
-                            method: 'POST',
-                            body: formData
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            console.log(data);
-                            if (data.message) {
-                                formContainer.innerHTML = `
-                                <div class="confirmation-popup-container">
-                                    <div class="success-popup">
-                                        <p>The category has been added successfully!</p>
-                                        <button onclick="refreshPage()">Ok</button>
-                                    </div>
-                                </div>   
-                                `
-                            } else if (data.error) {
-                                
-                                console.error(data.error);
-                            }
-                        })
-                        .catch(error => console.error('Error submitting form:', error));
-
-                    });
-                    openCategoryForm(categoryId)                   
-                }
-        })
-}
-
-function deleteCategory(category_id) {
-    confirmationPopUp.innerHTML = `
-    <div class="confirmation-popup-container">
-        <div class="confirmation-popup">
-                <p>Are you sure you want to delete this category?</p>
-                <button class="delete_confirm">Yes</button>
-                <button class="delete_denied">No</button>
-        </div>
-    </div>
-    `
-    openConfirmation(confirmationPopUp)
-    
-    confirmationPopUp.addEventListener('click', function(event){
-        if (event.target.matches('.delete_confirm')) {
-            const csrfToken = document.cookie.split(';').find(cookie => cookie.trim().startsWith('csrftoken=')).split('=')[1];
-            fetch(`/delete_category/?category_id=${category_id}`, {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': csrfToken
-                },
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data.message);
-            })
-            .catch(error => console.error('Error:', error));
-
-            confirmationPopUp.innerHTML = `
-            <div class="confirmation-popup-container">
-                <div class="confirmation-popup">
-                    <p>The category has been deleted successfully</p>
-                    <button onclick="refreshPage()">Back</button>
-                </div>
-            </div>
-            `
-        }
-
-        else if (event.target.matches('.delete_denied')) {
-            closeConfirmation()
-        }
-    })
-    
-}
-
+//In charge of showing edit category button(add and delete)
 function editCategory() {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', '/get_category/', true);
@@ -559,11 +475,10 @@ function editCategory() {
                             console.log(categoryName);
                             document.getElementById
                             const categoryHTML = `
-                            <div>
-                            <button class="category_button">${category.item_category}</button><br>
-                            <button><p onclick="deleteCategory(${category.id})"><i class="fa fa-trash" ></i>Remove</p></button>
-                        </div>                
-                        
+                            <div class="category_delete_container">
+                                <p class="category_names">${category.item_category}</p><br>
+                                <button class="category_delete"><p onclick="deleteCategory(${category.id})"><i class="fa fa-trash" ></i>Remove</p></button>
+                            </div>                
                             `;
 
                             categoryContainer.innerHTML += categoryHTML;
@@ -578,10 +493,95 @@ function editCategory() {
     xhr.send();
 }
 
+//In charge of adding a new category
+function addCategory() {
+    fetch('/get_category_form/')
+        .then(response => response.json())
+        .then(data => {
+            const formContainer = document.getElementById('add_category_form');
+            formContainer.innerHTML = data.category_form_html;
+            const categoryForm = document.getElementById('categoryFormId');
+            const csrfToken = document.cookie.split(';').find(cookie => cookie.trim().startsWith('csrftoken=')).split('=')[1];
+                if (categoryForm) {
+                    categoryForm.addEventListener('submit', function (event) {
+                        event.preventDefault();
+                    
+                        const formData = new FormData(categoryForm);
+
+                        formData.append('csrfmiddlewaretoken', csrfToken);
+                        console.log(formData)
+                        console.log('FormData:', formData);
+                        fetch('/save_category_form/', {
+                            method: 'POST',
+                            body: formData
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log(data);
+                            if (data.message) {
+                                formContainer.innerHTML = `
+                                    <p class="success_message">The category has been added successfully!</p>
+                                    <button class="success_button" onclick="refreshPage()">Ok</button>
+                                `
+                            } else if (data.error) {
+                                
+                                console.error(data.error);
+                            }
+                        })
+                        .catch(error => console.error('Error submitting form:', error));
+
+                    });
+                    openCategoryForm(categoryId)                   
+                }
+        })
+}
+
+//In charge of deleting an existing category
+function deleteCategory(category_id) {
+    confirmationPopUp.innerHTML = `
+        <p>Are you sure you want to delete this category?</p>
+        <div class="delete_buttons">
+        <button class="delete_confirm">Yes</button>
+        <button class="delete_denied">No</button>
+        </div>
+    `
+    openConfirmation(confirmationPopUp)
+    
+    confirmationPopUp.addEventListener('click', function(event){
+        if (event.target.matches('.delete_confirm')) {
+            const csrfToken = document.cookie.split(';').find(cookie => cookie.trim().startsWith('csrftoken=')).split('=')[1];
+            fetch(`/delete_category/?category_id=${category_id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrfToken
+                },
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.message);
+            })
+            .catch(error => console.error('Error:', error));
+
+            confirmationPopUp.innerHTML = `
+                    <p>The category has been deleted successfully</p>
+                    <button onclick="refreshPage()">Back</button>
+            `
+        }
+
+        else if (event.target.matches('.delete_denied')) {
+            closeConfirmation()
+        }
+    })
+    
+}
+
+//In charge of refreshing the current page
 function refreshPage() {
     location.reload()
 }
 
+//In charge of showing the item list when a category is clicked
 selectItem.forEach(button => {
     button.addEventListener('click', () => {
         const itemId = button.getAttribute('data-item-target');
@@ -592,6 +592,7 @@ selectItem.forEach(button => {
     });
 });
 
+//In charge of initializing all the item information in the item list
 document.addEventListener('DOMContentLoaded', function() {
     itemDisplay = document.getElementById('item_information');
     
@@ -607,11 +608,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-
-function showBorrowForm(itemId) {
-    fetchData(itemId);  
-}
-
+//In charge of the pop up window for successful/error action in admin home
 function showPopup(message) {
     const popup = document.getElementById('popup');
     const popupMessage = document.getElementById('popup-message');

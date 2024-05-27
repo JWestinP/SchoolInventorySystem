@@ -5,10 +5,9 @@
         <link rel="stylesheet" href="{% static 'home/homestyle.css' %}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
         <title>Faculty Home</title>
-    <body>
-        
-        <div class="header">
-            
+    </head>
+    <body> 
+        <div class="header">           
             <div class="left-section">
                 <img class="lspu-logo" src="{% static 'home/logo/lspu-logo.png' %}">
             </div>
@@ -23,84 +22,72 @@
              <div class="right-section">
                  <img class="ccs-logo" src="{% static 'home/logo/ccs-logo.jpg' %}" >
              </div>
-        
-         </div>
-    
+        </div>
 
-        <div class="head"></div>
-         
-            <div class="buttons-box">
-                <div class="button-grid">
-                    <a href="{% url 'home' %}" class="buttons-tabs">Home</a>
-                    <a href="{% url 'recents' %}" class="buttons-tabs">History</a>
-                    <a href="{% url 'unreturned' %}" class="buttons-tabs">Unreturned</a>
-                    <a href="{% url 'notification' %}" class="buttons-tabs">Notification</a>
-                    <a href="{% url 'userprofile' %}" class="buttons-tabs">Account</a>
-                    <a href="{% url 'logout' %}" class="buttons-tabs">Logout</a>
+        
+        <div class="buttons-box">
+            <div class="button-grid">
+                <a href="{% url 'home' %}" class="buttons-tabs">Home</a>
+                <a href="{% url 'recents' %}" class="buttons-tabs">History</a>
+                <a href="{% url 'unreturned' %}" class="buttons-tabs">Unreturned</a>
+                <a href="{% url 'notification' %}" class="buttons-tabs">Notification</a>
+                <a href="{% url 'userprofile' %}" class="buttons-tabs">Account</a>
+                <a href="{% url 'logout' %}" class="buttons-tabs">Logout</a>
+            </div>
+        </div>
+
+        <div id="mainForm" class="form">
+            
+            <div id="back-button">
+            
+            </div>
+
+
+            <div class="item">   
+                <div class="categories" id="category_container">
+                    {% for category in categories %}
+                    <button onclick="showItem('{{ category }}')" class="category_button"><img src="{{ category.item_category_photo.url }}" alt="">{{ category.item_category }}</button>
+                    {% endfor %}
+                </div>
+                
+                <div id="category_item" class="category_div">
+                    <div id="item_list" class="items-div">
+        
+                    </div>
+
+
+                    <div class="item">
+                    
+                    </div>
+
+                    {% include 'home/result_list.html' %}
+                
+                    <div class="item_information" id="item_information">
+                        <div class="item_header" id="item_header">
+                            
+                        </div>
+
+                        <div class="body_form_container">
+                            <div class="item_body" id="item_body">
+        
+                            </div>
+        
+                            <div class="item_form" id="item_form">
+        
+                            </div>
+                        </div>
+
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
 
-                <div id="mainForm" class="form">
-                
-                    <div class="category-title-button">
-                        <p class="category-container-title">
-                            Categories 
-                        </p>  
-                        
-                        <div id="back-button">
-                        
-                        </div>
-                    </div>
+        <div id="popup" class="popup">
+            <span class="close-btn">&times;</span>
+            <p id="popup-message"></p>
+        </div>
 
-                    <div class="item">   
-
-                        <div class="categories" id="category_container">
-                            {% for category in categories %}
-                            <button onclick="showItem('{{ category }}')" class="category_button">{{ category }}</button>
-                            {% endfor %}
-                           
-                        </div>
-                        
-                        
-                
-                        <div id="category_item" class="category_div">
-                            <div id="item_list" class="items-div">
-                
-                            </div>
-                            <div id="back-button">
-                                
-                            </div>  
-                            <h1>{{ current_category }}</h1>
-                                <div class="item">
-                                
-                                </div>
-                            {% include 'home/result_list.html' %}
-                        
-                
-
-            
-
-                            <div class="item_information" id="item_information">
-                                <div class="item_header" id="item_header">
-                                    
-                                </div>
-
-                                <div class="item_body" id="item_body">
-
-                                </div>
-                                <div class="item_form" id="item_form">
-
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-             </div>
-
-             <div id="popup" class="popup">
-                <span class="close-btn">&times;</span>
-                <p id="popup-message"></p>
-            </div>
-        <script defer src="{% static 'home/homescript.js' %}"></script>
+    <script defer src="{% static 'home/homescript.js' %}"></script>
     </body>
 </html>

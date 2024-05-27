@@ -12,6 +12,7 @@ from rest_framework import serializers
 from .models import Item, Category
 from .decorators import allowed_users
 
+#Model serializers in charge of getting data from models for JS
 class ItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = Item
@@ -23,13 +24,12 @@ class CategorySerializer(serializers.ModelSerializer):
         model = Category
         fields = '__all__' 
         depth = 1  
-    
+
+#For initializing admin home
 @login_required
 @allowed_users(allowed_roles=['Admin'])
 def admin_home(request):
     current_user = request.user
-    
-    categories = Category.objects.all()
     borrow_form = BorrowForm()
     if request.method == 'POST':
         borrow_form = BorrowForm(request.POST)
@@ -37,31 +37,27 @@ def admin_home(request):
             model_instance = borrow_form.save(commit=False)
             model_instance.item_borrower = current_user
             model_instance.save()
-
         else:
             borrow_form = BorrowForm()
-            
+    
+    categories = Category.objects.all()
     return render(request, ('home/admin_home.html'), {
         'borrow_form' : borrow_form,
         'categories' : categories,
     })
 
+#For initializing guest home
 def guest_home(request):   
     categories = Category.objects.all()
-            
     return render(request, ('home/guest_home.html'), {
         'categories' : categories,
     })
 
+#For initializing faculty home
 @login_required
 @allowed_users(allowed_roles=['Faculty'])
 def home(request):
     current_user = request.user
-    query = request.GET.get('q', '')  
-    
-    furniture_items = room_items = cleaning_material_items = technology_items = dean_approval_items = None
-
-    categories = Category.objects.all()
     borrow_form = BorrowForm()
     if request.method == 'POST':
         borrow_form = BorrowForm(request.POST)
@@ -72,50 +68,21 @@ def home(request):
 
         else:
             borrow_form = BorrowForm()
-
-
+    categories = Category.objects.all()
     return render(request, 'home/home.html', {
-        'furniture_items' : furniture_items,
-        'room_items' : room_items,
-        'cleaning_material_items' : cleaning_material_items,
-        'technology_items' : technology_items,
-        'dean_approval_items' : dean_approval_items,
-        'query' : query,
         'borrow_form' : borrow_form,
         'categories' : categories,
     })
 
-def get_borrow_form(request):
-    borrow_form = BorrowForm()
-    form_html = render_to_string('home/borrow_form.html', {'borrow_form': borrow_form}, request=request)
-    return JsonResponse({'form_html' : form_html})
-
-def get_guest_borrow_form(request):
-    borrow_form = BorrowForm()
-    user_form = UserForm()
+#For passing the category information to the JS
+def get_category(request):
+    categories = Category.objects.all()
+    serializer = CategorySerializer(categories, many=True)
+    serializer_data = serializer.data
     
-    form_html = render_to_string('home/guest_borrow_form.html', {
-        'borrow_form': borrow_form,
-        'user_form': user_form
-    }, request=request)
-    
-    return JsonResponse({'form_html': form_html})
+    return JsonResponse({'categories' : serializer_data})
 
-def get_item_form(request):
-    item_form = ItemForm()
-    item_form_html = render_to_string('home/item_form.html', {'item_form': item_form}, request=request)
-    return JsonResponse({'item_form_html' : item_form_html})
-
-def get_stock_form(request):
-    stock_form = StockForm()
-    stock_form_html = render_to_string('home/stock_form.html', {'stock_form': stock_form}, request=request)
-    return JsonResponse({'stock_form_html' : stock_form_html})
-
-def get_category_form(request):
-    category_form = CategoryForm()
-    category_form_html = render_to_string('home/category_form.html', {'category_form': category_form}, request=request)
-    return JsonResponse({'category_form_html' : category_form_html})
-
+#For passing the item list to the JS
 def get_items(request):
     category = request.GET.get('category')
     try:
@@ -131,13 +98,61 @@ def get_items(request):
     except Exception as e:
         return JsonResponse({'error': 'Internal server error'}, status=500)
 
-def get_category(request):
-    categories = Category.objects.all()
-    serializer = CategorySerializer(categories, many=True)
-    serializer_data = serializer.data
-    
-    return JsonResponse({'categories' : serializer_data})
+#For fetching the item information
+def get_item_inventory(request):
+    item_inventory = Stock.objects.all()
 
+    items_data = [{'item_id' : item.item_information.item_id,
+                   'item_name' : item.item_information.item_name,
+                   'item_category' : item.item_information.item_category.item_category,
+                   'item_description' : item.item_information.item_description,
+                   'item_photo' : item.item_information.item_photo.url,
+                   'item_total' : item.item_total_quantity,
+                   'item_pristine' : item.item_pristine_quantity,
+                   'item_damaged' : item.item_damaged_quantity,
+                   'item_current' : item.item_current_quantity,
+                   'item_borrowed' : item.item_borrowed_quantity,
+                   'item_one_time_borrow' : item.item_information.item_one_time_borrow,
+                   'stock_id' : item.pk} for item in item_inventory]
+    return JsonResponse({'items': items_data}, safe=False)
+
+#For passing the borrow form to the JS
+def get_borrow_form(request):
+    borrow_form = BorrowForm()
+    form_html = render_to_string('home/borrow_form.html', {'borrow_form': borrow_form}, request=request)
+    return JsonResponse({'form_html' : form_html})
+
+#For passing the borrow form to the JS
+def get_guest_borrow_form(request):
+    borrow_form = BorrowForm()
+    user_form = UserForm()
+    
+    form_html = render_to_string('home/guest_borrow_form.html', {
+        'borrow_form': borrow_form,
+        'user_form': user_form
+    }, request=request)
+    
+    return JsonResponse({'form_html': form_html})
+
+#For passing the item addition form to the JS
+def get_item_form(request):
+    item_form = ItemForm()
+    item_form_html = render_to_string('home/item_form.html', {'item_form': item_form}, request=request)
+    return JsonResponse({'item_form_html' : item_form_html})
+
+#For passing the stock addition form to the JS
+def get_stock_form(request):
+    stock_form = StockForm()
+    stock_form_html = render_to_string('home/stock_form.html', {'stock_form': stock_form}, request=request)
+    return JsonResponse({'stock_form_html' : stock_form_html})
+
+#For passing the category addition form to the JS
+def get_category_form(request):
+    category_form = CategoryForm()
+    category_form_html = render_to_string('home/category_form.html', {'category_form': category_form}, request=request)
+    return JsonResponse({'category_form_html' : category_form_html})
+
+#For saving the borrow form instance
 @login_required
 def save_borrow_form(request):
     current_user = request.user
@@ -179,7 +194,8 @@ def save_borrow_form(request):
 
     else:
         return JsonResponse({'error': 'Invalid form submission'}, status=400)
-    
+
+#For saving the guest borrow form instance
 def guest_save_borrow_form(request):
     borrow_form = BorrowForm(request.POST)
     user_form = UserForm(request.POST)
@@ -213,6 +229,8 @@ def guest_save_borrow_form(request):
             return JsonResponse({'error': 'Invalid form submission'}, status=400)
     else:
         return JsonResponse({'error': 'Invalid form submission'}, status=400)
+
+#For saving the item addition form instance
 def save_item_form(request):
     item_form = ItemForm(request.POST, request.FILES)
     
@@ -227,6 +245,7 @@ def save_item_form(request):
        
         return JsonResponse({'error': 'Invalid form submission'}, status=400)
     
+#For saving the stock addition form instance
 def save_stock_form(request):
     stock_form = StockForm(request.POST)
     specific_item = request.session.get('item')
@@ -246,8 +265,9 @@ def save_stock_form(request):
       
         return JsonResponse({'error': 'Invalid form submission'}, status=400)
 
+#For saving the category addition form instance
 def save_category_form(request):
-    category_form = CategoryForm(request.POST)
+    category_form = CategoryForm(request.POST, request.FILES)
     
     if category_form.is_valid():
         model_instance = category_form.save(commit=False)
@@ -257,23 +277,27 @@ def save_category_form(request):
     else:
         return JsonResponse({'error': 'Invalid form submission'}, status=400)
 
-def get_item_inventory(request):
-    item_inventory = Stock.objects.all()
+#For deleting an item instance
+def delete_item(request):
+    item_pk = request.GET.get('item_id', None)
 
-    items_data = [{'item_id' : item.item_information.item_id,
-                   'item_name' : item.item_information.item_name,
-                   'item_category' : item.item_information.item_category.item_category,
-                   'item_description' : item.item_information.item_description,
-                   'item_photo' : item.item_information.item_photo.url,
-                   'item_total' : item.item_total_quantity,
-                   'item_pristine' : item.item_pristine_quantity,
-                   'item_damaged' : item.item_damaged_quantity,
-                   'item_current' : item.item_current_quantity,
-                   'item_borrowed' : item.item_borrowed_quantity,
-                   'item_one_time_borrow' : item.item_information.item_one_time_borrow,
-                   'stock_id' : item.pk} for item in item_inventory]
-    return JsonResponse({'items': items_data}, safe=False)
+    if item_pk is not None:
+        Item.objects.filter(item_id=item_pk).delete()
+        return JsonResponse({'message': 'Item deleted successfully'})
+    else:
+        return JsonResponse({'message': 'Item ID not provided'}, status=400)
 
+#For deleting a category instance
+def delete_category(request):
+    category_pk = request.GET.get('category_id', None)
+
+    if category_pk is not None:
+        Category.objects.filter(id=category_pk).delete()
+        return JsonResponse({'message': 'Category deleted successfully'})
+    else:
+        return JsonResponse({'message': 'Category ID not provided'}, status=400)    
+    
+#For searching items in faculty
 def search_items(request):
     query = request.GET.get('q')
 
@@ -288,6 +312,7 @@ def search_items(request):
 
     return render(request, 'home/home.html', {'results': results, 'query': query})
 
+#For searching items in admin
 def search_items_admin(request):
     query = request.GET.get('q')
 
@@ -302,6 +327,7 @@ def search_items_admin(request):
 
     return render(request, 'home/admin_home.html', {'results': results, 'query': query})
 
+#For searching items in guest
 def search_items_guest(request):
     query = request.GET.get('q')
 
@@ -316,20 +342,3 @@ def search_items_guest(request):
 
     return render(request, 'home/guest_home.html', {'results': results, 'query': query})
 
-def delete_item(request):
-    item_pk = request.GET.get('item_id', None)
-
-    if item_pk is not None:
-        Item.objects.filter(item_id=item_pk).delete()
-        return JsonResponse({'message': 'Item deleted successfully'})
-    else:
-        return JsonResponse({'message': 'Item ID not provided'}, status=400)
-    
-def delete_category(request):
-    category_pk = request.GET.get('category_id', None)
-
-    if category_pk is not None:
-        Category.objects.filter(id=category_pk).delete()
-        return JsonResponse({'message': 'Category deleted successfully'})
-    else:
-        return JsonResponse({'message': 'Category ID not provided'}, status=400)    

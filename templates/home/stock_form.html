@@ -1,16 +1,30 @@
 
 <div class="confirmation-popup-container">
-    <div class="form-next" id="stockFormPopup">
-        <form action="/save_stock_form/" id="stockFormId" method="post">
+        <form action="/save_stock_form/" id="stockFormId" method="post" class="form-popup">
             {% csrf_token %}
-            <p>Total item stock:</p>
-            {{ stock_form.item_total_quantity }}
+
+            <div class="form-group">
+                <p>Total item stock:</p>
+                <div class="input-container">
+                {{ stock_form.item_total_quantity }}
+                </div>
+            </div>
+            
+            <div class="form-group">
             <p>Total pristine item in stock:</p>
+            <div class="input-container">
             {{ stock_form.item_pristine_quantity }}
+            </div>
+            </div>
+
+            <div class="form-group">
             <p>Total damaged item in stock:</p>
+            <div class="input-container">
             {{ stock_form.item_damaged_quantity }}
+            </div>
+            </div>
+
             <input type="submit" value="Submit">
-            <button type="button" onclick="closeForm('stockFormPopup')">Cancel</button>
+            <button type="button" onclick="closeForm('stockFormPopup')" class="additem-button">Cancel</button>
         </form>
-    </div>
 </div>

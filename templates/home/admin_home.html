@@ -5,10 +5,10 @@
         <link rel="stylesheet" href="{% static 'home/homeadminstyle.css' %}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
         <title>Admin Home</title>
+    </head>
+
     <body>
-        
         <div class="header">
-            
             <div class="left-section">
                 <img class="lspu-logo" src="{% static 'home/logo/lspu-logo.png' %}">
             </div>
@@ -23,66 +23,65 @@
             <div class="right-section">
                 <img class="ccs-logo" src="{% static 'home/logo/ccs-logo.jpg' %}">
             </div>
-            
         </div>
-        <div class="head"></div>
-            <nav class="buttons-box">
-                <div class="button-grid">
-                    <a href="{% url 'admin_home' %}" class="buttons-tabs">Home</a>
-                    <a href="{% url 'admin_recents' %}" class="buttons-tabs">History</a>
-                    <a href="{% url 'admin_unreturned' %}" class="buttons-tabs">Unreturned</a>
-                    <a href="{% url 'members' %}" class="buttons-tabs">Users</a>
-                    <a href="{% url 'admin_userprofile' %}" class="buttons-tabs">Account</a>
-                    <a href="{% url 'logout' %}" class="buttons-tabs">Logout</a>
+
+        <nav class="buttons-box">
+            <div class="button-grid">
+                <a href="{% url 'admin_home' %}" class="buttons-tabs">Home</a>
+                <a href="{% url 'admin_recents' %}" class="buttons-tabs">History</a>
+                <a href="{% url 'admin_unreturned' %}" class="buttons-tabs">Unreturned</a>
+                <a href="{% url 'members' %}" class="buttons-tabs">Users</a>
+                <a href="{% url 'admin_userprofile' %}" class="buttons-tabs">Account</a>
+                <a href="{% url 'logout' %}" class="buttons-tabs">Logout</a>
+            </div>
+        </nav>
+
+        <div id="mainForm" class="form">
+            <div class="item">
+                <div id="edit_category_buttons">
+                    <button onclick="editCategory()"><i class="fa fa-edit"></i></button>
+                </div>        
+
+                <div class="categories" id="category_container">
+                    {% for category in categories %}
+                    <button onclick="showItem('{{ category }}')" class="category_button"><img src="{{ category.item_category_photo.url }}" alt="">{{ category.item_category }}</button>
+                    {% endfor %}
                 </div>
-            </nav>
-
-                <div id="mainForm" class="form">
                 
-                    <div class="item">
-                        <div id="edit_category_buttons">
-                            
-                            <button onclick="editCategory()"><i class="fa fa-edit"></i></button>
-                        </div>        
-
-                        <div class="categories" id="category_container">
-                            {% for category in categories %}
-                            <button onclick="showItem('{{ category }}')" class="category_button"><img src="{{ category.item_category_photo.url }}" alt="">{{ category.item_category }}</button>
-                            {% endfor %}
-                           
-                        </div>
-                        
-                        {% include 'home/result_list_admin.html' %}
-                       
+                {% include 'home/result_list_admin.html' %}
                 
-                        <div id="add_category_form" class="add_category_form">
-                
-                        </div>
-                        
-                        <div id="delete_confirmation" class="delete_confirmation">
-                
-                        </div>
-
-                        <div id="category_item" class="category_div">
-                            <div id="item_list" class="items_div">
-                
-                            </div>
-                            <div id="edit_back_buttons">
-                                
-                            </div>  
-                            <div id="add_item">
-                                <div id="add_item_form"> 
-                
-                                </div>
-                                <div id="add_stock_form">
-                
-                                </div>
-                                <div id="success_popup">
-                
-                                </div>
-                            </div>
-                        </div>
+                <div id="add_category_form" class="add_category_form">
+        
                 </div>
+                
+                <div id="delete_confirmation" class="delete_confirmation">
+        
+                </div>
+
+                <div id="category_item" class="category_div">
+                    <div id="item_list" class="items_div">
+        
+                    </div>
+
+                    <div id="edit_back_buttons">
+                        
+                    </div>  
+
+                    <div id="add_item">
+                        <div id="add_item_form"> 
+        
+                        </div>
+
+                        <div id="add_stock_form">
+        
+                        </div>
+
+                        <div id="success_popup">
+        
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <h1>{{ current_category }}</h1>
 
@@ -90,22 +89,23 @@
                 <div class="item_header" id="item_header">
                        
                 </div>
+                <div class="body_form_container">
+                    <div class="item_body" id="item_body">
 
-                <div class="item_body" id="item_body">
+                    </div>
 
+                    <div class="item_form" id="item_form">
+
+                    </div>
                 </div>
-                <div class="item_form" id="item_form">
-
-                </div>
-                
-
             </div>
-
         </div>
+
         <div id="popup" class="popup">
             <span class="close-btn">&times;</span>
             <p id="popup-message"></p>
         </div>     
+
         <script defer src="{% static 'home/homeadminscript.js' %}"></script>
     </body>
 </html>

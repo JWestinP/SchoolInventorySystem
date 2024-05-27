@@ -7,9 +7,7 @@
     </head>
 
     <body>
-        
         <div class="header">
-            
             <div class="left-section">
                 <img class="lspu-logo" src="{% static 'home/logo/lspu-logo.png' %}">
             </div>
@@ -24,75 +22,57 @@
             <div class="right-section">
                 <img class="ccs-logo" src="{% static 'home/logo/ccs-logo.jpg' %}">
             </div>
-            
         </div>
         
         <div class="guest-button-grid">
-
             <button class="guest-buttons-tabs"><a href="{% url 'guest_home' %}">Home</a></button>
-            <button class="guest-buttons-tabs"><a href="{% url 'logout' %}">Log out</a></button>
+            <button class="guest-buttons-tabs"><a href="{% url 'logout' %}">Exit</a></button>
         </div>    
 
-
-        
         <div class="category-container">
-            <div class="category-title-button">
-                <p class="category-container-title">
-                    Categories 
-                </p>  
-                
                 <div id="back-button">
                 
                 </div>
-            </div>
-            <div class="categories">
 
+
+            <div class="categories">
                 {% for category in categories %}
-                <button onclick="showItem('{{ category }}')" class="category_button">
-                {{ category }}
-                </button>
+                <button onclick="showItem('{{ category }}')" class="category_button"><img src="{{ category.item_category_photo.url }}" alt="">{{ category.item_category }}</button>
                 {% endfor %}
             </div>
             
-
             <div id="category_item" class="category_div">
                 <div id="item_list" class="items_div">
 
-
                 </div>
-                    <h1>{{ current_category }}</h1>
-                    {% for item in cleaning_inventory %}
-                        <div class="item">
-                            
-                        </div>
-                    {% endfor %}
-                    {% include 'home/result_list_guest.html' %}
+
+                <h1>{{ current_category }}</h1>
+
+                {% include 'home/result_list_guest.html' %}
                  
                 <div class="item_information" id="item_information">
-                    
                     <div class="item_header" id="item_header">
                        
                     </div>
 
-                    <div class="borrow-form">
+                    <div class="body_form_container">
                         <div class="item_body" id="item_body">
-                            <button data-close-button class="close_button">&times;</button>      
-
+    
                         </div>
+    
                         <div class="item_form" id="item_form">
-
+    
                         </div>
                     </div>
                 </div>
-                
             </div>
         </div>
+
         <div id="popup" class="popup">
             <span class="close-btn">&times;</span>
             <p id="popup-message"></p>
         </div>            
-       
-        <script defer src="{% static 'home/homeguestscript.js' %}"></script>
-        
+
+    <script defer src="{% static 'home/homeguestscript.js' %}"></script> 
     </body>
 </html>

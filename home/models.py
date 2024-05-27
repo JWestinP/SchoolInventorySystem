@@ -1,6 +1,8 @@
 from django.db import models
 
 # Create your models here.
+
+#Category model
 class Category(models.Model):
     item_category = models.CharField(max_length = 64)
     item_category_photo = models.ImageField(blank = True, upload_to='item_category_photo')
@@ -8,7 +10,7 @@ class Category(models.Model):
     def __str__(self):
         return self.item_category
 
-            
+#Item information model          
 class Item(models.Model):
     item_id = models.BigAutoField(primary_key = True)
     item_name = models.CharField(max_length = 128)
@@ -16,9 +18,11 @@ class Item(models.Model):
     item_description = models.CharField(max_length = 256)
     item_photo = models.ImageField(blank = True, upload_to='item_photo')
     item_one_time_borrow = models.BooleanField()
+    
     def __str__(self):
         return f"{self.item_id} - {self.item_name} ({self.item_category})"
 
+#Item stock model
 class Stock(models.Model):
     item_information = models.OneToOneField(Item, on_delete=models.CASCADE, null=True, blank=True)
     item_total_quantity = models.IntegerField()
