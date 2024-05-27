@@ -7,10 +7,9 @@ from recents.models import *
 from unreturned.models import *
 from home.models import *
 from django.core.exceptions import ObjectDoesNotExist
-
 import json
 
-
+#Model serializers in charge of getting data from models for JS
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -43,11 +42,13 @@ class UnreturnedSerializer(serializers.ModelSerializer):
         fields = '__all__' 
         depth = 1
 
+#For initializing user/member tab for admin
 @allowed_users(allowed_roles=['Admin'])
 def members(request):
     faculty = User.objects.all()
     return render(request, ('members/members.html'),{'faculty': faculty})
 
+#For fetching user information
 def get_user_info(request):
     user_pk = request.GET.get('user_id')
     
@@ -62,7 +63,8 @@ def get_user_info(request):
                              'total_unreturned': user_unreturned_total})
     except ObjectDoesNotExist:
         return JsonResponse({'error': 'User not found'}, status=404)
-    
+
+#For fetching the user borrowed item history
 def get_user_history(request):
     user_pk = request.GET.get('user_id')
     try:
@@ -74,7 +76,8 @@ def get_user_history(request):
     except ObjectDoesNotExist:
         
         return JsonResponse({'error': 'User not found'}, status=404)
-    
+
+#For fetching the user unreturned borrowed item
 def get_user_unreturned(request):
     user_pk = request.GET.get('user_id')
     try:

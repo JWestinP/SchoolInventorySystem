@@ -5,9 +5,9 @@
         <link rel="stylesheet" href="{% static 'members/memberstyle.css' %}">
         <title>Users</title>
     </head>
+
     <body>
         <div class="header">
-            
             <div class="left-section">
                 <img class="lspu-logo" src="{% static 'home/logo/lspu-logo.png' %}">
             </div>
@@ -22,9 +22,8 @@
             <div class="right-section">
                 <img class="ccs-logo" src="{% static 'home/logo/ccs-logo.jpg' %}">
             </div>
-            
         </div>
-        <div class="head"></div>
+
         <nav class="buttons-box">
             <div class="button-grid">
                 <a href="{% url 'admin_home' %}" class="buttons-tabs">Home</a>
@@ -35,14 +34,16 @@
                 <a href="{% url 'logout' %}" class="buttons-tabs">Logout</a>
             </div>
         </nav>
+
         {% include 'home/result_list_admin.html' %}
         <div id="mainForm" class="form">
             <div id="container" class="rounded_corners">
-                <div class="users" style="margin-left: 50px; margin: 30px;">
+                <div class="users">
                     {% for users in faculty %}
                     <button onclick="showUser('{{ users.id }}')">{{ users.username }}</button>
                     {% endfor %}
                 </div>
+
                 <div id="user_info" class="user_info">
 
                 </div>
@@ -50,10 +51,8 @@
                 <div id="user_borrowed_info" class="user_borrowed_info">
 
                 </div>
-
             </div>
         </div>
     </body>
-
     <script defer src="{% static 'members/memberscript.js' %}"></script>
 </html>

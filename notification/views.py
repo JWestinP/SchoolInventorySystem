@@ -6,6 +6,8 @@ from django.utils import timezone
 from home.decorators import allowed_users
 
 # Create your views here.
+
+#For initializing user notification tab
 @allowed_users(allowed_roles=['Faculty'])
 def notification(request):
     unreturned_items = get_unreturned_items_info(request)
@@ -15,6 +17,7 @@ def notification(request):
     
     return render(request, 'notification/notification.html', context)
 
+#For checking user unreturned
 def check (request):
     user = request.user
     today = datetime.now().date()
@@ -23,6 +26,7 @@ def check (request):
     unreturned_item_exist = queryset.exists()
     return unreturned_item_exist
 
+#For checking user unreturned
 def get_unreturned_items_info(request):
     user = request.user
     queryset = Unreturned_Item.objects.filter(item_borrowed__item_borrower=user)

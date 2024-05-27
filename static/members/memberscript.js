@@ -1,7 +1,7 @@
 const userContainer = document.getElementById('user_info')
 const historyContainer = document.getElementById('user_borrowed_info')
 
-
+//In charge of showing the user list 
 function showUser(user_pk){
     console.log('Sending request for user with id:', user_pk)
 
@@ -43,6 +43,7 @@ function showUser(user_pk){
     }
 }
 
+//In charge of showing the user borrowed history list 
 function showUserHistory(user_pk) {
     console.log('Sending request for user with id:', user_pk);
 
@@ -94,6 +95,7 @@ function showUserHistory(user_pk) {
     }
 }
 
+//In charge of showing the user unreturned items list
 function showUserUnreturned(user_pk) {
     console.log('Sending request for user with id:', user_pk);
 
@@ -143,7 +145,7 @@ function showUserUnreturned(user_pk) {
     }
 }
 
-
+//In charge of opening the user container
 function openUser(userContainer) {
     console.log('Opening user');
     if (userContainer) {
@@ -151,6 +153,7 @@ function openUser(userContainer) {
     }
 }
 
+//In charge of opening the history and unreturned container
 function openHistory(historyContainer) {
     console.log('Opening History');
     if (historyContainer) {
@@ -158,6 +161,7 @@ function openHistory(historyContainer) {
     }
 }
 
+//In charge of reloading the page
 function reloadPage(){
     location.reload()
 }

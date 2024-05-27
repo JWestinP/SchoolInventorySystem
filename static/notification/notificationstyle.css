@@ -102,13 +102,8 @@ input, select {
 Start coding here
 */
 
-.notification-indicator {
-  color: red;  
-  font-size: 16px;  
-  margin-left: 5px;  
-}
+/* #region Body */
 body {
-  line-height:1;
   line-height:1;
   height: 100%;
   width : 100%;
@@ -120,17 +115,23 @@ body {
   font-family: Arial, sans-serif; 
   padding-top: 100px;
 }
- 
+/* #endregion */
 
- .header {
+/* #region Header */
+.notification-indicator {
+  color: red;  
+  font-size: 16px;  
+  margin-left: 5px;  
+}
+
+.header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   background-color: rgb(113,26,33); 
   padding: 5px;
   border-bottom: 20px solid rgb(230,124,55); 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   position: fixed;
   top: 0;
   right: 0;
@@ -148,25 +149,34 @@ body {
 .lspu-logo{
   width: 90px;
   border-radius:50px;
-  margin: 0;
-  padding: 0;
 }
 
 .middle-section {
-  flex: 1;
-  margin-left: 10px;
-  margin-right: 10px;
-  display: flex;
-  align-items: center;
+  flex: 1 !important;
+  margin-left: 10px !important;
+  margin-right: 10px !important;
+  display: flex !important;
+  align-items: center !important;
 }
 
-.search-form {
+.middle-section form {
   display: flex;
-  flex: 1;
-  align-items: center;
+  flex: 1 !important;
+  align-items: center !important;
+}
+
+.middle-section input[type="text"] {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  height: 40px;
+  float: right;
+  margin-top: 10px;
+  margin-right: 20px;
 }
 
 .search-bar {
+  display: flex;
   flex: 1;
   height: 14px;
   padding: 10px;
@@ -181,35 +191,28 @@ body {
   width: 0;
 }
 
-.search-bar::placeholder {
-  font-family: Arial, Helvetica, sans-serif!important;
-  font-size: 15px!important;
+.search-bar::placeholder{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px; 
+  
 }
 
 .search-button {
-  background-color: rgb(230, 124, 55)!important;
-  color: #ffffff!important;
-  padding: 10px 15px!important;
-  border-radius: 3px!important;
-  cursor: pointer!important;
-  margin-right: 10px!important;
-  border: none;
-  width: 100px;
-  height: 43px;
-  margin-bottom: 0!important;
+  background-color: rgb(230,124,55) !important; 
+   color: #ffffff !important;
+  padding: 10px 15px !important;
+  border: none !important;
+  border-radius: 3px !important;
+  margin-right: 10px !important;
+  cursor: pointer !important;
+  width: fit-content !important;
+  height: 40px;
+  margin-top: 7px;
+} 
+
+.search-button:hover  {
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2) !important;
 }
-
-.search-button:hover {
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2)!important;
-}
-
-
-form {
-  display: flex;
-  flex: 1;
-  align-items: center;
-}
-
 
 .right-section {
   width: 100px;
@@ -224,21 +227,17 @@ form {
   border-radius:46px;
 }
 
-.head {
-  display: flex;
-  background-color: orange;
-  padding: 10px;
-}
-  
+/* #endregion */
+
+/* #region Navigation */
 .buttons-box {
-  background-color: rgb(255, 255, 255);
   background-color: rgb(255, 255, 255);
   padding-top: 3px;
   padding-bottom: 3px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.20); 
-  margin-top: 30px;
-  margin-left: 50px;
-  margin-right: 50px;
+  margin-top: 40px;
+  margin-left: 70px;
+  margin-right: 70px;
   border-radius: 5px;
 }
 
@@ -295,71 +294,45 @@ a:active {
   color: rgb(230,124,55);
   text-decoration: underline solid  rgb(230,124,55) 2px;
 } 
- 
- .form{
-    background-color: #f8f9fa;
-    padding: 5rem 0;
-    border: 2px solid #dee2e6;
-    border-bottom: 1px solid #dee2e6;
-    box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.1);
-    margin: 30px 70px 0; 
-    border-radius: 15px;
- }
- 
- p{
-    width: 1000px;
-    height: 10px;
-    font-family: orienta;
-    font-weight: 100;
-    font-size: 20px;
-    line-height: 41.83px;
-    text-align: left;
-    margin-left: 2rem;
- }
+/* #endregion */
 
- li{
-    margin-left: 2rem;
-    margin-top: .5rem;
- }
-
- ul{
-margin-top: -.01rem;
- }
-
- .form-item {
-    background-color: #f8f9fa;
-    padding: 10rem;
-    border-bottom: 1px solid black;
-    margin: 35px 35px 35px 35px; 
-    border-radius: 15px;
-    border: 3px solid gray;
-    border-radius: 10px;
-    padding: auto;
- }
-
- a:link{
-    color: #000;
-    background-color: transparent;
-    text-decoration: none;
- }
-  
- a:hover{
-    color: #000;
-    background-color: transparent;
-    text-decoration: underline;
- }
-
-a:active{
-    color: #92141e;
-    background-color: transparent;
-    text-decoration: underline;
- }
- 
- #wrapper {
-   margin: 10px;
-   padding: 10px;
-   background-color: #f9f9f9; 
+/* #region Main container */
+.form{
+  margin-top: 20px;
+  background-color: rgb(255, 255, 255);
+  padding: 15px 0;
+  border: 2px solid #dee2e6;
+  border-bottom: 1px solid #dee2e6;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.20);
+  margin: 30px 70px 0; 
+  border-radius: 15px;
 }
+/* #endregion */
+
+/* #region Notification */
+#wrapper {
+  margin: 10px;
+  padding: 10px;
+  background-color: #f9f9f9; 
+}
+
+#wrapper li{
+  margin-left: 2rem;
+  margin-top: .5rem;
+  list-style-type: none;
+}
+
+.form p{
+  font-family: orienta;
+  font-weight: 100;
+  font-size: 20px;
+  line-height: 41.83px;
+  text-align: left;
+  margin-left: 2rem;
+}
+/* #endregion */
+
+/* #region Mobile */
 @media screen and (max-width: 768px) {
   header {
     flex-direction: column;
@@ -448,3 +421,4 @@ a:active{
 }
 
 }
+/* #endregion */

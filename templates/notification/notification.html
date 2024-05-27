@@ -1,66 +1,62 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-<head>
-   <title>Faculty Notification</title>
-   <link href="https://fonts.googleapis.com/css?family=Orienta:regular" rel="stylesheet" />
-   <link rel="stylesheet" href="{% static '/notification/notificationstyle.css' %}">
-</head>
-<body>
-   <div class="header">
-            
-      <div class="left-section">
-          <img class="lspu-logo" src="{% static 'home/logo/lspu-logo.png' %}">
-      </div>
+    <head>
+        <title>Faculty Notification</title>
+        <link href="https://fonts.googleapis.com/css?family=Orienta:regular" rel="stylesheet" />
+        <link rel="stylesheet" href="{% static '/notification/notificationstyle.css' %}">
+    </head>
 
-      <div class="middle-section">
-          <form method="GET" action="{% url 'search_items' %}">
-              <input class="search-bar" type="text" placeholder="Search for name/id/category" name="q" value="{{ query }}">
-              <input class="search-button" type="submit" value="Search">
-          </form>
-      </div>
+    <body>
+        <div class="header">   
+            <div class="left-section">
+                <img class="lspu-logo" src="{% static 'home/logo/lspu-logo.png' %}">
+            </div>
 
-      <div class="right-section">
-          <img class="ccs-logo" src="{% static 'home/logo/ccs-logo.jpg' %}">
-      </div>
-      
-  </div>
-  <div class="head"></div>
-  <nav class="buttons-box">
-      <div class="button-grid">
-          <a href="{% url 'home' %}" class="buttons-tabs">Home</a>
-          <a href="{% url 'recents' %}" class="buttons-tabs">History</a>
-          <a href="{% url 'unreturned' %}" class="buttons-tabs">Unreturned</a>
-          <a href="{% url 'notification' %}" class="buttons-tabs">Notification</a>
-          <a href="{% url 'userprofile' %}" class="buttons-tabs">Account</a>
-          <a href="{% url 'logout' %}" class="buttons-tabs">Logout</a>
-      </div>
-  </nav>
-     {% include 'home/result_list.html' %}
-<div id="main" class="form">
-   <div id="wrapper">
-      
-      {% for item_info in unreturned_items %}
-      <li>
-          Item ID: {{ item_info.item_name }} - 
-          {{ item_info.item_days_not_returned }} days overdue
-          (Borrowed on {{ item_info.item_date_borrowed|date:"F d, Y" }})
-          
-      </li>
-      {% endfor %}
-   </div>
-   <div id="notice">
-      {% if unreturned_item_exist %}
-      <p>You have unreturned items. Please check the Unreturned Items tab for more details.<br>Please return the items after each use. Thanks!</p>
-   </div>
+            <div class="middle-section">
+                <form method="GET" action="{% url 'search_items' %}">
+                    <input class="search-bar" type="text" placeholder="Search for name/id/category" name="q" value="{{ query }}">
+                    <input class="search-button" type="submit" value="Search">
+                </form>
+            </div>
 
+            <div class="right-section">
+                <img class="ccs-logo" src="{% static 'home/logo/ccs-logo.jpg' %}">
+            </div>
+        </div>
+
+        <nav class="buttons-box">
+            <div class="button-grid">
+                <a href="{% url 'home' %}" class="buttons-tabs">Home</a>
+                <a href="{% url 'recents' %}" class="buttons-tabs">History</a>
+                <a href="{% url 'unreturned' %}" class="buttons-tabs">Unreturned</a>
+                <a href="{% url 'notification' %}" class="buttons-tabs">Notification</a>
+                <a href="{% url 'userprofile' %}" class="buttons-tabs">Account</a>
+                <a href="{% url 'logout' %}" class="buttons-tabs">Logout</a>
+            </div>
+        </nav>
+
+        {% include 'home/result_list.html' %}
+        <div id="main" class="form">
+            <div id="wrapper">
+                {% for item_info in unreturned_items %}
+                <li>
+                    Item ID: {{ item_info.item_name }} - 
+                    {{ item_info.item_days_not_returned }} days overdue
+                    (Borrowed on {{ item_info.item_date_borrowed|date:"F d, Y" }})
+                    
+                </li>
+                {% endfor %}
+
+                <div id="notice">
+                    {% if unreturned_item_exist %}
+                    <p>You have unreturned items. Please check the Unreturned Items tab for more details.<br>Please return the items after each use. Thanks!</p>
+                </div>
     
-    {% else %}
-    <p>No unreturned items at the moment.</p>
-    {% endif %}
-
-  </div>
-</div>
-  
-</body> 
+                {% else %}
+                <p>No unreturned items at the moment.</p>
+                {% endif %}
+            </div>
+        </div>
+    </body> 
 </html>
