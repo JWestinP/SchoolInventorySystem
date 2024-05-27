@@ -6,9 +6,9 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
         <title>Faculty History</title>
     </head>
+
     <body>
         <div class="header">
-            
             <div class="left-section">
                 <img class="lspu-logo" src="{% static 'home/logo/lspu-logo.png' %}">
             </div>
@@ -20,72 +20,72 @@
                 </form>
             </div>
 
-             <div class="right-section">
+            <div class="right-section">
                  <img class="ccs-logo" src="{% static 'home/logo/ccs-logo.jpg' %}" >
-             </div>
-        
-         </div>
-    
-
-        <div class="head"></div>
-         
-            <div class="buttons-box">
-                <div class="button-grid">
-                    <a href="{% url 'home' %}" class="buttons-tabs">Home</a>
-                    <a href="{% url 'recents' %}" class="buttons-tabs">History</a>
-                    <a href="{% url 'unreturned' %}" class="buttons-tabs">Unreturned</a>
-                    <a href="{% url 'notification' %}" class="buttons-tabs">Notification</a>
-                    <a href="{% url 'userprofile' %}" class="buttons-tabs">Account</a>
-                    <a href="{% url 'logout' %}" class="buttons-tabs">Logout</a>
-                </div>
             </div>
-    <div id="mainForm" class="form">
-        <div id="container" class="rounded_corners">
-
-            <form method="GET" action="{% url 'faculty_search_recents' %}" class="search-form">
-                <input class="search-bar" type="text" name="q" value="{{ query }}" placeholder="Search for name/borrower">
-                <input class="search-button" type="submit" value="Search" name="b">
-            </form>
-
-            {% for items in borrowed_item reversed %}
-            <div id="wrapper">
-                <div id="top">
-                    <div id="left">
-                        {% if items.item_stock.item_information.item_photo %}
-                            <img src="{{ items.item_stock.item_information.item_photo.url }}" alt="" class="inventory_item"  height="100%" object-fit="scale-down">
-                        {% endif %}
-
-                    </div>
-                    <div id="right">
-                        <p id="item_name">{{items.item_stock.item_information.item_name}}</p>
-                        <p id="item_details">
-                            Time Borrowed: {{items.item_date_borrowed}}<br />
-                            Time Returned: {{items.item_date_returned}}<br />
-                            Borrower: {{items.item_borrower}} <br />
-
-                            {% if items.guest_name %}
-                               Guest Borrower: {{ items.guest_name }} <br />
-                            {% endif %}
-                            {% if items.guest_course %}
-                               Guest Borrower: {{ items.guest_course }} <br />
-                            {% endif %}
-                            {% if items.guest_section %}
-                               Guest Borrower: {{ items.guest_section }} <br />
-                            {% endif %}
-                        </p>
-                        <p id="item_quantity">Item Quantity: {{items.item_quantity}}</p>
-                      
-
-                    </div>
-                </div>
-                <div id="bottom">
-
-                </div>
-                <div class="recent-lines"></div>
-            </div>
-            {% endfor %}
         </div>
-    </div>
-        {% include 'home/result_list.html' %}
+    
+         
+        <div class="buttons-box">
+            <div class="button-grid">
+                <a href="{% url 'home' %}" class="buttons-tabs">Home</a>
+                <a href="{% url 'recents' %}" class="buttons-tabs">History</a>
+                <a href="{% url 'unreturned' %}" class="buttons-tabs">Unreturned</a>
+                <a href="{% url 'notification' %}" class="buttons-tabs">Notification</a>
+                <a href="{% url 'userprofile' %}" class="buttons-tabs">Account</a>
+                <a href="{% url 'logout' %}" class="buttons-tabs">Logout</a>
+            </div>
+        </div>
+
+        <div id="mainForm" class="form">
+            <div id="container" class="rounded_corners">
+                <form method="GET" action="{% url 'faculty_search_recents' %}" class="search-form">
+                    <input class="search-bar" type="text" name="q" value="{{ query }}" placeholder="Search for name/borrower">
+                    <input class="search-button" type="submit" value="Search" name="b">
+                </form>
+
+                {% for items in borrowed_item reversed %}
+                <div id="wrapper">
+                    <div id="top">
+                        <div id="left">
+                            {% if items.item_stock.item_information.item_photo %}
+                                <img src="{{ items.item_stock.item_information.item_photo.url }}" alt="" class="inventory_item"  height="100%" object-fit="scale-down">
+                            {% endif %}
+                        </div>
+
+                        <div id="right">
+                            <p id="item_name">{{items.item_stock.item_information.item_name}}</p>
+                            
+                            <p id="item_details">
+                                Time Borrowed: {{items.item_date_borrowed}}<br />
+                                Time Returned: {{items.item_date_returned}}<br />
+                                Borrower: {{items.item_borrower}} <br />
+
+                                {% if items.guest_name %}
+                                Guest Borrower: {{ items.guest_name }} <br />
+                                {% endif %}
+                                {% if items.guest_course %}
+                                Guest Borrower: {{ items.guest_course }} <br />
+                                {% endif %}
+                                {% if items.guest_section %}
+                                Guest Borrower: {{ items.guest_section }} <br />
+                                {% endif %}
+                            </p>
+
+                            <p id="item_quantity">Item Quantity: {{items.item_quantity}}</p>
+                        </div>
+                    </div>
+
+                    <div id="bottom">
+
+                    </div>
+
+                    <div class="recent-lines"></div>
+
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% include 'home/result_list.html' %}
     </body>
 </html>

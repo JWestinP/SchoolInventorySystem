@@ -6,6 +6,7 @@ from home.models import *
 from home.decorators import allowed_users
 from django.db.models import Q  
 
+#For initializing faculty recents/history
 @allowed_users(allowed_roles=['Faculty'])
 def recents(request):
     user = request.user
@@ -17,6 +18,7 @@ def recents(request):
                 {'borrowed_item': borrowed_item,
                 'item': item})
 
+#For initializing admin recents/history
 @allowed_users(allowed_roles=['Admin'])
 def admin_recents(request):
     item = Item.objects.all()
@@ -26,10 +28,10 @@ def admin_recents(request):
                 {'borrowed_item': borrowed_item,
                 'item': item})
 
+#For searching users/items in admin recents/history
 @allowed_users(allowed_roles=['Admin'])
 def admin_search_recents(request):
     query = request.GET.get('q', '')
-
     if query:
         items = Borrowed_Item.objects.filter(
             Q(item_stock__item_information__item_name__icontains=query) |
@@ -37,9 +39,9 @@ def admin_search_recents(request):
         )
     else:
         items = Borrowed_Item.objects.all()
-
     return render(request, 'recents/admin_recents.html', {'borrowed_item': items, 'query': query})
 
+#For searching items in faculty recents/history
 @allowed_users(allowed_roles=['Faculty'])
 def faculty_search_recents(request):
     query = request.GET.get('q', '')

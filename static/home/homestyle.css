@@ -288,13 +288,14 @@ a:active {
 
 /* #region Main container */
 .form{
+  margin-top: 20px;
   background-color: rgb(255, 255, 255);
-  padding: 20px;
+  padding: 15px 0;
+  border: 2px solid #dee2e6;
+  border-bottom: 1px solid #dee2e6;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.20);
-  margin-top: 45px;
-  margin-left: 50px;
-  margin-right: 50px;
-  border-radius: 5px;
+  margin: 30px 70px 0; 
+  border-radius: 15px;
 }
 /* #endregion */
 

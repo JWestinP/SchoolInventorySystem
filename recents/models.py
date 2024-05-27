@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from home.models import *
 
 # Create your models here.
+
+#Borrowed instance model
 class Borrowed_Item(models.Model):
     borrow_form_id = models.BigAutoField(primary_key = True, blank=True)
     item_stock = models.ForeignKey(Stock, on_delete=models.CASCADE, null=True, blank=True)
