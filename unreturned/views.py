@@ -10,6 +10,7 @@ from django.http import JsonResponse
 
 # Create your views here.
 
+#For initializing faculty unreturned
 @allowed_users(allowed_roles=['Faculty'])
 def unreturned(request):
     user = request.user
@@ -18,6 +19,7 @@ def unreturned(request):
     return render(request, 'unreturned/unreturned.html',
                 {'unreturned_items': unreturned_items})
 
+#For initializing admin unreturned
 @allowed_users(allowed_roles=['Admin'])
 def admin_unreturned(request):
     unreturned_items = Unreturned_Item.objects.all()
@@ -25,9 +27,8 @@ def admin_unreturned(request):
     return render(request, 'unreturned/admin_unreturned.html',
                 {'unreturned_items': unreturned_items})
 
+#For faculty returning item
 def return_item(request, item_id, item_stock_id, borrow_form_id):
-
-    
     pristine_no = request.POST.get("pristine")
     damaged_no = request.POST.get("damaged")
 
@@ -54,9 +55,12 @@ def return_item(request, item_id, item_stock_id, borrow_form_id):
         item.save()
 
         unreturned_items.delete()
+        return JsonResponse({'success': True})
+    
+    else:
+        return JsonResponse({'error': 'Invalid form submission'}, status=400)
 
-    return redirect('unreturned')
-
+#For admin returning item
 def admin_return_item(request, item_id, item_stock_id, borrow_form_id):
 
     pristine_no = request.POST.get("pristine")
@@ -75,7 +79,6 @@ def admin_return_item(request, item_id, item_stock_id, borrow_form_id):
 
         unreturned_items.save()
 
-        
 
         item = Stock.objects.get(pk = item_stock_id)
         item.item_current_quantity = unreturned_items.item_borrowed.item_stock.item_current_quantity
@@ -87,7 +90,7 @@ def admin_return_item(request, item_id, item_stock_id, borrow_form_id):
         unreturned_items.delete()
 
 
-        return redirect('admin_unreturned')
+        return JsonResponse({'success': True})
     
     else:
         return JsonResponse({'error': 'Invalid form submission'}, status=400)

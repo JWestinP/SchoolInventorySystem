@@ -7,11 +7,8 @@
         <title>Faculty Unreturned</title>
     </head>
 
-    <script defer src="{% static 'unreturned/buttons_for_unreturned.js' %}"></script>
-
     <body>
         <div class="header">
-            
             <div class="left-section">
                 <img class="lspu-logo" src="{% static 'home/logo/lspu-logo.png' %}">
             </div>
@@ -26,96 +23,99 @@
              <div class="right-section">
                  <img class="ccs-logo" src="{% static 'home/logo/ccs-logo.jpg' %}" >
              </div>
-        
-         </div>
+        </div>
     
 
-        <div class="head"></div>
-         
-            <div class="buttons-box">
-                <div class="button-grid">
-                    <a href="{% url 'home' %}" class="buttons-tabs">Home</a>
-                    <a href="{% url 'recents' %}" class="buttons-tabs">History</a>
-                    <a href="{% url 'unreturned' %}" class="buttons-tabs">Unreturned</a>
-                    <a href="{% url 'notification' %}" class="buttons-tabs">Notification</a>
-                    <a href="{% url 'userprofile' %}" class="buttons-tabs">Account</a>
-                    <a href="{% url 'logout' %}" class="buttons-tabs">Logout</a>
-                </div>
+        <div class="buttons-box">
+            <div class="button-grid">
+                <a href="{% url 'home' %}" class="buttons-tabs">Home</a>
+                <a href="{% url 'recents' %}" class="buttons-tabs">History</a>
+                <a href="{% url 'unreturned' %}" class="buttons-tabs">Unreturned</a>
+                <a href="{% url 'notification' %}" class="buttons-tabs">Notification</a>
+                <a href="{% url 'userprofile' %}" class="buttons-tabs">Account</a>
+                <a href="{% url 'logout' %}" class="buttons-tabs">Logout</a>
             </div>
+        </div>
 
         <div id="mainForm" class="form">
-        <div id="container" class="rounded_corners">
+            <div id="container" class="rounded_corners">
+                {% for item in unreturned_items reversed %}
+                <div id="wrapper">
+                    <div id="top">
+                        <div id="left">
+                            {% if item.item_borrowed.item_stock.item_information.item_photo %}
+                                <img src="{{ item.item_borrowed.item_stock.item_information.item_photo.url }}" class="inventory_item">
+                            {% endif %}
+                        </div>
 
+                        <div id="right">
+                            <p id="item_name">{{ item.item_borrowed.item_stock.item_information.item_name }}</p>
 
-            {% for item in unreturned_items reversed %}
-            <div id="wrapper">
+                            <p id="item_details">
+                                Time Borrowed: {{ item.item_borrowed.item_date_borrowed }}<br />
+                                Time Returned: {{ item.item_borrowed.item_date_returned }}<br />
+                                Borrower: {{ item.item_borrowed.item_borrower }}<br />
+                                {% if item.item_borrowed.guest_name %}
+                                Guest Borrower: {{ item.item_borrowed.guest_name }} <br />
+                                {% endif %}
+                                {% if item.item_borrowed.guest_course %}
+                                Guest Borrower: {{ item.item_borrowed.guest_course }} <br />
+                                {% endif %}
+                                {% if item.item_borrowed.guest_section %}
+                                Guest Borrower: {{ item.item_borrowed.guest_section }} <br />
+                                {% endif %}
+                            </p>
 
-                <div id="top">
-                    <div id="left">
-                        {% if item.item_borrowed.item_stock.item_information.item_photo %}
-                            <img src="{{ item.item_borrowed.item_stock.item_information.item_photo.url }}" class="inventory_item">
-                        {% endif %}
+                            <p id="item_quantity">Item Quantity: {{ item.item_borrowed.item_quantity }}</p>
+                        </div>
+                    </div>
+
+                    <div id="bottom">
 
                     </div>
-                    <div id="right">
-                        <p id="item_name">{{ item.item_borrowed.item_stock.item_information.item_name }}</p>
-                        <p id="item_details">
-                            Time Borrowed: {{ item.item_borrowed.item_date_borrowed }}<br />
-                            Time Returned: {{ item.item_borrowed.item_date_returned }}<br />
-                            Borrower: {{ item.item_borrowed.item_borrower }}<br />
 
-                            {% if item.item_borrowed.guest_name %}
-                               Guest Borrower: {{ item.item_borrowed.guest_name }} <br />
-                            {% endif %}
-                            {% if item.item_borrowed.guest_course %}
-                               Guest Borrower: {{ item.item_borrowed.guest_course }} <br />
-                            {% endif %}
-                            {% if item.item_borrowed.guest_section %}
-                               Guest Borrower: {{ item.item_borrowed.guest_section }} <br />
-                            {% endif %}
-                        </p>
-                        <p id="item_quantity">Item Quantity: {{ item.item_borrowed.item_quantity }}</p>
-
+                    <div class="recent-lines">
+                        <div id="btn_con">
+                            <button id="return_btn" class="rounded_corners" onclick="show_hide_pop_up()">Return</button>
+                        </div>
                     </div>
                 </div>
-                <div id="bottom">
+
+                <div class="test_pop_up" id="popup_form">
+
+                    <form id="return_form" action="{% url 'return_item' item.id item.item_borrowed.item_stock.id item.item_borrowed.borrow_form_id %}" method="post"> {% csrf_token %}
+
+                        <div class="input_section">
+
+                            <label for="pristine">Pristine</label>
+                            <input type="number" id="pristine" name="pristine" required >
+
+                            <label for="damaged">Damaged</label>
+                            <input type="number" name="damaged" id="damaged" required >
+
+                        </div>
+
+                        <div class="btn_section">
+
+                            <input type="button" value="Cancel" onclick="show_hide_pop_up()">
+                            <input type="submit" name="return" value="Return">
+
+                        </div>
+
+                    </form>
 
                 </div>
-                <div class="recent-lines">
-                    <div id="btn_con">
-                        <button id="return_btn" class="rounded_corners" onclick="show_hide_pop_up()">Return</button>
-                    </div>
+
+                <div class="popup" id="statusPopup">
+                    <p id="statusMessage"></p>
+                    <button onclick="closePopup()">Close</button>
                 </div>
+
+                {% endfor %}
+            {% include 'home/result_list_admin.html' %}
             </div>
+        </div>
 
-            <div class="test_pop_up" id="popup_form">
-
-                <form action="{% url 'return_item' item.id item.item_borrowed.item_stock.id item.item_borrowed.borrow_form_id %}" method="post"> {% csrf_token %}
-
-                    <div class="input_section">
-
-                        <label for="pristine">Pristine</label>
-                        <input type="number" id="pristine" name="pristine" required >
-
-                        <label for="damaged">Damaged</label>
-                        <input type="number" name="damaged" id="damaged" required >
-
-                    </div>
-
-                    <div class="btn_section">
-
-                        <input type="button" value="Cancel" onclick="show_hide_pop_up()">
-                        <input type="submit" name="return" value="Return">
-
-                    </div>
-
-                </form>
-
-            </div>
-            {% endfor %}
-        {% include 'home/result_list_admin.html' %}
-
-    </div>
-</div>
+    <script defer src="{% static 'unreturned/buttons_for_unreturned.js' %}"></script>
     </body>
 </html>
