@@ -659,12 +659,16 @@ a:active {
   top: 50%;
   transform: translate(-50%, -50%) scale(0.8);
   padding: 20px;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   border: 2px solid black;
   z-index: 1000;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, opacity 0.3s ease;
   opacity: 0;
+  width: 400px;
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
 }
 
 .popup.active {

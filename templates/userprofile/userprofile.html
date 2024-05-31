@@ -5,9 +5,9 @@
         <link rel="stylesheet" href="{% static 'userprofile/userprofile.css' %}">
         <title>Faculty Profile</title>
     </head>
+
     <body>
         <div class="header">
-            
             <div class="left-section">
                 <img class="lspu-logo" src="{% static 'home/logo/lspu-logo.png' %}">
             </div>
@@ -22,47 +22,34 @@
              <div class="right-section">
                  <img class="ccs-logo" src="{% static 'home/logo/ccs-logo.jpg' %}" >
              </div>
-        
          </div>
     
-
-        <div class="head"></div>
-         
-            <div class="buttons-box">
-                <div class="button-grid">
-                    <a href="{% url 'home' %}" class="buttons-tabs">Home</a>
-                    <a href="{% url 'recents' %}" class="buttons-tabs">History</a>
-                    <a href="{% url 'unreturned' %}" class="buttons-tabs">Unreturned</a>
-                    <a href="{% url 'notification' %}" class="buttons-tabs">Notification</a>
-                    <a href="{% url 'userprofile' %}" class="buttons-tabs">Account</a>
-                    <a href="{% url 'logout' %}" class="buttons-tabs">Logout</a>
-                </div>
+        <div class="buttons-box">
+            <div class="button-grid">
+                <a href="{% url 'home' %}" class="buttons-tabs">Home</a>
+                <a href="{% url 'recents' %}" class="buttons-tabs">History</a>
+                <a href="{% url 'unreturned' %}" class="buttons-tabs">Unreturned</a>
+                <a href="{% url 'notification' %}" class="buttons-tabs">Notification</a>
+                <a href="{% url 'userprofile' %}" class="buttons-tabs">Account</a>
+                <a href="{% url 'logout' %}" class="buttons-tabs">Logout</a>
             </div>
+        </div>
+
         <div id="mainForm" class="form">
             <div id="container" class="rounded_corners">
-        <div style="display: flex; align-items: center; margin-top: 30px; margin-left: 50px;">
-            <img class="rounded-circle account-img" src="{{ user_profile.image.url }}" alt="Profile Image" style="max-width: 200px; max-height: 200px; object-fit: cover; border-radius: 50%;">
+                <div class="profile_contain">
+                    <img class="rounded-circle account-img" src="{{ user_profile.image.url }}" alt="Profile Image">
 
-            <div style="margin-left: 30px;">
-                <h2 class="account-heading">{{ user_profile.user.username }}</h2>
-                <p class="text-secondary">Account Name: {{ user_profile.account_name }}</p>
-                <p class="text-secondary">Email: {{ user_profile.user.email }}</p>
-                <p class="text-secondary">Contact Number: {{ user_profile.contact_number }}</p>
-
-                <button class="btn" style="margin-top: 20px;"><a href="{% url 'editprofile' %}">Edit Profile</a></button>
+                    <div class="profile_information">
+                        <h2 class="account-heading">{{ user_profile.user.username }}</h2>
+                        <p class="text-secondary">Account Name: {{ user_profile.account_name }}</p>
+                        <p class="text-secondary">Email: {{ user_profile.user.email }}</p>
+                        <p class="text-secondary">Contact Number: {{ user_profile.contact_number }}</p>
+                        <button class="btn"><a href="{% url 'editprofile' %}">Edit Profile</a></button>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <style>
-            .form-container {
-                margin-top: 20px; 
-            }
-        </style>
-            </div>
-        </div>
-
-
         {% include 'home/result_list.html' %}
-
     </body>
 </html>

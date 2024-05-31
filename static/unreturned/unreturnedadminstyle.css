@@ -426,12 +426,17 @@ a:active {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(0.8);
   background-color: #fff;
   padding: 20px;
-  border: 1px solid #ccc;
+  border: 2px solid black;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  width: 400px;
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
 }
 /* #endregion */
 

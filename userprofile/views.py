@@ -8,6 +8,8 @@ from home.decorators import allowed_users
 
 
 # Create your views here.
+
+#For initializing faculty profile tab
 @login_required
 @allowed_users(allowed_roles=['Faculty'])
 def userprofile(request):
@@ -15,12 +17,14 @@ def userprofile(request):
 
     return render(request, 'userprofile/userprofile.html',{'user_profile': user_profile})
 
+#For initializing admin profile tab
 @login_required
 @allowed_users(allowed_roles=['Admin'])
 def admin_userprofile(request):
     user_profile = Profile.objects.get(user=request.user) 
     return render(request, 'userprofile/admin_userprofile.html',{'user_profile': user_profile})
 
+#For initializing faculty edit profile tab
 @login_required
 @allowed_users(allowed_roles=['Faculty'])
 def editprofile(request):
@@ -49,6 +53,7 @@ def editprofile(request):
     }
     return render(request, 'userprofile/editprofile.html', context)
 
+#For initializing admin edit profile tab
 @login_required
 @allowed_users(allowed_roles=['Admin'])
 def editprofile_admin(request):
